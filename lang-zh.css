@@ -1,0 +1,19 @@
+/* Chinese additions on top of core/style.css (same tokens). */
+[lang|="zh"],.hz{font-family:"PingFang SC","Hiragino Sans GB","Noto Sans SC","Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif}
+.w.hz{font-size:clamp(44px,12vw,64px);letter-spacing:.04em;line-height:1.15;font-weight:500}
+.pyrow{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:6px 0 4px}
+.pyc{font:inherit;font-size:var(--fs-l,18px);padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--text);cursor:pointer;min-height:36px}
+.pyc.t1{border-bottom:3px solid #3b6fd8}.pyc.t2{border-bottom:3px solid #2f9e6b}.pyc.t3{border-bottom:3px solid #c48a12}.pyc.t4{border-bottom:3px solid #c2413b}.pyc.t5{border-bottom:3px solid var(--line)}
+.pyc.g{background:color-mix(in srgb,var(--success) 18%,var(--surface));border-color:var(--success)}.pyc.r{background:color-mix(in srgb,var(--danger) 16%,var(--surface));border-color:var(--danger)}
+.pyc:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.tguide{width:100%;max-width:320px;display:block;margin:8px auto}.tgrid line{stroke:var(--line);stroke-width:.5}.tgrid text{font-size:5px;fill:var(--text-3)}
+.tpath{fill:none;stroke:var(--primary);stroke-width:3;stroke-linecap:round}.tpath.anim{stroke-dasharray:160;stroke-dashoffset:160;animation:tdraw 1.4s ease-out .2s forwards}
+@keyframes tdraw{to{stroke-dashoffset:0}}
+.mrow{display:flex;gap:12px;align-items:center;margin:12px 0}.mouth{width:96px;flex:none}.lip{fill:color-mix(in srgb,var(--danger) 30%,var(--surface));stroke:var(--danger);stroke-width:2}
+.lip.anim{transform-origin:50px 40px;animation:lips 1.6s ease-in-out infinite}@keyframes lips{50%{transform:scaleY(.7)}}
+.chars{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.chr{display:flex;flex-direction:column;align-items:center;padding:6px 10px;border:1px solid var(--line);border-radius:12px;color:var(--text);text-decoration:none;min-width:56px}
+.chr b{font-size:26px}.chr small{color:var(--text-2);font-size:var(--fs-xs,12px);text-align:center}
+.chs{display:flex;gap:8px;justify-content:center;margin:8px 0}.chb{font:inherit;font-size:28px;width:52px;height:52px;border-radius:12px;border:1px solid var(--line);background:var(--surface-2);color:var(--text)}.chb.on{border-color:var(--primary);background:var(--primary-soft)}
+.hwbox{margin:8px auto;width:max-content;border-radius:16px;background:var(--surface-2);background-image:linear-gradient(var(--line),var(--line)),linear-gradient(var(--line),var(--line));background-size:100% 1px,1px 100%;background-position:center;background-repeat:no-repeat;touch-action:none}
+.chip[aria-disabled="true"]{opacity:.6}
+@media (prefers-reduced-motion:reduce){.tpath.anim,.lip.anim{animation:none;stroke-dashoffset:0}}

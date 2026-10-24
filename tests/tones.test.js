@@ -1,0 +1,12 @@
+const assert=require('assert'),T=require('../tones.js');let n=0;const t=(m,f)=>{f();n++;console.log('ok',m)};
+const tone=(f0s,sr=16000,dur=.45)=>{const N=Math.round(sr*dur),x=new Float32Array(N);let ph=0;for(let i=0;i<N;i++){const f=f0s(i/N);ph+=2*Math.PI*f/sr;x[i]=.3*(Math.sin(ph)+.5*Math.sin(2*ph)+.25*Math.sin(3*ph))}return x};
+t('model weights embedded',()=>{assert.ok(T.model&&T.model.W.length==4)});
+t('sandhi 3-3 -> 2-3',()=>assert.deepStrictEqual(T.surface([3,3],'你好'),[2,3]));
+t('sandhi 不 before 4 -> 2',()=>assert.deepStrictEqual(T.surface([4,4],'不是'),[2,4]));
+t('sandhi 一 before 4 -> 2, before 1 -> 4',()=>{assert.deepStrictEqual(T.surface([1,4],'一样'),[2,4]);assert.deepStrictEqual(T.surface([1,1],'一千'),[4,1])});
+t('pitch tracker follows a 200 Hz tone within 3%',()=>{const f=T.track(tone(()=>200),16000).filter(v=>v>0);const m=f.sort((a,b)=>a-b)[f.length>>1];assert.ok(Math.abs(m-200)<6,m)});
+t('pitch tracker does not halve a 320 Hz voice',()=>{const f=T.track(tone(()=>320),16000).filter(v=>v>0);assert.ok(f.filter(v=>v<200).length<=1)});
+t('falling synthetic syllable classified as tone 4',()=>{const r=T.analyse(tone(p=>300-160*p),16000,[4]);assert.equal(r.syl[0].got,4)});
+t('rising synthetic syllable classified as tone 2',()=>{const r=T.analyse(tone(p=>170+110*p*p),16000,[2]);assert.equal(r.syl[0].got,2)});
+t('silence gives a clear message, not a score',()=>{const r=T.analyse(new Float32Array(8000),16000,[1]);assert.equal(r.ok,false)});
+console.log(n,'tone tests passed');

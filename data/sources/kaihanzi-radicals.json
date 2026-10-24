@@ -1,0 +1,3145 @@
+[
+  {
+    "char": "口",
+    "nameVi": "bộ Khẩu (miệng)",
+    "meaning": "cái miệng",
+    "mnemonic": "ô vuông như cái miệng",
+    "charCount": 53
+  },
+  {
+    "char": "木",
+    "nameVi": "bộ Mộc (cây gỗ)",
+    "meaning": "cây, gỗ",
+    "mnemonic": "thân cây có cành ngang và rễ xoè hai bên",
+    "charCount": 32
+  },
+  {
+    "char": "一",
+    "nameVi": "bộ Nhất (một)",
+    "meaning": "một vạch ngang",
+    "mnemonic": "một ngang nằm trong khung",
+    "charCount": 26
+  },
+  {
+    "char": "亻",
+    "nameVi": "bộ Nhân đứng (người)",
+    "meaning": "người",
+    "mnemonic": "một người đứng nghiêng",
+    "charCount": 26
+  },
+  {
+    "char": "日",
+    "nameVi": "bộ Nhật (mặt trời)",
+    "meaning": "mặt trời, ngày",
+    "mnemonic": "ô vuông có vạch ngang giữa - ông mặt trời",
+    "charCount": 25
+  },
+  {
+    "char": "扌",
+    "nameVi": "bộ Thủ (tay)",
+    "meaning": "bàn tay",
+    "mnemonic": "ba ngón khom - dạng đứng của 手",
+    "charCount": 24
+  },
+  {
+    "char": "氵",
+    "nameVi": "bộ Thuỷ (nước)",
+    "meaning": "nước, sông",
+    "mnemonic": "ba giọt nước rơi xuống",
+    "charCount": 23
+  },
+  {
+    "char": "讠",
+    "nameVi": "bộ Ngôn (lời nói)",
+    "meaning": "nói, lời",
+    "mnemonic": "chấm trên nét gập - miệng đang nói",
+    "charCount": 23
+  },
+  {
+    "char": "辶",
+    "nameVi": "bộ Sước (bước đi)",
+    "meaning": "bước chân, đi đường",
+    "mnemonic": "một chấm rồi nét lượn - dáng người rảo bước",
+    "charCount": 20
+  },
+  {
+    "char": "又",
+    "nameVi": "bộ Hựu (bàn tay)",
+    "meaning": "bàn tay phải; lại",
+    "mnemonic": "hình bàn tay nắm lại",
+    "charCount": 17
+  },
+  {
+    "char": "土",
+    "nameVi": "bộ Thổ (đất)",
+    "meaning": "mặt đất",
+    "mnemonic": "hai ngang một sổ - luống đất",
+    "charCount": 17
+  },
+  {
+    "char": "宀",
+    "nameVi": "bộ Miên (mái nhà)",
+    "meaning": "mái che, nhà",
+    "mnemonic": "nóc nhà có chấm trên đỉnh",
+    "charCount": 17
+  },
+  {
+    "char": "纟",
+    "nameVi": "bộ Mịch (sợi tơ)",
+    "meaning": "sợi tơ",
+    "mnemonic": "cuộn tơ bên trái",
+    "charCount": 17
+  },
+  {
+    "char": "女",
+    "nameVi": "bộ Nữ (phụ nữ)",
+    "meaning": "người nữ",
+    "mnemonic": "dáng người nữ ngồi khoanh tay",
+    "charCount": 16
+  },
+  {
+    "char": "人",
+    "nameVi": "bộ Nhân (người)",
+    "meaning": "người",
+    "mnemonic": "một phẩy một mác - dáng người bước",
+    "charCount": 15
+  },
+  {
+    "char": "十",
+    "nameVi": "bộ Thập (mười)",
+    "meaning": "số mười, trọn vẹn",
+    "mnemonic": "một ngang một sổ giao nhau",
+    "charCount": 14
+  },
+  {
+    "char": "心",
+    "nameVi": "bộ Tâm (trái tim)",
+    "meaning": "tấm lòng, suy nghĩ",
+    "mnemonic": "ba chấm quanh nét móc - trái tim với mấy giọt cảm xúc",
+    "charCount": 14
+  },
+  {
+    "char": "丷",
+    "nameVi": "bộ Bát ngược",
+    "meaning": "hai nét đầu",
+    "mnemonic": "hai chấm chĩa xuống",
+    "charCount": 13
+  },
+  {
+    "char": "丿",
+    "nameVi": "nét Phẩy",
+    "meaning": "nét hất sang trái",
+    "mnemonic": "một phẩy nghiêng trên đầu",
+    "charCount": 13
+  },
+  {
+    "char": "月",
+    "nameVi": "bộ Nguyệt (trăng)",
+    "meaning": "mặt trăng, tháng",
+    "mnemonic": "vầng trăng khuyết có hai vạch",
+    "charCount": 13
+  },
+  {
+    "char": "田",
+    "nameVi": "bộ Điền (ruộng)",
+    "meaning": "thửa ruộng",
+    "mnemonic": "ô vuông chia bốn - mảnh ruộng",
+    "charCount": 13
+  },
+  {
+    "char": "力",
+    "nameVi": "bộ Lực (sức)",
+    "meaning": "sức lực",
+    "mnemonic": "cánh tay gồng cơ bắp",
+    "charCount": 12
+  },
+  {
+    "char": "大",
+    "nameVi": "bộ Đại (lớn)",
+    "meaning": "to lớn",
+    "mnemonic": "người dang hai tay thật rộng",
+    "charCount": 12
+  },
+  {
+    "char": "艹",
+    "nameVi": "bộ Thảo (cỏ)",
+    "meaning": "cây cỏ",
+    "mnemonic": "hai mầm cỏ nhú lên",
+    "charCount": 12
+  },
+  {
+    "char": "阝",
+    "nameVi": "bộ Phụ / bộ Ấp (阝)",
+    "meaning": "đứng bên trái là 阜 (gò, đồi đất); đứng bên phải là 邑 (ấp, khu dân cư)",
+    "mnemonic": "Cùng một tự dạng nhưng hai gốc khác nhau: bên TRÁI 阝 = 阜, bậc thang trên sườn gò (院, 阳, 阿, 除); bên PHẢI 阝 = 邑, vùng đất có người ở (都, 部, 郊, 邮). Thấy 阝 thì nhìn nó đứng bên nào trước rồi hãy đoán nghĩa.",
+    "charCount": 12
+  },
+  {
+    "char": "丶",
+    "nameVi": "nét Chấm (đầu)",
+    "meaning": "điểm khởi",
+    "mnemonic": "một chấm trên đỉnh",
+    "charCount": 11
+  },
+  {
+    "char": "禾",
+    "nameVi": "bộ Hoà (cây lúa)",
+    "meaning": "cây lúa",
+    "mnemonic": "cây lúa trĩu bông nghiêng đầu",
+    "charCount": 11
+  },
+  {
+    "char": "八",
+    "nameVi": "bộ Bát (tám)",
+    "meaning": "hai nét tách ra",
+    "mnemonic": "hai chân chống xuống dưới",
+    "charCount": 10
+  },
+  {
+    "char": "刂",
+    "nameVi": "bộ Đao (dao đứng)",
+    "meaning": "con dao",
+    "mnemonic": "dạng đứng của 刀 - lưỡi dao",
+    "charCount": 10
+  },
+  {
+    "char": "夂",
+    "nameVi": "bộ Truy (chân bước tới)",
+    "meaning": "bước chân đi đến",
+    "mnemonic": "phẩy gập rồi mác - bàn chân tới",
+    "charCount": 10
+  },
+  {
+    "char": "巾",
+    "nameVi": "bộ Cân (khăn)",
+    "meaning": "tấm khăn",
+    "mnemonic": "tấm vải buông xuống có sổ giữa",
+    "charCount": 10
+  },
+  {
+    "char": "忄",
+    "nameVi": "bộ Tâm đứng (trái tim)",
+    "meaning": "tấm lòng, suy nghĩ",
+    "mnemonic": "trái tim dựng đứng, hai chấm hai bên một sổ",
+    "charCount": 10
+  },
+  {
+    "char": "攵",
+    "nameVi": "bộ Phộc (cầm gậy đánh)",
+    "meaning": "tay cầm que",
+    "mnemonic": "bàn tay khua que bên phải",
+    "charCount": 10
+  },
+  {
+    "char": "目",
+    "nameVi": "bộ Mục (con mắt)",
+    "meaning": "con mắt",
+    "mnemonic": "con mắt dựng đứng có hai vạch trong",
+    "charCount": 10
+  },
+  {
+    "char": "亠",
+    "nameVi": "bộ Đầu (nắp)",
+    "meaning": "phần đỉnh",
+    "mnemonic": "chấm trên đội một ngang",
+    "charCount": 9
+  },
+  {
+    "char": "厂",
+    "nameVi": "bộ Hán (sườn núi)",
+    "meaning": "mái che, vách núi",
+    "mnemonic": "một ngang một phẩy - vách đá nhô ra",
+    "charCount": 9
+  },
+  {
+    "char": "寸",
+    "nameVi": "bộ Thốn (tấc/mốc)",
+    "meaning": "tấc, chừng mực",
+    "mnemonic": "chữ thập thêm chấm - bàn tay đo một tấc",
+    "charCount": 9
+  },
+  {
+    "char": "王",
+    "nameVi": "chữ Vương (vua)",
+    "meaning": "vua, ngọc",
+    "mnemonic": "ba ngang một sổ nối liền",
+    "charCount": 9
+  },
+  {
+    "char": "冂",
+    "nameVi": "bộ Quynh (vùng xa)",
+    "meaning": "khung mở, cửa thành",
+    "mnemonic": "hai nét như khung cửa mở rộng",
+    "charCount": 8
+  },
+  {
+    "char": "冫",
+    "nameVi": "bộ Băng (hai chấm)",
+    "meaning": "băng giá",
+    "mnemonic": "hai chấm tuyết đọng dưới chân",
+    "charCount": 8
+  },
+  {
+    "char": "囗",
+    "nameVi": "bộ Vi (vây quanh)",
+    "meaning": "biên giới bao quanh",
+    "mnemonic": "khung vuông khép kín như tường thành",
+    "charCount": 8
+  },
+  {
+    "char": "子",
+    "nameVi": "bộ Tử (con)",
+    "meaning": "đứa trẻ",
+    "mnemonic": "đứa bé quấn tã, hai tay dang",
+    "charCount": 8
+  },
+  {
+    "char": "广",
+    "nameVi": "bộ Nghiễm (mái hiên)",
+    "meaning": "rộng lớn; mượn âm",
+    "mnemonic": "mái hầm mỏ bên phải",
+    "charCount": 8
+  },
+  {
+    "char": "灬",
+    "nameVi": "bộ Hoả (4 chấm lửa)",
+    "meaning": "lửa, ánh nóng",
+    "mnemonic": "bốn đốm lửa liu riu dưới đáy",
+    "charCount": 8
+  },
+  {
+    "char": "钅",
+    "nameVi": "bộ Kim (kim loại)",
+    "meaning": "vàng, kim loại",
+    "mnemonic": "dạng đứng của 金, như thỏi kim loại dựng nghiêng",
+    "charCount": 8
+  },
+  {
+    "char": "页",
+    "nameVi": "bộ Hiệt (trang/đầu)",
+    "meaning": "trang giấy, cái đầu",
+    "mnemonic": "đầu người nhìn nghiêng, dạng giản của 頁",
+    "charCount": 8
+  },
+  {
+    "char": "卩",
+    "nameVi": "bộ Tiết (con dấu/đốt)",
+    "meaning": "đốt, mấu",
+    "mnemonic": "nét gập-móc như cái mấu cong",
+    "charCount": 7
+  },
+  {
+    "char": "工",
+    "nameVi": "bộ Công (thước thợ)",
+    "meaning": "dụng cụ của thợ",
+    "mnemonic": "hai ngang một sổ - cái thước/đòn của thợ",
+    "charCount": 7
+  },
+  {
+    "char": "己",
+    "nameVi": "bộ Kỷ (bản thân)",
+    "meaning": "chính mình",
+    "mnemonic": "nét gập cuộn lại - tự thân",
+    "charCount": 7
+  },
+  {
+    "char": "火",
+    "nameVi": "bộ Hoả (lửa)",
+    "meaning": "lửa, sức nóng",
+    "mnemonic": "ngọn lửa có tia bắn hai bên",
+    "charCount": 7
+  },
+  {
+    "char": "羊",
+    "nameVi": "bộ Dương (con dê)",
+    "meaning": "con dê",
+    "mnemonic": "sừng cong trên, thân có ba ngang - chú dê",
+    "charCount": 7
+  },
+  {
+    "char": "青",
+    "nameVi": "chữ Thanh (xanh)",
+    "meaning": "xanh, trong trẻo",
+    "mnemonic": "mầm cây (生) trên mặt trăng (月) - màu xanh non",
+    "charCount": 7
+  },
+  {
+    "char": "丨",
+    "nameVi": "bộ Cổn (sổ dọc)",
+    "meaning": "vạch đứng",
+    "mnemonic": "một nét sổ thẳng đứng bên trái",
+    "charCount": 6
+  },
+  {
+    "char": "二",
+    "nameVi": "bộ Nhị (hai)",
+    "meaning": "hai vạch ngang",
+    "mnemonic": "hai nét ngang xếp trên dưới",
+    "charCount": 6
+  },
+  {
+    "char": "方",
+    "nameVi": "bộ Phương (vuông)",
+    "meaning": "vuông; hướng",
+    "mnemonic": "một góc thước vuông có tay cầm chìa ra",
+    "charCount": 6
+  },
+  {
+    "char": "欠",
+    "nameVi": "bộ Khiếm (há miệng)",
+    "meaning": "há miệng, thiếu",
+    "mnemonic": "người há miệng ngáp, hơi phả ra",
+    "charCount": 6
+  },
+  {
+    "char": "竹",
+    "nameVi": "bộ Trúc (tre)",
+    "meaning": "cây tre, giấy viết",
+    "mnemonic": "hai đốt tre - ngày xưa viết trên thẻ tre",
+    "charCount": 6
+  },
+  {
+    "char": "衤",
+    "nameVi": "bộ Y (áo)",
+    "meaning": "quần áo, vải vóc",
+    "mnemonic": "dạng đứng của 衣 - tà áo có thêm chấm",
+    "charCount": 6
+  },
+  {
+    "char": "贝",
+    "nameVi": "phần dưới (giống bộ Bối)",
+    "meaning": "thân trang sách",
+    "mnemonic": "ô vuông có hai chân như tờ giấy lật",
+    "charCount": 6
+  },
+  {
+    "char": "门",
+    "nameVi": "bộ Môn (cửa)",
+    "meaning": "cánh cửa",
+    "mnemonic": "khung cửa hai cánh giản thể",
+    "charCount": 6
+  },
+  {
+    "char": "丁",
+    "nameVi": "chữ Đinh",
+    "meaning": "cái đinh, trai tráng",
+    "mnemonic": "một ngang một sổ-móc",
+    "charCount": 5
+  },
+  {
+    "char": "不",
+    "nameVi": "chữ Bất (không)",
+    "meaning": "không",
+    "mnemonic": "vạch trời chặn mầm vươn lên",
+    "charCount": 5
+  },
+  {
+    "char": "且",
+    "nameVi": "chữ Thả (vả lại)",
+    "meaning": "hơn nữa, chồng lên",
+    "mnemonic": "nhiều ngang xếp chồng như bậc trên",
+    "charCount": 5
+  },
+  {
+    "char": "𠂇",
+    "nameVi": "bộ Hữu (bàn tay)",
+    "meaning": "bàn tay che lấy",
+    "mnemonic": "một ngang một phẩy - bàn tay đưa ra",
+    "charCount": 5
+  },
+  {
+    "char": "云",
+    "nameVi": "chữ Vân (mây)",
+    "meaning": "đám mây",
+    "mnemonic": "hai ngang trên cuộn mây",
+    "charCount": 5
+  },
+  {
+    "char": "儿",
+    "nameVi": "bộ Nhi (đôi chân)",
+    "meaning": "đứa trẻ, đôi chân",
+    "mnemonic": "một phẩy một sổ-móc - hai chân bước",
+    "charCount": 5
+  },
+  {
+    "char": "冖",
+    "nameVi": "bộ Mịch (mái che)",
+    "meaning": "mái nhà che",
+    "mnemonic": "nét ngang có móc như mái che",
+    "charCount": 5
+  },
+  {
+    "char": "几",
+    "nameVi": "bộ Kỷ (cái bàn/khung)",
+    "meaning": "cái ghế, khung",
+    "mnemonic": "hai nét cong đỡ như chân bàn",
+    "charCount": 5
+  },
+  {
+    "char": "卜",
+    "nameVi": "bộ Bốc (bói/cọc)",
+    "meaning": "cây cọc, điểm dừng",
+    "mnemonic": "một sổ một chấm - cọc cắm",
+    "charCount": 5
+  },
+  {
+    "char": "厶",
+    "nameVi": "bộ Khư (riêng tư)",
+    "meaning": "riêng, của mình",
+    "mnemonic": "nét gập nhỏ - góc riêng",
+    "charCount": 5
+  },
+  {
+    "char": "可",
+    "nameVi": "chữ Khả",
+    "meaning": "có thể",
+    "mnemonic": "丁 ôm 口 - miệng gật cho phép",
+    "charCount": 5
+  },
+  {
+    "char": "尸",
+    "nameVi": "bộ Thi (thân người)",
+    "meaning": "thân mình nằm/ngồi",
+    "mnemonic": "người khom lưng",
+    "charCount": 5
+  },
+  {
+    "char": "巴",
+    "nameVi": "chữ Ba (bám/cán)",
+    "meaning": "bám, đuôi, cán",
+    "mnemonic": "thân cong có đuôi quặp → chỗ để nắm",
+    "charCount": 5
+  },
+  {
+    "char": "彡",
+    "nameVi": "bộ Sam (ba vệt)",
+    "meaning": "ba nét lông/tia sáng",
+    "mnemonic": "ba phẩy xuôi như chùm tia",
+    "charCount": 5
+  },
+  {
+    "char": "戈",
+    "nameVi": "bộ Qua (cây giáo)",
+    "meaning": "vũ khí, cây giáo",
+    "mnemonic": "ngọn giáo có lưỡi, nét móc chéo",
+    "charCount": 5
+  },
+  {
+    "char": "斤",
+    "nameVi": "bộ Cân (cái rìu)",
+    "meaning": "cái rìu; cân nặng",
+    "mnemonic": "lưỡi rìu có cán cầm",
+    "charCount": 5
+  },
+  {
+    "char": "矢",
+    "nameVi": "bộ Thỉ (mũi tên)",
+    "meaning": "mũi tên ngắn",
+    "mnemonic": "thân tên có ngạnh, đầu nhọn",
+    "charCount": 5
+  },
+  {
+    "char": "立",
+    "nameVi": "bộ Lập (đứng)",
+    "meaning": "đứng thẳng",
+    "mnemonic": "người đứng bên trái",
+    "charCount": 5
+  },
+  {
+    "char": "⺮",
+    "nameVi": "bộ Trúc (tre)",
+    "meaning": "cây tre",
+    "mnemonic": "hai lá tre rủ xuống",
+    "charCount": 5
+  },
+  {
+    "char": "米",
+    "nameVi": "chữ (biến thể đoạn tơ)",
+    "meaning": "các đoạn nối",
+    "mnemonic": "những mối tơ nối lại",
+    "charCount": 5
+  },
+  {
+    "char": "耳",
+    "nameVi": "bộ Nhĩ (tai)",
+    "meaning": "cái tai",
+    "mnemonic": "hình cái tai người nhìn từ trước - ô vuông với vạch ngang và chân",
+    "charCount": 5
+  },
+  {
+    "char": "自",
+    "nameVi": "bộ Tự (mũi)",
+    "meaning": "cái mũi, bản thân",
+    "mnemonic": "cái mũi nằm giữa mặt, người Hoa chỉ mũi để nói 'tôi'",
+    "charCount": 5
+  },
+  {
+    "char": "舌",
+    "nameVi": "bộ Thiệt (lưỡi)",
+    "meaning": "cái lưỡi",
+    "mnemonic": "千 trên 口 - lưỡi thè khỏi miệng",
+    "charCount": 5
+  },
+  {
+    "char": "艮",
+    "nameVi": "chữ Cấn (dừng, bền)",
+    "meaning": "vững, dừng lại",
+    "mnemonic": "phần thân bám chắc không lay",
+    "charCount": 5
+  },
+  {
+    "char": "见",
+    "nameVi": "bộ Kiến (thấy)",
+    "meaning": "nhìn thấy",
+    "mnemonic": "con mắt đặt trên đôi chân",
+    "charCount": 5
+  },
+  {
+    "char": "隹",
+    "nameVi": "bộ Chuy (chim đuôi ngắn)",
+    "meaning": "con chim nhỏ",
+    "mnemonic": "chim đứng, thân có nhiều vạch lông",
+    "charCount": 5
+  },
+  {
+    "char": "饣",
+    "nameVi": "bộ Thực (ăn) đứng",
+    "meaning": "thức ăn, ăn uống",
+    "mnemonic": "dạng rút gọn của 食 - bên cơm",
+    "charCount": 5
+  },
+  {
+    "char": "马",
+    "nameVi": "bộ Mã (ngựa)",
+    "meaning": "con ngựa",
+    "mnemonic": "ba nét rút gọn - bờm dựng, lưng cong, vó phi",
+    "charCount": 5
+  },
+  {
+    "char": "乂",
+    "nameVi": "nét Phẩy-mác chéo",
+    "meaning": "đan chéo",
+    "mnemonic": "một phẩy một mác bắt chéo nhau",
+    "charCount": 4
+  },
+  {
+    "char": "元",
+    "nameVi": "chữ Nguyên (ban đầu)",
+    "meaning": "gốc, nguyên vẹn",
+    "mnemonic": "hai ngang trên đôi chân 儿",
+    "charCount": 4
+  },
+  {
+    "char": "刀",
+    "nameVi": "bộ Đao (dao)",
+    "meaning": "con dao",
+    "mnemonic": "một lưỡi cong có cán",
+    "charCount": 4
+  },
+  {
+    "char": "匕",
+    "nameVi": "bộ Chuỷ (thìa)",
+    "meaning": "cái thìa, dao nhỏ",
+    "mnemonic": "nét cong như cái muôi",
+    "charCount": 4
+  },
+  {
+    "char": "合",
+    "nameVi": "chữ Hợp (vừa khớp)",
+    "meaning": "hợp lại, khớp",
+    "mnemonic": "nắp (亼) đậy khít miệng (口)",
+    "charCount": 4
+  },
+  {
+    "char": "夕",
+    "nameVi": "bộ Tịch (chiều tối)",
+    "meaning": "buổi tối, hoàng hôn",
+    "mnemonic": "nửa vầng trăng nhô lên lúc chạng vạng",
+    "charCount": 4
+  },
+  {
+    "char": "夬",
+    "nameVi": "chữ Quải (bẻ tách)",
+    "meaning": "tách ra, dứt khoát",
+    "mnemonic": "bàn tay kéo tách một góc ra",
+    "charCount": 4
+  },
+  {
+    "char": "小",
+    "nameVi": "bộ Tiểu (nhỏ)",
+    "meaning": "nhỏ bé",
+    "mnemonic": "một sổ-móc, hai chấm hai bên",
+    "charCount": 4
+  },
+  {
+    "char": "彐",
+    "nameVi": "bộ Kệ (bàn tay)",
+    "meaning": "đầu lợn/bàn tay",
+    "mnemonic": "ba ngang gập như bàn tay",
+    "charCount": 4
+  },
+  {
+    "char": "彳",
+    "nameVi": "bộ Sách (bước nhỏ)",
+    "meaning": "bước chân đi",
+    "mnemonic": "hai phẩy một sổ - chân bước từng nhịp",
+    "charCount": 4
+  },
+  {
+    "char": "户",
+    "nameVi": "bộ Hộ (cửa một cánh)",
+    "meaning": "cánh cửa, hộ gia đình",
+    "mnemonic": "chấm trên rồi cánh cửa một bên",
+    "charCount": 4
+  },
+  {
+    "char": "手",
+    "nameVi": "bộ Thủ (tay) biến thể",
+    "meaning": "bàn tay",
+    "mnemonic": "dạng bẹt của 手 đặt trên đầu",
+    "charCount": 4
+  },
+  {
+    "char": "旦",
+    "nameVi": "chữ Đán (rạng đông)",
+    "meaning": "mặt trời trên đất; sáng",
+    "mnemonic": "日 trên một vạch đất - mặt trời mọc",
+    "charCount": 4
+  },
+  {
+    "char": "牛",
+    "nameVi": "bộ Ngưu (trâu bò)",
+    "meaning": "con trâu",
+    "mnemonic": "có sừng và thân - con trâu",
+    "charCount": 4
+  },
+  {
+    "char": "犬",
+    "nameVi": "bộ Khuyển (chó)",
+    "meaning": "con chó",
+    "mnemonic": "chữ 大 thêm chấm - con chó vẫy đuôi",
+    "charCount": 4
+  },
+  {
+    "char": "犭",
+    "nameVi": "bộ Khuyển (thú)",
+    "meaning": "loài thú bốn chân",
+    "mnemonic": "dáng con thú đứng nghiêng, dạng đứng của 犬",
+    "charCount": 4
+  },
+  {
+    "char": "穴",
+    "nameVi": "bộ Huyệt (hang)",
+    "meaning": "cái hang, lỗ",
+    "mnemonic": "mái 宀 che trên, 八 như cửa hang",
+    "charCount": 4
+  },
+  {
+    "char": "至",
+    "nameVi": "bộ Chí (tới nơi)",
+    "meaning": "đến tận cùng",
+    "mnemonic": "mũi tên cắm xuống đất - tới đích",
+    "charCount": 4
+  },
+  {
+    "char": "走",
+    "nameVi": "bộ Tẩu (chạy/đi)",
+    "meaning": "chạy, bước đi",
+    "mnemonic": "phần trên 土 thân người, phần dưới sải chân chạy",
+    "charCount": 4
+  },
+  {
+    "char": "足",
+    "nameVi": "bộ Túc (chân)",
+    "meaning": "bàn chân, bước đi",
+    "mnemonic": "khung 口 trên thân chân - cái cẳng chân bước",
+    "charCount": 4
+  },
+  {
+    "char": "车",
+    "nameVi": "bộ Xa (xe)",
+    "meaning": "xe cộ",
+    "mnemonic": "thùng xe có trục giữa - nhìn từ trên xuống",
+    "charCount": 4
+  },
+  {
+    "char": "里",
+    "nameVi": "chữ Lý (làng, dặm)",
+    "meaning": "ruộng đất ngoài",
+    "mnemonic": "ruộng (田) trên đất (土) → cánh đồng",
+    "charCount": 4
+  },
+  {
+    "char": "雨",
+    "nameVi": "bộ Vũ (mưa)",
+    "meaning": "cơn mưa",
+    "mnemonic": "khung trời che, bốn chấm như giọt mưa rơi trong đó",
+    "charCount": 4
+  },
+  {
+    "char": "三",
+    "nameVi": "chữ Tam (ba)",
+    "meaning": "ba vạch nắng",
+    "mnemonic": "ba ngang chồng nhau - tia nắng ấm",
+    "charCount": 3
+  },
+  {
+    "char": "上",
+    "nameVi": "chữ Thượng (trên)",
+    "meaning": "ở trên",
+    "mnemonic": "một sổ một ngang trên vạch - chỉ phía trên",
+    "charCount": 3
+  },
+  {
+    "char": "中",
+    "nameVi": "chữ Trung (giữa)",
+    "meaning": "ở giữa, trúng",
+    "mnemonic": "vạch sổ xuyên qua ô vuông",
+    "charCount": 3
+  },
+  {
+    "char": "主",
+    "nameVi": "chữ Chủ (chủ điểm)",
+    "meaning": "chủ, chính",
+    "mnemonic": "một chấm ngọn đèn trên chữ 王",
+    "charCount": 3
+  },
+  {
+    "char": "㐅",
+    "nameVi": "nét đan chéo",
+    "meaning": "mắt lưới",
+    "mnemonic": "hai dấu chéo đan trong khung",
+    "charCount": 3
+  },
+  {
+    "char": "乍",
+    "nameVi": "chữ Sạ (chợt, vội)",
+    "meaning": "bỗng nhiên, chợt",
+    "mnemonic": "nét phẩy rồi mấy ngang - như giật mình chợt nghĩ",
+    "charCount": 3
+  },
+  {
+    "char": "也",
+    "nameVi": "chữ Dã (cũng)",
+    "meaning": "cũng, vậy",
+    "mnemonic": "nét cong móc kéo dài như dòng nước",
+    "charCount": 3
+  },
+  {
+    "char": "亡",
+    "nameVi": "chữ Vong (mất)",
+    "meaning": "mất đi, chết",
+    "mnemonic": "亠 trên nét gập - cái gì đó biến mất",
+    "charCount": 3
+  },
+  {
+    "char": "亥",
+    "nameVi": "chữ Hợi (chi Hợi)",
+    "meaning": "can chi Hợi, con lợn",
+    "mnemonic": "đầu một ngang, thân các nét phẩy đan nhau",
+    "charCount": 3
+  },
+  {
+    "char": "令",
+    "nameVi": "chữ Lệnh (mệnh lệnh)",
+    "meaning": "ra lệnh, sai khiến",
+    "mnemonic": "mái che 亼 trên một dấu/chấm - ban lệnh",
+    "charCount": 3
+  },
+  {
+    "char": "佥",
+    "nameVi": "chữ Thiêm (gom chung)",
+    "meaning": "tụ hợp, đều cả",
+    "mnemonic": "mái 人 trùm lên, dưới gom nhiều nét lại",
+    "charCount": 3
+  },
+  {
+    "char": "冬",
+    "nameVi": "chữ Đông (mùa đông)",
+    "meaning": "mùa đông",
+    "mnemonic": "夂 trên hai chấm - băng giá đọng lại",
+    "charCount": 3
+  },
+  {
+    "char": "勺",
+    "nameVi": "bộ Chước (cái muôi)",
+    "meaning": "cái thìa, cái muôi",
+    "mnemonic": "nét cong ôm lấy một chấm như muôi múc",
+    "charCount": 3
+  },
+  {
+    "char": "包",
+    "nameVi": "chữ Bao (bọc)",
+    "meaning": "bọc, gói tròn",
+    "mnemonic": "勹 ôm lấy 巳 - cái bọc đầy",
+    "charCount": 3
+  },
+  {
+    "char": "占",
+    "nameVi": "chữ Chiêm (bói)",
+    "meaning": "bói toán, chiếm",
+    "mnemonic": "bốc quẻ (卜) rồi mở miệng (口) đoán",
+    "charCount": 3
+  },
+  {
+    "char": "取",
+    "nameVi": "chữ Thủ (lấy)",
+    "meaning": "lấy, chọn lấy",
+    "mnemonic": "tai (耳) và tay (又) - nắm lấy",
+    "charCount": 3
+  },
+  {
+    "char": "古",
+    "nameVi": "chữ Cổ (xưa)",
+    "meaning": "cũ, xưa",
+    "mnemonic": "十 trên 口 - mười đời truyền miệng",
+    "charCount": 3
+  },
+  {
+    "char": "圣",
+    "nameVi": "phần phải (tay trên đất)",
+    "meaning": "bàn tay (又) đặt trên đất (土)",
+    "mnemonic": "又 ở trên, 土 ở dưới",
+    "charCount": 3
+  },
+  {
+    "char": "夫",
+    "nameVi": "chữ Phu (người trưởng thành)",
+    "meaning": "người đàn ông",
+    "mnemonic": "大 thêm một ngang - người đội mũ",
+    "charCount": 3
+  },
+  {
+    "char": "奇",
+    "nameVi": "chữ Kỳ (lạ)",
+    "meaning": "kỳ lạ, lẻ",
+    "mnemonic": "大 (dang chân) trên 可 - dáng ngồi dạng ra",
+    "charCount": 3
+  },
+  {
+    "char": "寺",
+    "nameVi": "chữ Tự (chùa)",
+    "meaning": "ngôi chùa, nơi giữ gìn",
+    "mnemonic": "土 trên 寸 - đất và bàn tay",
+    "charCount": 3
+  },
+  {
+    "char": "⺍",
+    "nameVi": "ba chấm trên",
+    "meaning": "ánh sáng tri thức",
+    "mnemonic": "ba tia sáng rọi xuống đầu",
+    "charCount": 3
+  },
+  {
+    "char": "干",
+    "nameVi": "bộ Can (chày/khô)",
+    "meaning": "cây chày, xông tới",
+    "mnemonic": "hai ngang một sổ thẳng",
+    "charCount": 3
+  },
+  {
+    "char": "才",
+    "nameVi": "chữ Tài (then chắn)",
+    "meaning": "thanh chắn",
+    "mnemonic": "ngang → sổ-móc → phẩy như thanh cài",
+    "charCount": 3
+  },
+  {
+    "char": "昔",
+    "nameVi": "chữ Tích (ngày xưa)",
+    "meaning": "thời xa xưa",
+    "mnemonic": "lớp lớp ngày tháng (廿) chồng lên mặt trời (日) đã qua",
+    "charCount": 3
+  },
+  {
+    "char": "林",
+    "nameVi": "bộ Lâm (rừng)",
+    "meaning": "rừng cây",
+    "mnemonic": "hai chữ 木 - rừng cây san sát",
+    "charCount": 3
+  },
+  {
+    "char": "止",
+    "nameVi": "bộ Chỉ (dừng)",
+    "meaning": "dừng lại, bàn chân",
+    "mnemonic": "hình bàn chân đặt đứng yên",
+    "charCount": 3
+  },
+  {
+    "char": "殳",
+    "nameVi": "bộ Thù (gậy gõ)",
+    "meaning": "cây gậy, binh khí",
+    "mnemonic": "tay (又) cầm cây gậy giơ lên",
+    "charCount": 3
+  },
+  {
+    "char": "疋",
+    "nameVi": "bộ Thất (chân/vải)",
+    "meaning": "bàn chân, tấm vải",
+    "mnemonic": "phần dưới như bàn chân bước",
+    "charCount": 3
+  },
+  {
+    "char": "疒",
+    "nameVi": "bộ Nạch (bệnh tật)",
+    "meaning": "ốm nằm liệt giường",
+    "mnemonic": "mái hiên 广 thêm hai chấm - người nằm bệnh",
+    "charCount": 3
+  },
+  {
+    "char": "白",
+    "nameVi": "bộ Bạch (trắng)",
+    "meaning": "trong trắng",
+    "mnemonic": "dòng nước trong veo phía trên",
+    "charCount": 3
+  },
+  {
+    "char": "监",
+    "nameVi": "chữ Giám (trông coi)",
+    "meaning": "giám sát, soi xét",
+    "mnemonic": "người cúi soi mình trên chậu nước",
+    "charCount": 3
+  },
+  {
+    "char": "礻",
+    "nameVi": "bộ Thị (thần, lễ)",
+    "meaning": "thần linh, cúng tế",
+    "mnemonic": "dạng gọn của 示 bên trái",
+    "charCount": 3
+  },
+  {
+    "char": "糸",
+    "nameVi": "bộ Mịch (sợi tơ)",
+    "meaning": "tơ, sợi dây",
+    "mnemonic": "cuộn tơ có chân - sợi dây buộc",
+    "charCount": 3
+  },
+  {
+    "char": "耂",
+    "nameVi": "bộ Lão (người già)",
+    "meaning": "người già",
+    "mnemonic": "tóc bạc lưng còng chống gậy",
+    "charCount": 3
+  },
+  {
+    "char": "⺼",
+    "nameVi": "bộ Nhục (thịt)",
+    "meaning": "phần thịt trên cơ thể",
+    "mnemonic": "biến thể của 肉, gắn với bộ phận cơ thể",
+    "charCount": 3
+  },
+  {
+    "char": "舟",
+    "nameVi": "bộ Chu (thuyền)",
+    "meaning": "con thuyền",
+    "mnemonic": "khoang thuyền có mái chèo",
+    "charCount": 3
+  },
+  {
+    "char": "覀",
+    "nameVi": "bộ Á (tây/che)",
+    "meaning": "dạng của 西, phủ trên",
+    "mnemonic": "khung phủ ngang trên đầu",
+    "charCount": 3
+  },
+  {
+    "char": "角",
+    "nameVi": "bộ Giác (sừng)",
+    "meaning": "sừng, góc nhọn",
+    "mnemonic": "cái sừng nhọn chìa ra",
+    "charCount": 3
+  },
+  {
+    "char": "非",
+    "nameVi": "chữ Phi (chẳng)",
+    "meaning": "không, chẳng phải",
+    "mnemonic": "hai cánh xoè đối xứng - như hai bên phủ định",
+    "charCount": 3
+  },
+  {
+    "char": "丂",
+    "nameVi": "chữ Khảo (hơi vướng)",
+    "meaning": "hơi thở vướng ra",
+    "mnemonic": "một ngang một nét gập-móc kéo dài",
+    "charCount": 2
+  },
+  {
+    "char": "七",
+    "nameVi": "chữ Thất (bảy)",
+    "meaning": "số bảy",
+    "mnemonic": "ngang gập móc - số bảy",
+    "charCount": 2
+  },
+  {
+    "char": "东",
+    "nameVi": "chữ Đông",
+    "meaning": "phương đông",
+    "mnemonic": "một ngang xuyên, hai chấm dưới",
+    "charCount": 2
+  },
+  {
+    "char": "丩",
+    "nameVi": "bộ Cù (vướng nhau)",
+    "meaning": "mối dây quấn",
+    "mnemonic": "mối dây thắt bên trái",
+    "charCount": 2
+  },
+  {
+    "char": "乃",
+    "nameVi": "chữ Nãi (bèn, là)",
+    "meaning": "bèn, ấy là",
+    "mnemonic": "nét cong gập - đọc 'nǎi', gợi âm",
+    "charCount": 2
+  },
+  {
+    "char": "𠂉",
+    "nameVi": "nét phẩy-ngang trên",
+    "meaning": "ngọn lúa cúi đầu",
+    "mnemonic": "một phẩy gác lên một ngang như bông lúa nghiêng",
+    "charCount": 2
+  },
+  {
+    "char": "乙",
+    "nameVi": "bộ Ất (nét cong-móc)",
+    "meaning": "đường cong uốn lượn",
+    "mnemonic": "một nét cong gập móc lên như cái đuôi",
+    "charCount": 2
+  },
+  {
+    "char": "乚",
+    "nameVi": "nét sổ-cong-móc (đuôi)",
+    "meaning": "tia chớp kéo dài",
+    "mnemonic": "nét uốn cong móc lên như tia điện",
+    "charCount": 2
+  },
+  {
+    "char": "𠃌",
+    "nameVi": "nét gập-móc bao",
+    "meaning": "khung che nửa",
+    "mnemonic": "một nét gập ôm lấy bên phải",
+    "charCount": 2
+  },
+  {
+    "char": "九",
+    "nameVi": "chữ Cửu (chín)",
+    "meaning": "số chín",
+    "mnemonic": "九 - móc số chín",
+    "charCount": 2
+  },
+  {
+    "char": "亅",
+    "nameVi": "bộ Quyết (sổ-móc)",
+    "meaning": "nét sổ có móc",
+    "mnemonic": "một nét sổ móc lên ở cuối",
+    "charCount": 2
+  },
+  {
+    "char": "予",
+    "nameVi": "chữ Dư (ban cho)",
+    "meaning": "trải rộng, buông",
+    "mnemonic": "nét móc buông như cho đi",
+    "charCount": 2
+  },
+  {
+    "char": "争",
+    "nameVi": "chữ Tranh (giành)",
+    "meaning": "tranh giành",
+    "mnemonic": "bàn tay trên dưới giành một vật",
+    "charCount": 2
+  },
+  {
+    "char": "井",
+    "nameVi": "chữ Tỉnh (giếng)",
+    "meaning": "cái giếng",
+    "mnemonic": "hai ngang hai sổ - miệng giếng vuông",
+    "charCount": 2
+  },
+  {
+    "char": "交",
+    "nameVi": "chữ Giao (giao nhau)",
+    "meaning": "giao, gặp gỡ",
+    "mnemonic": "người dang chân bắt chéo - giao nhau",
+    "charCount": 2
+  },
+  {
+    "char": "亼",
+    "nameVi": "phần trên (人 chụm)",
+    "meaning": "mái chụm lại",
+    "mnemonic": "人 và một ngang tạo mái nhọn chụm xuống",
+    "charCount": 2
+  },
+  {
+    "char": "介",
+    "nameVi": "chữ Giới (ở giữa)",
+    "meaning": "ranh, đứng giữa",
+    "mnemonic": "người 人 đứng giữa hai vạch chia",
+    "charCount": 2
+  },
+  {
+    "char": "先",
+    "nameVi": "chữ Tiên (trước)",
+    "meaning": "trước, đi đầu",
+    "mnemonic": "牛-ish trên 儿 - người bước lên trước",
+    "charCount": 2
+  },
+  {
+    "char": "免",
+    "nameVi": "chữ Miễn (tránh, khỏi)",
+    "meaning": "thoát, khỏi",
+    "mnemonic": "con thỏ mất đuôi đang chạy trốn",
+    "charCount": 2
+  },
+  {
+    "char": "凵",
+    "nameVi": "bộ Khảm (hố mở)",
+    "meaning": "khung mở trên",
+    "mnemonic": "cái hố hứng phía trên",
+    "charCount": 2
+  },
+  {
+    "char": "⺈",
+    "nameVi": "bộ Đao/phần đầu (dáng cúi)",
+    "meaning": "người cúi mình",
+    "mnemonic": "một phẩy một gập như đầu người nghiêng",
+    "charCount": 2
+  },
+  {
+    "char": "分",
+    "nameVi": "bộ phận 分 (chia)",
+    "meaning": "phân tán",
+    "mnemonic": "八 trên, 刀 dưới như chia cắt",
+    "charCount": 2
+  },
+  {
+    "char": "勹",
+    "nameVi": "bộ Bao (bọc)",
+    "meaning": "ôm, bọc lại",
+    "mnemonic": "một nét cong ôm vòng từ trên xuống",
+    "charCount": 2
+  },
+  {
+    "char": "勿",
+    "nameVi": "chữ Vật (chớ)",
+    "meaning": "đừng; phất phơ",
+    "mnemonic": "lá cờ bay với ba nét phẩy",
+    "charCount": 2
+  },
+  {
+    "char": "北",
+    "nameVi": "chữ Bắc (hai người quay lưng)",
+    "meaning": "hướng bắc",
+    "mnemonic": "hai dáng người tựa lưng vào nhau",
+    "charCount": 2
+  },
+  {
+    "char": "卖",
+    "nameVi": "chữ Mại (bán)",
+    "meaning": "bán; mượn âm",
+    "mnemonic": "đem ra liên tục",
+    "charCount": 2
+  },
+  {
+    "char": "卯",
+    "nameVi": "bộ Mão (cánh cửa)",
+    "meaning": "hai cánh cửa mở",
+    "mnemonic": "hai nét cong đối nhau như cửa hé mở",
+    "charCount": 2
+  },
+  {
+    "char": "去",
+    "nameVi": "chữ Khứ (đi)",
+    "meaning": "đi, rời",
+    "mnemonic": "土 trên 厶 - bước rời đi",
+    "charCount": 2
+  },
+  {
+    "char": "及",
+    "nameVi": "chữ Cập",
+    "meaning": "đạt đến, kịp",
+    "mnemonic": "người đang với tay chộp lấy thứ gì đó - kịp, đạt đến",
+    "charCount": 2
+  },
+  {
+    "char": "友",
+    "nameVi": "chữ Hữu (bạn)",
+    "meaning": "bạn bè, thân thiết",
+    "mnemonic": "bàn tay (𠂇) nắm tay (又) - bạn bè",
+    "charCount": 2
+  },
+  {
+    "char": "反",
+    "nameVi": "chữ Phản (lật lại)",
+    "meaning": "trở lại, lật",
+    "mnemonic": "tay (又) lật dưới mái dốc (厂)",
+    "charCount": 2
+  },
+  {
+    "char": "各",
+    "nameVi": "chữ Các (mỗi)",
+    "meaning": "mỗi, từng",
+    "mnemonic": "dáng đi 夂 trên cái miệng 口 - mỗi người một ngả",
+    "charCount": 2
+  },
+  {
+    "char": "圭",
+    "nameVi": "chữ Khuê (hai chữ thổ)",
+    "meaning": "đất lát chồng",
+    "mnemonic": "hai chữ 土 (đất) xếp chồng",
+    "charCount": 2
+  },
+  {
+    "char": "头",
+    "nameVi": "chữ Đầu (giản 头)",
+    "meaning": "đầu, mối",
+    "mnemonic": "hai chấm trên 大 → cái đầu",
+    "charCount": 2
+  },
+  {
+    "char": "官",
+    "nameVi": "chữ Quan (quan lại)",
+    "meaning": "quan chức, nhà công",
+    "mnemonic": "宀 mái nhà che dãy phòng (㠯) - chốn công đường",
+    "charCount": 2
+  },
+  {
+    "char": "⺌",
+    "nameVi": "ba nét nhỏ trên",
+    "meaning": "phần nhỏ phía trên",
+    "mnemonic": "một sổ giữa, hai chấm hai bên",
+    "charCount": 2
+  },
+  {
+    "char": "尢",
+    "nameVi": "bộ Uông (chân khoèo)",
+    "meaning": "chân khập khiễng",
+    "mnemonic": "người đứng chân cong",
+    "charCount": 2
+  },
+  {
+    "char": "尤",
+    "nameVi": "chữ Vưu (đặc biệt)",
+    "meaning": "càng, đặc biệt",
+    "mnemonic": "chữ 尢 thêm một chấm - nổi trội",
+    "charCount": 2
+  },
+  {
+    "char": "尺",
+    "nameVi": "bộ Xích (thước)",
+    "meaning": "cây thước, đo lường",
+    "mnemonic": "ngang-gập rồi phẩy-mác như cái thước",
+    "charCount": 2
+  },
+  {
+    "char": "山",
+    "nameVi": "bộ Sơn (núi)",
+    "meaning": "ngọn núi",
+    "mnemonic": "ba đỉnh nhô lên trên một nền - dãy núi",
+    "charCount": 2
+  },
+  {
+    "char": "巳",
+    "nameVi": "bộ Tị",
+    "meaning": "thai/vật bên trong",
+    "mnemonic": "nét gập cuộn - vật được ôm trong lòng",
+    "charCount": 2
+  },
+  {
+    "char": "平",
+    "nameVi": "chữ Bình (bằng phẳng)",
+    "meaning": "bằng phẳng, êm",
+    "mnemonic": "ngang trên, hai chấm cân, sổ giữa thẳng → cân bằng",
+    "charCount": 2
+  },
+  {
+    "char": "廾",
+    "nameVi": "bộ Củng (hai tay chắp)",
+    "meaning": "hai bàn tay nâng lên",
+    "mnemonic": "hai nét đứng đỡ một ngang - hai tay nâng",
+    "charCount": 2
+  },
+  {
+    "char": "廿",
+    "nameVi": "chữ Trấp (hai mươi)",
+    "meaning": "hai chục, đông đủ",
+    "mnemonic": "hai chữ thập dính nhau - số hai mươi",
+    "charCount": 2
+  },
+  {
+    "char": "弓",
+    "nameVi": "bộ Cung (cây cung)",
+    "meaning": "cây cung bắn tên",
+    "mnemonic": "thân cung uốn ba nét cong",
+    "charCount": 2
+  },
+  {
+    "char": "弟",
+    "nameVi": "chữ Đệ (em)",
+    "meaning": "em trai",
+    "mnemonic": "dây quấn quanh cái cọc - thứ bậc",
+    "charCount": 2
+  },
+  {
+    "char": "是",
+    "nameVi": "chữ Thị (đúng/phải)",
+    "meaning": "phải, là",
+    "mnemonic": "mặt trời (日) soi điều ngay chính (正)",
+    "charCount": 2
+  },
+  {
+    "char": "曷",
+    "nameVi": "chữ Hạt (sao, há)",
+    "meaning": "kêu hỏi, há miệng",
+    "mnemonic": "日 trên 匃 - mặt trời gắt, miệng kêu khô",
+    "charCount": 2
+  },
+  {
+    "char": "束",
+    "nameVi": "bộ Thúc (bó buộc)",
+    "meaning": "buộc lại",
+    "mnemonic": "木 buộc dây giữa",
+    "charCount": 2
+  },
+  {
+    "char": "龰",
+    "nameVi": "biến thể bộ Túc (chân)",
+    "meaning": "bàn chân bước",
+    "mnemonic": "nét sổ rồi phẩy-mác xoãi ra như chân sải",
+    "charCount": 2
+  },
+  {
+    "char": "此",
+    "nameVi": "chữ Thử (này)",
+    "meaning": "cái này",
+    "mnemonic": "bộ Chỉ (止) đứng cạnh bộ Chuỷ (匕)",
+    "charCount": 2
+  },
+  {
+    "char": "比",
+    "nameVi": "bộ Tỉ (so sánh)",
+    "meaning": "so, sánh đôi",
+    "mnemonic": "hai người sóng nhau cùng chiều",
+    "charCount": 2
+  },
+  {
+    "char": "气",
+    "nameVi": "bộ Khí (hơi)",
+    "meaning": "làn hơi bốc lên",
+    "mnemonic": "ba nét ngang uốn như luồng hơi cuộn, kết bằng nét móc hất",
+    "charCount": 2
+  },
+  {
+    "char": "水",
+    "nameVi": "bộ Thuỷ (nước)",
+    "meaning": "nước",
+    "mnemonic": "mạch nước chảy phía dưới",
+    "charCount": 2
+  },
+  {
+    "char": "父",
+    "nameVi": "bộ Phụ (cha)",
+    "meaning": "cha, người đàn ông lớn",
+    "mnemonic": "hai tay vung dạy con - người cha",
+    "charCount": 2
+  },
+  {
+    "char": "牙",
+    "nameVi": "bộ Nha (răng)",
+    "meaning": "cái răng",
+    "mnemonic": "răng khểnh móc vào nhau",
+    "charCount": 2
+  },
+  {
+    "char": "牜",
+    "nameVi": "bộ Ngưu (trâu/bò)",
+    "meaning": "con trâu, con bò",
+    "mnemonic": "dạng đứng của 牛, sừng nghiêng",
+    "charCount": 2
+  },
+  {
+    "char": "玉",
+    "nameVi": "bộ Ngọc",
+    "meaning": "viên ngọc quý",
+    "mnemonic": "chữ 王 (vua) thêm một chấm ngọc",
+    "charCount": 2
+  },
+  {
+    "char": "甘",
+    "nameVi": "phần trên (như 甘)",
+    "meaning": "khung kệ",
+    "mnemonic": "khung vuông kẻ ngang như cái sàng",
+    "charCount": 2
+  },
+  {
+    "char": "生",
+    "nameVi": "chữ Sinh (sinh ra)",
+    "meaning": "sinh đẻ, nảy sinh",
+    "mnemonic": "mầm (丿) vươn khỏi mặt đất (土)",
+    "charCount": 2
+  },
+  {
+    "char": "用",
+    "nameVi": "chữ Dụng (dùng)",
+    "meaning": "sử dụng",
+    "mnemonic": "như cái thùng có hai sổ và hai ngang trong",
+    "charCount": 2
+  },
+  {
+    "char": "由",
+    "nameVi": "chữ Do (từ, do bởi)",
+    "meaning": "ruộng có mầm nhú",
+    "mnemonic": "ô ruộng 田 có nét nhô lên",
+    "charCount": 2
+  },
+  {
+    "char": "皮",
+    "nameVi": "chữ Bì (da)",
+    "meaning": "da, lớp ngoài",
+    "mnemonic": "bàn tay (又) lột lớp da ngoài",
+    "charCount": 2
+  },
+  {
+    "char": "石",
+    "nameVi": "bộ Thạch (đá)",
+    "meaning": "hòn đá, quặng",
+    "mnemonic": "tảng quặng bên trái",
+    "charCount": 2
+  },
+  {
+    "char": "示",
+    "nameVi": "chữ Thị (bày ra)",
+    "meaning": "tỏ rõ, chỉ ra",
+    "mnemonic": "vạch trời cùng tia chiếu xuống",
+    "charCount": 2
+  },
+  {
+    "char": "者",
+    "nameVi": "chữ Giả (người/kẻ ấy)",
+    "meaning": "người, cái đó",
+    "mnemonic": "土 và 丿 trên, 日 dưới - kẻ ấy",
+    "charCount": 2
+  },
+  {
+    "char": "莫",
+    "nameVi": "chữ Mạc",
+    "meaning": "chớ; mặt trời lặn",
+    "mnemonic": "艹 - 日 - 大: nắng khuất cỏ",
+    "charCount": 2
+  },
+  {
+    "char": "虫",
+    "nameVi": "bộ Trùng (sâu bọ)",
+    "meaning": "sâu bọ, côn trùng, rắn",
+    "mnemonic": "hình con sâu cuộn tròn với cái đầu",
+    "charCount": 2
+  },
+  {
+    "char": "𧘇",
+    "nameVi": "thân áo (phẩy-mác)",
+    "meaning": "vạt áo buông xuống",
+    "mnemonic": "các nét phẩy mác xoè ra như tà áo",
+    "charCount": 2
+  },
+  {
+    "char": "豆",
+    "nameVi": "bộ Đậu (đậu/đồ tế)",
+    "meaning": "hạt đậu, đồ đựng cao chân",
+    "mnemonic": "cái bình cao chân đựng đậu",
+    "charCount": 2
+  },
+  {
+    "char": "酉",
+    "nameVi": "chữ Dậu (vò rượu)",
+    "meaning": "vò, hũ rượu",
+    "mnemonic": "hình cái vò có nắp đựng men",
+    "charCount": 2
+  },
+  {
+    "char": "长",
+    "nameVi": "bộ Trường (dài)",
+    "meaning": "dài; lớn lên",
+    "mnemonic": "nét sổ rồi mác xòe - mái tóc dài bay",
+    "charCount": 2
+  },
+  {
+    "char": "音",
+    "nameVi": "chữ Âm (tiếng)",
+    "meaning": "âm thanh",
+    "mnemonic": "đứng (立) trên mặt trời (日)",
+    "charCount": 2
+  },
+  {
+    "char": "竟",
+    "nameVi": "chữ Cánh (rốt cuộc)",
+    "meaning": "đến cùng, hết",
+    "mnemonic": "立 (đứng) trên 兄 - đứng tới tận cùng",
+    "charCount": 2
+  },
+  {
+    "char": "鸟",
+    "nameVi": "bộ Điểu (chim)",
+    "meaning": "con chim",
+    "mnemonic": "có mỏ, mắt và đuôi - một con chim",
+    "charCount": 2
+  },
+  {
+    "char": "㇏",
+    "nameVi": "nét Mác (kèm gập)",
+    "meaning": "nét kéo dài ra sau",
+    "mnemonic": "một nét mác níu lại như dây kéo chân",
+    "charCount": 1
+  },
+  {
+    "char": "丆",
+    "nameVi": "vách nghiêng (sườn dốc)",
+    "meaning": "mỏm đá nhô ra",
+    "mnemonic": "ngang rồi phẩy như mỏm đá nghiêng",
+    "charCount": 1
+  },
+  {
+    "char": "下",
+    "nameVi": "chữ Hạ (dưới)",
+    "meaning": "phía dưới",
+    "mnemonic": "một vạch mốc, nhánh chĩa xuống dưới",
+    "charCount": 1
+  },
+  {
+    "char": "卄",
+    "nameVi": "phần đầu (hai mươi)",
+    "meaning": "vạch ngang chồng lên",
+    "mnemonic": "một ngang một sổ đôi như cái khung",
+    "charCount": 1
+  },
+  {
+    "char": "与",
+    "nameVi": "chữ Dữ (cho/cùng)",
+    "meaning": "cho, cùng với",
+    "mnemonic": "ba nét gập-ngang đan vào nhau",
+    "charCount": 1
+  },
+  {
+    "char": "丑",
+    "nameVi": "chữ Sửu (chi Sửu)",
+    "meaning": "trói, xoắn",
+    "mnemonic": "nét xoắn như tay bị bẻ",
+    "charCount": 1
+  },
+  {
+    "char": "丗",
+    "nameVi": "phần trên (móc thắt lưng)",
+    "meaning": "các mấu đai",
+    "mnemonic": "ba sổ với một ngang như mấu thắt lưng",
+    "charCount": 1
+  },
+  {
+    "char": "丙",
+    "nameVi": "chữ Bính (hạng ba/lửa)",
+    "meaning": "thứ ba, ngọn lửa trong người",
+    "mnemonic": "một ngang che, bên trong có người 人 ở khung",
+    "charCount": 1
+  },
+  {
+    "char": "业",
+    "nameVi": "bộ Nghiệp",
+    "meaning": "nghề nghiệp, ngành",
+    "mnemonic": "hai cọc nhô lên trên một nền ngang",
+    "charCount": 1
+  },
+  {
+    "char": "两",
+    "nameVi": "chữ Lưỡng (hai)",
+    "meaning": "hai, đôi",
+    "mnemonic": "một mái che hai người → cặp đôi",
+    "charCount": 1
+  },
+  {
+    "char": "丰",
+    "nameVi": "chữ Phong (tốt tươi)",
+    "meaning": "cành lá sum suê",
+    "mnemonic": "ba ngang một sổ - bó cây",
+    "charCount": 1
+  },
+  {
+    "char": "义",
+    "nameVi": "chữ Nghĩa (lẽ phải)",
+    "meaning": "nghĩa lý, lẽ phải",
+    "mnemonic": "丶 trên 乂 - đề ra cái đúng",
+    "charCount": 1
+  },
+  {
+    "char": "乐",
+    "nameVi": "chữ Lạc",
+    "meaning": "vui mừng",
+    "mnemonic": "dáng nhạc cụ gảy lên vui tai",
+    "charCount": 1
+  },
+  {
+    "char": "乑",
+    "nameVi": "phần dưới (gốc 众)",
+    "meaning": "đám đông",
+    "mnemonic": "nhiều người chụm lại",
+    "charCount": 1
+  },
+  {
+    "char": "𠂤",
+    "nameVi": "phần trái (vách bậc)",
+    "meaning": "vách đá có bậc",
+    "mnemonic": "nét phẩy trên hai ngang như bậc thang",
+    "charCount": 1
+  },
+  {
+    "char": "乛",
+    "nameVi": "nét ngang-gập-móc",
+    "meaning": "nét uốn",
+    "mnemonic": "một nét bẻ cong có móc",
+    "charCount": 1
+  },
+  {
+    "char": "乞",
+    "nameVi": "chữ Khất (xin)",
+    "meaning": "cầu xin",
+    "mnemonic": "người cúi mình chìa tay xin ăn",
+    "charCount": 1
+  },
+  {
+    "char": "习",
+    "nameVi": "bộ Vũ rút gọn (lông cánh)",
+    "meaning": "cánh chim",
+    "mnemonic": "một cánh chim non - gập-móc rồi hai phẩy",
+    "charCount": 1
+  },
+  {
+    "char": "𠃓",
+    "nameVi": "phần bên phải (ánh nắng toả)",
+    "meaning": "tia nắng trải ra",
+    "mnemonic": "nét ngang-gập rồi ba phẩy như tia nắng quét",
+    "charCount": 1
+  },
+  {
+    "char": "了",
+    "nameVi": "chữ Liễu (xong)",
+    "meaning": "kết thúc, xong việc",
+    "mnemonic": "một nét cong-móc rồi một móc - như đứa bé quấn tã, việc đã gọn",
+    "charCount": 1
+  },
+  {
+    "char": "亍",
+    "nameVi": "phần bên phải (bước chân phải)",
+    "meaning": "bước đi",
+    "mnemonic": "ngang → phẩy → sổ-móc, dáng bước",
+    "charCount": 1
+  },
+  {
+    "char": "亦",
+    "nameVi": "chữ Diệc (cũng/giản thể trên)",
+    "meaning": "phần trên giản lược",
+    "mnemonic": "chấm-ngang rồi hai phẩy đối nhau",
+    "charCount": 1
+  },
+  {
+    "char": "㐬",
+    "nameVi": "phần Lưu",
+    "meaning": "đứa trẻ trôi theo nước",
+    "mnemonic": "phần phải gợi dòng cuốn xuống",
+    "charCount": 1
+  },
+  {
+    "char": "京",
+    "nameVi": "chữ Kinh (kinh đô)",
+    "meaning": "kinh thành, nhà cao",
+    "mnemonic": "mái nhà cao tầng tầng lớp lớp",
+    "charCount": 1
+  },
+  {
+    "char": "亲",
+    "nameVi": "chữ Thân (cây đứng)",
+    "meaning": "thân cây, gần",
+    "mnemonic": "立 trên chữ 木 - cây mọc thẳng",
+    "charCount": 1
+  },
+  {
+    "char": "付",
+    "nameVi": "chữ Phó (trao)",
+    "meaning": "trao, giao phó",
+    "mnemonic": "亻 (người) trao cây thước 寸",
+    "charCount": 1
+  },
+  {
+    "char": "余",
+    "nameVi": "chữ Dư (thừa)",
+    "meaning": "dư, còn lại",
+    "mnemonic": "mái nhà che chữ 木 và hai chấm",
+    "charCount": 1
+  },
+  {
+    "char": "你",
+    "nameVi": "chữ Nễ (bạn)",
+    "meaning": "bạn, ngươi",
+    "mnemonic": "người (亻) bên chữ 尔 - chữ 'bạn'",
+    "charCount": 1
+  },
+  {
+    "char": "兀",
+    "nameVi": "chữ Ngột",
+    "meaning": "trơ trọi",
+    "mnemonic": "一 trên 儿 - trống trơn",
+    "charCount": 1
+  },
+  {
+    "char": "兄",
+    "nameVi": "chữ Huynh (anh)",
+    "meaning": "người anh",
+    "mnemonic": "cái miệng 口 đặt trên đôi chân 儿 - người thay mặt cả nhà lên tiếng",
+    "charCount": 1
+  },
+  {
+    "char": "兆",
+    "nameVi": "chữ Triệu (điềm)",
+    "meaning": "điềm báo, bật toé",
+    "mnemonic": "hai vệt nứt toé ra hai bên",
+    "charCount": 1
+  },
+  {
+    "char": "兑",
+    "nameVi": "chữ Đoài (vui/đổi)",
+    "meaning": "vui vẻ, trao đổi",
+    "mnemonic": "hai chấm trên 兄 - người há miệng cười",
+    "charCount": 1
+  },
+  {
+    "char": "公",
+    "nameVi": "chữ Công (chung)",
+    "meaning": "chung, công cộng",
+    "mnemonic": "八 trên 厶 - chia đều",
+    "charCount": 1
+  },
+  {
+    "char": "共",
+    "nameVi": "bộ Cộng (cùng nhau)",
+    "meaning": "cùng, chung",
+    "mnemonic": "hai tay cùng nâng",
+    "charCount": 1
+  },
+  {
+    "char": "关",
+    "nameVi": "chữ Quan (đóng/liên quan)",
+    "meaning": "cửa ải, gói buộc",
+    "mnemonic": "hai chấm trên (丷) đặt trên chữ 天",
+    "charCount": 1
+  },
+  {
+    "char": "兵",
+    "nameVi": "chữ (phần dưới 宾)",
+    "meaning": "người đến",
+    "mnemonic": "phần thân dưới mái - vị khách bước vào",
+    "charCount": 1
+  },
+  {
+    "char": "其",
+    "nameVi": "bộ Kỳ (cái nia)",
+    "meaning": "cái ấy, cái nia",
+    "mnemonic": "cái sàng có chân đỡ hai bên",
+    "charCount": 1
+  },
+  {
+    "char": "具",
+    "nameVi": "phần dưới (目+廾)",
+    "meaning": "đồ dùng tính toán",
+    "mnemonic": "mắt nhìn que tính, hai tay nâng",
+    "charCount": 1
+  },
+  {
+    "char": "兼",
+    "nameVi": "chữ Kiêm (gồm)",
+    "meaning": "nắm gộp, gợi âm",
+    "mnemonic": "một tay nắm gộp hai bó lúa",
+    "charCount": 1
+  },
+  {
+    "char": "冃",
+    "nameVi": "bộ Mạo (mũ trùm)",
+    "meaning": "cái mũ, khăn trùm",
+    "mnemonic": "khung trên có hai vạch - chiếc mũ úp",
+    "charCount": 1
+  },
+  {
+    "char": "冄",
+    "nameVi": "phần trái (như 冉)",
+    "meaning": "chỗ ở xa kia",
+    "mnemonic": "khung có hai vạch - vùng đất phía xa",
+    "charCount": 1
+  },
+  {
+    "char": "冈",
+    "nameVi": "chữ Cương (gò núi)",
+    "meaning": "sống núi, gò",
+    "mnemonic": "khung 冂 chụp lên 㐅 - đỉnh gò",
+    "charCount": 1
+  },
+  {
+    "char": "冉",
+    "nameVi": "chữ Nhiễm (khung hai vạch)",
+    "meaning": "cái khung 冂 ôm hai ngang, một sổ xuyên giữa",
+    "mnemonic": "khung 冂 trùm lấy hai vạch ngang, một sổ xuyên xuống thò đáy",
+    "charCount": 1
+  },
+  {
+    "char": "冏",
+    "nameVi": "phần dưới (cửa hàng)",
+    "meaning": "ô cửa quầy",
+    "mnemonic": "khung vuông có 八 và 口 bên trong",
+    "charCount": 1
+  },
+  {
+    "char": "冒",
+    "nameVi": "chữ Mạo (trùm, đội)",
+    "meaning": "trùm lên, phủ",
+    "mnemonic": "冃 (vải) trùm trên 目 (mắt) - che lên",
+    "charCount": 1
+  },
+  {
+    "char": "㒼",
+    "nameVi": "chữ Man",
+    "meaning": "che phủ kín",
+    "mnemonic": "mái che dày phủ kín bên dưới",
+    "charCount": 1
+  },
+  {
+    "char": "刍",
+    "nameVi": "phần trên (tay nắm)",
+    "meaning": "tay chộp lấy",
+    "mnemonic": "nét cong trên như bàn tay với",
+    "charCount": 1
+  },
+  {
+    "char": "加",
+    "nameVi": "chữ Gia (thêm)",
+    "meaning": "thêm vào",
+    "mnemonic": "lực (力) thêm miệng (口) → gia thêm",
+    "charCount": 1
+  },
+  {
+    "char": "化",
+    "nameVi": "chữ Hoá (biến đổi)",
+    "meaning": "thay đổi, hoá thành",
+    "mnemonic": "亻 người đứng cạnh 匕 - một người xoay mình biến đổi",
+    "charCount": 1
+  },
+  {
+    "char": "匚",
+    "nameVi": "bộ Phương (khung mở)",
+    "meaning": "khung bao một bên",
+    "mnemonic": "khung hở bên phải như cái hộp",
+    "charCount": 1
+  },
+  {
+    "char": "千",
+    "nameVi": "chữ Thiên (nghìn)",
+    "meaning": "một nghìn",
+    "mnemonic": "phẩy trên chữ 十 - nghìn",
+    "charCount": 1
+  },
+  {
+    "char": "卅",
+    "nameVi": "chữ Tạp (ba mươi)",
+    "meaning": "ba mươi",
+    "mnemonic": "ba nét sổ nối bằng một ngang",
+    "charCount": 1
+  },
+  {
+    "char": "半",
+    "nameVi": "chữ Bán (một nửa)",
+    "meaning": "một nửa",
+    "mnemonic": "hai chấm cân, một sổ chia đôi → nửa",
+    "charCount": 1
+  },
+  {
+    "char": "卑",
+    "nameVi": "chữ Ti (thấp)",
+    "meaning": "thấp, bình dân",
+    "mnemonic": "白 trên 十 - kẻ bậc thấp",
+    "charCount": 1
+  },
+  {
+    "char": "卬",
+    "nameVi": "chữ Ngang (ngẩng đón)",
+    "meaning": "ngẩng lên đón",
+    "mnemonic": "hai người quay vào nhau, một kẻ ngẩng đón",
+    "charCount": 1
+  },
+  {
+    "char": "却",
+    "nameVi": "chữ Khước (lui)",
+    "meaning": "lùi lại, nhưng mà",
+    "mnemonic": "去 (đi) ghép 卩 → quay gót lùi đi",
+    "charCount": 1
+  },
+  {
+    "char": "厄",
+    "nameVi": "phần trái (sườn 厂 + 㔾)",
+    "meaning": "khúc gập, vách",
+    "mnemonic": "sườn đá (厂) ôm lấy người quỳ (㔾)",
+    "charCount": 1
+  },
+  {
+    "char": "原",
+    "nameVi": "chữ Nguyên (nguồn gốc)",
+    "meaning": "nguồn, ban đầu",
+    "mnemonic": "vách núi (厂) có suối nguồn chảy ra",
+    "charCount": 1
+  },
+  {
+    "char": "𠬤",
+    "nameVi": "phần phải chữ Trạch",
+    "meaning": "biến thể bên phải 泽/择/释",
+    "mnemonic": "tay 又 đỡ cây măng nhọn",
+    "charCount": 1
+  },
+  {
+    "char": "受",
+    "nameVi": "chữ Thụ (nhận)",
+    "meaning": "nhận lấy",
+    "mnemonic": "tay trên trao, tay dưới nhận",
+    "charCount": 1
+  },
+  {
+    "char": "叚",
+    "nameVi": "chữ Hà (mượn)",
+    "meaning": "vay mượn",
+    "mnemonic": "phần phải gồm các nét gập và một bàn tay 又",
+    "charCount": 1
+  },
+  {
+    "char": "叟",
+    "nameVi": "chữ Tẩu (ông già)",
+    "meaning": "ông lão",
+    "mnemonic": "cụ già cầm đuốc, tay (又) bên dưới",
+    "charCount": 1
+  },
+  {
+    "char": "句",
+    "nameVi": "chữ Cú (câu)",
+    "meaning": "câu nói",
+    "mnemonic": "bao (勹) ôm lấy miệng (口) → một câu",
+    "charCount": 1
+  },
+  {
+    "char": "另",
+    "nameVi": "chữ Lánh (riêng ra)",
+    "meaning": "riêng, khác",
+    "mnemonic": "口 trên 力 - tách một mối ra một bên",
+    "charCount": 1
+  },
+  {
+    "char": "只",
+    "nameVi": "chữ Chỉ (chỉ một)",
+    "meaning": "chỉ, một cái",
+    "mnemonic": "cái miệng (口) trên hai chân nhỏ",
+    "charCount": 1
+  },
+  {
+    "char": "召",
+    "nameVi": "chữ Triệu",
+    "meaning": "kêu gọi, triệu tập",
+    "mnemonic": "miệng (口) trên dao (刀) - dùng lời kêu gọi",
+    "charCount": 1
+  },
+  {
+    "char": "台",
+    "nameVi": "chữ Đài (nền, bục)",
+    "meaning": "cái bệ, khởi nguồn",
+    "mnemonic": "công cụ (厶) đặt trên miệng (口) - chỗ khởi đầu",
+    "charCount": 1
+  },
+  {
+    "char": "司",
+    "nameVi": "chữ Tư (cai quản)",
+    "meaning": "quản lý, coi sóc",
+    "mnemonic": "khung mở có 一 và 口 - người trông coi việc",
+    "charCount": 1
+  },
+  {
+    "char": "㕣",
+    "nameVi": "phần Duyên (khe nước)",
+    "meaning": "miệng khe đổ ra",
+    "mnemonic": "hai nét (八) trên miệng (口)",
+    "charCount": 1
+  },
+  {
+    "char": "吅",
+    "nameVi": "hai bộ Khẩu (hai miệng)",
+    "meaning": "hai cái miệng kêu la",
+    "mnemonic": "hai ô vuông cạnh nhau - hai miệng mếu",
+    "charCount": 1
+  },
+  {
+    "char": "吉",
+    "nameVi": "chữ Cát (tốt lành)",
+    "meaning": "may mắn, tốt",
+    "mnemonic": "士 (kẻ sĩ) trên 口 (miệng) - lời lành",
+    "charCount": 1
+  },
+  {
+    "char": "吏",
+    "nameVi": "chữ Lại (quan lại)",
+    "meaning": "viên chức",
+    "mnemonic": "tay cầm bút ghi việc quan",
+    "charCount": 1
+  },
+  {
+    "char": "向",
+    "nameVi": "chữ Hướng (phía)",
+    "meaning": "hướng về, phía",
+    "mnemonic": "cửa sổ (口) mở về một phía dưới mái",
+    "charCount": 1
+  },
+  {
+    "char": "君",
+    "nameVi": "chữ Quân (vua)",
+    "meaning": "bậc quân tử, vua",
+    "mnemonic": "尹 (cai quản) trên miệng (口) ra lệnh - bậc quân vương",
+    "charCount": 1
+  },
+  {
+    "char": "吾",
+    "nameVi": "chữ Ngô (ta)",
+    "meaning": "ta, tôi",
+    "mnemonic": "五 trên 口 - 'tôi' tự xưng",
+    "charCount": 1
+  },
+  {
+    "char": "呈",
+    "nameVi": "chữ Trình (dâng, bày)",
+    "meaning": "trình bày, mức",
+    "mnemonic": "口 trên 王 - dâng lên",
+    "charCount": 1
+  },
+  {
+    "char": "告",
+    "nameVi": "chữ Cáo (báo)",
+    "meaning": "phần biểu âm",
+    "mnemonic": "bò (牛) trên miệng (口) cất tiếng báo",
+    "charCount": 1
+  },
+  {
+    "char": "周",
+    "nameVi": "chữ Chu (khắp, chu toàn)",
+    "meaning": "vòng quanh, đầy đủ",
+    "mnemonic": "khung bao có 土 và 口 - khắp cả vùng",
+    "charCount": 1
+  },
+  {
+    "char": "咸",
+    "nameVi": "chữ Hàm (đều, mặn)",
+    "meaning": "tất cả, đều",
+    "mnemonic": "戌 (qua) bọc lấy 口 (miệng)",
+    "charCount": 1
+  },
+  {
+    "char": "品",
+    "nameVi": "chữ Phẩm (ba miệng)",
+    "meaning": "nhiều miệng, lao xao",
+    "mnemonic": "ba ô vuông chồng - như nhiều người",
+    "charCount": 1
+  },
+  {
+    "char": "哥",
+    "nameVi": "chữ Ca (anh)",
+    "meaning": "anh trai; tiếng ngân",
+    "mnemonic": "hai chữ 可 chồng lên nhau",
+    "charCount": 1
+  },
+  {
+    "char": "囬",
+    "nameVi": "khung mặt có mắt",
+    "meaning": "khuôn mặt bao quanh",
+    "mnemonic": "ô vuông bọc lấy đôi vạch như mắt mũi",
+    "charCount": 1
+  },
+  {
+    "char": "囱",
+    "nameVi": "chữ Thông (ống khói/lỗ)",
+    "meaning": "lỗ thông, ống khói",
+    "mnemonic": "ô có nét chéo bên trong",
+    "charCount": 1
+  },
+  {
+    "char": "龶",
+    "nameVi": "bộ phần trên",
+    "meaning": "ba ngang một sổ",
+    "mnemonic": "ba lớp áo xếp lên nhau",
+    "charCount": 1
+  },
+  {
+    "char": "𡈼",
+    "nameVi": "phần trên (臤 rút gọn)",
+    "meaning": "tay nắm chắc",
+    "mnemonic": "tay (又) nắm chặt",
+    "charCount": 1
+  },
+  {
+    "char": "垂",
+    "nameVi": "chữ Thuỳ (rủ xuống)",
+    "meaning": "buông rủ, sa xuống",
+    "mnemonic": "cành lá buông xuống nhiều tầng",
+    "charCount": 1
+  },
+  {
+    "char": "士",
+    "nameVi": "bộ Sĩ (kẻ sĩ)",
+    "meaning": "người có học",
+    "mnemonic": "十 trên một ngang ngắn - vai vế",
+    "charCount": 1
+  },
+  {
+    "char": "壬",
+    "nameVi": "chữ Nhâm (gánh)",
+    "meaning": "gánh trên vai",
+    "mnemonic": "như đòn gánh có ngang trên dưới",
+    "charCount": 1
+  },
+  {
+    "char": "壴",
+    "nameVi": "chữ Trú (cái trống)",
+    "meaning": "trống dựng trên giá",
+    "mnemonic": "士 trên 豆 - cái trống đặt trên đế",
+    "charCount": 1
+  },
+  {
+    "char": "夗",
+    "nameVi": "chữ Uyển",
+    "meaning": "nằm cuộn",
+    "mnemonic": "người cuộn mình ấm ức",
+    "charCount": 1
+  },
+  {
+    "char": "天",
+    "nameVi": "chữ Thiên (trời)",
+    "meaning": "bầu trời, khoảng lớn",
+    "mnemonic": "một người (大) đội vạch trời lên đầu",
+    "charCount": 1
+  },
+  {
+    "char": "夭",
+    "nameVi": "chữ Yêu (nghiêng người)",
+    "meaning": "dáng nghiêng, mềm mại",
+    "mnemonic": "một phẩy nghiêng trên chữ 大 → người ngả người",
+    "charCount": 1
+  },
+  {
+    "char": "失",
+    "nameVi": "chữ Thất (mất)",
+    "meaning": "mất, sẩy",
+    "mnemonic": "丿 trên 夫 - tuột mất khỏi tay",
+    "charCount": 1
+  },
+  {
+    "char": "夷",
+    "nameVi": "chữ Di",
+    "meaning": "bằng phẳng; người phương xa",
+    "mnemonic": "大 ôm 弓 - người mang cung",
+    "charCount": 1
+  },
+  {
+    "char": "妾",
+    "nameVi": "chữ Thiếp (người hầu)",
+    "meaning": "nàng hầu",
+    "mnemonic": "đứng (立) trên người nữ (女)",
+    "charCount": 1
+  },
+  {
+    "char": "委",
+    "nameVi": "chữ Uỷ",
+    "meaning": "uỷ thác; bông lúa rủ",
+    "mnemonic": "lúa (禾) trĩu xuống bên người nữ (女)",
+    "charCount": 1
+  },
+  {
+    "char": "孝",
+    "nameVi": "chữ Hiếu (hiếu thảo)",
+    "meaning": "con cái noi theo người trên",
+    "mnemonic": "lão (耂) ở trên, con (子) ở dưới - con đỡ cha già",
+    "charCount": 1
+  },
+  {
+    "char": "孰",
+    "nameVi": "chữ Thục (ai, nấu)",
+    "meaning": "nấu, ai",
+    "mnemonic": "người bưng đồ ăn (享) bên cạnh",
+    "charCount": 1
+  },
+  {
+    "char": "完",
+    "nameVi": "chữ Hoàn (trọn vẹn)",
+    "meaning": "hoàn chỉnh, đủ",
+    "mnemonic": "mái nhà (宀) che chữ 元 → trọn vẹn",
+    "charCount": 1
+  },
+  {
+    "char": "宗",
+    "nameVi": "chữ Tông (tổ miếu)",
+    "meaning": "tổ tiên đáng kính",
+    "mnemonic": "宀 trên 示 - miếu thờ tổ",
+    "charCount": 1
+  },
+  {
+    "char": "宛",
+    "nameVi": "chữ Uyển (uốn cong)",
+    "meaning": "cong vòng, uyển chuyển",
+    "mnemonic": "dưới mái (宀) có 夕 và 㔾 uốn lượn",
+    "charCount": 1
+  },
+  {
+    "char": "寅",
+    "nameVi": "chữ Dần",
+    "meaning": "trải ra",
+    "mnemonic": "mái che mũi tên trải dài",
+    "charCount": 1
+  },
+  {
+    "char": "对",
+    "nameVi": "chữ Đối (đối, đúng)",
+    "meaning": "đối diện, đúng",
+    "mnemonic": "又 (tay) ghép 寸 (tấc) → tay đối tay",
+    "charCount": 1
+  },
+  {
+    "char": "少",
+    "nameVi": "chữ Thiểu (ít)",
+    "meaning": "ít, nhỏ",
+    "mnemonic": "nhỏ (小) thêm một phẩy → ít đi",
+    "charCount": 1
+  },
+  {
+    "char": "尔",
+    "nameVi": "chữ Nhĩ (ngươi)",
+    "meaning": "ngươi, bạn (nghĩa cổ)",
+    "mnemonic": "mái nhỏ trùm xuống, hai chấm như hai chân",
+    "charCount": 1
+  },
+  {
+    "char": "尚",
+    "nameVi": "chữ Thượng (chuộng, còn)",
+    "meaning": "chuộng, mãi",
+    "mnemonic": "mái nhà nhỏ (⺌) che trên khung cửa sổ",
+    "charCount": 1
+  },
+  {
+    "char": "尧",
+    "nameVi": "chữ Nghiêu (cao)",
+    "meaning": "cao vòi vọi (vua Nghiêu)",
+    "mnemonic": "戈 chồng trên 兀 - cao chót vót",
+    "charCount": 1
+  },
+  {
+    "char": "尼",
+    "nameVi": "chữ Ni (ni cô)",
+    "meaning": "ni cô, sư nữ",
+    "mnemonic": "bộ Thi (尸) ôm lấy chữ 匕 - người ngồi",
+    "charCount": 1
+  },
+  {
+    "char": "居",
+    "nameVi": "chữ Cư (ở, chỗ đứng)",
+    "meaning": "chỗ ở, vị trí",
+    "mnemonic": "尸 che 古 - nơi an cư",
+    "charCount": 1
+  },
+  {
+    "char": "屮",
+    "nameVi": "bộ Triệt (mầm cây)",
+    "meaning": "mầm non nhú lên",
+    "mnemonic": "mầm cây vươn khỏi mặt đất",
+    "charCount": 1
+  },
+  {
+    "char": "屯",
+    "nameVi": "bộ Truân (chụm lại, đóng)",
+    "meaning": "tụ đóng, chựng lại",
+    "mnemonic": "mầm non chụm lại khó nhú",
+    "charCount": 1
+  },
+  {
+    "char": "川",
+    "nameVi": "bộ Xuyên (sông)",
+    "meaning": "dòng sông",
+    "mnemonic": "ba nét sổ như ba dòng nước chảy",
+    "charCount": 1
+  },
+  {
+    "char": "𡿺",
+    "nameVi": "phần phải (đầu não rối)",
+    "meaning": "óc não rối ren",
+    "mnemonic": "mấy nét xoắn trên khung như não cuộn",
+    "charCount": 1
+  },
+  {
+    "char": "帀",
+    "nameVi": "bộ Táp (khăn/cờ)",
+    "meaning": "vây quanh, lá cờ",
+    "mnemonic": "một ngang phủ trên chữ 巾 (khăn)",
+    "charCount": 1
+  },
+  {
+    "char": "市",
+    "nameVi": "chữ Thị (chợ)",
+    "meaning": "chợ búa",
+    "mnemonic": "亠 trên 巾 - quầy hàng chợ",
+    "charCount": 1
+  },
+  {
+    "char": "并",
+    "nameVi": "chữ Tịnh (并 - chụm)",
+    "meaning": "gộp, dồn lại",
+    "mnemonic": "hai người (并) đứng sát - dồn ép",
+    "charCount": 1
+  },
+  {
+    "char": "库",
+    "nameVi": "chữ Khố (nhà kho)",
+    "meaning": "kho chứa",
+    "mnemonic": "广 mái che trùm lấy 车 (xe) - nhà kho cất xe",
+    "charCount": 1
+  },
+  {
+    "char": "廴",
+    "nameVi": "bộ Dẫn (bước dài)",
+    "meaning": "bước chân kéo dài",
+    "mnemonic": "con đường kéo dài một bước chân sải rộng",
+    "charCount": 1
+  },
+  {
+    "char": "建",
+    "nameVi": "chữ Kiến (dựng xây)",
+    "meaning": "xây dựng, dựng lên",
+    "mnemonic": "聿 ngọn bút trên 廴 bước dài - dựng nên",
+    "charCount": 1
+  },
+  {
+    "char": "异",
+    "nameVi": "chữ Dị (khác lạ)",
+    "meaning": "khác, lạ",
+    "mnemonic": "巳 trên 廾 - điều khác thường",
+    "charCount": 1
+  },
+  {
+    "char": "弋",
+    "nameVi": "bộ Dặc (cọc, tiêu)",
+    "meaning": "cọc gỗ, cái tiêu bắn",
+    "mnemonic": "cọc gỗ có ngạnh - cắm mốc làm chuẩn",
+    "charCount": 1
+  },
+  {
+    "char": "式",
+    "nameVi": "chữ Thức (kiểu, khuôn)",
+    "meaning": "kiểu cách, công thức",
+    "mnemonic": "công (工) thêm nét chéo-móc và chấm",
+    "charCount": 1
+  },
+  {
+    "char": "录",
+    "nameVi": "chữ Lục (ghi chép)",
+    "meaning": "ghi lại, sao chép",
+    "mnemonic": "彐 đầu bút trên 氺 - tay chép xuống nước mực",
+    "charCount": 1
+  },
+  {
+    "char": "⺗",
+    "nameVi": "bộ Tâm (tim, dạng đáy)",
+    "meaning": "tấm lòng",
+    "mnemonic": "quả tim trải dưới đáy chữ",
+    "charCount": 1
+  },
+  {
+    "char": "必",
+    "nameVi": "chữ Tất (ắt phải)",
+    "meaning": "nhất định, then chốt",
+    "mnemonic": "trái tim (心) cài thêm một phẩy",
+    "charCount": 1
+  },
+  {
+    "char": "快",
+    "nameVi": "chữ Khoái (nhanh)",
+    "meaning": "nhanh, mau",
+    "mnemonic": "忄 (tim) + 夬 - lòng thấy mau lẹ",
+    "charCount": 1
+  },
+  {
+    "char": "总",
+    "nameVi": "chữ Tổng",
+    "meaning": "tổng hợp, luôn luôn",
+    "mnemonic": "tim (心) tổng hợp mọi thứ từ trên xuống",
+    "charCount": 1
+  },
+  {
+    "char": "戉",
+    "nameVi": "chữ Việt (rìu lớn)",
+    "meaning": "cái rìu lớn (kiểu 钺)",
+    "mnemonic": "戈 thêm nét - cây búa chiến to",
+    "charCount": 1
+  },
+  {
+    "char": "戊",
+    "nameVi": "bộ Mậu (qua/búa)",
+    "meaning": "ngọn binh khí",
+    "mnemonic": "cây búa chiến có lưỡi và móc",
+    "charCount": 1
+  },
+  {
+    "char": "戋",
+    "nameVi": "bộ Tiên (nhỏ mỏng)",
+    "meaning": "nhỏ mảnh",
+    "mnemonic": "hai ngọn giáo nhỏ chồng",
+    "charCount": 1
+  },
+  {
+    "char": "成",
+    "nameVi": "chữ Thành (nên, xong)",
+    "meaning": "làm nên, hoàn thành",
+    "mnemonic": "戈 (giáo) gài một nét - gắng sức làm nên",
+    "charCount": 1
+  },
+  {
+    "char": "我",
+    "nameVi": "chữ Ngã (tôi)",
+    "meaning": "tôi, bản thân",
+    "mnemonic": "tay nắm giáo - biểu tượng của 'tôi'",
+    "charCount": 1
+  },
+  {
+    "char": "龵",
+    "nameVi": "biến thể tay trái",
+    "meaning": "bàn tay chắp lại",
+    "mnemonic": "dạng rút của tay khi chắp vái",
+    "charCount": 1
+  },
+  {
+    "char": "执",
+    "nameVi": "chữ Chấp",
+    "meaning": "cầm, nắm giữ",
+    "mnemonic": "người đang nắm chặt vật gì đó trong tay",
+    "charCount": 1
+  },
+  {
+    "char": "𭤓",
+    "nameVi": "phần phải (trông như đoàn người nối nhau)",
+    "meaning": "cụm nét vẽ đoàn người đi theo",
+    "mnemonic": "phần phải như đoàn người nối đuôi sau lá cờ",
+    "charCount": 1
+  },
+  {
+    "char": "文",
+    "nameVi": "chữ Văn (chữ viết)",
+    "meaning": "văn, chữ",
+    "mnemonic": "chấm trên, ngang, rồi phẩy mác bắt chéo",
+    "charCount": 1
+  },
+  {
+    "char": "斗",
+    "nameVi": "bộ Đẩu (cái đấu đong)",
+    "meaning": "dụng cụ đong",
+    "mnemonic": "hai chấm, một ngang một sổ - cái đấu có cán",
+    "charCount": 1
+  },
+  {
+    "char": "斥",
+    "nameVi": "chữ Xích (xua, đuổi)",
+    "meaning": "quở trách, đẩy ra",
+    "mnemonic": "chữ 斤 (rìu) thêm một chấm",
+    "charCount": 1
+  },
+  {
+    "char": "既",
+    "nameVi": "chữ Ký",
+    "meaning": "đã, vốn",
+    "mnemonic": "ăn xong (旡) quay đầu đi",
+    "charCount": 1
+  },
+  {
+    "char": "早",
+    "nameVi": "chữ Tảo (sớm)",
+    "meaning": "buổi sớm",
+    "mnemonic": "mặt trời (日) ló trên mặt đất/cọc (十) - sáng sớm",
+    "charCount": 1
+  },
+  {
+    "char": "昌",
+    "nameVi": "chữ Xương",
+    "meaning": "rạng rỡ, hưng thịnh",
+    "mnemonic": "hai chữ 日 (mặt trời) chồng lên - sáng rực",
+    "charCount": 1
+  },
+  {
+    "char": "昏",
+    "nameVi": "chữ Hôn (chạng vạng)",
+    "meaning": "lúc tối, hoàng hôn",
+    "mnemonic": "氏 trên 日 - mặt trời lặn xuống",
+    "charCount": 1
+  },
+  {
+    "char": "易",
+    "nameVi": "chữ Dịch (dễ/đổi)",
+    "meaning": "dễ dàng, thay đổi",
+    "mnemonic": "mặt trời (日) trên nét cong vuốt - dễ như chơi",
+    "charCount": 1
+  },
+  {
+    "char": "昭",
+    "nameVi": "chữ Chiêu (sáng tỏ)",
+    "meaning": "rõ ràng, sáng",
+    "mnemonic": "日 (mặt trời) cạnh 召 (gọi tới)",
+    "charCount": 1
+  },
+  {
+    "char": "昷",
+    "nameVi": "chữ Ôn (hơi ấm)",
+    "meaning": "gợi âm; ủ ấm",
+    "mnemonic": "mặt trời (日) trên cái đồ đựng (皿) - ủ nóng",
+    "charCount": 1
+  },
+  {
+    "char": "景",
+    "nameVi": "chữ Cảnh (cảnh vật)",
+    "meaning": "phong cảnh, ánh sáng",
+    "mnemonic": "mặt trời (日) trên kinh đô (京) - cảnh sáng",
+    "charCount": 1
+  },
+  {
+    "char": "暴",
+    "nameVi": "chữ Bạo (dữ dội)",
+    "meaning": "hung bạo, dữ",
+    "mnemonic": "暴 - nắng gắt, mạnh dữ",
+    "charCount": 1
+  },
+  {
+    "char": "曰",
+    "nameVi": "bộ Viết (nói)",
+    "meaning": "nói, rằng",
+    "mnemonic": "ô vuông có vạch - miệng nói ra",
+    "charCount": 1
+  },
+  {
+    "char": "曲",
+    "nameVi": "phần trên giống chữ Khúc",
+    "meaning": "cuốn sách mở trên giá",
+    "mnemonic": "khung kẻ ô - những trang sách xếp lại",
+    "charCount": 1
+  },
+  {
+    "char": "更",
+    "nameVi": "chữ Canh/Cánh",
+    "meaning": "thay đổi; càng",
+    "mnemonic": "một ngang trên chữ 史-dạng, ý sửa đổi",
+    "charCount": 1
+  },
+  {
+    "char": "曼",
+    "nameVi": "chữ Mạn (kéo dài, mềm mại)",
+    "meaning": "trải dài, lê thê",
+    "mnemonic": "曰 trên, mắt 罒 giữa, tay 又 dưới - kéo dài ra",
+    "charCount": 1
+  },
+  {
+    "char": "曾",
+    "nameVi": "chữ Tằng (từng, tầng)",
+    "meaning": "từng lớp",
+    "mnemonic": "丷田曰 chồng lên - nhiều tầng",
+    "charCount": 1
+  },
+  {
+    "char": "有",
+    "nameVi": "chữ Hữu (có)",
+    "meaning": "vật đang nắm giữ",
+    "mnemonic": "𠂇 (tay) trên 月 - tay cầm thịt",
+    "charCount": 1
+  },
+  {
+    "char": "未",
+    "nameVi": "chữ Vị (chưa)",
+    "meaning": "chưa, chưa tới",
+    "mnemonic": "cây (木) thêm ngang ngắn trên - ngọn chưa vươn tới",
+    "charCount": 1
+  },
+  {
+    "char": "本",
+    "nameVi": "chữ Bản (gốc)",
+    "meaning": "gốc rễ, căn bản",
+    "mnemonic": "chữ 木 (cây) thêm vạch đánh dấu phần gốc",
+    "charCount": 1
+  },
+  {
+    "char": "果",
+    "nameVi": "chữ Quả (trái cây/kết quả)",
+    "meaning": "trái cây, kết quả",
+    "mnemonic": "cây 木 đội quả tròn 田 trên ngọn",
+    "charCount": 1
+  },
+  {
+    "char": "正",
+    "nameVi": "chữ Chính (ngay thẳng)",
+    "meaning": "ngay thẳng, đúng",
+    "mnemonic": "dừng (止) cho ngay một (一) vạch",
+    "charCount": 1
+  },
+  {
+    "char": "歺",
+    "nameVi": "phần trên-trái (xương tàn)",
+    "meaning": "xương còn lại",
+    "mnemonic": "夕 và mảnh, mẩu xương",
+    "charCount": 1
+  },
+  {
+    "char": "段",
+    "nameVi": "chữ Đoạn",
+    "meaning": "đoạn, khúc",
+    "mnemonic": "tay cầm dùi đập từng khúc",
+    "charCount": 1
+  },
+  {
+    "char": "母",
+    "nameVi": "bộ Mẫu (mẹ)",
+    "meaning": "người mẹ",
+    "mnemonic": "thân hình mẹ với hai chấm như bầu sữa",
+    "charCount": 1
+  },
+  {
+    "char": "每",
+    "nameVi": "chữ Mỗi (mỗi/luôn)",
+    "meaning": "luôn luôn",
+    "mnemonic": "người mẹ - nguồn không cạn",
+    "charCount": 1
+  },
+  {
+    "char": "毛",
+    "nameVi": "bộ Mao (lông)",
+    "meaning": "lông",
+    "mnemonic": "ba nét cong rồi một sổ-móc - túm lông",
+    "charCount": 1
+  },
+  {
+    "char": "氏",
+    "nameVi": "bộ Thị (họ tộc)",
+    "meaning": "họ, dòng tộc",
+    "mnemonic": "phẩy rồi nét gập như rễ cây nâng đỡ",
+    "charCount": 1
+  },
+  {
+    "char": "氺",
+    "nameVi": "bộ Thuỷ (nước, dạng dưới)",
+    "meaning": "nước tuôn",
+    "mnemonic": "dòng nước văng bốn phía",
+    "charCount": 1
+  },
+  {
+    "char": "永",
+    "nameVi": "chữ Vĩnh (mãi mãi)",
+    "meaning": "lâu dài, dòng chảy dài",
+    "mnemonic": "dòng nước chảy mãi không dứt",
+    "charCount": 1
+  },
+  {
+    "char": "求",
+    "nameVi": "chữ Cầu (cầu xin)",
+    "meaning": "tìm cầu, mong muốn",
+    "mnemonic": "một chấm trên giọt nước cong - vốc lấy",
+    "charCount": 1
+  },
+  {
+    "char": "泉",
+    "nameVi": "chữ Tuyền (suối)",
+    "meaning": "dòng suối nguồn",
+    "mnemonic": "trắng (白) trên nước (水) - suối trong",
+    "charCount": 1
+  },
+  {
+    "char": "炎",
+    "nameVi": "chữ Viêm (hai lửa)",
+    "meaning": "lửa cháy hừng hực",
+    "mnemonic": "hai chữ 火 chồng lên - nóng",
+    "charCount": 1
+  },
+  {
+    "char": "爪",
+    "nameVi": "bộ Trảo (móng vuốt)",
+    "meaning": "móng, bàn tay chộp",
+    "mnemonic": "mấy nét chụm - móng vuốt bấu xuống",
+    "charCount": 1
+  },
+  {
+    "char": "爫",
+    "nameVi": "bộ Trảo (móng/tay chụp)",
+    "meaning": "bàn tay chụp xuống",
+    "mnemonic": "ba móng tay chụp che xuống",
+    "charCount": 1
+  },
+  {
+    "char": "爰",
+    "nameVi": "chữ Viên (kéo dài)",
+    "meaning": "tay đưa nới ra",
+    "mnemonic": "hai tay nới dây từ từ",
+    "charCount": 1
+  },
+  {
+    "char": "片",
+    "nameVi": "bộ Phiến (mảnh)",
+    "meaning": "tấm mỏng, mảnh",
+    "mnemonic": "hình dáng tấm ván mỏng chẻ đôi theo chiều dọc",
+    "charCount": 1
+  },
+  {
+    "char": "瓜",
+    "nameVi": "bộ Qua (dưa)",
+    "meaning": "quả dưa, bầu",
+    "mnemonic": "dây leo có quả treo lủng lẳng ở giữa",
+    "charCount": 1
+  },
+  {
+    "char": "瓦",
+    "nameVi": "bộ Ngoã (ngói)",
+    "meaning": "ngói, đồ đất nung",
+    "mnemonic": "viên ngói cong úp",
+    "charCount": 1
+  },
+  {
+    "char": "甬",
+    "nameVi": "chữ Dũng (lối, ống)",
+    "meaning": "phần biểu âm",
+    "mnemonic": "lối hẹp (用) có nóc che",
+    "charCount": 1
+  },
+  {
+    "char": "畀",
+    "nameVi": "bộ Tý (trao cho)",
+    "meaning": "giao phó",
+    "mnemonic": "田 trên: chân tay đờ ra",
+    "charCount": 1
+  },
+  {
+    "char": "畏",
+    "nameVi": "chữ Uý (sợ)",
+    "meaning": "sợ hãi, e ngại",
+    "mnemonic": "ruộng (田) trên, dáng người co rúm sợ ở dưới",
+    "charCount": 1
+  },
+  {
+    "char": "畐",
+    "nameVi": "chữ Phúc (畐 - đầy hũ)",
+    "meaning": "hũ rượu đầy ắp",
+    "mnemonic": "một (一) miệng (口) trên ruộng (田) đầy",
+    "charCount": 1
+  },
+  {
+    "char": "皿",
+    "nameVi": "bộ Mãnh (đồ đựng)",
+    "meaning": "bát đĩa, đồ chứa",
+    "mnemonic": "cái khay có chân đáy",
+    "charCount": 1
+  },
+  {
+    "char": "直",
+    "nameVi": "chữ Trực (thẳng)",
+    "meaning": "ngay thẳng",
+    "mnemonic": "十 + 目 + 一 - mắt nhìn thẳng",
+    "charCount": 1
+  },
+  {
+    "char": "相",
+    "nameVi": "chữ Tương (ngắm nhìn)",
+    "meaning": "ngắm, xem xét",
+    "mnemonic": "con mắt (目) nhìn cái cây (木)",
+    "charCount": 1
+  },
+  {
+    "char": "票",
+    "nameVi": "chữ Phiếu (vé)",
+    "meaning": "tấm vé, tờ phiếu",
+    "mnemonic": "phần trên 覀 phủ trên chữ 示",
+    "charCount": 1
+  },
+  {
+    "char": "禸",
+    "nameVi": "bộ Nhựu",
+    "meaning": "vết chân thú",
+    "mnemonic": "phần dưới cong như con thú thu mình",
+    "charCount": 1
+  },
+  {
+    "char": "禺",
+    "nameVi": "chữ Ngung (con khỉ)",
+    "meaning": "loài khỉ; góc",
+    "mnemonic": "đầu 田 mình cong - con khỉ ngồi",
+    "charCount": 1
+  },
+  {
+    "char": "秀",
+    "nameVi": "chữ Tú (đẹp/tươi)",
+    "meaning": "lúa trổ tươi tốt",
+    "mnemonic": "禾 (lúa) trên 乃 - bông lúa vươn lên",
+    "charCount": 1
+  },
+  {
+    "char": "娄",
+    "nameVi": "chữ Lâu",
+    "meaning": "chồng chất, liên tiếp",
+    "mnemonic": "米 (gạo) trên 女 (nữ) → bó lúa chất lên",
+    "charCount": 1
+  },
+  {
+    "char": "缶",
+    "nameVi": "bộ Phẫu (vò sành)",
+    "meaning": "đồ gốm, vò/hũ",
+    "mnemonic": "hình cái vò miệng loe, bụng phình đựng nước",
+    "charCount": 1
+  },
+  {
+    "char": "罒",
+    "nameVi": "bộ Võng (cái lưới)",
+    "meaning": "lưới bủa, bao quát",
+    "mnemonic": "tấm lưới nằm ngang",
+    "charCount": 1
+  },
+  {
+    "char": "⺷",
+    "nameVi": "bộ Dương biến thể (dê)",
+    "meaning": "con dê",
+    "mnemonic": "sừng và mình con dê rút gọn",
+    "charCount": 1
+  },
+  {
+    "char": "𦍌",
+    "nameVi": "phần trên (giống 羊)",
+    "meaning": "cừu lệch sừng",
+    "mnemonic": "ba ngang và phẩy như sừng",
+    "charCount": 1
+  },
+  {
+    "char": "羔",
+    "nameVi": "chữ Cao (cừu non)",
+    "meaning": "cừu non, mềm mại",
+    "mnemonic": "cừu nhỏ (羊小) - mềm như bông",
+    "charCount": 1
+  },
+  {
+    "char": "羽",
+    "nameVi": "bộ Vũ (lông)",
+    "meaning": "lông chim, cánh",
+    "mnemonic": "đôi cánh xếp lông, mỗi bên hai nét",
+    "charCount": 1
+  },
+  {
+    "char": "而",
+    "nameVi": "bộ Nhi (râu/mà)",
+    "meaning": "mà, rồi",
+    "mnemonic": "chòm râu rủ xuống dưới mái",
+    "charCount": 1
+  },
+  {
+    "char": "聿",
+    "nameVi": "chữ Duật (cây bút)",
+    "meaning": "cây bút cầm tay",
+    "mnemonic": "bàn tay nắm bút ghi chép",
+    "charCount": 1
+  },
+  {
+    "char": "肰",
+    "nameVi": "thịt chó (月+犬)",
+    "meaning": "miếng thịt + con chó",
+    "mnemonic": "thịt (月) bên trái, chó (犬) bên phải",
+    "charCount": 1
+  },
+  {
+    "char": "能",
+    "nameVi": "chữ Năng (sức/khả năng)",
+    "meaning": "sức mạnh, có thể",
+    "mnemonic": "con thú khỏe có vai có chân",
+    "charCount": 1
+  },
+  {
+    "char": "舍",
+    "nameVi": "chữ Xá (căn nhà)",
+    "meaning": "nhà ở, nghỉ chân",
+    "mnemonic": "亼 mái che trên 舌 - túp nhà trú chân",
+    "charCount": 1
+  },
+  {
+    "char": "舛",
+    "nameVi": "bộ Suyễn (hai chân ngược)",
+    "meaning": "hai bàn chân xoay trái phải",
+    "mnemonic": "hai bàn chân quay về hai hướng - bước nhảy",
+    "charCount": 1
+  },
+  {
+    "char": "䒑",
+    "nameVi": "phần trên (dạng 羊)",
+    "meaning": "vật úp che",
+    "mnemonic": "丷 trên 王 - như vật úp xuống",
+    "charCount": 1
+  },
+  {
+    "char": "董",
+    "nameVi": "chữ Đổng (trông coi)",
+    "meaning": "coi sóc, thấu hiểu",
+    "mnemonic": "cỏ (艹) phủ trên chữ trọng (重) - gánh việc coi sóc",
+    "charCount": 1
+  },
+  {
+    "char": "行",
+    "nameVi": "bộ Hành (ngã tư đi)",
+    "meaning": "lối đi, ngã tư",
+    "mnemonic": "彳 và 亍 ôm hai bên - ngã tư đường",
+    "charCount": 1
+  },
+  {
+    "char": "衮",
+    "nameVi": "chữ Cổn (áo cổn)",
+    "meaning": "áo vua (mượn âm)",
+    "mnemonic": "phần trên 亠 và 公, dưới là 衣",
+    "charCount": 1
+  },
+  {
+    "char": "言",
+    "nameVi": "bộ Ngôn (lời nói)",
+    "meaning": "lời nói",
+    "mnemonic": "miệng (口) phát ra nhiều vạch lời",
+    "charCount": 1
+  },
+  {
+    "char": "谷",
+    "nameVi": "chữ Cốc (thung lũng)",
+    "meaning": "khe núi, hang",
+    "mnemonic": "八 trên 口 → khe thung mở rộng miệng",
+    "charCount": 1
+  },
+  {
+    "char": "豕",
+    "nameVi": "bộ Thỉ (con lợn)",
+    "meaning": "con heo",
+    "mnemonic": "thân và bốn chân con lợn",
+    "charCount": 1
+  },
+  {
+    "char": "象",
+    "nameVi": "chữ Tượng (con voi)",
+    "meaning": "con voi; hình dáng",
+    "mnemonic": "vòi và bốn chân con voi",
+    "charCount": 1
+  },
+  {
+    "char": "贯",
+    "nameVi": "chữ Quán (xuyên suốt)",
+    "meaning": "xâu chuỗi, xuyên qua",
+    "mnemonic": "毌 xuyên qua 贝 - xâu tiền thành chuỗi",
+    "charCount": 1
+  },
+  {
+    "char": "⻊",
+    "nameVi": "bộ Túc (chân)",
+    "meaning": "bàn chân",
+    "mnemonic": "chữ 足 đứng - ô vuông trên đôi chân",
+    "charCount": 1
+  },
+  {
+    "char": "身",
+    "nameVi": "bộ Thân (thân mình)",
+    "meaning": "thân người",
+    "mnemonic": "dáng nghiêng một người bụng tròn, có nét phẩy ngang qua",
+    "charCount": 1
+  },
+  {
+    "char": "辛",
+    "nameVi": "chữ Tân (cay, vất)",
+    "meaning": "cay đắng, chia",
+    "mnemonic": "立 trên 十 - dao khắc cay",
+    "charCount": 1
+  },
+  {
+    "char": "退",
+    "nameVi": "chữ Thoái (lùi)",
+    "meaning": "lùi lại, rút lui",
+    "mnemonic": "bộ Sước (辶) đi đường cùng 艮 → bước lùi",
+    "charCount": 1
+  },
+  {
+    "char": "那",
+    "nameVi": "chữ Na (kia, đó)",
+    "meaning": "cái kia, cái đó",
+    "mnemonic": "bên trái phần 冄, bên phải tai phải 阝",
+    "charCount": 1
+  },
+  {
+    "char": "邦",
+    "nameVi": "chữ Bang (nước/vùng)",
+    "meaning": "đất nước, vùng đất",
+    "mnemonic": "ba ngang chụm lại (丰) cạnh tai phải 阝 - một vùng đất",
+    "charCount": 1
+  },
+  {
+    "char": "采",
+    "nameVi": "chữ Thái (hái)",
+    "meaning": "hái, ngắt",
+    "mnemonic": "bàn tay (爫) hái trên cây (木)",
+    "charCount": 1
+  },
+  {
+    "char": "间",
+    "nameVi": "chữ Gian (门+日)",
+    "meaning": "khoảng giữa",
+    "mnemonic": "mặt trời (日) lọt khe cửa (门)",
+    "charCount": 1
+  },
+  {
+    "char": "阿",
+    "nameVi": "chữ A (gò/thân mật)",
+    "meaning": "gò đất; cách gọi thân mật",
+    "mnemonic": "đồi đất (阝) bên chữ 可 - âm 'a'",
+    "charCount": 1
+  },
+  {
+    "char": "隶",
+    "nameVi": "chữ Lệ (bó lúa/đuôi)",
+    "meaning": "tua rủ, sung túc",
+    "mnemonic": "彐 trên 水 - bó hạt trĩu nước",
+    "charCount": 1
+  },
+  {
+    "char": "革",
+    "nameVi": "bộ Cách (da thuộc)",
+    "meaning": "da thuộc, da thú",
+    "mnemonic": "tấm da căng phơi trên giá",
+    "charCount": 1
+  },
+  {
+    "char": "飞",
+    "nameVi": "bộ Phi (bay)",
+    "meaning": "cánh chim bay",
+    "mnemonic": "một cánh chim hất lên có chấm - dáng đang bay",
+    "charCount": 1
+  },
+  {
+    "char": "食",
+    "nameVi": "bộ Thực (đồ ăn)",
+    "meaning": "thức ăn",
+    "mnemonic": "mái che trên hạt gạo dưới đáy",
+    "charCount": 1
+  },
+  {
+    "char": "首",
+    "nameVi": "bộ Thủ (cái đầu)",
+    "meaning": "đầu, đứng đầu",
+    "mnemonic": "hai chấm như tóc trên chữ 自 (mặt)",
+    "charCount": 1
+  },
+  {
+    "char": "鱼",
+    "nameVi": "bộ Ngư (cá)",
+    "meaning": "con cá",
+    "mnemonic": "đầu, thân vảy 田, đuôi một ngang - con cá",
+    "charCount": 1
+  },
+  {
+    "char": "齐",
+    "nameVi": "chữ Tề (đều, ngang)",
+    "meaning": "ngay ngắn, đều nhau",
+    "mnemonic": "文 trên hai nét - bằng phẳng đều",
+    "charCount": 1
+  }
+]

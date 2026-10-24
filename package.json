@@ -1,1 +1,1 @@
-{"name":"hoc-tieng-trung","private":true,"scripts":{"test":"node tests/srs.test.js && node tests/core.test.js && node tests/data.test.js"},"devDependencies":{"ts-fsrs":"5.4.2"}}
+{"name":"hoc-tieng-trung","private":true,"scripts":{"test":"node tests/srs.test.js && node tests/lang-zh.test.js && node tests/data.test.js && node tests/tones.test.js"},"devDependencies":{"ts-fsrs":"5.4.2"}}

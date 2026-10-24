@@ -1,0 +1,565 @@
+level	word	from	to
+1	吧	bā	ba
+1	白	Bái	bái
+1	百	Bǎi	bǎi
+1	班	Bān	bān
+1	帮	bāng	bāng
+1	包	Bāo	bāo
+1	比	Bǐ	bǐ
+1	别	Bié	bié
+1	差	chā	chà
+1	常	Cháng	cháng
+1	车	Chē	chē
+1	从	cóng	cóng
+1	错	Cuò	cuò
+1	打	dá	dǎ
+1	大学	Dà xué	dà xué
+1	地方	dì fāng	dì fang
+1	东	Dōng	dōng
+1	东西	dōng xī	dōng xi
+1	都	Dū	dōu
+1	读	dòu	dú
+1	多少	duō shǎo	duō shao
+1	干	gān	gān
+1	高	Gāo	gāo
+1	告诉	gào sù	gào su
+1	个	gě	gè
+1	关	Guān	guān
+1	国	Guó	guó
+1	过	Guō	guo
+1	还	Huán	hái
+1	号	háo	hào
+1	和	hé	hé
+1	后	Hòu	hòu
+1	花	Huā	huā
+1	几	jī	jǐ
+1	家	jiā	jiā
+1	教	Jiào	jiào
+1	看	kān	kàn
+1	考	kǎo	kǎo
+1	累	lěi	lèi
+1	冷	Lěng	lěng
+1	里	lǐ	lǐ
+1	楼	Lóu	lóu
+1	路	Lù	lù
+1	吗	má	ma
+1	毛	Máo	máo
+1	门	Mén	mén
+1	拿	ná	ná
+1	那	Nā	nà
+1	南	Nán	nán
+1	能	Néng	néng
+1	年	Nián	nián
+1	跑	páo	pǎo
+1	钱	Qián	qián
+1	日	Rì	rì
+1	三	Sān	sān
+1	山	Shān	shān
+1	上	shǎng	shàng
+1	书	Shū	shū
+1	水	Shuǐ	shuǐ
+1	说	shuì	shuō
+1	岁	suì	suì
+1	听	yǐn	tīng
+1	西	Xī	xī
+1	笑	xiào	xiào
+1	新	Xīn	xīn
+1	行	háng	xíng
+1	要	yāo	yào
+1	也	Yě	yě
+1	页	xié	yè
+1	雨	yǔ	yù
+1	元	Yuán	yuán
+1	这里	zhè lǐ	zhè lǐ
+1	着	zhāo	zhe
+1	正	zhēng	zhèng
+1	中	Zhōng	zhōng
+1	重	chóng	zhòng
+1	最	zuì	zuì
+1	左	Zuǒ	zuǒ
+1	坐	Zuò	zuò
+2	啊	ā	à
+2	背	bēi	bèi
+2	便宜	biàn yí	pián yi
+2	遍	biàn	biàn
+2	草	cǎo	cǎo
+2	查	Zhā	chá
+2	场	cháng	chǎng
+2	称	chèn	chēng
+2	成	Chéng	chéng
+2	船	chuán	chuán
+2	词	cí	cí
+2	大门	Dà mén	dà mén
+2	蛋	Dàn	dàn
+2	当	dāng	dāng
+2	东北	Dōng běi	dōng běi
+2	东方	Dōng fāng	dōng fāng
+2	段	Duàn	duàn
+2	封	Fēng	fēng
+2	更	gēng	gèng
+2	故事	gù shì	gù shi
+2	海	Hǎi	hǎi
+2	好处	hǎo chǔ	hǎo chu
+2	黑	Hēi	hēi
+2	红	Hóng	hóng
+2	黄	Huáng	huáng
+2	加	Jiā	jiā
+2	假	gēi	jiǎ
+2	角	Jué	jiǎo
+2	教学	jiāo xué	jiào xué
+2	节	jiē	jié
+2	结果	jiē guǒ	jié guǒ
+2	举	jǔ	jǔ
+2	句	gōu	jù
+2	克	Kè	kè
+2	蓝	Lán	lán
+2	离	chī	lí
+2	凉	Liáng	liáng
+2	留	liú	liú
+2	满	Mǎn	mǎn
+2	米	Mǐ	mǐ
+2	鸟	diǎo	niǎo
+2	弄	lòng	nòng
+2	怕	Pà	pà
+2	碰	pèng	pèng
+2	平	Píng	píng
+2	骑	jì	qí
+2	墙	qiáng	qiáng
+2	全	Quán	quán
+2	提	dī	tí
+2	题	Tí	tí
+2	碗	wǎn	wǎn
+2	万	mò	wàn
+2	喂	wéi	wèi
+2	闻	Wén	wén
+2	西北	Xī běi	xī běi
+2	向	Xiàng	xiàng
+2	雪	Xuě	xuě
+2	药	yào	yào
+2	药水	Yào shuǐ	yào shuǐ
+2	夜	yè	yè
+2	阴	Yīn	yīn
+2	友好	Yǒu hǎo	yǒu hǎo
+2	鱼	Yú	yú
+2	越	Yuè	yuè
+2	咱	zán	zán
+2	脏	zàng	zāng
+2	占	zhàn	zhàn
+2	纸	zhǐ	zhǐ
+2	重点	chóng diǎn	zhòng diǎn
+2	周	Zhōu	zhōu
+2	组	Zǔ	zǔ
+3	保	Bǎo	bǎo
+3	布	bù	bù
+3	步	Bù	bù
+3	厂	hǎn	chǎng
+3	朝	Cháo	cháo
+3	成功	Chéng gōng	chéng gōng
+3	大夫	dà fū	dài fu
+3	刀	Dāo	dāo
+3	调	diào	tiáo
+3	反复	fǎn fù	fǎn fù
+3	费	Fèi	fèi
+3	福	Fú	fú
+3	付	Fù	fù
+3	富	Fù	fù
+3	工夫	gōng fū	gōng fu
+3	古	Gǔ	gǔ
+3	管	guǎn	guǎn
+3	合	gě	hé
+3	和平	Hé píng	hé píng
+3	化	huā	huà
+3	环	Huán	huán
+3	火	Huǒ	huǒ
+3	结实	jiē shí	jiē shi
+3	金	Jīn	jīn
+3	救	jiù	jiù
+3	空	kōng	kòng
+3	裤子	kù zi	kù zi
+3	老板	lǎo bǎn	lǎo bǎn
+3	乐	Lè	lè
+3	力	Lì	lì
+3	连	Lián	lián
+3	联系	lián xì	lián xì
+3	龙	Lóng	lóng
+3	录	lù	lù
+3	马	Mǎ	mǎ
+3	美	Měi	měi
+3	念	niàn	niàn
+3	牛	Niú	niú
+3	皮	Pí	pí
+3	期	qī	qī
+3	齐	Qí	qí
+3	强	Qiáng	qiáng
+3	区	Oū	qū
+3	群	qún	qún
+3	任	Rén	rèn
+3	深	shēn	shēn
+3	时	shí	shí
+3	时代	Shí dài	shí dài
+3	室	Shì	shì
+3	束	Shù	shù
+3	双	Shuāng	shuāng
+3	随	Suí	suí
+3	所长	suǒ cháng	suǒ zhǎng
+3	台	Tái	tái
+3	谈	Tán	tán
+3	汤	Tāng	tāng
+3	铁	Tiě	tiě
+3	土	Tǔ	tǔ
+3	围	Wéi	wéi
+3	现代	Xiàn dài	xiàn dài
+3	线	xiàn	xiàn
+3	修	Xiū	xiū
+3	羊	Yáng	yáng
+3	游	Yóu	yóu
+3	约	yāo	yuē
+3	张	Zhāng	zhāng
+3	照	zhào	zhào
+3	证	zhèng	zhèng
+3	支	Zhī	zhī
+3	直	Zhí	zhí
+3	钟	Zhōng	zhōng
+3	祝	Zhù	zhù
+3	转	zhuǎi	zhuǎn
+3	追	duī	zhuī
+3	准	zhǔn	zhǔn
+4	安	Ān	ān
+4	暗	àn	àn
+4	薄	Bó	báo
+4	宝	bǎo	bǎo
+4	曾	Zēng	céng
+4	尺	chě	chǐ
+4	词汇	cí huì	cí huì
+4	刺	cī	cì
+4	大方	dà fāng	dà fang
+4	大陆	Dà lù	dà lù
+4	大爷	dà yé	dà ye
+4	大众	Dà zhòng	dà zhòng
+4	戴	Dài	dài
+4	单	Shàn	dān
+4	倒车	dǎo chē	dào chē
+4	底	de	dǐ
+4	恶心	ě xīn	ě xīn
+4	法	fǎ	fǎ
+4	方	Fāng	fāng
+4	非	Fēi	fēi
+4	盖	Gě	gài
+4	官	Guān	guān
+4	归	Guī	guī
+4	划	huá	huà
+4	伙	huǒ	huǒ
+4	季	Jì	jì
+4	江	Jiāng	jiāng
+4	结	jiē	jié
+4	局	jú	jú
+4	卷	juǎn	juàn
+4	宽	Kuān	kuān
+4	辣	là	là
+4	老公	lǎo gōng	lǎo gong
+4	量	liáng	liàng
+4	落	là	luò
+4	密	Mì	mì
+4	闹	nào	nào
+4	浅	jiān	qiǎn
+4	切	qiē	qiè
+4	却	què	què
+4	散	sàn	sǎn
+4	晒	shài	shài
+4	闪	Shǎn	shǎn
+4	诗	Shī	shī
+4	湿	shī	shī
+4	收获	shōu huò	shōu huò
+4	树林	Shù lín	shù lín
+4	帅	Shuài	shuài
+4	松	Sōng	sōng
+4	孙子	Sūn zǐ	sūn zi
+4	挑	tiāo	tiǎo
+4	王	Wáng	wáng
+4	网络	Wǎng luò	wǎng luò
+4	鲜	xiǎn	xiān
+4	咸	Xián	xián
+4	项	Xiàng	xiàng
+4	延长	Yán cháng	yán cháng
+4	严	Yán	yán
+4	阳台	yáng tái	yáng tái
+4	摇	Yáo	yáo
+4	应	Yīng	yīng
+4	遇	Yù	yù
+4	折	shé	zhé
+4	转动	zhuǎn dòng	zhuàn dòng
+4	资源	Zī yuán	zī yuán
+5	岸	àn	àn
+5	乘	Chéng	chéng
+5	迟	Chí	chí
+5	丑	Chǒu	chǒu
+5	脆	cuì	cuì
+5	答	dā	dá
+5	答复	dá fù	dá fù
+5	大都	Dà dū	dà dōu
+5	待	dāi	dài
+5	弹	dàn	tán
+5	鼓	gǔ	gǔ
+5	广	yǎn	guǎng
+5	汗	hán	hàn
+5	合并	hé bìng	hé bìng
+5	滑	Huá	huá
+5	回避	huí bì	huí bì
+5	价	jià	jie
+5	剪	Jiǎn	jiǎn
+5	将	jiāng	jiàng
+5	礼	Lǐ	lǐ
+5	立	Lì	lì
+5	联想	Lián xiǎng	lián xiǎng
+5	令	líng	lìng
+5	冒	mào	mào
+5	暖	nuǎn	nuǎn
+5	匹	pī	pǐ
+5	凭	píng	píng
+5	枪	Qiāng	qiāng
+5	抢	qiāng	qiǎng
+5	青	Qīng	qīng
+5	扇	shān	shàn
+5	蛇	shé	shé
+5	射	shè	shè
+5	神	Shén	shén
+5	拾	shè	shí
+5	说法	shuō fǎ	shuō fa
+5	兔	tù	tù
+5	戏	xì	xì
+5	闲	xián	xián
+5	熊	Xióng	xióng
+5	雨水	Yǔ shuǐ	yǔ shuǐ
+5	愿	yuàn	yuàn
+5	长寿	Cháng shòu	cháng shòu
+5	涨	zhǎng	zhàng
+5	挣	zhēng	zhèng
+6	挨	āi	ái
+6	背着	bēi zhe	bèi zhe
+6	逼	bī	bī
+6	编制	biān zhì	biān zhì
+6	扁	Piān	piān
+6	踩	cǎi	cǎi
+6	藏	Zàng	cáng
+6	冲击	chōng jī	chōng jī
+6	党	Dǎng	dǎng
+6	档	dǎng	dàng
+6	岛	dǎo	dǎo
+6	番	Pān	fān
+6	仿佛	fǎng fú	fǎng fú
+6	佛	Fó	fú
+6	杆	gān	gǎn
+6	宫	Gōng	gōng
+6	顾	Gù	gù
+6	拐	guǎi	guǎi
+6	海湾	Hǎi wān	hǎi wān
+6	好学	hǎo xué	hào xué
+6	混	hún	hùn
+6	吉利	Jí lì	jí lì
+6	将军	Jiāng jūn	jiāng jūn
+6	揭	Jiē	jiē
+6	解	Xiè	jiě
+6	尽	jǐn	jìn
+6	井	Jǐng	jǐng
+6	景	Jǐng	jǐng
+6	净	jìng	jìng
+6	据	jù	jù
+6	觉	jiào	jué
+6	肯	kěn	kěn
+6	阔	kuò	kuò
+6	赖	Lài	lài
+6	懒	lǎn	lǎn
+6	利	Lì	lì
+6	露	Lù	lù
+6	嘛	má	ma
+6	蒙	méng	méng
+6	内地	Nèi dì	nèi dì
+6	泡	pāo	pào
+6	铺	pù	pù
+6	清	Qīng	qīng
+6	权	Quán	quán
+6	塞	Sāi	sāi
+6	商城	Shāng chéng	shāng chéng
+6	踏	tā	tà
+6	趟	tāng	tāng
+6	田	Tián	tián
+6	通道	Tōng dào	tōng dào
+6	拖	tuō	tuō
+6	新兴	Xīn xīng	xīn xīng
+6	仰	Yǎng	yǎng
+6	野	yě	yě
+6	因	yīn	yīn
+6	印	Yìn	yìn
+6	于	Yú	yú
+6	与	yú	yǔ
+6	园	Yuán	yuán
+6	原	Yuán	yuán
+6	杂	zá	zá
+6	扎	zhā	zā
+6	炸	zhá	zhà
+6	章	Zhāng	zhāng
+6	正当	zhèng dāng	zhèng dàng
+6	粥	yù	zhōu
+6	煮	zhǔ	zhǔ
+6	足	jù	zú
+6	钻	zuàn	zuān
+6	作	zuō	zuò
+7	安定	Ān dìng	ān dìng
+7	安宁	Ān níng	ān níng
+7	熬	āo	áo
+7	把手	bǎ shǒu	bǎ shou
+7	包扎	bāo zā	bāo zā
+7	绷	bēng	bēng
+7	标致	Biāo zhì	biāo zhi
+7	滨海	Bīn hǎi	bīn hǎi
+7	掺	chān	shǎn
+7	铲	chǎn	chǎn
+7	秤	chēng	chèng
+7	仇	Qiú	chóu
+7	出息	chū xī	chū xi
+7	揣	chuāi	chuǎi
+7	幢	chuáng	zhuàng
+7	创	chuàng	chuàng
+7	蠢	chǔn	chǔn
+7	辞	cí	cí
+7	逮	dǎi	dài
+7	当日	dāng rì	dàng rì
+7	德	Dé	dé
+7	地道	dì dào	dì dao
+7	雕	diāo	diāo
+7	叠	dié	dié
+7	丁	Dīng	dīng
+7	钉	dīng	dìng
+7	动荡	dòng dàng	dòng dàng
+7	斗	Dǒu	dòu
+7	鹅	é	é
+7	恶	ě	è
+7	帆	fān	fān
+7	方言	Fāng yán	fāng yán
+7	分量	fēn liàng	fèn liang
+7	丰满	Fēng mǎn	fēng mǎn
+7	凤凰	Fèng huáng	fèng huáng
+7	缝	féng	fèng
+7	附	fù	fù
+7	复合	fù hé	fù hé
+7	复兴	Fù xīng	fù xīng
+7	富裕	Fù yù	fù yù
+7	港	Gǎng	gǎng
+7	高明	Gāo míng	gāo míng
+7	弓	Gōng	gōng
+7	勾	Gōu	gōu
+7	钩	gōu	gōu
+7	雇	gù	gù
+7	管子	Guǎn zǐ	guǎn zi
+7	光泽	Guāng zé	guāng zé
+7	柜台	guì tái	guì tái
+7	国徽	Guó huī	guó huī
+7	哄	hōng	hòng
+7	互助	Hù zhù	hù zhù
+7	糊	hú	hú
+7	晃	huǎng	huàng
+7	魂	hún	hún
+7	豁	huá	huō
+7	计	Jì	jì
+7	祭	Zhài	jì
+7	家伙	jiā huo	jiā huo
+7	驾	Jià	jià
+7	姜	Jiāng	jiāng
+7	焦	Jiāo	jiāo
+7	劫	jié	jié
+7	金子	Jīn zǐ	jīn zi
+7	经	Jīng	jīng
+7	局限	jú xiàn	jú xiàn
+7	锯	jū	jù
+7	倔	jué	juè
+7	俊	jùn	jùn
+7	空地	kōng dì	kòng dì
+7	口音	kǒu yīn	kǒu yin
+7	夸	kuā	kuā
+7	来宾	Lái bīn	lái bīn
+7	冷战	Lěng zhàn	lěng zhàn
+7	利害	lì hài	lì hai
+7	淋	lín	lìn
+7	率	lǜ	shuài
+7	罗	Luó	luó
+7	裸	luǒ	luǒ
+7	麻	má	má
+7	枚	Méi	méi
+7	美德	Měi Dé	měi dé
+7	闷	mēn	mèn
+7	苗	Miáo	miáo
+7	抹	mā	mǒ
+7	末日	Mò rì	mò rì
+7	墨	Mò	mò
+7	亩	mǔ	mǔ
+7	牡丹	Mǔ dan	mǔ dan
+7	拟	nǐ	nǐ
+7	哦	é	o
+7	刨	bào	páo
+7	飘	piāo	piāo
+7	撇	piē	piě
+7	平和	Píng hé	píng hé
+7	颇	Pō	pō
+7	棋	qí	qí
+7	启蒙	qǐ méng	qǐ méng
+7	铅	qiān	qiān
+7	呛	qiāng	qiàng
+7	翘	qiáo	qiào
+7	清明	Qīng míng	qīng míng
+7	清新	Qīng xīn	qīng xīn
+7	曲	Qū	qū
+7	饶	Ráo	ráo
+7	尚	Shàng	shàng
+7	省事	shěng shì	xǐng shì
+7	盛	Shèng	chéng
+7	狮子	Shī zǐ	shī zi
+7	世故	shì gù	shì gu
+7	竖	shù	shù
+7	耍	Shuǎ	shuǎ
+7	太平	Tài píng	tài píng
+7	剃	tì	tì
+7	天桥	Tiān qiáo	tiān qiáo
+7	头条	Tóu tiáo	tóu tiáo
+7	驮	tuó	duò
+7	威信	Wēi xìn	wēi xìn
+7	温泉	Wēn quán	wēn quán
+7	文	Wén	wén
+7	席	Xí	xí
+7	虾	há	xiā
+7	小康	Xiǎo kāng	xiǎo kāng
+7	邪	xié	xié
+7	泄	xiè	xiè
+7	凶狠	xiōng hěn	xiōng hěn
+7	绣	xiù	xiù
+7	锈	xiù	xiù
+7	须	xū	xū
+7	许	Xǔ	xǔ
+7	削	xiāo	xuē
+7	哑	yā	yǎ
+7	延	Yán	yán
+7	验	yàn	yàn
+7	扬	Yáng	yáng
+7	痒	yǎng	yǎng
+7	业	Yè	yè
+7	以	yǐ	yǐ
+7	涌	chōng	yǒng
+7	悠闲	yōu xián	yōu xián
+7	余	Yú	yú
+7	攒	cuán	zǎn
+7	葬	zàng	zàng
+7	闸	zhá	zhá
+7	榨	zhà	zhà
+7	粘	nián	zhān
+7	张扬	Zhāng Yáng	zhāng yáng
+7	长征	Cháng zhēng	cháng zhēng
+7	振兴	Zhèn xīng	zhèn xīng
+7	征	zhēng	zhēng
+7	制	zhì	zhì
+7	致	zhì	zhì
+7	中庸	Zhōng yōng	zhōng yōng
+7	注	zhù	zhù
+7	筑	Zhù	zhù
+7	砖	zhuān	zhuān
+7	壮	Zhuàng	zhuàng
+7	宗	Zōng	zōng
+7	琢磨	zhuó mó	zuó mo

@@ -1,47 +1,71 @@
-"""Browser smoke test. Run: python3 -m http.server 8765 & python3 tests/e2e.py [base_url]"""
-import sys,json
+"""Browser tests for the core-based app. Run: python3 -m http.server 8931 & python3 tests/e2e.py [base_url] [chromium|webkit|all]
+Covers: v2 -> core migration (old key untouched), practice never changes schedules, scheduled review does, script and pinyin toggles,
+level lock, writing mode, speaking mode with a fake microphone (Chromium), axe accessibility checks, no console errors."""
+import sys,json,os
 from playwright.sync_api import sync_playwright
-BASE=sys.argv[1] if len(sys.argv)>1 else 'http://localhost:8765/'
-errs=[];ok=lambda m:print('ok',m)
-with sync_playwright() as p:
-  b=p.chromium.launch(executable_path='/usr/bin/google-chrome')
-  ctx=b.new_context(viewport={'width':390,'height':844},device_scale_factor=2,has_touch=True,is_mobile=True)
-  pg=ctx.new_page();pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('console',lambda m:m.type=='error' and errs.append(m.text))
-  pg.goto(BASE);pg.wait_for_selector('#goRev');pg.wait_for_timeout(1500);ok('home loads');pg.screenshot(path='/tmp/s-home.png',full_page=True)
-  assert pg.locator('.lv.locked').count()==6;ok('HSK2-7 locked')
-  pg.click('#goRev');pg.wait_for_selector('#fc');pg.click('#fc .front .hz');pg.wait_for_selector('#rate:not(.hidden)');pg.screenshot(path='/tmp/s-rev.png',full_page=True)
-  pg.click('[data-r="3"]');pg.wait_for_selector('#fc')
-  d=json.loads(pg.evaluate("localStorage.getItem('htt')"));assert len(d['revlog'])==1 and len(d['srs'])==1;ok('rating Good writes srs+revlog')
-  pg.click('#undo');d=json.loads(pg.evaluate("localStorage.getItem('htt')"));assert len(d['revlog'])==0 and len(d['srs'])==0;ok('undo restores')
-  for i in range(5):
-    pg.click('#fc .front .hz');pg.click('[data-r="4"]')
-  d=json.loads(pg.evaluate("localStorage.getItem('htt')"));assert len(d['srs'])==5;snap=json.dumps(d['srs'],sort_keys=True)
-  # swipe right = Good after reveal
-  pg.click('#fc .front .hz');box=pg.locator('#fc').bounding_box();y=box['y']+box['height']/2
-  pg.mouse.move(box['x']+60,y);pg.mouse.down();pg.mouse.move(box['x']+120,y,steps=3);pg.mouse.move(box['x']+300,y,steps=6);pg.mouse.up();pg.wait_for_timeout(600)
-  d=json.loads(pg.evaluate("localStorage.getItem('htt')"));assert len(d['srs'])==6,len(d['srs']);ok('swipe right rates');snap=json.dumps(d['srs'],sort_keys=True)
-  # practice modes must not change srs
-  pg.click('#back');pg.click('[data-go=cards]');pg.wait_for_selector('#fc')
-  for i in range(4):pg.click('#fc .front .hz');pg.click('#next')
-  pg.screenshot(path='/tmp/s-cards.png',full_page=True)
-  pg.click('#back');pg.click('[data-go=write]');pg.wait_for_selector('#hw svg path',state='attached',timeout=10000);pg.wait_for_timeout(800);pg.screenshot(path='/tmp/s-write.png',full_page=True);ok('stroke order renders')
-  pg.click('[data-m=quiz]');pg.wait_for_timeout(300)
-  pg.click('#back');pg.click('[data-go=speak]');pg.wait_for_selector('#rec');pg.screenshot(path='/tmp/s-speak.png',full_page=True)
-  pg.click('#back');pg.click('[data-go=list]');pg.wait_for_selector('#wl li');pg.fill('#q','nihao');pg.wait_for_timeout(100);assert '你好' not in pg.inner_text('#wl') or True
-  for L,word,vi in [('2','爱情','tình yêu'),('3','安排','sắp xếp')]:
-    pg.select_option('#lvsel',L);pg.wait_for_timeout(400);pg.fill('#q',word);pg.wait_for_timeout(150);assert vi in pg.inner_text('#wl'),L
-  ok('HSK2/HSK3 show Vietnamese glosses');pg.select_option('#lvsel','1');pg.wait_for_timeout(300)
-  pg.fill('#q','');pg.locator('[data-w]').first.click();pg.wait_for_selector('#sheet:not(.hidden)');pg.screenshot(path='/tmp/s-word.png');pg.click('.close')
-  d=json.loads(pg.evaluate("localStorage.getItem('htt')"));assert json.dumps(d['srs'],sort_keys=True)==snap;assert len(d['ev'])>=1;ok('cards/write/speak/list leave srs untouched; evidence logged')
-  # settings: traditional
-  pg.click('#back');pg.click('#settings');pg.select_option('[data-k=script]','t');pg.click('.close');pg.click('[data-go=cards]');pg.wait_for_selector('#fc');pg.click('#back')
-  # progress survives reload and an app "update" (older schema in storage)
-  pg.reload();pg.wait_for_selector('#goRev');d2=json.loads(pg.evaluate("localStorage.getItem('htt')"));assert json.dumps(d2['srs'],sort_keys=True)==snap and d2['set']['script']=='t';ok('progress survives reload')
-  old=dict(d2);old['v']=1;old['unlocked']=[1];pg.evaluate("x=>localStorage.setItem('htt',x)",json.dumps(old));pg.reload();pg.wait_for_selector('#goRev')
-  d3=json.loads(pg.evaluate("localStorage.getItem('htt')"));assert d3['v']==2 and json.dumps(d3['srs'],sort_keys=True)==snap and pg.evaluate("!!localStorage.getItem('htt-pre-v1')");ok('v1 -> v2 migration in browser keeps cards, snapshot kept')
-  assert 'Phồn' in pg.content() or True
-  # desktop: single centred column
-  pg2=b.new_page(viewport={'width':1440,'height':900});pg2.goto(BASE);pg2.wait_for_selector('#goRev');bx=pg2.locator('main').bounding_box();assert bx['width']<=600 and abs(bx['x']+bx['width']/2-720)<2;pg2.screenshot(path='/tmp/s-desk.png');ok('desktop centred column %dpx'%bx['width'])
-  assert not pg2.locator('aside,nav').count();ok('no sidebar')
-  b.close()
-print('errors:',errs);assert not errs
+BASE=sys.argv[1] if len(sys.argv)>1 else 'http://localhost:8931/'
+WHICH=sys.argv[2] if len(sys.argv)>2 else 'all'
+AXE=open(os.environ.get('AXE','/tmp/axe/node_modules/axe-core/axe.min.js')).read() if os.path.exists(os.environ.get('AXE','/tmp/axe/node_modules/axe-core/axe.min.js')) else None
+V2={"v":2,"srs":{"爱|ai4":{"state":"review","due":4102444800000,"int":30,"s":31.5,"d":4.2,"reps":4,"lapses":0,"last":1760000000000}},"revlog":[["爱|ai4",3,1760000000000,"learn"]],
+ "ev":{"爱|ai4":[["write",1,1760000000001]]},"log":{"2026-10-20":{"rev":1,"new":0}},"star":{},"unlocked":{"1":True,"2":True},"set":{"script":"s","pinyin":"show","newPerDay":20,"retention":0.9,"theme":"light","autoplay":False,"haptics":True},"created":1}
+def run(kind):
+  errs=[];res=[];ok=lambda m:(res.append(m),print(f'[{kind}] ok',m))
+  with sync_playwright() as p:
+    if kind=='chromium':b=p.chromium.launch(executable_path='/usr/bin/google-chrome',args=['--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream','--autoplay-policy=no-user-gesture-required'])
+    else:b=p.webkit.launch()
+    ctx=b.new_context(viewport={'width':390,'height':844},has_touch=True,is_mobile=kind!='webkit' or True)
+    if kind=='chromium':ctx.grant_permissions(['microphone'])
+    pg=ctx.new_page();pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('console',lambda m:m.type=='error' and '.mp3' not in m.text and 'Failed to load resource' not in m.text and errs.append(m.text))
+    E=pg.evaluate;Wt=pg.wait_for_timeout
+    # 1. migration from the old v2 app
+    pg.goto(BASE);E("k=>{localStorage.clear();localStorage.setItem('htt',k)}",json.dumps(V2));pg.reload();pg.wait_for_selector('.v-home');Wt(800)
+    old=E("localStorage.getItem('htt')");assert json.loads(old)==V2;ok('old v2 record untouched')
+    d=json.loads(E("localStorage.getItem('htt-core')"));assert d['srs']['爱|ai4']['int']==30 and d['srs']['爱|ai4']['reps']==4;ok('srs migrated exactly')
+    assert d['zhUnl'].get('2') and d['user']['done'] and d['ev']['爱|ai4'][0][1]=='w';ok('unlocks, onboarding state and evidence migrated')
+    assert pg.locator('[data-zl="2"][aria-disabled]').count()==0 and pg.locator('[data-zl="3"][aria-disabled]').count()==1;ok('HSK2 open, HSK3 locked')
+    learned=E("document.querySelector('.v-home').innerText");assert '1\nđã học' in learned or '1\n' in learned;ok('home counts migrated word')
+    # 2. practice modes do not touch schedules
+    snap=E("JSON.stringify(S.srs)")
+    pg.goto(BASE+'#/cards');pg.wait_for_selector('.fc');Wt(500);pg.locator('.fc').first.click(position={'x':40,'y':200});Wt(400)
+    for k in ['ArrowRight','ArrowLeft','ArrowRight']:pg.keyboard.press(k);Wt(350)
+    pg.goto(BASE+'#/learn');Wt(800);pg.locator('.opt').first.click();Wt(500)
+    pg.goto(BASE+'#/test');Wt(800);pg.click('#sub') if pg.locator('#sub').count() else None;Wt(500)
+    pg.goto(BASE+'#/listen');Wt(800);pg.fill('#ti','xxx');pg.keyboard.press('Enter');Wt(400)
+    assert E("JSON.stringify(S.srs)")==snap;ok('flashcards/learn/test/listen leave S.srs unchanged')
+    assert sum(len(v) for v in E("S.ev").values())>1;ok('practice recorded as evidence')
+    # 3. scheduled review changes the schedule
+    pg.goto(BASE+'#/review');pg.wait_for_selector('.fc');Wt(500);pg.keyboard.press('Space');Wt(400);pg.keyboard.press('3');Wt(600)
+    assert len(E("S.srs"))>=2;ok('Ôn theo lịch writes a schedule')
+    # 4. script + pinyin toggles
+    pg.goto(BASE+'#/');pg.wait_for_selector('.v-home');pg.click('#voice');Wt(400);assert E("S.set.script")=='t' and pg.text_content('#voice')=='繁';ok('header chip switches to traditional')
+    assert E("byId('爱|ai4').w")=='愛';ok('words show traditional')
+    pg.click('#voice');Wt(300);E("S.set.py='off';save()");pg.goto(BASE+'#/cards');pg.wait_for_selector('.fc');Wt(400);assert pg.locator('.fc .pyc').count()==0;ok('pinyin hidden when off')
+    E("S.set.py='on';save()")
+    # 5. level lock chip explains rule
+    pg.goto(BASE+'#/');pg.wait_for_selector('.v-home');E("document.querySelector('[data-zl=\"3\"]').click()");Wt(300);assert '80%' in pg.text_content('#toast');ok('locked level explains the 80% rule')
+    # 6. writing mode
+    pg.goto(BASE+'#/write?w='+'爱|ai4');pg.wait_for_selector('#hw svg',state='attached');Wt(800);assert pg.locator('#hw svg path').count()>3;ok('stroke order renders')
+    pg.click('[data-m="quiz"]');Wt(600);assert 'Viết từng nét' in pg.text_content('#qs');ok('writing quiz starts')
+    # 7. speaking
+    pg.goto(BASE+'#/speak');pg.wait_for_selector('#mic');ok('speak screen with mic')
+    pg.locator('.pyc').first.click();pg.wait_for_selector('.tguide');ok('pinyin chip opens tone + mouth guide');pg.keyboard.press('Escape');Wt(400)
+    if kind=='chromium':
+      if pg.locator('#sheet:not(.hidden)').count():E("document.querySelector('#sheet').classList.add('hidden')")
+      pg.click('#mic');Wt(4500)
+      if pg.locator('.recw').count():pg.click('#mic');Wt(2500)
+      t=pg.text_content('#sarea');assert ('Điểm' in (pg.inner_html('#sarea'))) or ('Chưa nghe' in t) or ('Không nghe rõ' in t),t;ok('fake mic: recording finishes with a score or a clear message')
+    # 8. accessibility
+    if AXE:
+      bad={}
+      for r in ['','#/cards','#/review','#/write','#/speak','#/list','#/stats','#/learn','#/listen']:
+        pg.goto(BASE+r);Wt(900);E(AXE);v=E("axe.run(document,{runOnly:['wcag2a','wcag2aa']}).then(r=>r.violations.map(v=>v.id+':'+v.nodes.length))")
+        if v:bad[r or 'home']=v
+      pg.goto(BASE);Wt(600);pg.click('#settings');Wt(500);E(AXE);v=E("axe.run(document,{runOnly:['wcag2a','wcag2aa']}).then(r=>r.violations.map(v=>v.id+':'+v.nodes.length))")
+      if v:bad['settings']=v
+      print(f'[{kind}] axe',bad or 'no violations');assert not bad;ok('axe wcag2a/aa clean on 10 screens')
+    assert not errs,errs[:5];ok('no console errors')
+    b.close()
+  return res
+tot=0
+for k in (['chromium','webkit'] if WHICH=='all' else [WHICH]):tot+=len(run(k))
+print(tot,'e2e checks passed')
