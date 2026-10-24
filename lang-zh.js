@@ -20,7 +20,7 @@ function fromV2(o){if(!o||typeof o!='object')return null;const set=o.set||{};
 const zhNorm=s=>String(s).toLowerCase().normalize('NFC').replace(/[’'.,!?;:"，。！？、\s]/g,'').trim();
 function accepts(w){const sy=w.n.toLowerCase().split(/\s+/);const a=[w.s,w.t,w.p.replace(/\s+/g,''),strip(w.p).replace(/\s+/g,''),strip(w.p).replace(/v/g,'u').replace(/\s+/g,''),sy.join('').replace(/u:/g,'v')];return [...new Set(a.map(zhNorm))]}
 function pyHTML(w,res,force){if(S.set.py=='off'&&!force)return '';const ss=sylls(w),tn=tonesOf(w);
- return `<div class="pyrow" lang="zh-Latn">${ss.map((s,k)=>{const r=res&&res[k];const c=r?(r.match===null?'':r.match?'g':'r'):'';return `<button class="pyc t${tn[k]} ${c}" data-tone="${tn[k]}" data-k="${k}" aria-label="${esc(s)}, thanh ${tn[k]==5?'nhẹ':tn[k]}. Xem cách đọc">${esc(s)}</button>`}).join('')}</div>`}
+ return `<div class="pyrow" lang="zh-Latn">${ss.map((s,k)=>{const r=res&&res[k];const c=r?(r.cls!=null?r.cls:(r.match===null?'':r.match?'g':'r')):'';return `<button class="pyc t${tn[k]} ${c}" data-tone="${tn[k]}" data-k="${k}" aria-label="${esc(s)}, thanh ${tn[k]==5?'nhẹ':tn[k]}. Xem cách đọc">${esc(s)}</button>`}).join('')}</div>`}
 const TN={1:['Thanh 1 (ngang)','Cao và đều, giữ giọng ở mức cao (5-5). Gần giống kéo dài một tiếng không dấu nhưng cao hơn.','M10 22 L90 22'],2:['Thanh 2 (lên)','Đi từ giữa lên cao (3-5), như hỏi lại “hả?”. Gần với dấu sắc tiếng Việt.','M10 50 Q55 45 90 18'],
  3:['Thanh 3 (xuống rồi lên)','Thấp, xuống rồi lên (2-1-4). Trong lời nói nhanh thường chỉ còn phần thấp; trước một thanh 3 khác thì đọc thành thanh 2.','M10 44 Q40 82 60 74 T90 30'],4:['Thanh 4 (xuống)','Rơi mạnh từ cao xuống thấp (5-1), dứt khoát như ra lệnh. Gần với dấu nặng nhưng bắt đầu cao.','M10 16 L90 80'],5:['Thanh nhẹ','Ngắn, nhẹ, không nhấn; cao độ phụ thuộc âm tiết trước.','M45 56 L55 56']};
 /* initials/finals with mouth-shape hints (articulation) */
@@ -53,11 +53,29 @@ let zhVoice=null;const pickVoice=()=>{try{const vs=speechSynthesis.getVoices().f
 try{if(typeof speechSynthesis!='undefined'){speechSynthesis.onvoiceschanged=pickVoice;pickVoice()}}catch(e){}
 const hasRec=w=>w.L<=3;
 function zhPlay(w,kind,opt){if(hasRec(w))return false;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(w.s);u.lang='zh-CN';if(zhVoice)u.voice=zhVoice;u.rate=(opt.slow??S.set.slow)?0.55:0.85;speechSynthesis.speak(u)}catch(e){toast('Thiết bị không có giọng đọc tiếng Trung','volume-x')}return true}
-/* ---------- speaking: per-syllable tone (F0) + optional browser recognition for initials/finals ---------- */
-function zhSpeak(){const d=deck().filter(w=>w.s.length<=4);let q=shuffle(d.length?d:deck()),i=0,att=0,rec=null,my=null,myUrl=null,nat=null,dead=false,slow=false;
- const SRc=window.SpeechRecognition||window.webkitSpeechRecognition;
+/* ---------- on-device syllable + tone model (zh-asr-worker.js), lazy: downloaded only when the learner asks ---------- */
+const ENG=(()=>{let wk=null,seq=0;const pend=new Map();let progCb=null,statusCb=null,loadP=null;
+ const W=()=>{if(wk)return wk;wk=new Worker('zh-asr-worker.js');wk.onmessage=e=>{const m=e.data;
+  if(m.type=='prog'||m.type=='phase'){progCb&&progCb(m)}else if(m.type=='status'){statusCb&&statusCb(m);statusCb=null}
+  else if(m.type=='loaded'){loadP&&loadP.ok();loadP=null}else if(m.type=='res'){const p=pend.get(m.id);pend.delete(m.id);p&&p.ok(m)}
+  else if(m.type=='err'){if(m.id!=null&&pend.has(m.id)){pend.get(m.id).no(new Error(m.msg));pend.delete(m.id)}else if(loadP){loadP.no(new Error(m.msg));loadP=null}}};return wk};
+ return {supported:()=>typeof Worker!='undefined'&&typeof WebAssembly!='undefined'&&'caches' in window,
+  status:()=>new Promise(ok=>{statusCb=ok;W().postMessage({type:'status'});setTimeout(()=>ok({cached:false,ready:false}),4000)}),
+  load:cb=>new Promise((ok,no)=>{progCb=cb;loadP={ok,no};W().postMessage({type:'load'})}),
+  run:(pcm,targets)=>new Promise((ok,no)=>{const id=++seq;pend.set(id,{ok,no});W().postMessage({type:'run',id,pcm,n:targets.length,targets})}),
+  forget:()=>new Promise(ok=>{statusCb=ok;W().postMessage({type:'forget'})})}})();
+const MODEL_MB=44;
+const sylBase=s=>s.toLowerCase().replace(/[1-5]$/,'').replace(/u:|ü/g,'v');
+const targetsOf=w=>{const n=w.n.toLowerCase().split(/\s+/);return n.map(s=>/^[a-z:ü]+[1-5]$/.test(s)?sylBase(s).replace(/v/g,'u'):null)};
+const TMK={a:'āáǎà',e:'ēéěè',i:'īíǐì',o:'ōóǒò',u:'ūúǔù',v:'ǖǘǚǜ'};
+function mark(b,t){if(!b)return '?';if(t<1||t>4)return b;const s=b.replace('v','ü');const v=/a|e/.exec(s)||/ou/.exec(s)||/[iouü](?!.*[aeiouü])/.exec(s);if(!v)return s;const c=v[0][0]=='o'&&v[0]=='ou'?'o':v[0];const k=c=='ü'?'v':c;const i=s.indexOf(c,v.index);return s.slice(0,i)+TMK[k][t-1]+s.slice(i+1)}
+/* last capture diagnostics, shown in Settings > Kiểm tra micro and under errors */
+let LASTDIAG=null;
+function diagText(d){if(!d)return '';return `tốc độ mẫu ${d.sr||'?'} Hz · ${(d.dur||0).toFixed(1)} s · đỉnh ${(d.peak||0).toFixed(3)} · nền ${(d.floor||0).toFixed(4)} · ngưỡng ${(d.thr||0).toFixed(4)} · khối ${d.calls||0}/${d.nonzero||0} có tín hiệu · kết thúc: ${d.why||'?'}`}
+/* ---------- speaking: model scoring when downloaded, F0 tone fallback otherwise ---------- */
+function zhSpeak(){const d=deck().filter(w=>w.s.length<=4);let q=shuffle(d.length?d:deck()),i=0,att=0,rec=null,my=null,myUrl=null,nat=null,dead=false,slow=false,eng='f0';
  function hist(w){const h=S.pron[w.id]||[];return h.length?`<p class="muted hist">Lịch sử: ${h.slice(-6).map(x=>`<span class="hs ${x.s>=85?'g':x.s>=60?'y':'r'}">${x.s}</span>`).join(' ')}</p>`:''}
- function show(){const w=q[i%q.length];att++;stop();my=null;nat=null;
+ async function show(){const w=q[i%q.length];att++;stop();my=null;nat=null;
   view('Luyện nói',`${mascot('idle','Nghe mẫu, rồi bấm micro và đọc to.',{small:true,row:true})}
   <div class="card q center" style="margin-top:12px" data-wid="${w.id}"><div class="kind">Từ ${i%q.length+1} / ${q.length}</div>${hzW(w)}${S.set.py=='off'?`<button class="btn sm sec" id="shp">Hiện pinyin</button>`:pyHTML(w)}
   <div class="tags"><span class="tag">${esc(w.pos||'')}</span><span class="tag lv">${esc(w.lv)}</span></div><p class="muted" style="margin:8px 0 0">${esc(w.vi)}</p>
@@ -65,45 +83,76 @@ function zhSpeak(){const d=deck().filter(w=>w.s.length<=4);let q=shuffle(d.lengt
   <div class="row"><button class="btn sec" id="prev" ${i?'':'disabled'}>Từ trước</button><button class="btn" id="next">Từ tiếp theo</button></div>
   <p class="hint">Bấm vào từng âm pinyin để xem đường thanh điệu và khẩu hình.</p>`);
   $('#next').onclick=()=>{i++;show()};$('#prev').onclick=()=>{i=Math.max(0,i-1);show()};$('#shp')&&($('#shp').onclick=e=>{e.currentTarget.outerHTML=pyHTML(w,null,true)});
-  if(S.set.autoplay)play(w);render('ready')}
+  if(S.set.autoplay)play(w);
+  const a=att;let st={cached:false,ready:false};if(ENG.supported()&&S.set.zhEngine!='f0')st=await ENG.status();if(a!==att||dead)return;
+  eng=st.cached||st.ready?'model':'f0';render(eng=='model'||S.set.zhEngine=='f0'||!ENG.supported()?'ready':'offer')}
  const box=()=>$('#sarea');
  function render(s,data={}){const w=q[i%q.length],b=box();if(!b)return;const mic=(lab='Bấm để nói')=>`<button class="mic ${s=='rec'?'rec':''}" id="mic" aria-label="${s=='rec'?'Dừng ghi âm':lab}">${I(s=='rec'?'square':'mic','xl')}</button>`;
-  if(s=='ready')b.innerHTML=`${mic()}<p class="muted">Bấm micro, đọc to rồi dừng lại. Máy tự dừng khi bạn ngừng nói.</p>`;
+  if(s=='offer')b.innerHTML=`<div class="note dl" role="note">${I('download')}<div><b>Chấm từng âm (phụ âm, vần, thanh) ngay trên máy</b><br>Tải mô hình nhận dạng (${MODEL_MB} MB, một lần, nên dùng Wi‑Fi). Giọng của bạn không gửi đi đâu và chấm được khi offline.</div></div>
+   <div class="row"><button class="btn" id="dlm">${I('download','s')}Tải mô hình</button><button class="btn sec" id="usef0">Chỉ chấm thanh điệu</button></div>`;
+  else if(s=='dl')b.innerHTML=`<p class="muted" style="margin-top:16px">${data.phase=='init'?'Đang khởi động mô hình…':`Đang tải mô hình… ${data.pct||0}%`}</p><div class="bar" role="progressbar" aria-label="Tải mô hình" aria-valuenow="${data.pct||0}" aria-valuemin="0" aria-valuemax="100"><i style="width:${data.pct||0}%"></i></div>`;
+  else if(s=='ready')b.innerHTML=`${mic()}<p class="muted">Bấm micro, đọc to rồi dừng lại. Máy tự dừng khi bạn ngừng nói.</p><p class="muted" style="font-size:var(--fs-xs)">${eng=='model'?'Chấm phụ âm, vần và thanh bằng mô hình trên máy.':'Đang chấm thanh điệu cơ bản (chưa tải mô hình).'}</p>`;
   else if(s=='rec')b.innerHTML=`<div class="recw ${data.perm?'perm':'listen'}" id="recw"><button class="mic rec" id="mic" aria-label="Dừng ghi âm"><span class="ring" aria-hidden="true"></span>${I('square','xl')}</button><canvas class="wave" id="wave" aria-hidden="true"></canvas><div class="tailbar" aria-hidden="true"><i></i></div><p class="rst" id="rst">${data.perm?'Đang mở micro…':'Mời bạn đọc…'}</p><p class="muted">Hãy đọc “${esc(w.w)}”</p></div>`;
-  else if(s=='busy')b.innerHTML=`<div class="spin" aria-hidden="true"></div><p class="muted">Đang chấm thanh điệu…</p>`;
-  else if(s=='err')b.innerHTML=`${mic('Thử lại')}<p class="err-t">${esc(data.msg)}</p>`;
+  else if(s=='busy')b.innerHTML=`<div class="spin" aria-hidden="true"></div><p class="muted">${eng=='model'?'Đang chấm từng âm…':'Đang chấm thanh điệu…'}</p>`;
+  else if(s=='err')b.innerHTML=`${mic('Thử lại')}<p class="err-t">${esc(data.msg)}</p>${data.diag?`<p class="muted diag" style="font-size:var(--fs-xs)">Chi tiết micro: ${esc(diagText(data.diag))}</p>`:''}`;
   else if(s=='result')b.innerHTML=resHTML(w,data);
   $('#mic')&&($('#mic').onclick=()=>s=='rec'?(rec&&rec.stop()):start(w));$('#again')&&($('#again').onclick=()=>start(w));
+  $('#dlm')&&($('#dlm').onclick=()=>download());$('#usef0')&&($('#usef0').onclick=()=>{S.set.zhEngine='f0';save();eng='f0';render('ready')});
   if(s=='result'&&my){const cv=$('#cmp');(async()=>{if(!nat&&hasRec(w)){try{nat=await Speech.decodeUrl(aurl(w,'w'))}catch(e){nat=null}}if(!dead&&cv&&cv.isConnected)drawCompare(cv,nat,my)})();
    const pm=()=>new Promise(ok=>{const a=new Audio(myUrl);a.playbackRate=slow?0.7:1;a.onended=ok;a.onerror=ok;audio.pause();a.play().catch(ok)});
    const pn=()=>new Promise(ok=>{play(w,'w',{slow});const f=()=>{audio.removeEventListener('ended',f);ok()};audio.addEventListener('ended',f);setTimeout(f,hasRec(w)?4000:2500)});
    $('#pn').onclick=pn;$('#pm').onclick=pm;$('#pb').onclick=async()=>{await pn();await pm()};$('#sl').onclick=e=>{slow=!slow;e.currentTarget.setAttribute('aria-pressed',slow);e.currentTarget.classList.toggle('on',slow)}}}
- function resHTML(w,{score,syl,heard,segOk}){const c=score>=85?'var(--success)':score>=60?'var(--warn)':'var(--danger)',lab=score>=85?'Rất tốt':score>=60?'Khá, còn vài thanh cần sửa':score>=40?'Cần luyện thêm':'Chưa giống, nghe mẫu rồi thử lại';
-  const tn=tonesOf(w);let h=`<div class="score" style="--p:${score};--c:${c}" role="img" aria-label="Điểm ${score} trên 100"><b>${score}</b></div><p class="sres-l"><b>${lab}</b></p>`;
-  h+=`<div data-wid="${w.id}">${pyHTML(w,syl,true)}</div><p class="legend2"><span><span class="lg g"></span> đúng thanh</span> <span><span class="lg r"></span> chưa đúng</span> <span>· bấm vào âm để xem cách đọc</span></p>`;
-  const bad=syl.map((r,k)=>({r,k})).filter(x=>x.r.match===false);
-  if(bad.length)h+=`<div class="tips">${bad.slice(0,3).map(({r,k})=>`<div class="tip2">${I('lightbulb','s')}<div>Âm <b>${esc(sylls(w)[k])}</b>: cần ${esc(TN[r.expected][0].toLowerCase())}${r.expected!=r.underlying?` (biến điệu từ thanh ${r.underlying})`:''}${r.got?`, máy nghe giống ${esc(TN[r.got][0].toLowerCase())}`:''}.</div></div>`).join('')}</div>`;
-  if(heard!=null)h+=`<p class="muted">Nhận dạng của trình duyệt nghe được: <b lang="zh">“${esc(heard)}”</b> ${segOk?'(khớp phụ âm và vần)':'(chưa khớp từ, kiểm tra phụ âm đầu và vần)'}</p>`;
-  h+=`<p class="muted" style="font-size:var(--fs-xs)">Thanh điệu chấm bằng đường cao độ (F0) trên máy. Mô hình đúng khoảng 62–76% trên giọng đọc máy chưa từng gặp, chưa đo trên người học: coi là gợi ý, nghe so sánh với mẫu là chính. ${heard==null?'Phụ âm đầu và vần chưa được chấm trên thiết bị này.':''}</p>`;
+ async function download(){const a=att;render('dl',{pct:0});try{await ENG.load(m=>{if(a!==att||dead)return;render('dl',{pct:m.phase=='init'?100:Math.min(99,Math.round(m.got/m.total*100)),phase:m.phase})});if(a!==att||dead)return;
+   S.set.zhEngine='model';save();eng='model';toast('Đã tải xong mô hình chấm phát âm','check');render('ready')}
+  catch(e){if(a!==att||dead)return;render('offer');toast('Không tải được mô hình. Kiểm tra mạng rồi thử lại.','wifi-off',4000)}}
+ function resHTML(w,{score,syl,heard,kind}){const c=score>=85?'var(--success)':score>=60?'var(--warn)':'var(--danger)',lab=score>=85?'Rất tốt':score>=60?'Khá, còn vài âm cần sửa':score>=40?'Cần luyện thêm':'Chưa giống, nghe mẫu rồi thử lại';
+  let h=`<div class="score" style="--p:${score};--c:${c}" role="img" aria-label="Điểm ${score} trên 100"><b>${score}</b></div><p class="sres-l"><b>${lab}</b></p>`;
+  h+=`<div data-wid="${w.id}">${pyHTML(w,syl,true)}</div><p class="legend2"><span><span class="lg g"></span> đúng</span> <span><span class="lg y"></span> gần đúng</span> <span><span class="lg r"></span> chưa đúng</span> <span>· bấm vào âm để xem cách đọc</span></p>`;
+  if(heard)h+=`<p class="muted">Máy nghe được: <b lang="zh-Latn">${esc(heard)}</b></p>`;
+  const tips=[];syl.forEach((r,k)=>{const s=sylls(w)[k];if(r.segOk===false)tips.push(`Âm <b>${esc(s)}</b>: phụ âm hoặc vần chưa đúng${r.heardSyl?`, máy nghe giống <b>${esc(r.heardSyl)}</b>`:''}.`);
+   if(r.match===false)tips.push(`Âm <b>${esc(s)}</b>: cần ${esc(TN[r.expected][0].toLowerCase())}${r.expected!=r.underlying?` (biến điệu từ thanh ${r.underlying})`:''}${r.got?`, máy nghe giống ${esc(TN[r.got][0].toLowerCase())}`:''}.`)});
+  if(tips.length)h+=`<div class="tips">${tips.slice(0,4).map(t=>`<div class="tip2">${I('lightbulb','s')}<div>${t}</div></div>`).join('')}</div>`;
+  h+=`<p class="muted" style="font-size:var(--fs-xs)">${kind=='model'?'Chấm bằng mô hình SyllablePredictorV6 trên máy: trên giọng người thật (Tatoeba) đúng khoảng 79% thanh điệu và 74% âm tiết. Là gợi ý, không phải điểm thi.':'Chỉ chấm thanh điệu bằng đường cao độ (đúng khoảng 47% trên giọng người thật): tải mô hình ở trên để chấm chính xác hơn và chấm cả phụ âm, vần.'}</p>`;
   h+=`<canvas class="cmp" id="cmp" role="img" aria-label="So sánh cao độ giọng mẫu với giọng bạn"></canvas><div class="row wrap3"><button class="btn sm sec" id="pn">${I('volume-2','s')}Mẫu</button><button class="btn sm sec" id="pm">${I('play','s')}Giọng bạn</button><button class="btn sm sec" id="pb">${I('repeat','s')}Mẫu rồi bạn</button><button class="btn sm sec" id="sl" aria-pressed="${slow}">${I('turtle','s')}Chậm</button></div>`;
   return h+`<button class="btn" id="again" style="margin-top:12px">${I('mic','s')}Thử lại</button>`}
  function stop(){try{rec&&rec.stop()}catch(e){}rec=null}
- async function start(w){const a=++att;stop();audio.pause();try{speechSynthesis.cancel()}catch(e){}render('rec',{perm:1});
-  let sr=null,heard=null;const srP=new Promise(ok=>{if(!SRc||(isIOS&&standalone))return ok(null);try{sr=new SRc();sr.lang='zh-CN';sr.maxAlternatives=5;sr.onresult=e=>ok([...e.results[0]].map(x=>x.transcript));sr.onerror=()=>ok(null);sr.onend=()=>ok(null);sr.start()}catch(e){ok(null)}});
-  try{rec=await Speech.record({onLevel:v=>{if(a===att)mascotLevel($('.mascot'),v)},onState:k=>{const t=$('#rst');if(t&&a===att)t.textContent={perm:'Đang mở micro…',listen:'Mời bạn đọc…',quiet:'Không nhận được tiếng từ micro. Nói to hơn nhé.',voice:'Neko nghe thấy bạn',tail:'Đang chờ bạn nói hết…'}[k]||''}})}
-  catch(e){try{sr&&sr.abort()}catch(_){}if(a===att)render('err',{msg:e&&e.name=='NotAllowedError'?'Bạn chưa cho phép dùng micro. Hãy bật quyền micro cho trang này.':'Không mở được micro.'});return}
-  if(a!==att)return rec.stop();const r=await rec.done;rec=null;if(a!==att||dead)return;try{sr&&sr.stop()}catch(_){}
-  const pcm=Speech.trim(Speech.to16k(r.pcm,r.sr));if(!r.speech||pcm.length<16000*0.2||Speech.peak(pcm)<0.02){render('err',{msg:'Chưa nghe thấy giọng nói. Hãy nói to, gần micro hơn rồi thử lại.'});return}
+ /* ROOT CAUSE (iOS, 2026-10-24): the first version also started webkitSpeechRecognition in the same tap. On iOS Safari the recogniser
+    takes the audio session, so the getUserMedia/AudioContext capture received only silence and every attempt ended in "Chưa nghe thấy".
+    Capture now runs alone, through the English app's proven Speech.record path (context created and resumed inside the tap). */
+ async function start(w){const a=++att;stop();audio.pause();try{speechSynthesis.cancel()}catch(e){}render('rec',{perm:1});const t0=performance.now();
+  try{rec=await Speech.record({onLevel:v=>{if(a===att)mascotLevel($('.mascot'),v)},onState:k=>{const t=$('#rst'),bx=$('#recw');if(!t||a!==att)return;if(bx&&k!='tailp')bx.className='recw '+k;t.textContent={perm:'Đang mở micro…',listen:'Mời bạn đọc…',quiet:'Không nhận được tiếng từ micro. Nói to hơn nhé.',voice:'Neko nghe thấy bạn',tail:'Đang chờ bạn nói hết…'}[k]||t.textContent}})}
+  catch(e){if(a===att){LASTDIAG={why:'error '+(e&&e.name),sr:0,dur:0};render('err',{msg:e&&e.name=='NotAllowedError'?'Bạn chưa cho phép dùng micro. Trên iPhone: Cài đặt > Safari > Micrô > Cho phép (hoặc bấm “aA” trên thanh địa chỉ > Cài đặt trang web > Micrô).':'Không mở được micro ('+(e&&e.name||'lỗi')+'). Đóng ứng dụng khác đang dùng micro rồi thử lại.',diag:LASTDIAG})}return}
+  if(a!==att)return rec.stop();const r=await rec.done;rec=null;if(a!==att||dead)return;
+  const pcm=Speech.trim(Speech.to16k(r.pcm,r.sr));LASTDIAG={...(r.diag||{}),sr:r.sr,dur:r.pcm.length/r.sr,why:r.why,speech:r.speech,at:Date.now()};try{sessionStorage.zhDiag=JSON.stringify(LASTDIAG)}catch(e){}
+  if(r.why=='dead'||r.why=='ended'){render('err',{msg:'Micro không gửi tiếng nào. Tải lại trang hoặc đóng ứng dụng khác đang dùng micro rồi thử lại.',diag:LASTDIAG});return}
+  if(!r.speech||pcm.length<16000*0.2||Speech.peak(pcm)<0.02){render('err',{msg:'Chưa nghe thấy giọng nói. Hãy nói to, gần micro hơn rồi thử lại.',diag:LASTDIAG});return}
   my=pcm;if(myUrl)URL.revokeObjectURL(myUrl);myUrl=URL.createObjectURL(Speech.wav(pcm));render('busy');
-  const an=TONES.analyse(pcm,16000,tonesOf(w),w.s);if(!an.ok){render('err',{msg:an.reason});return}
-  const alts=await Promise.race([srP,new Promise(ok=>setTimeout(()=>ok(null),2500))]);let segOk=null;
-  if(alts&&alts.length){heard=alts[0];segOk=alts.some(x=>x.includes(w.s)||x.includes(w.t))}
-  const sc=an.syl.filter(x=>x.match!==null),toneS=sc.length?Math.round(100*sc.filter(x=>x.match).length/sc.length):70;
-  const score=segOk==null?toneS:Math.round(toneS*.6+(segOk?40:10));
-  const h=S.pron[w.id]=S.pron[w.id]||[];h.push({t:Date.now(),s:score,k:'t'});if(h.length>20)h.splice(0,h.length-20);S.speak[w.id]=Math.max(S.speak[w.id]||0,score);evidence(w,score>=60,'speak');logIt(false);save();
-  render('result',{score,syl:an.syl,heard,segOk});$('#shist')&&($('#shist').innerHTML=hist(w));buzz(score>=85?[10,30,10]:10)}
+  const tn=tonesOf(w),sf=TONES.surface(tn,w.s);let syl,heard=null,kind='f0';
+  if(eng=='model'){try{const tg=targetsOf(w),out=await ENG.run(pcm.slice(),tg.map(x=>x||''));if(a!==att||dead)return;kind='model';
+    syl=out.syl.map((x,k)=>{const tp=x.tone,got=tp.indexOf(Math.max(...tp))+1,e=sf[k];const top=x.top[0][0];
+     const segOk=tg[k]&&x.known?(top==tg[k]||x.pTarget>=0.25):null,pSeg=segOk==null?null:Math.min(1,(x.pTarget||0)/0.5);
+     const pT=e>=1&&e<=4?tp[e-1]:null,match=e==5?null:got==e||(e==3&&k<tn.length-1&&got==2&&tn[k+1]==3);
+     return {expected:e,underlying:tn[k],got:got==5?null:got,match,segOk,pSeg,pT,heardSyl:segOk===false?mark(top,got):null,heardMark:mark(top,got)}});
+    heard=syl.map(x=>x.heardMark).join(' ')}
+   catch(e){eng='f0';toast('Mô hình lỗi trên máy này, dùng chấm thanh điệu cơ bản','info',3500)}}
+  if(!syl){const an=TONES.analyse(pcm,16000,tn,w.s);if(!an.ok){render('err',{msg:an.reason,diag:LASTDIAG});return}syl=an.syl}
+  const parts=syl.map(x=>{const t=x.match==null?null:(x.pT!=null?Math.max(x.match?1:0,Math.min(1,x.pT/0.6)):x.match?1:0),s=x.pSeg;return s==null?t:t==null?s:0.6*s+0.4*t}).filter(v=>v!=null);
+  const score=parts.length?Math.round(100*parts.reduce((p,q)=>p+q,0)/parts.length):60;
+  syl.forEach(x=>{x.cls=(x.segOk===false&&x.match===false)?'r':(x.segOk===false||x.match===false)?(x.segOk===false&&x.match==null?'r':'y'):(x.match==null&&x.segOk==null?'':'g')});
+  const h=S.pron[w.id]=S.pron[w.id]||[];h.push({t:Date.now(),s:score,k:kind=='model'?'m':'t'});if(h.length>20)h.splice(0,h.length-20);S.speak[w.id]=Math.max(S.speak[w.id]||0,score);evidence(w,score>=60,'speak');logIt(false);save();
+  render('result',{score,syl,heard,kind});$('#shist')&&($('#shist').innerHTML=hist(w));buzz(score>=85?[10,30,10]:10)}
  show();keys=e=>{if(e.target.tagName=='INPUT')return;if(e.key==' '&&$('#mic')){e.preventDefault();$('#mic').click()}else if(e.key=='ArrowRight')$('#next').click()};
  return ()=>{dead=true;att++;stop();if(myUrl)URL.revokeObjectURL(myUrl)}}
+/* ---------- Settings > Kiểm tra micro: a 4 s capture through the same path, with a live meter and the numbers Darren can report ---------- */
+async function micCheck(root){const out=$('#mcd',root),bar=$('#mcl',root),btn=$('#mcb',root);btn.disabled=true;let perm='không rõ';
+ try{if(navigator.permissions&&navigator.permissions.query){const p=await navigator.permissions.query({name:'microphone'});perm={granted:'đã cho phép',denied:'đã chặn',prompt:'sẽ hỏi'}[p.state]||p.state}}catch(e){}
+ out.textContent='Đang nghe 4 giây, hãy nói “mǎ shàng”…';let pk=0;
+ try{const rec=await Speech.record({maxMs:4000,silenceMs:4000,onLevel:(v,rms)=>{pk=Math.max(pk,rms);bar.style.width=Math.round(v*100)+'%'}});const r=await rec.done;
+  const d={...(r.diag||{}),sr:r.sr,dur:r.pcm.length/r.sr,why:r.why,speech:r.speech};LASTDIAG=d;
+  let tr='';try{const s=await navigator.mediaDevices.enumerateDevices();tr=s.filter(x=>x.kind=='audioinput').length+' micro'}catch(e){}
+  out.innerHTML=`<b>${d.speech?'Micro hoạt động: đã nghe thấy giọng nói':'Không phát hiện giọng nói'}</b><br>Quyền micro: ${esc(perm)} · ${esc(tr)}<br>${esc(diagText(d))}<br>Trình duyệt: ${esc(navigator.userAgent.replace(/^Mozilla\/5.0 /,''))}`}
+ catch(e){out.innerHTML=`<b>Không mở được micro: ${esc(e&&e.name||'lỗi')}</b><br>Quyền micro: ${esc(perm)}. ${e&&e.name=='NotAllowedError'?'Trên iPhone: Cài đặt > Safari > Micrô, hoặc “aA” > Cài đặt trang web > Micrô > Cho phép.':''}`}
+ btn.disabled=false;bar.style.width='0'}
 /* ---------- writing: Hanzi Writer stroke order (watch) and quiz (practice; evidence only, never the schedule) ---------- */
 function zhWrite(){const P=new URLSearchParams(location.hash.split('?')[1]||'');let d=deck().slice();let i=0,ci=0,mode='anim',hw=null,dead=false;
  const pw=P.get('w');if(pw){const k=d.findIndex(w=>w.id==pw);if(k>=0)i=k;else{const w=byId(pw);if(w){d=[w,...d];i=0}}}else d=shuffle(d);
@@ -136,7 +185,7 @@ const loaded=new Set();async function ensureLevel(L){if(loaded.has(L)||words.som
 function levelRatio(L){let n=0,g=0;for(const w of words){if(w.L!=L)continue;n++;const c=S.srs[w.id];if(c&&(c.state=='review'||c.state=='relearn'||(c.int||0)>=1))g++}return n?g/n:0}
 function applyUnlocks(){const u=unl(),op=[];for(const L of LV.slice(1))if(!u[L]&&u[L-1]&&levelRatio(L-1)>=UNLOCK){u[L]=true;op.push(L)}if(op.length){save();Promise.all(op.map(ensureLevel)).then(()=>{if(!location.hash.replace(/^#\/?/,''))home()});setTimeout(()=>toast('Đã mở '+op.map(LVN).join(', '),'sparkles',3500),0)}return op}
 window.LANG={key:'htt-core',app:'hoc-tieng-trung',audioCache:'htt-audio-v1',title:'Học Tiếng Trung',bringForward:false, /* strict rule: only Ôn theo lịch changes a schedule; practice records evidence only */
- setDefaults:{voice:'f',script:'s',py:'on',dir:'en'},legacy:get=>{const r=get(OLD_KEY);if(!r)return null;try{return fromV2(JSON.parse(r))}catch(e){return null}},importAny:j=>j&&j.data&&j.data.srs&&j.data.revlog&&j.data.unlocked?fromV2(j.data):j&&j.srs&&j.unlocked?fromV2(j):j,
+ setDefaults:{voice:'f',script:'s',py:'on',dir:'en',zhEngine:'model'},legacy:get=>{const r=get(OLD_KEY);if(!r)return null;try{return fromV2(JSON.parse(r))}catch(e){return null}},importAny:j=>j&&j.data&&j.data.srs&&j.data.revlog&&j.data.unlocked?fromV2(j.data):j&&j.srs&&j.unlocked?fromV2(j):j,
  async loadData(){const u=unl0();const need=LV.filter(L=>u[L]);const ls=await Promise.all(need.map(L=>getJ(`data/hsk${L}.json`)));
   fetch('data/chars.json').then(r=>r.ok?r.json():{}).then(c=>{CH=c}).catch(()=>{});
   const ws=[];ls.forEach((a,k)=>ws.push(...mk(a,need[k])));return {pages:LV.map(L=>({id:'hsk'+L,title:LVN(L),short:LVN(L)})),words:ws}},
@@ -145,8 +194,10 @@ window.LANG={key:'htt-core',app:'hoc-tieng-trung',audioCache:'htt-audio-v1',titl
  answerText:w=>w.w,norm:zhNorm,accepts,cloze:()=>null,ipaOf:w=>S.set.py=='off'?'':w.p,search:(w,q)=>{const n=zhNorm(strip(q));return !!n&&(w.s.includes(q.trim())||w.t.includes(q.trim())||strip(w.p).replace(/\s/g,'').includes(n)||(w.hv||'').includes(q.trim().toLowerCase()))},
  frontFace:front,backFace:back,wordExtra:extra,voices:[['f','Nữ'],['m','Nam']],
  settingsTop:seg=>`<div class="opt-row"><span>Chữ</span>${seg('script',[['s','Giản thể'],['t','Phồn thể']])}</div><div class="opt-row"><span>Pinyin</span>${seg('py',[['on','Hiện'],['off','Ẩn']])}</div>`,
- settingsPron:()=>`<div class="eyebrow">Chấm phát âm</div><div class="group"><p class="muted" style="padding:12px">Thanh điệu: đo đường cao độ (F0) ngay trên máy, không gửi giọng đi đâu. Phụ âm đầu và vần: dùng nhận dạng giọng nói của trình duyệt khi có (Chrome, Safari trên web; không có trong ứng dụng đã thêm vào màn hình chính trên iPhone).</p></div>`,
- bindSettings(sh){$$('[data-set="script"],[data-set="py"]',sh).forEach(b=>b.addEventListener('click',()=>{remap();if(LANG.chip)LANG.chip.paint();setTimeout(route,0)}))},
+ settingsPron:seg=>`<div class="eyebrow">Chấm phát âm</div><div class="group"><div class="opt-row"><span>Cách chấm</span>${seg('zhEngine',[['model','Mô hình (từng âm)'],['f0','Chỉ thanh điệu']])}</div>
+  <div class="opt-row"><span>Mô hình trên máy <small class="muted" id="zms">…</small></span><button class="btn sm sec" id="zmd">${I('download','s')}Tải</button></div>
+  <div style="padding:12px"><button class="btn sm sec" id="mcb">${I('mic','s')}Kiểm tra micro</button><div class="bar" style="margin:8px 0" aria-hidden="true"><i id="mcl" style="width:0"></i></div><p class="muted" id="mcd" style="font-size:var(--fs-xs)" aria-live="polite">${LASTDIAG?'Lần ghi gần nhất: '+esc(diagText(LASTDIAG)):'Bấm để ghi thử 4 giây và xem thông số micro.'}</p></div></div>`,
+ bindSettings(sh){$('#mcb',sh)&&($('#mcb',sh).onclick=()=>micCheck(sh));const zs=$('#zms',sh),zb=$('#zmd',sh);if(zs&&ENG.supported()){ENG.status().then(st=>{zs.textContent=st.cached?'đã tải, dùng được offline':'chưa tải ('+MODEL_MB+' MB)';zb.innerHTML=st.cached?I('trash-2','s')+'Xoá':I('download','s')+'Tải';zb.onclick=async()=>{zb.disabled=true;if(st.cached){await ENG.forget();zs.textContent='đã xoá'}else{try{await ENG.load(m=>{zs.textContent=m.phase=='init'?'đang khởi động…':'đang tải '+Math.round(m.got/m.total*100)+'%'});S.set.zhEngine='model';save();zs.textContent='đã tải, dùng được offline'}catch(e){zs.textContent='lỗi tải, thử lại'}}zb.disabled=false}})}else if(zs){zs.textContent='trình duyệt không hỗ trợ';zb.disabled=true}$$('[data-set="script"],[data-set="py"]',sh).forEach(b=>b.addEventListener('click',()=>{remap();if(LANG.chip)LANG.chip.paint();setTimeout(route,0)}))},
  chip:{paint(){const b=$('#voice');b.textContent=isTrad()?'繁':'简';b.setAttribute('lang','zh');b.setAttribute('aria-label',(isTrad()?'Phồn thể':'Giản thể')+'. Bấm để đổi')},click(){S.set.script=isTrad()?'s':'t';save();remap();LANG.chip.paint();toast(isTrad()?'Chữ phồn thể':'Chữ giản thể','languages');buzz(8);route()}},
  onHome(){applyUnlocks()},homeChips(){const u=unl();return LV.map(L=>`<button class="chip ${F().cefr==LVN(L)?'on':''}" data-zl="${L}" aria-pressed="${F().cefr==LVN(L)}" ${u[L]?'':'aria-disabled="true"'}>${u[L]?'':I('lock','s')}${LVN(L)}</button>`).join('')},
  bindHome(){$$('[data-zl]').forEach(b=>b.onclick=()=>{const L=+b.dataset.zl;if(!unl()[L]){const r=Math.round(levelRatio(L-1)*100);toast(`${LVN(L)} mở khi 80% từ ${LVN(L-1)} đã qua bước học (hiện ${r}%)`,'lock',4000);return}F().cefr=F().cefr==LVN(L)?'':LVN(L);save();home();buzz(8)})},

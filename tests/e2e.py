@@ -47,13 +47,21 @@ def run(kind):
     pg.goto(BASE+'#/write?w='+'爱|ai4');pg.wait_for_selector('#hw svg',state='attached');Wt(800);assert pg.locator('#hw svg path').count()>3;ok('stroke order renders')
     pg.click('[data-m="quiz"]');Wt(600);assert 'Viết từng nét' in pg.text_content('#qs');ok('writing quiz starts')
     # 7. speaking
-    pg.goto(BASE+'#/speak');pg.wait_for_selector('#mic');ok('speak screen with mic')
+    pg.goto(BASE+'#/speak');pg.wait_for_selector('#dlm');assert pg.locator('#usef0').count();ok('speak screen offers the model download or tone-only mode')
+    if kind=='chromium':
+      pg.click('#dlm');pg.wait_for_selector('#mic',timeout=120000);ok('model downloads, caches and loads in the page')
+    else:
+      pg.click('#usef0');pg.wait_for_selector('#mic');assert E("S.set.zhEngine")=='f0';ok('tone-only mode without the model')
     pg.locator('.pyc').first.click();pg.wait_for_selector('.tguide');ok('pinyin chip opens tone + mouth guide');pg.keyboard.press('Escape');Wt(400)
     if kind=='chromium':
       if pg.locator('#sheet:not(.hidden)').count():E("document.querySelector('#sheet').classList.add('hidden')")
       pg.click('#mic');Wt(4500)
-      if pg.locator('.recw').count():pg.click('#mic');Wt(2500)
-      t=pg.text_content('#sarea');assert ('Điểm' in (pg.inner_html('#sarea'))) or ('Chưa nghe' in t) or ('Không nghe rõ' in t),t;ok('fake mic: recording finishes with a score or a clear message')
+      if pg.locator('.recw').count():pg.click('#mic')
+      pg.wait_for_function("!document.querySelector('.recw')&&!/Đang chấm/.test(document.querySelector('#sarea').textContent)",timeout=30000)
+      t=pg.text_content('#sarea');assert ('Máy nghe được' in t) or ('Chưa nghe' in t) or ('Không nghe rõ' in t),t;ok('fake mic + model: result shows what the model heard, or a clear message')
+      pg.goto(BASE);Wt(500);pg.click('#settings');Wt(400);pg.click('#mcb');pg.wait_for_function("/Hz/.test(document.querySelector('#mcd').textContent)",timeout=10000)
+      d=pg.text_content('#mcd');assert 'Hz' in d,d;ok('settings mic check shows permission, sample rate, peak, duration')
+      E("document.querySelector('#sheet').classList.add('hidden')")
     # 8. accessibility
     if AXE:
       bad={}

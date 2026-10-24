@@ -48,3 +48,36 @@ Train a small Conformer-CTC model with about 1,300 pinyin+tone tokens on open da
 - this app's neural reference recordings.
 
 Then export it as an INT8 ONNX file of 10-15 MB, run it in the existing `core/speech.js` worker path the way English runs ZIPA, and score initials, finals and tones by forced alignment against the expected pinyin. Keep the F0 model as a fallback for when the model is not downloaded. Collect a small consented test set of learner recordings before claiming any accuracy.
+
+## Stage 2 (2026-10-24): iPhone fix + on-device model
+
+### iPhone bug: "Chưa nghe thấy giọng nói" every time
+Root cause (code inspection, consistent with WebKit's single audio session): the speak screen started `webkitSpeechRecognition` (zh-CN)
+in the same tap as our PCM capture. On iOS Safari the recogniser takes over the mic/audio session, so our ScriptProcessor capture got
+only zeros, the RMS gate never opened, and every attempt ended with "no voice". Chrome on desktop shares the mic, so the bug hid there.
+Fix: the recogniser is gone; one capture path only (`Speech.record`: fresh AudioContext created in the tap, noise floor from the first
+300 ms, gate = max(0.008, 3 x floor), live level meter). Permission denied shows iPhone steps (Settings > Safari > Microphone).
+Settings > Phát âm has "Kiểm tra micro": 4 s capture with a meter, then permission state, sample rate, duration, peak, floor, gate,
+callback/non-zero counts and the user agent. "Chi tiết micro" under any error shows the same line.
+
+### Candidates (licences checked by me, 2026-10-24)
+| Model | Size | Licence | Verdict |
+|---|---|---|---|
+| SpeakToLearn SyllablePredictorV6 (github.com/cogeor/speaktolearn) | 45 MB FP16 -> 30 MB INT8 | README: "License: MIT"; no LICENSE file; trained on AISHELL-3 (Apache-2.0) | **Shipped**. Confirmation request to the author drafted, not sent. |
+| Tonara (MIT, Dart) | small | MIT | Monosyllables only; good tone candidate for a later JS port. |
+| Ear (simedw) | 11-14 MB | no public repo/licence found | Not usable. |
+| Buddy Mandarin ONNX | 357 MB | Apache-2.0 | Too large for iPhone download. |
+| SenseVoice Small Dual-CTC pinyin | 239 MB | "other" (model licence) | Too large, licence unclear. |
+
+### Measured (held-out)
+| Data | Engine | Syllable top-1 | Tone |
+|---|---|---|---|
+| Our TTS, 400 HSK 1-3 words | V6 FP16 | 67.6% | 84.4% |
+| Tatoeba human speech, 187 sentences, 4 speakers (not in AISHELL-3) | V6 FP16 | 73.9% | 79.4% (surface tones) |
+| same | V6 INT8 (shipped) | 73.5% | 79.3% |
+| same | our F0 rule model (fallback) | - | 47% |
+Browser parity (tests/model_parity.py): JS front end + onnxruntime-web 1.30 WASM gives the same top syllable and tone as Python on
+fixtures, in Chromium and WebKit; about 0.25-0.6 s per word on the test box; ~4 s first load; cached in "htt-engine-v1" (offline).
+Probabilities differ slightly (up to ~0.1) between WASM and CPU INT8 kernels.
+Scoring: syllable OK if model top-1 is the target or P(target) >= 0.25; score = 0.6 x syllables + 0.4 x tones. Known gaps: vocabulary
+merges ü into u, lacks fei/gei/hei/shei (those syllables are tone-only). Download is opt-in (~44 MB incl. runtime); "Chỉ chấm thanh điệu" keeps the F0 path.
