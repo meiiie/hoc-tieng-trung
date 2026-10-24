@@ -1,4 +1,4 @@
-const V='htt-v1',DATA='htt-data-v1';
+const V='htt-v2',DATA='htt-data-v2';
 const SHELL=['./','index.html','style.css','app.js','core.js','srs.js','tones.js','vendor/ts-fsrs.min.js','vendor/hanzi-writer.min.js','manifest.webmanifest','data/meta.json','data/hsk1.json','data/chars.json','icons/icon.svg','icons/icon-192.png','icons/apple-touch-icon.png'];
 /* Progress lives in localStorage; a service-worker update never touches it. New versions wait until the user taps "Tải lại". */
 self.addEventListener('install',e=>e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL.map(u=>new Request(u,{cache:'reload'}))))));

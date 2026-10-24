@@ -6,6 +6,7 @@ Live: https://meiiie.github.io/hoc-tieng-trung/
 
 - Ôn theo lịch: FSRS-6 spaced repetition, Anki-like steps, the only mode that changes schedules.
 - Thẻ ghi nhớ, Luyện nói (Web Speech zh-CN voice, mic recording, heuristic tone contour), Viết chữ (hanzi-writer stroke order and quiz, radical, decomposition), Danh sách từ.
+- Vietnamese meanings for HSK 1–3 (English CC-CEDICT for HSK 4 and up).
 - Simplified / traditional toggle, tone-coloured pinyin with tone marks.
 - Levels unlock progressively (see `docs/LIFECYCLE.md`).
 

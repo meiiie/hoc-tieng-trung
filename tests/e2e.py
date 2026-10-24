@@ -28,6 +28,9 @@ with sync_playwright() as p:
   pg.click('[data-m=quiz]');pg.wait_for_timeout(300)
   pg.click('#back');pg.click('[data-go=speak]');pg.wait_for_selector('#rec');pg.screenshot(path='/tmp/s-speak.png',full_page=True)
   pg.click('#back');pg.click('[data-go=list]');pg.wait_for_selector('#wl li');pg.fill('#q','nihao');pg.wait_for_timeout(100);assert '你好' not in pg.inner_text('#wl') or True
+  for L,word,vi in [('2','爱情','tình yêu'),('3','安排','sắp xếp')]:
+    pg.select_option('#lvsel',L);pg.wait_for_timeout(400);pg.fill('#q',word);pg.wait_for_timeout(150);assert vi in pg.inner_text('#wl'),L
+  ok('HSK2/HSK3 show Vietnamese glosses');pg.select_option('#lvsel','1');pg.wait_for_timeout(300)
   pg.fill('#q','');pg.locator('[data-w]').first.click();pg.wait_for_selector('#sheet:not(.hidden)');pg.screenshot(path='/tmp/s-word.png');pg.click('.close')
   d=json.loads(pg.evaluate("localStorage.getItem('htt')"));assert json.dumps(d['srs'],sort_keys=True)==snap;assert len(d['ev'])>=1;ok('cards/write/speak/list leave srs untouched; evidence logged')
   # settings: traditional

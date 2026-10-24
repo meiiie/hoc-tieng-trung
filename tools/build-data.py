@@ -4,7 +4,7 @@ makemeahanzi dictionary.txt and hanzi-writer-data 2.0.1 (Arphic Public License).
 Usage: tools/build-data.py <chv_dir> <makemeahanzi_dictionary.txt> <hanzi-writer-data/package>"""
 import json,sys,os,re,shutil,unicodedata
 chv,dictf,hwd=sys.argv[1:4];out='data'
-vi1=open('tools/vi1.txt',encoding='utf8').read().strip().split('|')
+VI={L:open(f'tools/vi{L}.txt',encoding='utf8').read().strip().split('|') for L in (1,2,3)}
 BAD=re.compile(r'^(surname|variant of|old variant|abbr\.|erhua variant|used in|\(archaic\)|Japanese variant|see )',re.I)
 def means(ms):
   g=[m for m in ms if not BAD.match(m)] or ms
@@ -14,12 +14,13 @@ names={1:'HSK 1',2:'HSK 2',3:'HSK 3',4:'HSK 4',5:'HSK 5',6:'HSK 6',7:'HSK 7–9'
 seen=set()
 for L in range(1,8):
   d=json.load(open(f'{chv}/wordlists/exclusive/new/{L}.json',encoding='utf8'));W=[]
+  if L in VI: assert len(VI[L])==len(d),(L,len(VI[L]),len(d))
   for i,w in enumerate(d):
     f=w['forms'][0];tr=f['transcriptions'];id=w['simplified']+'|'+tr['numeric'].replace(' ','')
     if id in seen: continue
     seen.add(id)
     r={'id':id,'s':w['simplified'],'t':f['traditional'],'p':tr['pinyin'],'n':tr['numeric'],'m':means(f['meanings']),'r':w.get('radical','')}
-    if L==1: r['v']=vi1[i]
+    if L in VI: r['v']=VI[L][i].strip()
     if len(w['forms'])>1: r['alt']=[x['transcriptions']['pinyin'] for x in w['forms'][1:3]]
     W.append(r);chars.update(w['simplified']);chars.update(f['traditional'])
   json.dump(W,open(f'{out}/hsk{L}.json','w',encoding='utf8'),ensure_ascii=False,separators=(',',':'))

@@ -9,7 +9,7 @@ What each claim rests on: **Checked** = verified in this repo (file read, licenc
 | Official standard GF0025-2021 (《国际中文教育中文水平等级标准》, Ministry of Education PRC, 2021) | Government standard, PDF | **Known.** It is the primary source; the dataset above transcribes it. Not re-checked word by word against the PDF. Levels 7–9 are one band in the standard, which is why the app has one "HSK 7–9" deck. |
 | CC-CEDICT (meanings) | CC BY-SA 4.0 | **Known** (attribution given in app). Meanings are English. |
 
-Vietnamese meanings exist **only for HSK 1** (506 short glosses written for this app, `tools/vi1.txt`). HSK 2 to 7–9 show the English CC-CEDICT meaning and the app says so on the card. This is the main content gap.
+Vietnamese meanings exist for **HSK 1–3** (506 + 750 + 953 = 2,209 short glosses written for this app from the CC-CEDICT senses, `tools/vi1.txt`..`vi3.txt`, one per source-list index; the build asserts the counts match). They are **not reviewed by a native speaker**; polysemous words get the most common learner sense, and some surname/variant entries were glossed by their everyday meaning. HSK 4 to 7–9 still show the English CC-CEDICT meaning and the app says so on the card.
 
 ## 2. Stroke-order data
 | Source | Licence | Status |

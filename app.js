@@ -20,7 +20,7 @@ const other=w=>D.set.script=='t'?w.s:w.t;
 const TONEC=['','t1','t2','t3','t4','t5'];
 function pinyinHTML(w){const p=w.p.split(/\s+/),n=w.n.split(/\s+/);return p.map((s,i)=>{const m=/([1-5])$/.exec(n[i]||'');return`<span class="${TONEC[m?+m[1]:5]}">${esc(s)}</span>`}).join(' ')}
 const meaning=w=>w.v?esc(w.v):esc(w.m.join('; '));
-const meaningSub=w=>w.v?`<span class="muted en">${esc(w.m.join('; '))}</span>`:'<span class="muted en">Nghĩa tiếng Anh (CC-CEDICT). Bản dịch tiếng Việt hiện chỉ có cho HSK 1.</span>';
+const meaningSub=w=>w.v?`<span class="muted en">${esc(w.m.join('; '))}</span>`:'<span class="muted en">Nghĩa tiếng Anh (CC-CEDICT). Bản dịch tiếng Việt hiện có cho HSK 1–3.</span>';
 /* ---------- speech (Web Speech API) ---------- */
 let VOICE=null;function pickVoice(){const v=speechSynthesis.getVoices();VOICE=v.find(x=>/^zh[-_]CN/i.test(x.lang))||v.find(x=>/^zh/i.test(x.lang))||null}
 if('speechSynthesis'in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
@@ -166,7 +166,7 @@ $('#settings').onclick=()=>{const s=D.set,o=(k,v,t)=>`<option value="${v}" ${Str
  const e=$('#early');if(e)e.onclick=async()=>{if(e.dataset.c){D.unlocked[+e.dataset.l]=true;save();await ensureLevels();closeSheet();go('home');toast('Đã mở khoá')}else{e.dataset.c=1;e.textContent='Chạm lần nữa để xác nhận'}};
  $('#exp').onclick=()=>{const b=new Blob([JSON.stringify(D)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='hoc-tieng-trung-'+CORE.dayKey(Date.now())+'.json';a.click()};
  $('#imp').onchange=async ev=>{const f=ev.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!j||typeof j!='object'||!j.srs)throw 0;LS.setItem(CORE.KEY+'-before-import-'+Date.now(),JSON.stringify(D));D=CORE.migrate(j);save();await ensureLevels();closeSheet();go('home');toast('Đã khôi phục')}catch(_){toast('Tệp không hợp lệ')}}};
-function aboutSheet(){sheet(`<h2>Nguồn dữ liệu</h2><ul class="hist"><li>Danh sách từ HSK 3.0 (chuẩn GF0025-2021; cấp 7–9 gộp một nhóm): drkameleon/complete-hsk-vocabulary, giấy phép MIT.</li><li>Pinyin và nghĩa tiếng Anh: CC-CEDICT, CC BY-SA 4.0.</li><li>Nghĩa tiếng Việt HSK 1: biên soạn cho ứng dụng này.</li><li>Thứ tự nét: hanzi-writer (MIT), dữ liệu hanzi-writer-data 2.0.1 từ Make Me a Hanzi graphics (Arphic Public License).</li><li>Bộ thủ, cấu tạo, nghĩa chữ: Make Me a Hanzi dictionary.txt (LGPL-3.0); tên bộ thủ theo tên ký tự Unicode Kangxi.</li><li>Lập lịch: FSRS-6 qua ts-fsrs (MIT).</li></ul>`)}
+function aboutSheet(){sheet(`<h2>Nguồn dữ liệu</h2><ul class="hist"><li>Danh sách từ HSK 3.0 (chuẩn GF0025-2021; cấp 7–9 gộp một nhóm): drkameleon/complete-hsk-vocabulary, giấy phép MIT.</li><li>Pinyin và nghĩa tiếng Anh: CC-CEDICT, CC BY-SA 4.0.</li><li>Nghĩa tiếng Việt HSK 1–3: biên soạn cho ứng dụng này dựa trên nghĩa CC-CEDICT, chưa được người bản ngữ duyệt.</li><li>Thứ tự nét: hanzi-writer (MIT), dữ liệu hanzi-writer-data 2.0.1 từ Make Me a Hanzi graphics (Arphic Public License).</li><li>Bộ thủ, cấu tạo, nghĩa chữ: Make Me a Hanzi dictionary.txt (LGPL-3.0); tên bộ thủ theo tên ký tự Unicode Kangxi.</li><li>Lập lịch: FSRS-6 qua ts-fsrs (MIT).</li></ul>`)}
 /* ---------- theme, SW ---------- */
 function applyTheme(){const t=D.set.theme;document.documentElement.dataset.theme=t=='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):t}
 applyTheme();matchMedia('(prefers-color-scheme: dark)').addEventListener('change',applyTheme);
