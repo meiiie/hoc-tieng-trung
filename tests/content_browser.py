@@ -92,7 +92,9 @@ with sync_playwright() as p:
         page.evaluate('LANG.audioUrls=window.savedAudioUrls')
         page.keyboard.press('Escape')
         page.wait_for_selector('#sheet.hidden', state='attached')
-        offline_navigation = not (kind == 'webkit' and sys.platform == 'win32')
+        # WebKit's offline flag rejects even service-worker responses (Playwright #42775).
+        # offline_browser.py checks both engines with the origin actually stopped.
+        offline_navigation = kind != 'webkit'
         if offline_navigation:
             context.set_offline(True)
             page.reload()
