@@ -17,7 +17,8 @@ FAKE = """async()=>{
   createMediaStreamSource(stream){const node=super.createMediaStreamSource(stream);streamStarts.get(stream)?.();streamStarts.delete(stream);return node}
  };
  const pcm=new Float32Array(await (await fetch('tests/fixtures/tts228.f32')).arrayBuffer());
- navigator.mediaDevices.getUserMedia=async()=>{
+ // WebKit can replace the wrapper; keep the test override on its prototype.
+ Object.getPrototypeOf(navigator.mediaDevices).getUserMedia=async()=>{
   micCalls++;if(micMode==='denied')throw new DOMException('Denied','NotAllowedError');
   const ac=new RealAC();await ac.resume();const dst=ac.createMediaStreamDestination();
   const src=ac.createBufferSource(),buf=ac.createBuffer(1,16000*6,16000);

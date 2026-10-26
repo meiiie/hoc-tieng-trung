@@ -11,7 +11,11 @@
     "navigationCleanup": true,
     "overlayCleanup": true,
     "silenceAndDenial": true,
-    "fallbackCapture": {"speech": true, "backend": "script", "duration": 2.453333333333333},
+    "fallbackCapture": {
+      "speech": true,
+      "backend": "script",
+      "duration": 2.453333333333333
+    },
     "workerFailure": true,
     "modelRemoveReload": true,
     "playbackCancellation": true,
@@ -25,8 +29,22 @@
     "readerSafe": true,
     "iconsComplete": true,
     "flatPinyin": true,
-    "capture": "Unavailable in this browser build; actual capture not tested",
-    "unsupportedMessage": true,
+    "repeatedRecordings": 3,
+    "latePermissionCleanup": true,
+    "cancelCleanup": true,
+    "navigationCleanup": true,
+    "overlayCleanup": true,
+    "silenceAndDenial": true,
+    "fallbackCapture": {
+      "speech": true,
+      "backend": "script",
+      "duration": 2.2523356009070294
+    },
+    "workerFailure": true,
+    "modelRemoveReload": true,
+    "playbackCancellation": true,
+    "noFakeGrades": true,
+    "progressPreserved": true,
     "axeViolations": 0
   }
 ]
