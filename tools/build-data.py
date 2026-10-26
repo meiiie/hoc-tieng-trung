@@ -4,13 +4,15 @@ Extra inputs via env: CVDICT=CVDICT.u8 path, UNIHAN=Unihan_Readings.txt path; Ka
 Build data/ from drkameleon/complete-hsk-vocabulary (MIT; meanings from CC-CEDICT, CC BY-SA 4.0),
 makemeahanzi dictionary.txt and hanzi-writer-data 2.0.1 (Arphic Public License).
 Usage: tools/build-data.py <chv_dir> <makemeahanzi_dictionary.txt> <hanzi-writer-data/package>"""
-import json,sys,os,re,shutil,unicodedata
+import json,sys,os,re,shutil,unicodedata,subprocess
+from content import ROOT, atomic_json, enrich, read_json, short_gloss, validate
+CORRECTIONS=read_json(ROOT/'data/sources/corrections.json')
 chv,dictf,hwd=sys.argv[1:4];out='data'
 VI={L:open(f'tools/vi{L}.txt',encoding='utf8').read().strip().split('|') for L in (1,2,3)}
 BAD=re.compile(r'^(surname|variant of|old variant|abbr\.|erhua variant|used in|\(archaic\)|Japanese variant|see )',re.I)
 def means(ms):
   g=[m for m in ms if not BAD.match(m)] or ms
-  return [m[:80] for m in g[:3]]
+  return g[:3]
 CV={};CV1={}
 for line in open(os.environ['CVDICT'],encoding='utf8'):
   if line.startswith('#'):continue
@@ -39,7 +41,7 @@ def cvmeans(si,num):
       r,_=cvmeans(m.group(1),m.group(2))
       if r:return r,'exact'
   g=[x for x in ss if not VBAD.match(x)] or ss
-  return '; '.join(dict.fromkeys(g[:3])).replace('(văn học)','(văn viết)')[:140],'exact'
+  return '; '.join(dict.fromkeys(g[:3])).replace('(văn học)','(văn viết)'),'exact'
 KAI={c['hanzi']:c for c in json.load(open('data/sources/kaihanzi-characters.json',encoding='utf8'))}
 UV={}
 for line in open(os.environ['UNIHAN'],encoding='utf8'):
@@ -57,7 +59,7 @@ DIS=['level\tword\tours\tcvdict']
 stat={'vi_own':0,'vi_cv':0,'vi_none':0,'hv_full':0,'hv_part':0,'cv_agree':0,'cv_checked':0}
 chars=set();meta={'source':'https://github.com/drkameleon/complete-hsk-vocabulary (commit 7ac65bf, MIT); meanings CC-CEDICT CC BY-SA 4.0','levels':{}}
 names={1:'HSK 1',2:'HSK 2',3:'HSK 3',4:'HSK 4',5:'HSK 5',6:'HSK 6',7:'HSK 7–9'}
-seen=set()
+seen=set();built={}
 for L in range(1,8):
   d=json.load(open(f'{chv}/wordlists/exclusive/new/{L}.json',encoding='utf8'));W=[]
   if L in VI: assert len(VI[L])==len(d),(L,len(VI[L]),len(d))
@@ -87,10 +89,8 @@ for L in range(1,8):
         else:DIS.append(f"{L}\t{w['simplified']}\t{r['v']}\t{cvm}")
         r['vd']=cvm
     elif cvm:
-      parts=cvm.split('; ');sv=parts[0][:60]
-      for x in parts[1:]:
-        if len(sv)+2+len(x)<=60:sv+='; '+x
-        else:break
+      try:sv=short_gloss(cvm,CORRECTIONS['entries'].get(id,{}).get('v'))
+      except ValueError as error:raise ValueError(f'{id}: {error}') from error
       r['v']=sv
       if sv!=cvm:r['vd']=cvm
       r['vs']='cvdict';stat['vi_cv']+=1
@@ -108,8 +108,13 @@ for L in range(1,8):
   SYM=re.compile('\\s*[\U0001F300-\U0001FAFF\u2600-\u27BF\U0001F000-\U0001F2FF\uFE0F]')
   cl=lambda x:SYM.sub('',x) if isinstance(x,str) else [cl(y) for y in x] if isinstance(x,list) else x
   W=[{k:cl(v) for k,v in r.items()} for r in W]
-  json.dump(W,open(f'{out}/hsk{L}.json','w',encoding='utf8'),ensure_ascii=False,separators=(',',':'))
+  built[str(L)]=W
   meta['levels'][L]={'name':names[L],'count':len(W)}
+legacy=read_json(ROOT/'data/sources/legacy-index.json')
+built=enrich(built,legacy,CORRECTIONS)
+validate(built,legacy)
+chars.update(c for words in built.values() for word in words for c in word['s']+word['t'])
+for level,words in built.items():atomic_json(ROOT/f'data/hsk{level}.json',words)
 meta['stats']=stat
 json.dump(meta,open(f'{out}/meta.json','w',encoding='utf8'),ensure_ascii=False)
 info={}
@@ -139,9 +144,14 @@ for c,x in info.items():
     if k.get('mnemonic'):x['mn']=k['mnemonic']
   elif c in UV:x['hv']=UV[c].lower();x['hvq']=1
   if x.get('r') in RADV:x['rv']=RADV[x['r']]
+character_update=read_json(ROOT/'data/sources/character-updates-2026-10-26.json')
+updated_char=character_update['character']
+if updated_char in info:
+  info[updated_char].update(vi=character_update['editorial']['vi'],rv=character_update['editorial']['radicalVietnamese'])
 json.dump(info,open(f'{out}/chars.json','w',encoding='utf8'),ensure_ascii=False,separators=(',',':'))
 os.makedirs(f'{out}/strokes',exist_ok=True);n=0
 for c in chars:
   s=f'{hwd}/{c}.json'
   if os.path.exists(s):shutil.copy(s,f'{out}/strokes/{c}.json');n+=1
-print(stat);open('docs/FORM_FIX.tsv','w').write('\n'.join(FIX));open('docs/VI_DISAGREE.tsv','w').write('\n'.join(DIS));print('words',sum(v['count'] for v in meta['levels'].values()),'chars',len(chars),'strokes',n,'info',len(info))
+print(stat);open('docs/FORM_FIX.tsv','w',encoding='utf8').write('\n'.join(FIX));open('docs/VI_DISAGREE.tsv','w',encoding='utf8').write('\n'.join(DIS));print('words',sum(v['count'] for v in meta['levels'].values()),'chars',len(chars),'strokes',n,'info',len(info))
+subprocess.run([sys.executable,'tools/enrich-data.py','--write'],check=True)

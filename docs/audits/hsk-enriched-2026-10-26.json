@@ -1,0 +1,160 @@
+{
+  "scope": "Read-only inventory of shipped data. Optional source comparison is against supplied source JSON files, not an official HSK completeness certification.",
+  "declaredSource": "https://github.com/drkameleon/complete-hsk-vocabulary (commit 7ac65bf, MIT); meanings CC-CEDICT CC BY-SA 4.0",
+  "totals": {
+    "words": 10969,
+    "uniqueIds": 10969,
+    "uniqueSimplified": 10969,
+    "vietnamese": 10969,
+    "missingVietnamese": 0,
+    "partOfSpeech": 10707,
+    "hanViet": 9225,
+    "hanVietMarkedReference": 4977,
+    "examples": 0,
+    "usedCharacters": 4112,
+    "charactersWithStrokes": 4109,
+    "charactersWithInfo": 4109,
+    "recordedAudioFiles": 21938,
+    "displayedReadingDiffersFromId": 462,
+    "numericPinyinNeedsReview": 0
+  },
+  "levels": [
+    {
+      "level": "1",
+      "count": 506,
+      "metadataCount": 506,
+      "vietnamese": 506,
+      "partOfSpeech": 497,
+      "hanViet": 505,
+      "hanVietMarkedReference": 2,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 506,
+        "m": 506
+      },
+      "fileSha256": "1978b8d6291c0e5589dc823cb6d7d400eb0d7defe6938e20f46d50f5c539a8fc",
+      "orderedIdsSha256": "6e1a92c75f8c6042a7fbf6e677c7d41e19417d4cc73b33d013303d9603a83697",
+      "audioMappingSha256": "02a4144154c70e191ea0dab97886147b6ddb9045c4ab84d80573b4c57707288b"
+    },
+    {
+      "level": "2",
+      "count": 750,
+      "metadataCount": 750,
+      "vietnamese": 750,
+      "partOfSpeech": 730,
+      "hanViet": 732,
+      "hanVietMarkedReference": 92,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 750,
+        "m": 750
+      },
+      "fileSha256": "a220dcca67fd9fad4c681462b0ba881ff5bfce2038e6b8ddea23b2a2ccf24980",
+      "orderedIdsSha256": "3cb365c58691adf53075605dcef2060cf64840599ccba64d6774a2a420adcdb8",
+      "audioMappingSha256": "b46b7e60eae25f3c6cabab97d19ce5d4dfac9a7c825877e38ae1b093c87dcee5"
+    },
+    {
+      "level": "3",
+      "count": 953,
+      "metadataCount": 953,
+      "vietnamese": 953,
+      "partOfSpeech": 947,
+      "hanViet": 907,
+      "hanVietMarkedReference": 386,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 953,
+        "m": 953
+      },
+      "fileSha256": "ecaae9ad75b9f33446328b681757fe1aa0d81d60d3914c1a67682f7b0807895d",
+      "orderedIdsSha256": "4f11fe91c7eec180cc62022576c02e99d6094293761fc48a3345d12b44c9c51b",
+      "audioMappingSha256": "9abc12dcab7753263f7c57d890724da977e2c68ac10a458a6b46b9b86c1e6b0e"
+    },
+    {
+      "level": "4",
+      "count": 972,
+      "metadataCount": 972,
+      "vietnamese": 972,
+      "partOfSpeech": 958,
+      "hanViet": 860,
+      "hanVietMarkedReference": 487,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 972,
+        "m": 972
+      },
+      "fileSha256": "bfb62c81d098a2801c3811b35edae41563f567dd354d01a0b9953cf7dd7d985f",
+      "orderedIdsSha256": "ee50b8f30beef7cadfb8cec628ec0bf1fa3d5b4ffdb51b168f4d845cf4e013a2",
+      "audioMappingSha256": "1c81cd36000dba9516e268cd101ea0d415d3edb841dd1e559f0ca2b8f82f24af"
+    },
+    {
+      "level": "5",
+      "count": 1059,
+      "metadataCount": 1059,
+      "vietnamese": 1059,
+      "partOfSpeech": 1048,
+      "hanViet": 891,
+      "hanVietMarkedReference": 512,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 1059,
+        "m": 1059
+      },
+      "fileSha256": "4bef40635cdff0d3ddeb081b2085af3f7c8fedb84beb67896487fdcba5c14c18",
+      "orderedIdsSha256": "cee5e489c0fa313d299ec35b080dd3ec5c21826f6e05df56c025805893082d97",
+      "audioMappingSha256": "75502b9646bdd0475dce0bf0aa91f68fef4b8f96c4baa49dc26603712b109b56"
+    },
+    {
+      "level": "6",
+      "count": 1123,
+      "metadataCount": 1123,
+      "vietnamese": 1123,
+      "partOfSpeech": 1105,
+      "hanViet": 964,
+      "hanVietMarkedReference": 553,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 1123,
+        "m": 1123
+      },
+      "fileSha256": "501e484712e14a77309015529e26ad2e22c0c85eca1437252a7de25096a87a4e",
+      "orderedIdsSha256": "2403ef7b6898e97d2105a430220510b036520b0d048c44ca8903c3fa169b5739",
+      "audioMappingSha256": "3ae6d470e616652d511f21ea7f4c44ac99e135a5a6693740ecb7cf6b77d853ad"
+    },
+    {
+      "level": "7-9",
+      "count": 5606,
+      "metadataCount": 5606,
+      "vietnamese": 5606,
+      "partOfSpeech": 5422,
+      "hanViet": 4366,
+      "hanVietMarkedReference": 2945,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 5606,
+        "m": 5606
+      },
+      "fileSha256": "d88a54a4c7e303457e22f331f3addbc6c66d051aeb6dad0ff6bc30b8e1262ac7",
+      "orderedIdsSha256": "8432f499c17364eaa306f3b2269b85980a9307e0274adce3d4ce205868e1403b",
+      "audioMappingSha256": "3ccc26ddc60d8cc263e8bb23b199c6c7d4bebcb7bd03174c1fb8136a36af9204"
+    }
+  ],
+  "requiredFieldIssues": [],
+  "duplicateIds": [],
+  "duplicateSimplified": [],
+  "duplicateDisplayedReadings": [],
+  "missingVietnamese": [],
+  "numericPinyinReview": [],
+  "missingAudio": [],
+  "missingStrokes": [
+    "枴",
+    "獃",
+    "薙"
+  ],
+  "missingCharInfo": [
+    "枴",
+    "獃",
+    "薙"
+  ],
+  "sourceComparison": []
+}

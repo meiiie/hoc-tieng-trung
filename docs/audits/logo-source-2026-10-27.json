@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/meiiie/hoc-tu-vung",
+  "commit": "89eedfc66d9b43ce5cf9e876ba14967785de5102",
+  "requestedBy": "User explicitly requested the same project logo",
+  "files": {
+    "icons/icon.svg": "5cdc940b5008b42dfe437a5e9ae14fe297f21497f85690099a1c617d91234ca9",
+    "icons/icon-192.png": "ef88d99cdc8562db15f27cb0cdf2f8fccb13f804fdea485f9fb106c9aa7b555c",
+    "icons/icon-512.png": "e8979a923252dad5ab197a97ba7b4453803f501b6909eeb62a29d5eb066dbf27",
+    "icons/apple-touch-icon.png": "0aa06331ace6fd61ffb6d50168a6e69097ae8dc07cda91c6434599d6b3cf314f",
+    "icons/maskable-192.png": "9818b216c9dc2b8d008bbd0c920187655d115235e722b0afa249f8b2d2faac59",
+    "icons/maskable-512.png": "0e8d5d14ea4995861dc29b44e6954ef0aa89cd4adc37b6d75d63282aa0ffeae2"
+  }
+}

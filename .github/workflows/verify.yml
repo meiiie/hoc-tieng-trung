@@ -1,0 +1,41 @@
+name: Verify learning content
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: pip install playwright==1.62.0 numpy==2.3.2 soundfile==0.14.0
+      - run: python -m playwright install --with-deps chromium webkit
+      - run: npm test && python tests/content_test.py && python tools/verify-content.py --decode
+      - run: python tools/build-curricula.py --check
+      - run: python tests/generator_parity.py
+      - run: python tests/cache_upgrade.py
+      - run: python tests/pwa_metadata.py
+      - name: Browser behavior and accessibility
+        env:
+          AXE: node_modules/axe-core/axe.min.js
+        run: |
+          python tools/serve.py > /tmp/hsk-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in $(seq 1 30); do curl --fail --silent http://127.0.0.1:8931/ > /dev/null && break; sleep 1; done
+          python tests/e2e.py http://127.0.0.1:8931/ all
+          python tests/content_browser.py http://127.0.0.1:8931/
+          python tests/offline_browser.py
+          python tests/curricula_browser.py http://127.0.0.1:8931/
+          python tests/learner_ux_browser.py http://127.0.0.1:8931/ all
+          python tests/model_parity.py http://127.0.0.1:8931/ all

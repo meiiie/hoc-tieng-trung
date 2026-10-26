@@ -1,0 +1,737 @@
+{
+  "scope": "Read-only inventory of shipped data. Optional source comparison is against supplied source JSON files, not an official HSK completeness certification.",
+  "declaredSource": "https://github.com/drkameleon/complete-hsk-vocabulary (commit 7ac65bf, MIT); meanings CC-CEDICT CC BY-SA 4.0",
+  "totals": {
+    "words": 10969,
+    "uniqueIds": 10969,
+    "uniqueSimplified": 10969,
+    "vietnamese": 10933,
+    "missingVietnamese": 36,
+    "partOfSpeech": 10694,
+    "hanViet": 9225,
+    "hanVietMarkedReference": 4977,
+    "examples": 0,
+    "usedCharacters": 4111,
+    "charactersWithStrokes": 4108,
+    "charactersWithInfo": 4108,
+    "recordedAudioFiles": 4418,
+    "displayedReadingDiffersFromId": 420,
+    "numericPinyinNeedsReview": 30
+  },
+  "levels": [
+    {
+      "level": "1",
+      "count": 506,
+      "metadataCount": 506,
+      "vietnamese": 506,
+      "partOfSpeech": 497,
+      "hanViet": 505,
+      "hanVietMarkedReference": 2,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 506,
+        "m": 506
+      },
+      "fileSha256": "b8a5fe6f8feb6ed17dd17ff129172a462ad84987ac7a2e6e40312e136a0da075",
+      "orderedIdsSha256": "6e1a92c75f8c6042a7fbf6e677c7d41e19417d4cc73b33d013303d9603a83697",
+      "audioMappingSha256": "0cd08a47877d9ca7c5300d32faf3159c5fc9a768bb1cf576bf912c19986faea4"
+    },
+    {
+      "level": "2",
+      "count": 750,
+      "metadataCount": 750,
+      "vietnamese": 750,
+      "partOfSpeech": 730,
+      "hanViet": 732,
+      "hanVietMarkedReference": 92,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 750,
+        "m": 750
+      },
+      "fileSha256": "92fd5dbec0746d2ba53f26809fbc582a127179f233708df505151e76bd623b10",
+      "orderedIdsSha256": "3cb365c58691adf53075605dcef2060cf64840599ccba64d6774a2a420adcdb8",
+      "audioMappingSha256": "62286471c242949e46da4414303b224487e972b40018f274a0091c93d50d3d4b"
+    },
+    {
+      "level": "3",
+      "count": 953,
+      "metadataCount": 953,
+      "vietnamese": 953,
+      "partOfSpeech": 947,
+      "hanViet": 907,
+      "hanVietMarkedReference": 386,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 953,
+        "m": 953
+      },
+      "fileSha256": "a075bb4190678a2a1a10ed78c8a67b3e36fa5b32613b448e64f3134bfc6f1683",
+      "orderedIdsSha256": "4f11fe91c7eec180cc62022576c02e99d6094293761fc48a3345d12b44c9c51b",
+      "audioMappingSha256": "d9fad2f2d21427d0a01f8296f369b5ed3d5b59c0ac4c18fbaaa4f39e4b91efac"
+    },
+    {
+      "level": "4",
+      "count": 972,
+      "metadataCount": 972,
+      "vietnamese": 970,
+      "partOfSpeech": 957,
+      "hanViet": 860,
+      "hanVietMarkedReference": 487,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 0,
+        "m": 0
+      },
+      "fileSha256": "5300543005a8d0af423ca69cded5524e0393051992a2d3013e57102af219876d",
+      "orderedIdsSha256": "ee50b8f30beef7cadfb8cec628ec0bf1fa3d5b4ffdb51b168f4d845cf4e013a2",
+      "audioMappingSha256": null
+    },
+    {
+      "level": "5",
+      "count": 1059,
+      "metadataCount": 1059,
+      "vietnamese": 1056,
+      "partOfSpeech": 1048,
+      "hanViet": 891,
+      "hanVietMarkedReference": 512,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 0,
+        "m": 0
+      },
+      "fileSha256": "9cbe0bdf6d445e3ca782f9479cf3c33d8f8ad856082b43934b06c25faf8329ae",
+      "orderedIdsSha256": "cee5e489c0fa313d299ec35b080dd3ec5c21826f6e05df56c025805893082d97",
+      "audioMappingSha256": null
+    },
+    {
+      "level": "6",
+      "count": 1123,
+      "metadataCount": 1123,
+      "vietnamese": 1119,
+      "partOfSpeech": 1103,
+      "hanViet": 964,
+      "hanVietMarkedReference": 553,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 0,
+        "m": 0
+      },
+      "fileSha256": "0e65cbca5d754071d0782767d09d2fdf8f58c1b55811cbdd8306ebe26acc7a54",
+      "orderedIdsSha256": "2403ef7b6898e97d2105a430220510b036520b0d048c44ca8903c3fa169b5739",
+      "audioMappingSha256": null
+    },
+    {
+      "level": "7-9",
+      "count": 5606,
+      "metadataCount": 5606,
+      "vietnamese": 5579,
+      "partOfSpeech": 5412,
+      "hanViet": 4366,
+      "hanVietMarkedReference": 2945,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 0,
+        "m": 0
+      },
+      "fileSha256": "162e9193e62e165b04e8e293f20af2fcf0c59d61070bfc3063c3a1c3b54a032f",
+      "orderedIdsSha256": "8432f499c17364eaa306f3b2269b85980a9307e0274adce3d4ce205868e1403b",
+      "audioMappingSha256": null
+    }
+  ],
+  "requiredFieldIssues": [],
+  "duplicateIds": [],
+  "duplicateSimplified": [],
+  "duplicateDisplayedReadings": [],
+  "missingVietnamese": [
+    {
+      "level": 4,
+      "id": "眼里|yǎnli",
+      "simplified": "眼里",
+      "pinyin": "yǎnli",
+      "english": [
+        "In the eyes"
+      ]
+    },
+    {
+      "level": 4,
+      "id": "有劲儿|yǒujìnr5",
+      "simplified": "有劲儿",
+      "pinyin": "yǒujìnr5",
+      "english": [
+        "Strength"
+      ]
+    },
+    {
+      "level": 5,
+      "id": "城里|chénglǐ",
+      "simplified": "城里",
+      "pinyin": "chénglǐ",
+      "english": [
+        "In the city"
+      ]
+    },
+    {
+      "level": 5,
+      "id": "大伙儿|da4huo3r5",
+      "simplified": "大伙儿",
+      "pinyin": "dà huǒ r",
+      "english": [
+        "everybody",
+        "everyone"
+      ]
+    },
+    {
+      "level": 5,
+      "id": "起到|qi3dao4",
+      "simplified": "起到",
+      "pinyin": "qǐ dào",
+      "english": [
+        "(in an expression of the form 起到…用) to have (a (motivating etc) effect); to play"
+      ]
+    },
+    {
+      "level": 6,
+      "id": "很难说|hen3nánshuō",
+      "simplified": "很难说",
+      "pinyin": "hěn nánshuō",
+      "english": [
+        "Hard to say"
+      ]
+    },
+    {
+      "level": 6,
+      "id": "聊天儿|liao2tian1r5",
+      "simplified": "聊天儿",
+      "pinyin": "liáo tiān r",
+      "english": [
+        "to chat",
+        "to gossip"
+      ]
+    },
+    {
+      "level": 6,
+      "id": "一番|yi4fan1",
+      "simplified": "一番",
+      "pinyin": "yì fān",
+      "english": [
+        "Some"
+      ]
+    },
+    {
+      "level": 6,
+      "id": "指着|zhǐzhe",
+      "simplified": "指着",
+      "pinyin": "zhǐzhe",
+      "english": [
+        "Poke"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "不肯|bu4ken3",
+      "simplified": "不肯",
+      "pinyin": "bù kěn",
+      "english": [
+        "Refuse"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "不利于|bu4lìyú",
+      "simplified": "不利于",
+      "pinyin": "bù lìyú",
+      "english": [
+        "is harmful to"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "不难|bu4nan2",
+      "simplified": "不难",
+      "pinyin": "bù nán",
+      "english": [
+        "Not difficult"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "不如说|bùrúshuo1",
+      "simplified": "不如说",
+      "pinyin": "bùrú shuō",
+      "english": [
+        "rather say"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "不予|bùyǔ",
+      "simplified": "不予",
+      "pinyin": "bùyǔ",
+      "english": [
+        "to withhold, to refuse"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "趁着|chènzhe",
+      "simplified": "趁着",
+      "pinyin": "chènzhe",
+      "english": [
+        "while"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "打盹儿|da3dun3r5",
+      "simplified": "打盹儿",
+      "pinyin": "dǎ dǔn r",
+      "english": [
+        "to doze off"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "大腕儿|da4wan4r5",
+      "simplified": "大腕儿",
+      "pinyin": "dà wàn r",
+      "english": [
+        "(coll.) big name",
+        "(coll.) big shot"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "得意扬扬|de2yi4yang2yang2",
+      "simplified": "得意扬扬",
+      "pinyin": "dé yì yáng yáng",
+      "english": [
+        "variant of 洋"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "定为|ding4wei4",
+      "simplified": "定为",
+      "pinyin": "dìng wèi",
+      "english": [
+        "set to"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "兜儿|dou1r5",
+      "simplified": "兜儿",
+      "pinyin": "dōu r",
+      "english": [
+        "pocket",
+        "bag"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "飞往|fei1wang3",
+      "simplified": "飞往",
+      "pinyin": "fēi wǎng",
+      "english": [
+        "Go to"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "公益性|gōngyìxing4",
+      "simplified": "公益性",
+      "pinyin": "gōngyì xìng",
+      "english": [
+        "Public welfare"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "公寓|gong1yu4",
+      "simplified": "公寓",
+      "pinyin": "gōng yù",
+      "english": [
+        "apartment building",
+        "block of flats"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "怀着|huáizhe",
+      "simplified": "怀着",
+      "pinyin": "huáizhe",
+      "english": [
+        "Be with"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "火暴|huo3bao4",
+      "simplified": "火暴",
+      "pinyin": "huǒ bào",
+      "english": [
+        "variant of 爆"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "老伴儿|lao3ban4r5",
+      "simplified": "老伴儿",
+      "pinyin": "lǎo bàn r",
+      "english": [
+        "(coll.) (of an old couple) husband or wife"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "理科|li3ke1",
+      "simplified": "理科",
+      "pinyin": "lǐ kē",
+      "english": [
+        "the sciences (as opposed to the humanities 科)"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "难以想象|nányǐxiǎngxiàng",
+      "simplified": "难以想象",
+      "pinyin": "nányǐxiǎngxiàng",
+      "english": [
+        "Unimaginable"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "说起来|shuo1qǐlái",
+      "simplified": "说起来",
+      "pinyin": "shuō qǐlái",
+      "english": [
+        "Say"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "四季|si4ji4",
+      "simplified": "四季",
+      "pinyin": "sì jì",
+      "english": [
+        "four seasons, namely: spring 春, summer 夏, autumn 秋 and winter 冬"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "玩意儿|wan2yi4r5",
+      "simplified": "玩意儿",
+      "pinyin": "wán yì r",
+      "english": [
+        "toy",
+        "thing",
+        "trick"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "无可厚非|wu2ke3hou4fei1",
+      "simplified": "无可厚非",
+      "pinyin": "wú kě hòu fēi",
+      "english": [
+        "see 非"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "下功夫|xia4gong1fu5",
+      "simplified": "下功夫",
+      "pinyin": "xià gōng fu",
+      "english": [
+        "see 夫"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "矣|yi3",
+      "simplified": "矣",
+      "pinyin": "yǐ",
+      "english": [
+        "classical final particle, similar to modern 了"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "着眼于|zhuóyǎnyu2",
+      "simplified": "着眼于",
+      "pinyin": "zhuóyǎn yú",
+      "english": [
+        "Focus on"
+      ]
+    },
+    {
+      "level": 7,
+      "id": "致力于|zhìlìyú",
+      "simplified": "致力于",
+      "pinyin": "zhìlìyú",
+      "english": [
+        "Dedicate"
+      ]
+    }
+  ],
+  "numericPinyinReview": [
+    {
+      "level": 1,
+      "id": "真的|zhen1de",
+      "pinyin": "zhēn de",
+      "numeric": "zhen1 de"
+    },
+    {
+      "level": 2,
+      "id": "不一会儿|bu4yīhuǐr5",
+      "pinyin": "bù yīhuǐr5",
+      "numeric": "bu4 yīhuǐr5"
+    },
+    {
+      "level": 2,
+      "id": "见过|jiànguò",
+      "pinyin": "jiànguò",
+      "numeric": "jiànguò"
+    },
+    {
+      "level": 2,
+      "id": "笑话儿|xiàohuar5",
+      "pinyin": "xiàohuar5",
+      "numeric": "xiàohuar5"
+    },
+    {
+      "level": 2,
+      "id": "有空儿|yǒukòngr5",
+      "pinyin": "yǒukòngr5",
+      "numeric": "yǒukòngr5"
+    },
+    {
+      "level": 2,
+      "id": "这时候|zhe4shíhòu",
+      "pinyin": "zhè shíhòu",
+      "numeric": "zhe4 shíhòu"
+    },
+    {
+      "level": 3,
+      "id": "能不能|neng2bùnéng",
+      "pinyin": "néng bùnéng",
+      "numeric": "neng2 bùnéng"
+    },
+    {
+      "level": 4,
+      "id": "电动车|diàndòngchē",
+      "pinyin": "diàndòngchē",
+      "numeric": "diàndòngchē"
+    },
+    {
+      "level": 4,
+      "id": "没法儿|méifǎr5",
+      "pinyin": "méifǎr5",
+      "numeric": "méifǎr5"
+    },
+    {
+      "level": 4,
+      "id": "名牌儿|míngpáir5",
+      "pinyin": "míngpáir5",
+      "numeric": "míngpáir5"
+    },
+    {
+      "level": 4,
+      "id": "眼里|yǎnli",
+      "pinyin": "yǎnli",
+      "numeric": "yǎnli"
+    },
+    {
+      "level": 4,
+      "id": "有劲儿|yǒujìnr5",
+      "pinyin": "yǒujìnr5",
+      "numeric": "yǒujìnr5"
+    },
+    {
+      "level": 5,
+      "id": "城里|chénglǐ",
+      "pinyin": "chénglǐ",
+      "numeric": "chénglǐ"
+    },
+    {
+      "level": 5,
+      "id": "胡同儿|hútòngr5",
+      "pinyin": "hútòngr5",
+      "numeric": "hútòngr5"
+    },
+    {
+      "level": 5,
+      "id": "小偷儿|xiǎotōur5",
+      "pinyin": "xiǎotōur5",
+      "numeric": "xiǎotōur5"
+    },
+    {
+      "level": 6,
+      "id": "很难说|hen3nánshuō",
+      "pinyin": "hěn nánshuō",
+      "numeric": "hen3 nánshuō"
+    },
+    {
+      "level": 6,
+      "id": "指着|zhǐzhe",
+      "pinyin": "zhǐzhe",
+      "numeric": "zhǐzhe"
+    },
+    {
+      "level": 7,
+      "id": "不利于|bu4lìyú",
+      "pinyin": "bù lìyú",
+      "numeric": "bu4 lìyú"
+    },
+    {
+      "level": 7,
+      "id": "不如说|bùrúshuo1",
+      "pinyin": "bùrú shuō",
+      "numeric": "bùrú shuo1"
+    },
+    {
+      "level": 7,
+      "id": "不予|bùyǔ",
+      "pinyin": "bùyǔ",
+      "numeric": "bùyǔ"
+    },
+    {
+      "level": 7,
+      "id": "趁着|chènzhe",
+      "pinyin": "chènzhe",
+      "numeric": "chènzhe"
+    },
+    {
+      "level": 7,
+      "id": "大笔|dàbǐ",
+      "pinyin": "dàbǐ",
+      "numeric": "dàbǐ"
+    },
+    {
+      "level": 7,
+      "id": "公益性|gōngyìxing4",
+      "pinyin": "gōngyì xìng",
+      "numeric": "gōngyì xing4"
+    },
+    {
+      "level": 7,
+      "id": "怀着|huáizhe",
+      "pinyin": "huáizhe",
+      "numeric": "huáizhe"
+    },
+    {
+      "level": 7,
+      "id": "离谱儿|li2pǔr5",
+      "pinyin": "lí pǔr5",
+      "numeric": "li2 pǔr5"
+    },
+    {
+      "level": 7,
+      "id": "难以想象|nányǐxiǎngxiàng",
+      "pinyin": "nányǐxiǎngxiàng",
+      "numeric": "nányǐxiǎngxiàng"
+    },
+    {
+      "level": 7,
+      "id": "说起来|shuo1qǐlái",
+      "pinyin": "shuō qǐlái",
+      "numeric": "shuo1 qǐlái"
+    },
+    {
+      "level": 7,
+      "id": "贪玩儿|tan1wánr5",
+      "pinyin": "tān wánr5",
+      "numeric": "tan1 wánr5"
+    },
+    {
+      "level": 7,
+      "id": "着眼于|zhuóyǎnyu2",
+      "pinyin": "zhuóyǎn yú",
+      "numeric": "zhuóyǎn yu2"
+    },
+    {
+      "level": 7,
+      "id": "致力于|zhìlìyú",
+      "pinyin": "zhìlìyú",
+      "numeric": "zhìlìyú"
+    }
+  ],
+  "missingAudio": [],
+  "missingStrokes": [
+    "枴",
+    "獃",
+    "薙"
+  ],
+  "missingCharInfo": [
+    "枴",
+    "獃",
+    "薙"
+  ],
+  "sourceComparison": [
+    {
+      "level": 1,
+      "sourceCount": 506,
+      "shippedCount": 506,
+      "sourceSha256": "7ebcdbd2548ebdcf2413713d975ce095065f0f3447a5967e9caa4f4bf3d82c26",
+      "idsAndOrderMatch": true,
+      "missingIds": [],
+      "extraIds": []
+    },
+    {
+      "level": 2,
+      "sourceCount": 750,
+      "shippedCount": 750,
+      "sourceSha256": "77f325f8a664a6179e664a94e810c36c134963a8cc575cc2b6a8e3eed2342997",
+      "idsAndOrderMatch": true,
+      "missingIds": [],
+      "extraIds": []
+    },
+    {
+      "level": 3,
+      "sourceCount": 953,
+      "shippedCount": 953,
+      "sourceSha256": "ee322faf86bab14d719f356748b3adb4f07000d8dfa6e73d3ba60cefa938f0d5",
+      "idsAndOrderMatch": true,
+      "missingIds": [],
+      "extraIds": []
+    },
+    {
+      "level": 4,
+      "sourceCount": 972,
+      "shippedCount": 972,
+      "sourceSha256": "7e0695b3e62174f646b9dd588424b7c2c0a38d2d33e7368e52fbc93ca770c9b3",
+      "idsAndOrderMatch": true,
+      "missingIds": [],
+      "extraIds": []
+    },
+    {
+      "level": 5,
+      "sourceCount": 1059,
+      "shippedCount": 1059,
+      "sourceSha256": "4e76a8ff6cd8755c6be61268bd102d08b4182f52d49202a8dea37fcc2dd0e5bf",
+      "idsAndOrderMatch": true,
+      "missingIds": [],
+      "extraIds": []
+    },
+    {
+      "level": 6,
+      "sourceCount": 1123,
+      "shippedCount": 1123,
+      "sourceSha256": "03cac80f1bee6433dddbc1d83c77c582ea6f5ba5b47bcd83ff266b03d2ac2ee7",
+      "idsAndOrderMatch": true,
+      "missingIds": [],
+      "extraIds": []
+    },
+    {
+      "level": 7,
+      "sourceCount": 5606,
+      "shippedCount": 5606,
+      "sourceSha256": "8f74a29b946dc724ebf54d9b7290ffe575fbf785346390606304a9cbaa3ddb48",
+      "idsAndOrderMatch": true,
+      "missingIds": [],
+      "extraIds": []
+    }
+  ]
+}

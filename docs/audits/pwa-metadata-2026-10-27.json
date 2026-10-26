@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/",
+    "identityUnchanged": true,
+    "manifestErrors": [],
+    "installabilityErrors": []
+  },
+  {
+    "path": "/hoc-tieng-trung/",
+    "identityUnchanged": true,
+    "manifestErrors": [],
+    "installabilityErrors": []
+  }
+]

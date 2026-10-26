@@ -40,11 +40,11 @@ async function run(pcm,n){await load();const {mel:M,frames}=mel(pcm),res=[];cons
   res.push({top,sp,tone:[tp[1],tp[2],tp[3],tp[4],tp[0]].map(v=>+v.toFixed(4))})} /* tone order 1,2,3,4,neutral */
  return {res,frames,vocab:V}}
 onmessage=async e=>{const m=e.data;try{
- if(m.type=='status'){const c=await caches.open(CACHE);const ok=!!(await c.match(MODEL));postMessage({type:'status',cached:ok,ready:!!sess})}
- else if(m.type=='load'){await load((got,total)=>postMessage({type:'prog',got,total}));postMessage({type:'loaded'})}
+ if(m.type=='status'){const c=await caches.open(CACHE);const ok=!!(await c.match(MODEL))&&!!(await c.match(VOCAB))&&!!(await c.match(new URL('vendor/ort/ort-wasm-simd-threaded.wasm',self.location).href));postMessage({type:'status',id:m.id,cached:ok,ready:!!sess})}
+ else if(m.type=='load'){await load((got,total)=>postMessage({type:'prog',got,total}));postMessage({type:'loaded',id:m.id})}
  else if(m.type=='run'){const t0=Date.now();const r=await run(m.pcm,m.n);
   /* return only what the page needs: per syllable top-5, prob of each requested target, tone probs */
   const idx=s=>{const i=r.vocab.indexOf(s);return i<0?-1:i+2};
   postMessage({type:'res',id:m.id,ms:Date.now()-t0,syl:r.res.map((x,k)=>({top:x.top,pTarget:idx(m.targets[k])>=0?+x.sp[idx(m.targets[k])].toFixed(4):null,known:idx(m.targets[k])>=0,tone:x.tone}))})}
- else if(m.type=='forget'){await caches.delete(CACHE);sess=null;loading=null;postMessage({type:'status',cached:false,ready:false})}
+ else if(m.type=='forget'){await caches.delete(CACHE);sess=null;loading=null;postMessage({type:'status',id:m.id,cached:false,ready:false})}
 }catch(err){postMessage({type:'err',id:m.id,msg:String(err&&err.message||err)})}};

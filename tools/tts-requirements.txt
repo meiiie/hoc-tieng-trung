@@ -1,0 +1,7 @@
+# Use Python 3.12. Install torch 2.6.0 separately for CPU or CUDA 12.4.
+kokoro==0.9.4
+misaki[zh]==0.9.4
+pypinyin==0.55.0
+soundfile==0.13.1
+numpy==2.5.4
+transformers==4.51.3

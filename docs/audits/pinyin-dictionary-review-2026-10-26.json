@@ -1,0 +1,189 @@
+{
+  "purpose": "Candidate differences only, not confirmed errors; dictionary variants and neutral tones require contextual review. No automatic corrections applied.",
+  "source": "CC-CEDICT 2026-10-26; CC BY-SA 4.0",
+  "total": 14,
+  "rows": [
+    {
+      "level": "1",
+      "id": "是不是|shi4bu4shi4",
+      "simplified": "是不是",
+      "numeric": "shi4 bu4 shi4",
+      "vietnamese": "có phải không",
+      "dictionary": [
+        {
+          "reading": "shi4 bu5 shi4",
+          "meaning": "/is or is not (used to form yes-no questions)/"
+        }
+      ]
+    },
+    {
+      "level": "4",
+      "id": "两边|liang3bian5",
+      "simplified": "两边",
+      "numeric": "liang3 bian5",
+      "vietnamese": "mỗi bên; cả hai bên",
+      "dictionary": [
+        {
+          "reading": "liang3 bian1",
+          "meaning": "/either side; both sides/"
+        }
+      ]
+    },
+    {
+      "level": "5",
+      "id": "码头|ma3tou2",
+      "simplified": "码头",
+      "numeric": "ma3 tou2",
+      "vietnamese": "bến tàu; bến cảng; cầu tàu",
+      "dictionary": [
+        {
+          "reading": "ma3 tou5",
+          "meaning": "/wharf; dock; quay; pier/"
+        }
+      ]
+    },
+    {
+      "level": "6",
+      "id": "看得见|kan4de2jian4",
+      "simplified": "看得见",
+      "numeric": "kan4 de2 jian4",
+      "vietnamese": "có thể thấy; nhìn thấy",
+      "dictionary": [
+        {
+          "reading": "kan4 de5 jian4",
+          "meaning": "/to be able to see; can see/"
+        }
+      ]
+    },
+    {
+      "level": "7",
+      "id": "帮手|bang1shou3",
+      "simplified": "帮手",
+      "numeric": "bang1 shou3",
+      "vietnamese": "người phụ giúp; trợ lý",
+      "dictionary": [
+        {
+          "reading": "bang1 shou5",
+          "meaning": "/helper; assistant/"
+        }
+      ]
+    },
+    {
+      "level": "7",
+      "id": "吩咐|fen1fu4",
+      "simplified": "吩咐",
+      "numeric": "fen1 fu4",
+      "vietnamese": "bảo; hướng dẫn; ra lệnh",
+      "dictionary": [
+        {
+          "reading": "fen1 fu5",
+          "meaning": "/to tell; to instruct; to command/"
+        }
+      ]
+    },
+    {
+      "level": "7",
+      "id": "风筝|feng1zheng1",
+      "simplified": "风筝",
+      "numeric": "feng1 zheng1",
+      "vietnamese": "diều",
+      "dictionary": [
+        {
+          "reading": "feng1 zheng5",
+          "meaning": "/kite (lit. \"wind zither\", traditionally explained as being named after kites fitted with bamboo whistles that produced musical sounds when flown)/"
+        }
+      ]
+    },
+    {
+      "level": "7",
+      "id": "懒得|lan3de2",
+      "simplified": "懒得",
+      "numeric": "lan3 de2",
+      "vietnamese": "không cảm thấy muốn (làm gì đó); không có hứng",
+      "dictionary": [
+        {
+          "reading": "lan3 de5",
+          "meaning": "/to not feel like (doing sth); to be disinclined to/"
+        }
+      ]
+    },
+    {
+      "level": "7",
+      "id": "名气|ming2qi4",
+      "simplified": "名气",
+      "numeric": "ming2 qi4",
+      "vietnamese": "danh tiếng; tên tuổi",
+      "dictionary": [
+        {
+          "reading": "ming2 qi5",
+          "meaning": "/reputation; fame/"
+        }
+      ]
+    },
+    {
+      "level": "7",
+      "id": "忘不了|wang4bu4liao3",
+      "simplified": "忘不了",
+      "numeric": "wang4 bu4 liao3",
+      "vietnamese": "không thể quên",
+      "dictionary": [
+        {
+          "reading": "wang4 bu5 liao3",
+          "meaning": "/cannot forget/"
+        }
+      ]
+    },
+    {
+      "level": "7",
+      "id": "泄露|xie4lu4",
+      "simplified": "泄露",
+      "numeric": "xie4 lu4",
+      "vietnamese": "rò rỉ (thông tin); tiết lộ",
+      "dictionary": [
+        {
+          "reading": "xie4 lou4",
+          "meaning": "/to leak (information); to divulge/also pr. [xie4lu4]/"
+        }
+      ]
+    },
+    {
+      "level": "7",
+      "id": "延误|yan2wu5",
+      "simplified": "延误",
+      "numeric": "yan2 wu5",
+      "vietnamese": "hoãn lại (gây hậu quả đáng tiếc)",
+      "dictionary": [
+        {
+          "reading": "yan2 wu4",
+          "meaning": "/to postpone (with unfortunate consequences); to take too long (to do sth); to miss (a deadline or window of opportunity)/"
+        }
+      ]
+    },
+    {
+      "level": "7",
+      "id": "阎王|Yan2wang2",
+      "simplified": "阎王",
+      "numeric": "Yan2 wang2",
+      "vietnamese": "(Phật giáo) Diêm Vương, Vua Địa Ngục",
+      "dictionary": [
+        {
+          "reading": "Yan2 wang5",
+          "meaning": "/(Buddhism) Yama, the King of Hell/(fig.) cruel and tyrannical person/"
+        }
+      ]
+    },
+    {
+      "level": "7",
+      "id": "嘱咐|zhu3fu4",
+      "simplified": "嘱咐",
+      "numeric": "zhu3 fu4",
+      "vietnamese": "dặn dò; căn dặn",
+      "dictionary": [
+        {
+          "reading": "zhu3 fu5",
+          "meaning": "/to urge; to exhort/"
+        }
+      ]
+    }
+  ]
+}

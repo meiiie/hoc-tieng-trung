@@ -1,0 +1,2977 @@
+{
+  "scope": "Read-only inventory of shipped data. Optional source comparison is against supplied source JSON files, not an official HSK completeness certification.",
+  "declaredSource": "https://github.com/drkameleon/complete-hsk-vocabulary (commit 7ac65bf, MIT); meanings CC-CEDICT CC BY-SA 4.0",
+  "totals": {
+    "words": 12387,
+    "uniqueIds": 12387,
+    "uniqueSimplified": 12169,
+    "vietnamese": 12387,
+    "missingVietnamese": 0,
+    "partOfSpeech": 12120,
+    "hanViet": 10044,
+    "hanVietMarkedReference": 5796,
+    "examples": 0,
+    "usedCharacters": 4304,
+    "charactersWithStrokes": 4304,
+    "charactersWithInfo": 4304,
+    "recordedAudioFiles": 24774,
+    "displayedReadingDiffersFromId": 506,
+    "numericPinyinNeedsReview": 0
+  },
+  "levels": [
+    {
+      "level": "1",
+      "count": 506,
+      "metadataCount": 506,
+      "vietnamese": 506,
+      "partOfSpeech": 497,
+      "hanViet": 505,
+      "hanVietMarkedReference": 2,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 506,
+        "m": 506
+      },
+      "fileSha256": "214b727e6ce606c921493ef2cb601481dddb072cd3c5a3b11d1807cc9c1d1ca3",
+      "orderedIdsSha256": "6e1a92c75f8c6042a7fbf6e677c7d41e19417d4cc73b33d013303d9603a83697",
+      "audioMappingSha256": "94e099e0a84fd010272f62b23bee1054ba5b49f35bdf69d4be3f411f4e0899ae"
+    },
+    {
+      "level": "2",
+      "count": 750,
+      "metadataCount": 750,
+      "vietnamese": 750,
+      "partOfSpeech": 730,
+      "hanViet": 732,
+      "hanVietMarkedReference": 92,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 750,
+        "m": 750
+      },
+      "fileSha256": "b3cbb0d632469ff8acad4c95d8594b06431781dc6de66d42bf68ee536bf26ec1",
+      "orderedIdsSha256": "3cb365c58691adf53075605dcef2060cf64840599ccba64d6774a2a420adcdb8",
+      "audioMappingSha256": "2f1961d0cbfd4452bf8716d7b42c9842ab71550358470ef279350c19d1f80572"
+    },
+    {
+      "level": "3",
+      "count": 953,
+      "metadataCount": 953,
+      "vietnamese": 953,
+      "partOfSpeech": 947,
+      "hanViet": 907,
+      "hanVietMarkedReference": 386,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 953,
+        "m": 953
+      },
+      "fileSha256": "f8adeca2874c10d57feae17d956d47a82ff5b02fcb956926e89794d136d06121",
+      "orderedIdsSha256": "4f11fe91c7eec180cc62022576c02e99d6094293761fc48a3345d12b44c9c51b",
+      "audioMappingSha256": "9abc12dcab7753263f7c57d890724da977e2c68ac10a458a6b46b9b86c1e6b0e"
+    },
+    {
+      "level": "4",
+      "count": 972,
+      "metadataCount": 972,
+      "vietnamese": 972,
+      "partOfSpeech": 958,
+      "hanViet": 860,
+      "hanVietMarkedReference": 487,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 972,
+        "m": 972
+      },
+      "fileSha256": "ada3d42d927eb8960eea7ab10349266bd667bdc2f3911f80ff0e89ca1e27ac47",
+      "orderedIdsSha256": "ee50b8f30beef7cadfb8cec628ec0bf1fa3d5b4ffdb51b168f4d845cf4e013a2",
+      "audioMappingSha256": "7b992b6e989dd2d8a87d5bd1d20f2434f31bcb4d9cd8ccffdcead4b76220c7a3"
+    },
+    {
+      "level": "5",
+      "count": 1059,
+      "metadataCount": 1059,
+      "vietnamese": 1059,
+      "partOfSpeech": 1048,
+      "hanViet": 891,
+      "hanVietMarkedReference": 512,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 1059,
+        "m": 1059
+      },
+      "fileSha256": "4bef40635cdff0d3ddeb081b2085af3f7c8fedb84beb67896487fdcba5c14c18",
+      "orderedIdsSha256": "cee5e489c0fa313d299ec35b080dd3ec5c21826f6e05df56c025805893082d97",
+      "audioMappingSha256": "75502b9646bdd0475dce0bf0aa91f68fef4b8f96c4baa49dc26603712b109b56"
+    },
+    {
+      "level": "6",
+      "count": 1123,
+      "metadataCount": 1123,
+      "vietnamese": 1123,
+      "partOfSpeech": 1105,
+      "hanViet": 964,
+      "hanVietMarkedReference": 553,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 1123,
+        "m": 1123
+      },
+      "fileSha256": "be27cb6536275f148d7b62fd650aef4cc2af8e3d2eaadee5d4b80e5806120859",
+      "orderedIdsSha256": "2403ef7b6898e97d2105a430220510b036520b0d048c44ca8903c3fa169b5739",
+      "audioMappingSha256": "d4125d37920bc779f908dfcfbd369420dcf6cdd64142a79039d93d4cf05ef9e4"
+    },
+    {
+      "level": "7-9",
+      "count": 5606,
+      "metadataCount": 5606,
+      "vietnamese": 5606,
+      "partOfSpeech": 5422,
+      "hanViet": 4366,
+      "hanVietMarkedReference": 2945,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 5606,
+        "m": 5606
+      },
+      "fileSha256": "3568368b4a21c2dc51789d677be824c2155ba3e578c6760fde571ab7e38d5cea",
+      "orderedIdsSha256": "8432f499c17364eaa306f3b2269b85980a9307e0274adce3d4ce205868e1403b",
+      "audioMappingSha256": "3ccc26ddc60d8cc263e8bb23b199c6c7d4bebcb7bd03174c1fb8136a36af9204"
+    },
+    {
+      "level": "-extra",
+      "count": 1418,
+      "metadataCount": 1418,
+      "vietnamese": 1418,
+      "partOfSpeech": 1413,
+      "hanViet": 819,
+      "hanVietMarkedReference": 819,
+      "examples": 0,
+      "recordedAudioFiles": {
+        "f": 1418,
+        "m": 1418
+      },
+      "fileSha256": "217ca0456775ebbf3465b776f5de55382d5f18d8464f69d83c48028dadb213e0",
+      "orderedIdsSha256": "b7c4835b07391c2eef2bff76324f332cd3b1704a27588ae29fce93173e9b4032",
+      "audioMappingSha256": "e0c4e547b26f2108ba8af15c4f6df3e31c7ef58f5e02b79f752b427db055d99f"
+    }
+  ],
+  "requiredFieldIssues": [],
+  "duplicateIds": [],
+  "duplicateSimplified": [
+    {
+      "key": "别人",
+      "entries": [
+        {
+          "level": 1,
+          "id": "别人|bie2ren5"
+        },
+        {
+          "level": "-extra",
+          "id": "别人|bie2ren2"
+        }
+      ]
+    },
+    {
+      "key": "地",
+      "entries": [
+        {
+          "level": 1,
+          "id": "地|de5"
+        },
+        {
+          "level": "-extra",
+          "id": "地|di4"
+        }
+      ]
+    },
+    {
+      "key": "地方",
+      "entries": [
+        {
+          "level": 1,
+          "id": "地方|di4fang1"
+        },
+        {
+          "level": "-extra",
+          "id": "地方|di4fang1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "干",
+      "entries": [
+        {
+          "level": 1,
+          "id": "干|gan1"
+        },
+        {
+          "level": "-extra",
+          "id": "干|gan1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "过",
+      "entries": [
+        {
+          "level": 1,
+          "id": "过|Guo1"
+        },
+        {
+          "level": "-extra",
+          "id": "过|guo4"
+        }
+      ]
+    },
+    {
+      "key": "还",
+      "entries": [
+        {
+          "level": 1,
+          "id": "还|Huan2"
+        },
+        {
+          "level": "-extra",
+          "id": "还|huan2"
+        }
+      ]
+    },
+    {
+      "key": "好",
+      "entries": [
+        {
+          "level": 1,
+          "id": "好|hao3"
+        },
+        {
+          "level": "-extra",
+          "id": "好|hao4"
+        }
+      ]
+    },
+    {
+      "key": "回来",
+      "entries": [
+        {
+          "level": 1,
+          "id": "回来|hui2lai5"
+        },
+        {
+          "level": "-extra",
+          "id": "回来|hui2lai2"
+        }
+      ]
+    },
+    {
+      "key": "回去",
+      "entries": [
+        {
+          "level": 1,
+          "id": "回去|hui2qu5"
+        },
+        {
+          "level": "-extra",
+          "id": "回去|hui2qu4"
+        }
+      ]
+    },
+    {
+      "key": "看",
+      "entries": [
+        {
+          "level": 1,
+          "id": "看|kan1"
+        },
+        {
+          "level": "-extra",
+          "id": "看|kan1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "那边",
+      "entries": [
+        {
+          "level": 1,
+          "id": "那边|na4bian5"
+        },
+        {
+          "level": "-extra",
+          "id": "那边|na4bian1"
+        }
+      ]
+    },
+    {
+      "key": "那里",
+      "entries": [
+        {
+          "level": 1,
+          "id": "那里|na4li5"
+        },
+        {
+          "level": "-extra",
+          "id": "那里|na4li3"
+        }
+      ]
+    },
+    {
+      "key": "起来",
+      "entries": [
+        {
+          "level": 1,
+          "id": "起来|qi3lai5"
+        },
+        {
+          "level": "-extra",
+          "id": "起来|qi3lai2"
+        }
+      ]
+    },
+    {
+      "key": "谁",
+      "entries": [
+        {
+          "level": 1,
+          "id": "谁|shei2"
+        },
+        {
+          "level": "-extra",
+          "id": "谁|shui2"
+        }
+      ]
+    },
+    {
+      "key": "网上",
+      "entries": [
+        {
+          "level": 1,
+          "id": "网上|wang3shang4"
+        },
+        {
+          "level": "-extra",
+          "id": "网上|wang3shang5"
+        }
+      ]
+    },
+    {
+      "key": "小姐",
+      "entries": [
+        {
+          "level": 1,
+          "id": "小姐|xiao3jie5"
+        },
+        {
+          "level": "-extra",
+          "id": "小姐|xiao3jie3"
+        }
+      ]
+    },
+    {
+      "key": "行",
+      "entries": [
+        {
+          "level": 1,
+          "id": "行|hang2"
+        },
+        {
+          "level": "-extra",
+          "id": "行|hang2|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "学生",
+      "entries": [
+        {
+          "level": 1,
+          "id": "学生|xue2sheng5"
+        },
+        {
+          "level": "-extra",
+          "id": "学生|xue2sheng1"
+        }
+      ]
+    },
+    {
+      "key": "着",
+      "entries": [
+        {
+          "level": 1,
+          "id": "着|zhao1"
+        },
+        {
+          "level": "-extra",
+          "id": "着|zhao2"
+        }
+      ]
+    },
+    {
+      "key": "中",
+      "entries": [
+        {
+          "level": 1,
+          "id": "中|Zhong1"
+        },
+        {
+          "level": "-extra",
+          "id": "中|zhong4"
+        }
+      ]
+    },
+    {
+      "key": "重",
+      "entries": [
+        {
+          "level": 1,
+          "id": "重|chong2"
+        },
+        {
+          "level": "-extra",
+          "id": "重|chong2|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "子",
+      "entries": [
+        {
+          "level": 1,
+          "id": "子|zi3"
+        },
+        {
+          "level": "-extra",
+          "id": "子|zi5"
+        }
+      ]
+    },
+    {
+      "key": "啊",
+      "entries": [
+        {
+          "level": 2,
+          "id": "啊|a1"
+        },
+        {
+          "level": "-extra",
+          "id": "啊|a5"
+        },
+        {
+          "level": "-extra",
+          "id": "啊|a1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "背",
+      "entries": [
+        {
+          "level": 2,
+          "id": "背|bei1"
+        },
+        {
+          "level": "-extra",
+          "id": "背|bei1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "当",
+      "entries": [
+        {
+          "level": 2,
+          "id": "当|dang1"
+        },
+        {
+          "level": "-extra",
+          "id": "当|dang4"
+        }
+      ]
+    },
+    {
+      "key": "倒",
+      "entries": [
+        {
+          "level": 2,
+          "id": "倒|dao3"
+        },
+        {
+          "level": "-extra",
+          "id": "倒|dao4"
+        }
+      ]
+    },
+    {
+      "key": "道理",
+      "entries": [
+        {
+          "level": 2,
+          "id": "道理|dao4li5"
+        },
+        {
+          "level": "-extra",
+          "id": "道理|dao4li3"
+        }
+      ]
+    },
+    {
+      "key": "得",
+      "entries": [
+        {
+          "level": 2,
+          "id": "得|de2"
+        },
+        {
+          "level": "-extra",
+          "id": "得|de5"
+        },
+        {
+          "level": "-extra",
+          "id": "得|dei3"
+        }
+      ]
+    },
+    {
+      "key": "刚刚",
+      "entries": [
+        {
+          "level": 2,
+          "id": "刚刚|gang1gang5"
+        },
+        {
+          "level": "-extra",
+          "id": "刚刚|gang1gang1"
+        }
+      ]
+    },
+    {
+      "key": "好处",
+      "entries": [
+        {
+          "level": 2,
+          "id": "好处|hao3chu3"
+        },
+        {
+          "level": "-extra",
+          "id": "好处|hao3chu4"
+        }
+      ]
+    },
+    {
+      "key": "坏处",
+      "entries": [
+        {
+          "level": 2,
+          "id": "坏处|huai4chu5"
+        },
+        {
+          "level": "-extra",
+          "id": "坏处|huai4chu4"
+        }
+      ]
+    },
+    {
+      "key": "结果",
+      "entries": [
+        {
+          "level": 2,
+          "id": "结果|jie1guo3"
+        },
+        {
+          "level": "-extra",
+          "id": "结果|jie1guo3|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "卡",
+      "entries": [
+        {
+          "level": 2,
+          "id": "卡|ka3"
+        },
+        {
+          "level": "-extra",
+          "id": "卡|qia3"
+        }
+      ]
+    },
+    {
+      "key": "老是",
+      "entries": [
+        {
+          "level": 2,
+          "id": "老是|lao3shi5"
+        },
+        {
+          "level": "-extra",
+          "id": "老是|lao3shi4"
+        }
+      ]
+    },
+    {
+      "key": "留下",
+      "entries": [
+        {
+          "level": 2,
+          "id": "留下|liu2xia4"
+        },
+        {
+          "level": "-extra",
+          "id": "留下|liu2xia5"
+        }
+      ]
+    },
+    {
+      "key": "熟",
+      "entries": [
+        {
+          "level": 2,
+          "id": "熟|shu2"
+        },
+        {
+          "level": "-extra",
+          "id": "熟|shou2"
+        }
+      ]
+    },
+    {
+      "key": "数",
+      "entries": [
+        {
+          "level": 2,
+          "id": "数|shu3"
+        },
+        {
+          "level": "-extra",
+          "id": "数|shu4"
+        }
+      ]
+    },
+    {
+      "key": "太阳",
+      "entries": [
+        {
+          "level": 2,
+          "id": "太阳|tai4yang5"
+        },
+        {
+          "level": "-extra",
+          "id": "太阳|tai4yang2"
+        }
+      ]
+    },
+    {
+      "key": "态度",
+      "entries": [
+        {
+          "level": 2,
+          "id": "态度|tai4du5"
+        },
+        {
+          "level": "-extra",
+          "id": "态度|tai4du4"
+        }
+      ]
+    },
+    {
+      "key": "头",
+      "entries": [
+        {
+          "level": 2,
+          "id": "头|tou2"
+        },
+        {
+          "level": "-extra",
+          "id": "头|tou5"
+        }
+      ]
+    },
+    {
+      "key": "为",
+      "entries": [
+        {
+          "level": 2,
+          "id": "为|wei2"
+        },
+        {
+          "level": "-extra",
+          "id": "为|wei4"
+        }
+      ]
+    },
+    {
+      "key": "味道",
+      "entries": [
+        {
+          "level": 2,
+          "id": "味道|wei4dao5"
+        },
+        {
+          "level": "-extra",
+          "id": "味道|wei4dao4"
+        }
+      ]
+    },
+    {
+      "key": "心里",
+      "entries": [
+        {
+          "level": 2,
+          "id": "心里|xin1li5"
+        },
+        {
+          "level": "-extra",
+          "id": "心里|xin1li3"
+        }
+      ]
+    },
+    {
+      "key": "早晨",
+      "entries": [
+        {
+          "level": 2,
+          "id": "早晨|zao3chen2"
+        },
+        {
+          "level": "-extra",
+          "id": "早晨|zao3chen5"
+        }
+      ]
+    },
+    {
+      "key": "长",
+      "entries": [
+        {
+          "level": 2,
+          "id": "长|chang2"
+        },
+        {
+          "level": "-extra",
+          "id": "长|zhang3"
+        }
+      ]
+    },
+    {
+      "key": "照顾",
+      "entries": [
+        {
+          "level": 2,
+          "id": "照顾|zhao4gu5"
+        },
+        {
+          "level": "-extra",
+          "id": "照顾|zhao4gu4"
+        }
+      ]
+    },
+    {
+      "key": "只",
+      "entries": [
+        {
+          "level": 2,
+          "id": "只|zhi3"
+        },
+        {
+          "level": "-extra",
+          "id": "只|zhi1"
+        }
+      ]
+    },
+    {
+      "key": "本事",
+      "entries": [
+        {
+          "level": 3,
+          "id": "本事|ben3shi4"
+        },
+        {
+          "level": "-extra",
+          "id": "本事|ben3shi5"
+        }
+      ]
+    },
+    {
+      "key": "传",
+      "entries": [
+        {
+          "level": 3,
+          "id": "传|chuan2"
+        },
+        {
+          "level": "-extra",
+          "id": "传|zhuan4"
+        }
+      ]
+    },
+    {
+      "key": "调",
+      "entries": [
+        {
+          "level": 3,
+          "id": "调|diao4"
+        },
+        {
+          "level": "-extra",
+          "id": "调|tiao2"
+        }
+      ]
+    },
+    {
+      "key": "费用",
+      "entries": [
+        {
+          "level": 3,
+          "id": "费用|fei4yong4"
+        },
+        {
+          "level": "-extra",
+          "id": "费用|fei4yong5"
+        }
+      ]
+    },
+    {
+      "key": "关系",
+      "entries": [
+        {
+          "level": 3,
+          "id": "关系|guan1xi5"
+        },
+        {
+          "level": "-extra",
+          "id": "关系|guan1xi4"
+        }
+      ]
+    },
+    {
+      "key": "后面",
+      "entries": [
+        {
+          "level": 3,
+          "id": "后面|hou4mian5"
+        },
+        {
+          "level": "-extra",
+          "id": "后面|hou4mian4"
+        }
+      ]
+    },
+    {
+      "key": "基本上",
+      "entries": [
+        {
+          "level": 3,
+          "id": "基本上|ji1ben3shang5"
+        },
+        {
+          "level": "-extra",
+          "id": "基本上|ji1ben3shang4"
+        }
+      ]
+    },
+    {
+      "key": "价钱",
+      "entries": [
+        {
+          "level": 3,
+          "id": "价钱|jia4qian5"
+        },
+        {
+          "level": "-extra",
+          "id": "价钱|jia4qian2"
+        }
+      ]
+    },
+    {
+      "key": "精神",
+      "entries": [
+        {
+          "level": 3,
+          "id": "精神|jing1shen2"
+        },
+        {
+          "level": "-extra",
+          "id": "精神|jing1shen5"
+        }
+      ]
+    },
+    {
+      "key": "空",
+      "entries": [
+        {
+          "level": 3,
+          "id": "空|kong1"
+        },
+        {
+          "level": "-extra",
+          "id": "空|kong4"
+        }
+      ]
+    },
+    {
+      "key": "力量",
+      "entries": [
+        {
+          "level": 3,
+          "id": "力量|li4liang5"
+        },
+        {
+          "level": "-extra",
+          "id": "力量|li4liang4"
+        }
+      ]
+    },
+    {
+      "key": "生意",
+      "entries": [
+        {
+          "level": 3,
+          "id": "生意|sheng1yi4"
+        },
+        {
+          "level": "-extra",
+          "id": "生意|sheng1yi5"
+        }
+      ]
+    },
+    {
+      "key": "系",
+      "entries": [
+        {
+          "level": 3,
+          "id": "系|xi4"
+        },
+        {
+          "level": "-extra",
+          "id": "系|ji4"
+        }
+      ]
+    },
+    {
+      "key": "下来",
+      "entries": [
+        {
+          "level": 3,
+          "id": "下来|xia4lai5"
+        },
+        {
+          "level": "-extra",
+          "id": "下来|xia4lai2"
+        }
+      ]
+    },
+    {
+      "key": "血",
+      "entries": [
+        {
+          "level": 3,
+          "id": "血|xue4"
+        },
+        {
+          "level": "-extra",
+          "id": "血|xie3"
+        }
+      ]
+    },
+    {
+      "key": "值得",
+      "entries": [
+        {
+          "level": 3,
+          "id": "值得|zhi2de5"
+        },
+        {
+          "level": "-extra",
+          "id": "值得|zhi2de2"
+        }
+      ]
+    },
+    {
+      "key": "种",
+      "entries": [
+        {
+          "level": 3,
+          "id": "种|zhong3"
+        },
+        {
+          "level": "-extra",
+          "id": "种|zhong4"
+        }
+      ]
+    },
+    {
+      "key": "转",
+      "entries": [
+        {
+          "level": 3,
+          "id": "转|zhuai3"
+        },
+        {
+          "level": "-extra",
+          "id": "转|zhuan4"
+        }
+      ]
+    },
+    {
+      "key": "尺寸",
+      "entries": [
+        {
+          "level": 4,
+          "id": "尺寸|chi3cun5"
+        },
+        {
+          "level": "-extra",
+          "id": "尺寸|chi3cun4"
+        }
+      ]
+    },
+    {
+      "key": "冲",
+      "entries": [
+        {
+          "level": 4,
+          "id": "冲|chong1"
+        },
+        {
+          "level": "-extra",
+          "id": "冲|chong4"
+        }
+      ]
+    },
+    {
+      "key": "处",
+      "entries": [
+        {
+          "level": 4,
+          "id": "处|chu3"
+        },
+        {
+          "level": "-extra",
+          "id": "处|chu4"
+        }
+      ]
+    },
+    {
+      "key": "倒车",
+      "entries": [
+        {
+          "level": 4,
+          "id": "倒车|dao3che1"
+        },
+        {
+          "level": "-extra",
+          "id": "倒车|dao3che1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "恶心",
+      "entries": [
+        {
+          "level": 4,
+          "id": "恶心|e3xin1"
+        },
+        {
+          "level": "-extra",
+          "id": "恶心|e3xin5"
+        }
+      ]
+    },
+    {
+      "key": "夫人",
+      "entries": [
+        {
+          "level": 4,
+          "id": "夫人|fu1ren5"
+        },
+        {
+          "level": "-extra",
+          "id": "夫人|fu1ren2"
+        }
+      ]
+    },
+    {
+      "key": "合同",
+      "entries": [
+        {
+          "level": 4,
+          "id": "合同|he2tong5"
+        },
+        {
+          "level": "-extra",
+          "id": "合同|he2tong2"
+        }
+      ]
+    },
+    {
+      "key": "划",
+      "entries": [
+        {
+          "level": 4,
+          "id": "划|hua2"
+        },
+        {
+          "level": "-extra",
+          "id": "划|hua2|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "教训",
+      "entries": [
+        {
+          "level": 4,
+          "id": "教训|jiao4xun5"
+        },
+        {
+          "level": "-extra",
+          "id": "教训|jiao4xun4"
+        }
+      ]
+    },
+    {
+      "key": "结",
+      "entries": [
+        {
+          "level": 4,
+          "id": "结|jie1"
+        },
+        {
+          "level": "-extra",
+          "id": "结|jie1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "卷",
+      "entries": [
+        {
+          "level": 4,
+          "id": "卷|juan3"
+        },
+        {
+          "level": "-extra",
+          "id": "卷|juan3|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "看来",
+      "entries": [
+        {
+          "level": 4,
+          "id": "看来|kan4lai5"
+        },
+        {
+          "level": "-extra",
+          "id": "看来|kan4lai2"
+        }
+      ]
+    },
+    {
+      "key": "口袋",
+      "entries": [
+        {
+          "level": 4,
+          "id": "口袋|kou3dai4"
+        },
+        {
+          "level": "-extra",
+          "id": "口袋|kou3dai5"
+        }
+      ]
+    },
+    {
+      "key": "老婆",
+      "entries": [
+        {
+          "level": 4,
+          "id": "老婆|lao3po2"
+        },
+        {
+          "level": "-extra",
+          "id": "老婆|lao3po5"
+        }
+      ]
+    },
+    {
+      "key": "量",
+      "entries": [
+        {
+          "level": 4,
+          "id": "量|liang2"
+        },
+        {
+          "level": "-extra",
+          "id": "量|liang2|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "落",
+      "entries": [
+        {
+          "level": 4,
+          "id": "落|la4"
+        },
+        {
+          "level": "-extra",
+          "id": "落|la4|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "妻子",
+      "entries": [
+        {
+          "level": 4,
+          "id": "妻子|qi1zi3"
+        },
+        {
+          "level": "-extra",
+          "id": "妻子|qi1zi5"
+        }
+      ]
+    },
+    {
+      "key": "切",
+      "entries": [
+        {
+          "level": 4,
+          "id": "切|qie1"
+        },
+        {
+          "level": "-extra",
+          "id": "切|qie1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "圈",
+      "entries": [
+        {
+          "level": 4,
+          "id": "圈|juan1"
+        },
+        {
+          "level": "-extra",
+          "id": "圈|quan1"
+        },
+        {
+          "level": "-extra",
+          "id": "圈|juan4"
+        }
+      ]
+    },
+    {
+      "key": "人家",
+      "entries": [
+        {
+          "level": 4,
+          "id": "人家|ren2jia1"
+        },
+        {
+          "level": "-extra",
+          "id": "人家|ren2jia5"
+        }
+      ]
+    },
+    {
+      "key": "散",
+      "entries": [
+        {
+          "level": 4,
+          "id": "散|san4"
+        },
+        {
+          "level": "-extra",
+          "id": "散|san4|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "受不了",
+      "entries": [
+        {
+          "level": 4,
+          "id": "受不了|shou4bu4liao3"
+        },
+        {
+          "level": "-extra",
+          "id": "受不了|shou4bu5liao3"
+        }
+      ]
+    },
+    {
+      "key": "挑",
+      "entries": [
+        {
+          "level": 4,
+          "id": "挑|tiao1"
+        },
+        {
+          "level": "-extra",
+          "id": "挑|tiao1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "位置",
+      "entries": [
+        {
+          "level": 4,
+          "id": "位置|wei4zhi5"
+        },
+        {
+          "level": "-extra",
+          "id": "位置|wei4zhi4"
+        }
+      ]
+    },
+    {
+      "key": "下载",
+      "entries": [
+        {
+          "level": 4,
+          "id": "下载|xia4zai3"
+        },
+        {
+          "level": "-extra",
+          "id": "下载|xia4zai4"
+        }
+      ]
+    },
+    {
+      "key": "学问",
+      "entries": [
+        {
+          "level": 4,
+          "id": "学问|xue2wen4"
+        },
+        {
+          "level": "-extra",
+          "id": "学问|xue2wen5"
+        }
+      ]
+    },
+    {
+      "key": "呀",
+      "entries": [
+        {
+          "level": 4,
+          "id": "呀|ya5"
+        },
+        {
+          "level": "-extra",
+          "id": "呀|ya1"
+        }
+      ]
+    },
+    {
+      "key": "应",
+      "entries": [
+        {
+          "level": 4,
+          "id": "应|Ying1"
+        },
+        {
+          "level": "-extra",
+          "id": "应|ying4"
+        }
+      ]
+    },
+    {
+      "key": "折",
+      "entries": [
+        {
+          "level": 4,
+          "id": "折|she2"
+        },
+        {
+          "level": "-extra",
+          "id": "折|she2|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "聪明",
+      "entries": [
+        {
+          "level": 5,
+          "id": "聪明|cong1ming5"
+        },
+        {
+          "level": "-extra",
+          "id": "聪明|cong1ming2"
+        }
+      ]
+    },
+    {
+      "key": "待",
+      "entries": [
+        {
+          "level": 5,
+          "id": "待|dai1"
+        },
+        {
+          "level": "-extra",
+          "id": "待|dai1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "倒是",
+      "entries": [
+        {
+          "level": 5,
+          "id": "倒是|dao4shi5"
+        },
+        {
+          "level": "-extra",
+          "id": "倒是|dao4shi4"
+        }
+      ]
+    },
+    {
+      "key": "咳",
+      "entries": [
+        {
+          "level": 5,
+          "id": "咳|hai1"
+        },
+        {
+          "level": "-extra",
+          "id": "咳|ke2"
+        }
+      ]
+    },
+    {
+      "key": "活泼",
+      "entries": [
+        {
+          "level": 5,
+          "id": "活泼|huo2po5"
+        },
+        {
+          "level": "-extra",
+          "id": "活泼|huo2po1"
+        }
+      ]
+    },
+    {
+      "key": "将",
+      "entries": [
+        {
+          "level": 5,
+          "id": "将|jiang1"
+        },
+        {
+          "level": "-extra",
+          "id": "将|jiang1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "逻辑",
+      "entries": [
+        {
+          "level": 5,
+          "id": "逻辑|luo2ji5"
+        },
+        {
+          "level": "-extra",
+          "id": "逻辑|luo2ji2"
+        }
+      ]
+    },
+    {
+      "key": "码头",
+      "entries": [
+        {
+          "level": 5,
+          "id": "码头|ma3tou2"
+        },
+        {
+          "level": "-extra",
+          "id": "码头|ma3tou2|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "买卖",
+      "entries": [
+        {
+          "level": 5,
+          "id": "买卖|mai3mai4"
+        },
+        {
+          "level": "-extra",
+          "id": "买卖|mai3mai5"
+        }
+      ]
+    },
+    {
+      "key": "扇",
+      "entries": [
+        {
+          "level": 5,
+          "id": "扇|shan1"
+        },
+        {
+          "level": "-extra",
+          "id": "扇|shan1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "势力",
+      "entries": [
+        {
+          "level": 5,
+          "id": "势力|shi4li5"
+        },
+        {
+          "level": "-extra",
+          "id": "势力|shi4li4"
+        }
+      ]
+    },
+    {
+      "key": "熟悉",
+      "entries": [
+        {
+          "level": 5,
+          "id": "熟悉|shu2xi1"
+        },
+        {
+          "level": "-extra",
+          "id": "熟悉|shu2xi5"
+        }
+      ]
+    },
+    {
+      "key": "说法",
+      "entries": [
+        {
+          "level": 5,
+          "id": "说法|shuo1fa3"
+        },
+        {
+          "level": "-extra",
+          "id": "说法|shuo1fa3|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "吐",
+      "entries": [
+        {
+          "level": 5,
+          "id": "吐|tu3"
+        },
+        {
+          "level": "-extra",
+          "id": "吐|tu4"
+        }
+      ]
+    },
+    {
+      "key": "吓",
+      "entries": [
+        {
+          "level": 5,
+          "id": "吓|he4"
+        },
+        {
+          "level": "-extra",
+          "id": "吓|xia4"
+        }
+      ]
+    },
+    {
+      "key": "月饼",
+      "entries": [
+        {
+          "level": 5,
+          "id": "月饼|yue4bing3"
+        },
+        {
+          "level": "-extra",
+          "id": "月饼|yue4bing5"
+        }
+      ]
+    },
+    {
+      "key": "涨",
+      "entries": [
+        {
+          "level": 5,
+          "id": "涨|zhang3"
+        },
+        {
+          "level": "-extra",
+          "id": "涨|zhang3|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "挨",
+      "entries": [
+        {
+          "level": 6,
+          "id": "挨|ai1"
+        },
+        {
+          "level": "-extra",
+          "id": "挨|ai2"
+        }
+      ]
+    },
+    {
+      "key": "扁",
+      "entries": [
+        {
+          "level": 6,
+          "id": "扁|Pian1"
+        },
+        {
+          "level": "-extra",
+          "id": "扁|bian3"
+        }
+      ]
+    },
+    {
+      "key": "当天",
+      "entries": [
+        {
+          "level": 6,
+          "id": "当天|dang1tian1"
+        },
+        {
+          "level": "-extra",
+          "id": "当天|dang4tian1"
+        }
+      ]
+    },
+    {
+      "key": "队伍",
+      "entries": [
+        {
+          "level": 6,
+          "id": "队伍|dui4wu3"
+        },
+        {
+          "level": "-extra",
+          "id": "队伍|dui4wu5"
+        }
+      ]
+    },
+    {
+      "key": "佛",
+      "entries": [
+        {
+          "level": 6,
+          "id": "佛|Fo2"
+        },
+        {
+          "level": "-extra",
+          "id": "佛|fo2"
+        }
+      ]
+    },
+    {
+      "key": "尽",
+      "entries": [
+        {
+          "level": 6,
+          "id": "尽|jin3"
+        },
+        {
+          "level": "-extra",
+          "id": "尽|jin3|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "看好",
+      "entries": [
+        {
+          "level": 6,
+          "id": "看好|kan1hao3"
+        },
+        {
+          "level": "-extra",
+          "id": "看好|kan4hao3"
+        }
+      ]
+    },
+    {
+      "key": "啦",
+      "entries": [
+        {
+          "level": 6,
+          "id": "啦|la1"
+        },
+        {
+          "level": "-extra",
+          "id": "啦|la5"
+        }
+      ]
+    },
+    {
+      "key": "露",
+      "entries": [
+        {
+          "level": 6,
+          "id": "露|Lu4"
+        },
+        {
+          "level": "-extra",
+          "id": "露|lou4"
+        }
+      ]
+    },
+    {
+      "key": "蒙",
+      "entries": [
+        {
+          "level": 6,
+          "id": "蒙|meng2"
+        },
+        {
+          "level": "-extra",
+          "id": "蒙|meng1"
+        }
+      ]
+    },
+    {
+      "key": "炮",
+      "entries": [
+        {
+          "level": 6,
+          "id": "炮|bao1"
+        },
+        {
+          "level": "-extra",
+          "id": "炮|pao4"
+        }
+      ]
+    },
+    {
+      "key": "铺",
+      "entries": [
+        {
+          "level": 6,
+          "id": "铺|pu4"
+        },
+        {
+          "level": "-extra",
+          "id": "铺|pu1"
+        }
+      ]
+    },
+    {
+      "key": "趟",
+      "entries": [
+        {
+          "level": 6,
+          "id": "趟|tang1"
+        },
+        {
+          "level": "-extra",
+          "id": "趟|tang4"
+        }
+      ]
+    },
+    {
+      "key": "薪水",
+      "entries": [
+        {
+          "level": 6,
+          "id": "薪水|xin1shui3"
+        },
+        {
+          "level": "-extra",
+          "id": "薪水|xin1shui5"
+        }
+      ]
+    },
+    {
+      "key": "用处",
+      "entries": [
+        {
+          "level": 6,
+          "id": "用处|yong4chu5"
+        },
+        {
+          "level": "-extra",
+          "id": "用处|yong4chu4"
+        }
+      ]
+    },
+    {
+      "key": "扎",
+      "entries": [
+        {
+          "level": 6,
+          "id": "扎|zha1"
+        },
+        {
+          "level": "-extra",
+          "id": "扎|zha1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "炸",
+      "entries": [
+        {
+          "level": 6,
+          "id": "炸|zha2"
+        },
+        {
+          "level": "-extra",
+          "id": "炸|zha2|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "唉",
+      "entries": [
+        {
+          "level": 7,
+          "id": "唉|ai1"
+        },
+        {
+          "level": "-extra",
+          "id": "唉|ai4"
+        }
+      ]
+    },
+    {
+      "key": "暗地里",
+      "entries": [
+        {
+          "level": 7,
+          "id": "暗地里|an4di4li5"
+        },
+        {
+          "level": "-extra",
+          "id": "暗地里|an4di4li3"
+        }
+      ]
+    },
+    {
+      "key": "巴不得",
+      "entries": [
+        {
+          "level": 7,
+          "id": "巴不得|ba1bu5de5"
+        },
+        {
+          "level": "-extra",
+          "id": "巴不得|ba1bu5de2"
+        }
+      ]
+    },
+    {
+      "key": "摆设",
+      "entries": [
+        {
+          "level": 7,
+          "id": "摆设|bai3she4"
+        },
+        {
+          "level": "-extra",
+          "id": "摆设|bai3she5"
+        }
+      ]
+    },
+    {
+      "key": "奔",
+      "entries": [
+        {
+          "level": 7,
+          "id": "奔|ben1"
+        },
+        {
+          "level": "-extra",
+          "id": "奔|ben4"
+        }
+      ]
+    },
+    {
+      "key": "比试",
+      "entries": [
+        {
+          "level": 7,
+          "id": "比试|bi3shi4"
+        },
+        {
+          "level": "-extra",
+          "id": "比试|bi3shi5"
+        }
+      ]
+    },
+    {
+      "key": "标致",
+      "entries": [
+        {
+          "level": 7,
+          "id": "标致|Biao1zhi4"
+        },
+        {
+          "level": "-extra",
+          "id": "标致|biao1zhi4"
+        }
+      ]
+    },
+    {
+      "key": "不见得",
+      "entries": [
+        {
+          "level": 7,
+          "id": "不见得|bu4jian4de5"
+        },
+        {
+          "level": "-extra",
+          "id": "不见得|bu2jian4de2"
+        }
+      ]
+    },
+    {
+      "key": "掺",
+      "entries": [
+        {
+          "level": 7,
+          "id": "掺|chan1"
+        },
+        {
+          "level": "-extra",
+          "id": "掺|chan1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "揣",
+      "entries": [
+        {
+          "level": 7,
+          "id": "揣|chuai1"
+        },
+        {
+          "level": "-extra",
+          "id": "揣|chuai1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "打交道",
+      "entries": [
+        {
+          "level": 7,
+          "id": "打交道|da3jiao1dao4"
+        },
+        {
+          "level": "-extra",
+          "id": "打交道|da3jiao1dao5"
+        }
+      ]
+    },
+    {
+      "key": "大大咧咧",
+      "entries": [
+        {
+          "level": 7,
+          "id": "大大咧咧|da4da4lie1lie1"
+        },
+        {
+          "level": "-extra",
+          "id": "大大咧咧|da4da5lie1lie1"
+        }
+      ]
+    },
+    {
+      "key": "大意",
+      "entries": [
+        {
+          "level": 7,
+          "id": "大意|da4yi4"
+        },
+        {
+          "level": "-extra",
+          "id": "大意|da4yi5"
+        }
+      ]
+    },
+    {
+      "key": "逮",
+      "entries": [
+        {
+          "level": 7,
+          "id": "逮|dai3"
+        },
+        {
+          "level": "-extra",
+          "id": "逮|dai3|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "担",
+      "entries": [
+        {
+          "level": 7,
+          "id": "担|dan1"
+        },
+        {
+          "level": "-extra",
+          "id": "担|dan4"
+        }
+      ]
+    },
+    {
+      "key": "当日",
+      "entries": [
+        {
+          "level": 7,
+          "id": "当日|dang1ri4"
+        },
+        {
+          "level": "-extra",
+          "id": "当日|dang1ri4|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "当晚",
+      "entries": [
+        {
+          "level": 7,
+          "id": "当晚|dang1wan3"
+        },
+        {
+          "level": "-extra",
+          "id": "当晚|dang4wan3"
+        }
+      ]
+    },
+    {
+      "key": "地道",
+      "entries": [
+        {
+          "level": 7,
+          "id": "地道|di4dao4"
+        },
+        {
+          "level": "-extra",
+          "id": "地道|di4dao4|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "灯笼",
+      "entries": [
+        {
+          "level": 7,
+          "id": "灯笼|deng1long2"
+        },
+        {
+          "level": "-extra",
+          "id": "灯笼|deng1long5"
+        }
+      ]
+    },
+    {
+      "key": "动静",
+      "entries": [
+        {
+          "level": 7,
+          "id": "动静|dong4jing4"
+        },
+        {
+          "level": "-extra",
+          "id": "动静|dong4jing5"
+        }
+      ]
+    },
+    {
+      "key": "分量",
+      "entries": [
+        {
+          "level": 7,
+          "id": "分量|fen1liang4"
+        },
+        {
+          "level": "-extra",
+          "id": "分量|fen4liang4"
+        }
+      ]
+    },
+    {
+      "key": "吩咐",
+      "entries": [
+        {
+          "level": 7,
+          "id": "吩咐|fen1fu4"
+        },
+        {
+          "level": "-extra",
+          "id": "吩咐|fen1fu4|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "缝",
+      "entries": [
+        {
+          "level": 7,
+          "id": "缝|feng2"
+        },
+        {
+          "level": "-extra",
+          "id": "缝|feng2|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "格式",
+      "entries": [
+        {
+          "level": 7,
+          "id": "格式|ge2shi4"
+        },
+        {
+          "level": "-extra",
+          "id": "格式|ge2shi5"
+        }
+      ]
+    },
+    {
+      "key": "公道",
+      "entries": [
+        {
+          "level": 7,
+          "id": "公道|gong1dao4"
+        },
+        {
+          "level": "-extra",
+          "id": "公道|gong1dao5"
+        }
+      ]
+    },
+    {
+      "key": "恭维",
+      "entries": [
+        {
+          "level": 7,
+          "id": "恭维|gong1wei5"
+        },
+        {
+          "level": "-extra",
+          "id": "恭维|gong1wei2"
+        }
+      ]
+    },
+    {
+      "key": "固执",
+      "entries": [
+        {
+          "level": 7,
+          "id": "固执|gu4zhi2"
+        },
+        {
+          "level": "-extra",
+          "id": "固执|gu4zhi5"
+        }
+      ]
+    },
+    {
+      "key": "哄",
+      "entries": [
+        {
+          "level": 7,
+          "id": "哄|hong1"
+        },
+        {
+          "level": "-extra",
+          "id": "哄|hong3"
+        }
+      ]
+    },
+    {
+      "key": "红火",
+      "entries": [
+        {
+          "level": 7,
+          "id": "红火|hong2huo3"
+        },
+        {
+          "level": "-extra",
+          "id": "红火|hong2huo5"
+        }
+      ]
+    },
+    {
+      "key": "晃",
+      "entries": [
+        {
+          "level": 7,
+          "id": "晃|huang3"
+        },
+        {
+          "level": "-extra",
+          "id": "晃|huang3|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "祸害",
+      "entries": [
+        {
+          "level": 7,
+          "id": "祸害|huo4hai4"
+        },
+        {
+          "level": "-extra",
+          "id": "祸害|huo4hai5"
+        }
+      ]
+    },
+    {
+      "key": "节气",
+      "entries": [
+        {
+          "level": 7,
+          "id": "节气|jie2qi5"
+        },
+        {
+          "level": "-extra",
+          "id": "节气|jie2qi4"
+        }
+      ]
+    },
+    {
+      "key": "扛",
+      "entries": [
+        {
+          "level": 7,
+          "id": "扛|gang1"
+        },
+        {
+          "level": "-extra",
+          "id": "扛|kang2"
+        }
+      ]
+    },
+    {
+      "key": "壳",
+      "entries": [
+        {
+          "level": 7,
+          "id": "壳|qiao4"
+        },
+        {
+          "level": "-extra",
+          "id": "壳|ke2"
+        }
+      ]
+    },
+    {
+      "key": "可不是",
+      "entries": [
+        {
+          "level": 7,
+          "id": "可不是|ke3bu5shi4"
+        },
+        {
+          "level": "-extra",
+          "id": "可不是|ke3bu2shi5"
+        }
+      ]
+    },
+    {
+      "key": "口音",
+      "entries": [
+        {
+          "level": 7,
+          "id": "口音|kou3yin1"
+        },
+        {
+          "level": "-extra",
+          "id": "口音|kou3yin1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "老人家",
+      "entries": [
+        {
+          "level": 7,
+          "id": "老人家|lao3ren2jia1"
+        },
+        {
+          "level": "-extra",
+          "id": "老人家|lao3ren5jia5"
+        }
+      ]
+    },
+    {
+      "key": "老字号",
+      "entries": [
+        {
+          "level": 7,
+          "id": "老字号|lao3zi4hao4"
+        },
+        {
+          "level": "-extra",
+          "id": "老字号|lao3zi4hao5"
+        }
+      ]
+    },
+    {
+      "key": "勒",
+      "entries": [
+        {
+          "level": 7,
+          "id": "勒|le4"
+        },
+        {
+          "level": "-extra",
+          "id": "勒|lei1"
+        }
+      ]
+    },
+    {
+      "key": "利害",
+      "entries": [
+        {
+          "level": 7,
+          "id": "利害|li4hai4"
+        },
+        {
+          "level": "-extra",
+          "id": "利害|li4hai4|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "淋",
+      "entries": [
+        {
+          "level": 7,
+          "id": "淋|lin2"
+        },
+        {
+          "level": "-extra",
+          "id": "淋|lin2|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "搂",
+      "entries": [
+        {
+          "level": 7,
+          "id": "搂|lou1"
+        },
+        {
+          "level": "-extra",
+          "id": "搂|lou3"
+        }
+      ]
+    },
+    {
+      "key": "率",
+      "entries": [
+        {
+          "level": 7,
+          "id": "率|lü4"
+        },
+        {
+          "level": "-extra",
+          "id": "率|lu:4"
+        }
+      ]
+    },
+    {
+      "key": "玫瑰",
+      "entries": [
+        {
+          "level": 7,
+          "id": "玫瑰|mei2gui1"
+        },
+        {
+          "level": "-extra",
+          "id": "玫瑰|mei2gui5"
+        }
+      ]
+    },
+    {
+      "key": "门路",
+      "entries": [
+        {
+          "level": 7,
+          "id": "门路|men2lu4"
+        },
+        {
+          "level": "-extra",
+          "id": "门路|men2lu5"
+        }
+      ]
+    },
+    {
+      "key": "闷",
+      "entries": [
+        {
+          "level": 7,
+          "id": "闷|men1"
+        },
+        {
+          "level": "-extra",
+          "id": "闷|men1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "迷惑",
+      "entries": [
+        {
+          "level": 7,
+          "id": "迷惑|mi2huo5"
+        },
+        {
+          "level": "-extra",
+          "id": "迷惑|mi2huo4"
+        }
+      ]
+    },
+    {
+      "key": "谜",
+      "entries": [
+        {
+          "level": 7,
+          "id": "谜|mei4"
+        },
+        {
+          "level": "-extra",
+          "id": "谜|mi2"
+        }
+      ]
+    },
+    {
+      "key": "棉花",
+      "entries": [
+        {
+          "level": 7,
+          "id": "棉花|mian2hua5"
+        },
+        {
+          "level": "-extra",
+          "id": "棉花|mian2hua1"
+        }
+      ]
+    },
+    {
+      "key": "免不了",
+      "entries": [
+        {
+          "level": 7,
+          "id": "免不了|mian3bu4liao3"
+        },
+        {
+          "level": "-extra",
+          "id": "免不了|mian3bu5liao3"
+        }
+      ]
+    },
+    {
+      "key": "摸索",
+      "entries": [
+        {
+          "level": 7,
+          "id": "摸索|mo1suo5"
+        },
+        {
+          "level": "-extra",
+          "id": "摸索|mo1suo3"
+        }
+      ]
+    },
+    {
+      "key": "难处",
+      "entries": [
+        {
+          "level": 7,
+          "id": "难处|nan2chu5"
+        },
+        {
+          "level": "-extra",
+          "id": "难处|nan2chu4"
+        }
+      ]
+    },
+    {
+      "key": "能耐",
+      "entries": [
+        {
+          "level": 7,
+          "id": "能耐|neng2nai4"
+        },
+        {
+          "level": "-extra",
+          "id": "能耐|neng2nai5"
+        }
+      ]
+    },
+    {
+      "key": "拧",
+      "entries": [
+        {
+          "level": 7,
+          "id": "拧|ning2"
+        },
+        {
+          "level": "-extra",
+          "id": "拧|ning3"
+        }
+      ]
+    },
+    {
+      "key": "哦",
+      "entries": [
+        {
+          "level": 7,
+          "id": "哦|e2"
+        },
+        {
+          "level": "-extra",
+          "id": "哦|o4"
+        }
+      ]
+    },
+    {
+      "key": "盘算",
+      "entries": [
+        {
+          "level": 7,
+          "id": "盘算|pan2suan4"
+        },
+        {
+          "level": "-extra",
+          "id": "盘算|pan2suan5"
+        }
+      ]
+    },
+    {
+      "key": "篇幅",
+      "entries": [
+        {
+          "level": 7,
+          "id": "篇幅|pian1fu5"
+        },
+        {
+          "level": "-extra",
+          "id": "篇幅|pian1fu2"
+        }
+      ]
+    },
+    {
+      "key": "呛",
+      "entries": [
+        {
+          "level": 7,
+          "id": "呛|qiang1"
+        },
+        {
+          "level": "-extra",
+          "id": "呛|qiang1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "勤快",
+      "entries": [
+        {
+          "level": 7,
+          "id": "勤快|qin2kuai4"
+        },
+        {
+          "level": "-extra",
+          "id": "勤快|qin2kuai5"
+        }
+      ]
+    },
+    {
+      "key": "曲",
+      "entries": [
+        {
+          "level": 7,
+          "id": "曲|Qu1"
+        },
+        {
+          "level": "-extra",
+          "id": "曲|qu3"
+        }
+      ]
+    },
+    {
+      "key": "拳头",
+      "entries": [
+        {
+          "level": 7,
+          "id": "拳头|quan2tou5"
+        },
+        {
+          "level": "-extra",
+          "id": "拳头|quan2tou2"
+        }
+      ]
+    },
+    {
+      "key": "撒",
+      "entries": [
+        {
+          "level": 7,
+          "id": "撒|sa1"
+        },
+        {
+          "level": "-extra",
+          "id": "撒|sa3"
+        }
+      ]
+    },
+    {
+      "key": "省事",
+      "entries": [
+        {
+          "level": 7,
+          "id": "省事|sheng3shi4"
+        },
+        {
+          "level": "-extra",
+          "id": "省事|sheng3shi4|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "世故",
+      "entries": [
+        {
+          "level": 7,
+          "id": "世故|shi4gu4"
+        },
+        {
+          "level": "-extra",
+          "id": "世故|shi4gu4|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "势头",
+      "entries": [
+        {
+          "level": 7,
+          "id": "势头|shi4tou2"
+        },
+        {
+          "level": "-extra",
+          "id": "势头|shi4tou5"
+        }
+      ]
+    },
+    {
+      "key": "试探",
+      "entries": [
+        {
+          "level": 7,
+          "id": "试探|shi4tan4"
+        },
+        {
+          "level": "-extra",
+          "id": "试探|shi4tan5"
+        }
+      ]
+    },
+    {
+      "key": "书记",
+      "entries": [
+        {
+          "level": 7,
+          "id": "书记|shu1ji5"
+        },
+        {
+          "level": "-extra",
+          "id": "书记|shu1ji4"
+        }
+      ]
+    },
+    {
+      "key": "算计",
+      "entries": [
+        {
+          "level": 7,
+          "id": "算计|suan4ji5"
+        },
+        {
+          "level": "-extra",
+          "id": "算计|suan4ji4"
+        }
+      ]
+    },
+    {
+      "key": "驮",
+      "entries": [
+        {
+          "level": 7,
+          "id": "驮|tuo2"
+        },
+        {
+          "level": "-extra",
+          "id": "驮|tuo2|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "妥当",
+      "entries": [
+        {
+          "level": 7,
+          "id": "妥当|tuo3dang5"
+        },
+        {
+          "level": "-extra",
+          "id": "妥当|tuo3dang4"
+        }
+      ]
+    },
+    {
+      "key": "挖苦",
+      "entries": [
+        {
+          "level": 7,
+          "id": "挖苦|wa1ku3"
+        },
+        {
+          "level": "-extra",
+          "id": "挖苦|wa1ku5"
+        }
+      ]
+    },
+    {
+      "key": "媳妇",
+      "entries": [
+        {
+          "level": 7,
+          "id": "媳妇|xi2fu4"
+        },
+        {
+          "level": "-extra",
+          "id": "媳妇|xi2fu5"
+        }
+      ]
+    },
+    {
+      "key": "下调",
+      "entries": [
+        {
+          "level": 7,
+          "id": "下调|xia4diao4"
+        },
+        {
+          "level": "-extra",
+          "id": "下调|xia4tiao2"
+        }
+      ]
+    },
+    {
+      "key": "小气",
+      "entries": [
+        {
+          "level": 7,
+          "id": "小气|xiao3qi4"
+        },
+        {
+          "level": "-extra",
+          "id": "小气|xiao3qi5"
+        }
+      ]
+    },
+    {
+      "key": "泄露",
+      "entries": [
+        {
+          "level": 7,
+          "id": "泄露|xie4lu4"
+        },
+        {
+          "level": "-extra",
+          "id": "泄露|xie4lou4"
+        }
+      ]
+    },
+    {
+      "key": "行家",
+      "entries": [
+        {
+          "level": 7,
+          "id": "行家|hang2jia1"
+        },
+        {
+          "level": "-extra",
+          "id": "行家|hang2jia5"
+        }
+      ]
+    },
+    {
+      "key": "削",
+      "entries": [
+        {
+          "level": 7,
+          "id": "削|xiao1"
+        },
+        {
+          "level": "-extra",
+          "id": "削|xiao1|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "咽",
+      "entries": [
+        {
+          "level": 7,
+          "id": "咽|yan1"
+        },
+        {
+          "level": "-extra",
+          "id": "咽|yan4"
+        }
+      ]
+    },
+    {
+      "key": "要不是",
+      "entries": [
+        {
+          "level": 7,
+          "id": "要不是|yao4bu5shi4"
+        },
+        {
+          "level": "-extra",
+          "id": "要不是|yao4bu2shi4"
+        }
+      ]
+    },
+    {
+      "key": "一晃",
+      "entries": [
+        {
+          "level": 7,
+          "id": "一晃|yi1huang3"
+        },
+        {
+          "level": "-extra",
+          "id": "一晃|yi2huang4"
+        }
+      ]
+    },
+    {
+      "key": "一塌糊涂",
+      "entries": [
+        {
+          "level": 7,
+          "id": "一塌糊涂|yi1ta1hu2tu5"
+        },
+        {
+          "level": "-extra",
+          "id": "一塌糊涂|yi4ta1hu2tu2"
+        }
+      ]
+    },
+    {
+      "key": "益处",
+      "entries": [
+        {
+          "level": 7,
+          "id": "益处|yi4chu5"
+        },
+        {
+          "level": "-extra",
+          "id": "益处|yi4chu4"
+        }
+      ]
+    },
+    {
+      "key": "硬朗",
+      "entries": [
+        {
+          "level": 7,
+          "id": "硬朗|ying4lang3"
+        },
+        {
+          "level": "-extra",
+          "id": "硬朗|ying4lang5"
+        }
+      ]
+    },
+    {
+      "key": "嘱咐",
+      "entries": [
+        {
+          "level": 7,
+          "id": "嘱咐|zhu3fu4"
+        },
+        {
+          "level": "-extra",
+          "id": "嘱咐|zhu3fu4|cti2025"
+        }
+      ]
+    },
+    {
+      "key": "拽",
+      "entries": [
+        {
+          "level": 7,
+          "id": "拽|ye4"
+        },
+        {
+          "level": "-extra",
+          "id": "拽|zhuai4"
+        }
+      ]
+    },
+    {
+      "key": "状元",
+      "entries": [
+        {
+          "level": 7,
+          "id": "状元|zhuang4yuan2"
+        },
+        {
+          "level": "-extra",
+          "id": "状元|zhuang4yuan5"
+        }
+      ]
+    },
+    {
+      "key": "祖宗",
+      "entries": [
+        {
+          "level": 7,
+          "id": "祖宗|zu3zong1"
+        },
+        {
+          "level": "-extra",
+          "id": "祖宗|zu3zong5"
+        }
+      ]
+    }
+  ],
+  "duplicateDisplayedReadings": [],
+  "missingVietnamese": [],
+  "numericPinyinReview": [],
+  "missingAudio": [],
+  "missingStrokes": [],
+  "missingCharInfo": [],
+  "sourceComparison": []
+}
