@@ -19,49 +19,82 @@ const Speech=(()=>{
    the previous mic track stopped or when <audio> played). So every attempt gets: a fresh AudioContext created and resumed
    inside the tap, a fresh getUserMedia stream, a context rebuilt at the track's own sample rate when they differ, a
    watchdog that rebuilds once if only silence/zeros arrive, and full teardown (tracks stopped, context closed) at the end.
-   Voice activity: noise floor measured over the first 300 ms, adaptive threshold, 2 loud frames to count as speech. */
+   The energy gate drives capture status and auto-stop; it is not a language or pronunciation detector. */
  const AC=()=>window.AudioContext||window.webkitAudioContext;
  let PB=null;const ctx=()=>{if(!PB||PB.state=='closed')PB=new (AC())();return PB}; /* playback/decoding only, never used for capture */
  const DBG=/[?&]debug=1/.test(location.search);let dbgEl=null;
  function dbg(o){if(!DBG)return;if(!dbgEl){dbgEl=document.createElement('pre');dbgEl.id='micdbg';dbgEl.setAttribute('aria-hidden','true');document.body.appendChild(dbgEl)}
   dbgEl.textContent=Object.entries(o).map(([k,v])=>k+': '+(typeof v=='number'?(+v.toFixed(4)):v)).join('\n')}
  function prime(){/* call synchronously inside the tap: creates and resumes the capture context while the gesture is valid */
-  const ac=new (AC())();try{ac.resume()}catch(e){}return ac}
- async function record({onLevel,onState,maxMs=6000,silenceMs=1000,ac=null}={}){
-  ac=ac||prime();onState&&onState('perm');let stream;
-  try{stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true,channelCount:1}})}
-  catch(e){try{ac.close()}catch(_){}throw e}
-  const tr=stream.getAudioTracks()[0];if(!tr||tr.readyState!=='live'){stream.getTracks().forEach(t=>t.stop());try{ac.close()}catch(_){}const e=new Error('no live track');e.name='TrackError';throw e}
-  const want=tr.getSettings?tr.getSettings().sampleRate:0;
-  if(want&&want!==ac.sampleRate){try{ac.close()}catch(_){}try{ac=new (AC())({sampleRate:want})}catch(_){ac=new (AC())()}}
-  if(ac.state!=='running'){try{await Promise.race([ac.resume(),new Promise(r=>setTimeout(r,800))])}catch(_){}}
-  const chunks=[];let src=null,proc=null,sink=null,speech=false,loudRun=0,lastLoud=0,t0=performance.now(),noise=[],floor=0.003,thr=0.01,stopped=false,resolve,
-   calls=0,nonzero=0,rebuilt=0,quietSince=t0,warned=false,peakLv=0,lv=0,state='listen';
+  const ac=new (AC())();try{ac.resume().catch(()=>{})}catch(e){}return ac}
+ async function record({onLevel,onState,maxMs=6000,silenceMs=1100,ac=null,signal}={}){
+  ac=ac||prime();let stream=null,src=null,proc=null,sink=null,wd=null,stopped=false,rebuilding=false,resolve;
+  let calls=0,nonzero=0,rebuilt=0,speech=false,loudRun=0,lastLoud=0,peakLv=0,clipped=0,samples=0;
+  let floor=.0015,thr=.008,noise=[],state='perm',graphStart=performance.now(),started=0,backend='';
+  const chunks=[],abortError=()=>new DOMException('Recording cancelled','AbortError');
+  const close=()=>{try{ac.close().catch(()=>{})}catch(_){}};
+  function teardown(){if(proc){if(proc.port){proc.port.onmessage=null;proc.port.close()}else proc.onaudioprocess=null;try{proc.disconnect()}catch(_){}}
+   try{src&&src.disconnect()}catch(_){}try{sink&&sink.disconnect()}catch(_){}src=proc=sink=null}
   const done=new Promise(r=>resolve=r);
-  const set=s=>{if(s!==state){state=s;onState&&onState(s)}};
-  function build(){src=ac.createMediaStreamSource(stream);proc=ac.createScriptProcessor(1024,1,1);sink=ac.createGain();sink.gain.value=0;
-   proc.onaudioprocess=onAudio;src.connect(proc);proc.connect(sink);sink.connect(ac.destination)}
-  function teardown(){try{proc.onaudioprocess=null;proc.disconnect();src.disconnect();sink.disconnect()}catch(_){}}
-  function stop(why='manual'){if(stopped)return;stopped=true;clearInterval(wd);teardown();stream.getTracks().forEach(t=>t.stop());const sr=ac.sampleRate;try{ac.close()}catch(_){}
-   const n=chunks.reduce((a,c)=>a+c.length,0),pcm=new Float32Array(n);let o=0;for(const c of chunks){pcm.set(c,o);o+=c.length}
-   dbg({why,ctx:'closed',rate:sr,calls,nonzero,rebuilt,floor,thr});resolve({pcm,sr,speech,why,diag:{calls,nonzero,rebuilt,floor,thr,peak:peakLv}})}
-  function onAudio(e){if(stopped)return;calls++;const x=e.inputBuffer.getChannelData(0);chunks.push(new Float32Array(x));let s=0,nz=0;
-   for(let i=0;i<x.length;i++){s+=x[i]*x[i];if(x[i]!==0)nz=1}nonzero+=nz;const rms=Math.sqrt(s/x.length),now=performance.now(),el=now-t0;
-   if(el<300){noise.push(rms)}else if(noise){const so=noise.slice().sort((a,b)=>a-b);floor=Math.max(0.0015,so[Math.floor(so.length/2)]||0);thr=Math.max(0.008,floor*3);noise=null}
-   if(rms>thr&&el>=120){loudRun++;if(loudRun>=2){if(!speech){speech=true;set('voice')}lastLoud=now}}else loudRun=0;
-   lv=Math.min(1,Math.sqrt(rms)*3.2);peakLv=Math.max(peakLv,rms);onLevel&&onLevel(lv,rms);
-   if(rms>Math.max(0.004,floor*1.6))quietSince=now;
-   if(!speech&&now-quietSince>1500&&!warned){warned=true;set('quiet')}else if(warned&&!speech&&now-quietSince<200){warned=false;set('listen')}
-   if(speech){const tail=now-lastLoud;if(tail>250)set('tail');else if(state==='tail')set('voice');onState&&tail>250&&onState('tailp',Math.min(1,(tail-250)/(silenceMs-250)))}
-   dbg({ctx:ac.state,rate:ac.sampleRate,trackRate:want||'?',track:tr.readyState+(tr.muted?' (muted)':''),rms,floor,thr,calls,nonzero,rebuilt,state});
-   if(!speech&&el>=Math.min(6000,maxMs))stop('nospeech');else if(el>maxMs)stop('max');else if(speech&&now-lastLoud>silenceMs)stop('silence')}
-  /* watchdog: no callbacks, or only exact zeros, after 900 ms -> rebuild the graph once on a new context; then give up honestly */
-  const wd=setInterval(async()=>{if(stopped)return;const el=performance.now()-t0;
-   if(el>900&&(calls===0||nonzero===0)){if(rebuilt<1){rebuilt++;teardown();try{await ac.close()}catch(_){}try{ac=new (AC())(want?{sampleRate:want}:undefined)}catch(_){ac=new (AC())()}
-     try{await ac.resume()}catch(_){}calls=0;nonzero=0;t0=performance.now();quietSince=t0;noise=[];build()}else stop('dead')}
-   if(tr.readyState==='ended')stop('ended')},300);
-  tr.addEventListener('ended',()=>stop('ended'));
-  build();onState&&onState('listen');return {stop,done,get state(){return state}}}
+  const set=k=>{if(k!==state){state=k;onState&&onState(k)}};
+  function stop(why='manual'){if(stopped)return;stopped=true;clearInterval(wd);signal?.removeEventListener('abort',abort);
+   teardown();stream?.getTracks().forEach(t=>t.stop());const sr=ac.sampleRate;close();
+   const pcm=new Float32Array(samples);let offset=0;for(const x of chunks){pcm.set(x,offset);offset+=x.length}
+   const diag={calls,nonzero,rebuilt,floor,thr,peak:peakLv,clipped:samples?clipped/samples:0,backend};
+   dbg({why,rate:sr,...diag});resolve({pcm,sr,speech,why,diag})}
+  const abort=()=>stop('cancelled');
+  function onAudio(x){if(stopped)return;calls++;let sum=0,nz=false;
+   for(const v of x){sum+=v*v;if(v!==0)nz=true;if(Math.abs(v)>=.99)clipped++}if(nz)nonzero++;
+   chunks.push(new Float32Array(x));samples+=x.length;const rms=Math.sqrt(sum/x.length),now=performance.now(),elapsed=now-started;
+   if(elapsed<300)noise.push(rms);else if(noise){noise.sort((a,b)=>a-b);floor=Math.max(.0015,Math.min(.004,noise[Math.floor(noise.length*.2)]||0));thr=Math.max(.008,floor*3);noise=null}
+   if(rms>thr){loudRun++;if(loudRun>=2){speech=true;lastLoud=now;set('voice')}}else loudRun=0;
+   peakLv=Math.max(peakLv,rms);onLevel&&onLevel(Math.min(1,Math.sqrt(rms)*3.2),rms);
+   if(!speech&&elapsed>1800)set('quiet');
+   if(speech&&now-lastLoud>300){set('tail');onState&&onState('tailp',Math.min(1,(now-lastLoud-300)/Math.max(1,silenceMs-300)))}
+   if(samples>=ac.sampleRate*maxMs/1000)stop('max');
+  }
+  async function build(){
+   const context=ac;let useWorklet=false;
+   if(context.audioWorklet&&typeof AudioWorkletNode!=='undefined'){
+    let timer;
+    try{await Promise.race([context.audioWorklet.addModule('core/mic-worklet.js'),new Promise((_,no)=>{timer=setTimeout(()=>no(new Error('Worklet timeout')),2500)}),done.then(()=>{throw abortError()})]);useWorklet=true}catch(_){}finally{clearTimeout(timer)}
+   }
+   if(stopped||context!==ac)return;
+   src=context.createMediaStreamSource(stream);sink=context.createGain();sink.gain.value=0;
+   if(useWorklet){proc=new AudioWorkletNode(context,'mic-capture');proc.port.onmessage=e=>onAudio(e.data);backend='worklet'}
+   else{proc=context.createScriptProcessor(1024,1,1);proc.onaudioprocess=e=>onAudio(e.inputBuffer.getChannelData(0));backend='script'}
+   src.connect(proc);proc.connect(sink);sink.connect(context.destination);graphStart=performance.now();
+  }
+  onState&&onState('perm');
+  if(signal?.aborted){close();throw abortError()}
+  signal?.addEventListener('abort',abort,{once:true});
+  try{
+   const permission=navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true,channelCount:1}});
+   // getUserMedia has no AbortSignal. A late permission grant must still close every track.
+   permission.then(s=>{if(stopped)s.getTracks().forEach(t=>t.stop())},()=>{});
+   stream=await Promise.race([permission,done.then(()=>{throw abortError()})]);
+   if(stopped)throw abortError();
+   const tr=stream.getAudioTracks()[0];if(!tr||tr.readyState!=='live')throw new DOMException('No live microphone','NotReadableError');
+   const want=tr.getSettings?.().sampleRate;
+   if(want&&want!==ac.sampleRate){close();try{ac=new (AC())({sampleRate:want})}catch(_){ac=new (AC())()}}
+   if(ac.state!=='running')await Promise.race([ac.resume().catch(()=>{}),new Promise(r=>setTimeout(r,800)),done]);
+   if(stopped)throw abortError();
+   started=performance.now();await build();if(stopped)throw abortError();
+   tr.addEventListener('ended',()=>stop('ended'),{once:true});set('listen');
+   wd=setInterval(async()=>{if(stopped||rebuilding)return;const now=performance.now(),elapsed=now-started;
+    if(elapsed>=maxMs)return stop(speech?'max':'nospeech');
+    if(speech&&now-lastLoud>silenceMs)return stop('silence');
+    if(tr.readyState==='ended')return stop('ended');
+    if(now-graphStart>1200&&(calls===0||nonzero===0)){
+     if(rebuilt)return stop('dead');rebuilding=true;rebuilt++;teardown();close();
+     try{ac=new (AC())(want?{sampleRate:want}:undefined);await Promise.race([ac.resume(),new Promise(r=>setTimeout(r,800)),done]);
+      if(stopped){close();return}calls=0;nonzero=0;await build();
+     }catch(_){stop('dead')}finally{rebuilding=false}
+    }
+   },100);
+   return {stop,done,get state(){return state}};
+  }catch(e){stop('error');throw e}
+ }
  /* resample to 16 kHz (box filter + linear interpolation) and trim leading/trailing silence */
  function to16k(pcm,sr){const r=sr/16000,n=Math.floor(pcm.length/r),out=new Float32Array(n),w=Math.max(1,Math.round(r));
   for(let i=0;i<n;i++){const c=i*r,a=Math.floor(c);let s=0,k=0;for(let j=a-(w>>1);j<=a+(w>>1);j++)if(j>=0&&j<pcm.length){s+=pcm[j];k++}out[i]=k?s/k:0}return out}

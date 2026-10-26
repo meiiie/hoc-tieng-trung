@@ -1,4 +1,14 @@
+> **Cập nhật 27/10/2026:** phần dưới ghi lại các thử nghiệm trước đây. UI hiện không chấm điểm 0–100 hay chấm thanh bằng F0. Xem [quyết định mới, nghiên cứu và giới hạn](LEARNER-UX-SPEECH-2026-10-27.md). Trọng số V6 không đổi; đây là nhận dạng tùy chọn, chưa có đánh giá riêng trên người học Việt.
+
 # Chinese pronunciation feedback: what ships, what it measures, the state of the art
+
+## Content update, 2026-10-26
+
+Audio now uses explicit asset references, independent of level and array position. The content pipeline fills the missing HSK 4-9 assets and replaces selected HSK 1-3 assets after dictionary and audio diagnostics, using pinned Kokoro v1.1-zh weights and dictionary pinyin. Historical audio elsewhere stays in place. The final release manifest is the source of truth for file counts and hashes; see `CONTENT-PIPELINE.md` and the audio diagnostics in `audits/`.
+
+The renderer treats `r5` as erhua attached to the preceding syllable, not an additional syllable to record or score. 女儿 (`nü3 er2`) remains two syllables. The scorer does not separately assess the rhotic quality of erhua. The learning scheduler and scoring model weights have not changed.
+
+The older stages below describe their respective releases and measurements. Their HSK 4-9 device-TTS fallback and audio counts are historical. File coverage, successful decoding, and agreement from ASR do not certify native pronunciation or educational scoring accuracy.
 
 ## What ships (Stage 1, 2026-10-24)
 

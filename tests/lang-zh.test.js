@@ -18,4 +18,7 @@ t('accepts hanzi, toned and toneless pinyin, numbered pinyin',()=>{const a=L._ac
 t('traditional form accepted',()=>{const a=L._accepts({s:'爱',t:'愛',p:'ài',n:'ai4'});assert.ok(a.includes('愛'))});
 t('ü typed as v',()=>{const a=L._accepts({s:'绿',t:'綠',p:'lǜ',n:'lu:4'});assert.ok(a.includes('lv'))});
 t('practice never changes schedules (bringForward off)',()=>assert.strictEqual(L.bringForward,false));
+t('audio follows an explicit asset key, regardless of level or list position',()=>{const w={L:7,num:'8888',a:'hsk1/{voice}/w/0000.mp3'};assert.equal(L.aurl(w,'w','m'),'audio/hsk1/m/w/0000.mp3');assert.equal(L.aurl({...w,L:2,num:'0001'},'w','f'),'audio/hsk1/f/w/0000.mp3')});
+t('erhua is attached to the previous spoken syllable',()=>assert.deepStrictEqual(L._spoken({p:'yǒu jìn r',n:'you3 jin4 r5'}),[{p:'yǒu',n:'you3'},{p:'jìnr',n:'jin4'}]));
+t('er in daughter remains a separate syllable',()=>assert.deepStrictEqual(L._spoken({p:'nǚ ér',n:'nu:3 er2'}),[{p:'nǚ',n:'nu:3'},{p:'ér',n:'er2'}]));
 console.log(n,'adapter tests passed');

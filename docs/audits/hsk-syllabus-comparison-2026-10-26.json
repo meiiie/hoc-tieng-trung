@@ -1,0 +1,172 @@
+{
+  "source": "https://hsk.cn-bj.ufileos.com/3.0/%E6%96%B0%E7%89%88HSK%E8%80%83%E8%AF%95%E5%A4%A7%E7%BA%B21219.pdf",
+  "sourcePdfSha256": "ec74ce0439e837bbb15154be13e747ae798903b2fd3a331629df6c3b45504941",
+  "method": "Extracted table rows from PDF pages 80-354; checked row numbers 1..11000 with no gaps/duplicates. Comparison by simplified headword only, stripping trailing homograph digits. NOT sense/reading validation or a migration-ready import. Page spot-check only.",
+  "officialRows": 11000,
+  "officialUniqueHeadwords": 10896,
+  "exclusiveCounts": {
+    "1": 300,
+    "2": 200,
+    "3": 500,
+    "4": 1000,
+    "5": 1600,
+    "6": 1800,
+    "7-9": 5600
+  },
+  "missingHeadwordRows": 1200,
+  "missingUniqueHeadwords": 1200,
+  "differentLevelRows": 4103,
+  "existingHeadwordsNotInOfficial": 1273,
+  "missingByLevel": {
+    "1": 7,
+    "3": 6,
+    "4": 25,
+    "5": 51,
+    "6": 124,
+    "7-9": 987
+  },
+  "missingSamples": [
+    {
+      "number": 121,
+      "level": "1",
+      "word": "没事",
+      "pinyin": "méishì",
+      "pdfPage": 83
+    },
+    {
+      "number": 132,
+      "level": "1",
+      "word": "哪个",
+      "pinyin": "nǎge",
+      "pdfPage": 83
+    },
+    {
+      "number": 138,
+      "level": "1",
+      "word": "那个",
+      "pinyin": "nàge",
+      "pdfPage": 83
+    },
+    {
+      "number": 147,
+      "level": "1",
+      "word": "你好",
+      "pinyin": "nǐ hǎo",
+      "pdfPage": 83
+    },
+    {
+      "number": 214,
+      "level": "1",
+      "word": "玩",
+      "pinyin": "wán",
+      "pdfPage": 85
+    },
+    {
+      "number": 259,
+      "level": "1（4）",
+      "word": "一下",
+      "pinyin": "yíxià",
+      "pdfPage": 86
+    },
+    {
+      "number": 281,
+      "level": "1",
+      "word": "这个",
+      "pinyin": "zhège",
+      "pdfPage": 87
+    },
+    {
+      "number": 535,
+      "level": "3",
+      "word": "冰激凌",
+      "pinyin": "bīngjīlíng",
+      "pdfPage": 93
+    },
+    {
+      "number": 595,
+      "level": "3",
+      "word": "电子书",
+      "pinyin": "diànzǐshū",
+      "pdfPage": 94
+    },
+    {
+      "number": 670,
+      "level": "3",
+      "word": "红绿灯",
+      "pinyin": "hóng-lǜdēng",
+      "pdfPage": 96
+    }
+  ],
+  "differentLevelSamples": [
+    {
+      "number": 11,
+      "level": "1",
+      "word": "边",
+      "pinyin": "biān",
+      "pdfPage": 80
+    },
+    {
+      "number": 15,
+      "level": "1",
+      "word": "不要",
+      "pinyin": "búyào",
+      "pdfPage": 80
+    },
+    {
+      "number": 19,
+      "level": "1",
+      "word": "超市",
+      "pinyin": "chāoshì",
+      "pdfPage": 80
+    },
+    {
+      "number": 22,
+      "level": "1",
+      "word": "出租车",
+      "pinyin": "chūzūchē",
+      "pdfPage": 80
+    },
+    {
+      "number": 26,
+      "level": "1",
+      "word": "大家",
+      "pinyin": "dàjiā",
+      "pdfPage": 80
+    },
+    {
+      "number": 34,
+      "level": "1",
+      "word": "店",
+      "pinyin": "diàn",
+      "pdfPage": 80
+    },
+    {
+      "number": 56,
+      "level": "1",
+      "word": "分钟",
+      "pinyin": "fēnzhōng",
+      "pdfPage": 81
+    },
+    {
+      "number": 62,
+      "level": "1",
+      "word": "公司",
+      "pinyin": "gōngsī",
+      "pdfPage": 81
+    },
+    {
+      "number": 64,
+      "level": "1",
+      "word": "狗",
+      "pinyin": "gǒu",
+      "pdfPage": 81
+    },
+    {
+      "number": 89,
+      "level": "1",
+      "word": "件",
+      "pinyin": "jiàn",
+      "pdfPage": 82
+    }
+  ]
+}

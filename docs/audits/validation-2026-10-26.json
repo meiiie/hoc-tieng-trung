@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-26",
+  "timezone": "Asia/Saigon",
+  "baseCommit": "c9336d6ca1cc17fde1f7d9e6eee728847f87ffa5",
+  "environment": {
+    "os": "Windows",
+    "node": "25.9.0",
+    "python": "3.13.7",
+    "server": "python tools/serve.py, loopback 127.0.0.1:8931",
+    "encoding": "PYTHONUTF8=1 and PYTHONIOENCODING=utf-8 during browser checks"
+  },
+  "unit": {
+    "command": "npm test",
+    "exitCode": 0,
+    "total": 59,
+    "scheduler": 23,
+    "adapter": 12,
+    "data": 15,
+    "tones": 9
+  },
+  "e2e": {
+    "command": "python -u tests/e2e.py http://127.0.0.1:8931/ all",
+    "exitCode": 0,
+    "checks": 40,
+    "browsers": ["chromium", "webkit"],
+    "axeEnabled": true,
+    "axeRules": ["wcag2a", "wcag2aa"],
+    "axeScreensPerBrowser": 10,
+    "axeViolations": 0,
+    "consoleErrors": 0,
+    "chromiumFakeMicrophone": "pass",
+    "chromiumModelDownload": "pass",
+    "webkitSpeakingFallback": "pass"
+  },
+  "modelParity": {
+    "command": "python -u tests/model_parity.py http://127.0.0.1:8931/ all",
+    "exitCode": 0,
+    "fixturesPerBrowser": 3,
+    "chromium": {"topSyllableAndToneMatch": true, "modelLoadSeconds": 6.9, "wordMilliseconds": [882, 525, 431]},
+    "webkit": {"topSyllableAndToneMatch": true, "modelLoadSeconds": 10.8, "wordMilliseconds": [1532, 667, 643]},
+    "limitation": "Compared with shipped expected fixture outputs; the Python speech model was not independently re-evaluated on a new corpus. Cache presence was checked, not a full restart in offline mode."
+  },
+  "windowsModelInvestigation": {
+    "initialServer": "python -m http.server 8931 --bind 127.0.0.1",
+    "observedFailure": "e2e timed out at the model download after the first 15 Chromium checks passed",
+    "isolatedCause": "This host's MIME registry mapped .mjs to text/plain; the ONNX worker reported Failed to fetch dynamically imported module",
+    "controlledReproduction": "Changing only the local server .mjs response to text/javascript produced MODEL_READY",
+    "verifiedHeaders": {"mjs": "text/javascript", "wasm": "application/wasm"},
+    "resolution": "Added tools/serve.py with explicit JavaScript and WASM MIME types; full browser and parity suites then passed. Application runtime was unchanged."
+  },
+  "dataAudit": {
+    "sourceRevision": "drkameleon/complete-hsk-vocabulary@7ac65bf",
+    "sourceFiles": 7,
+    "idsAndOrderMatchEveryLevel": true,
+    "missingIds": 0,
+    "extraIds": 0,
+    "report": "hsk-2026-10-26.json"
+  },
+  "syllabusComparison": {
+    "report": "hsk-syllabus-comparison-2026-10-26.json",
+    "numberedRows": 11000,
+    "numbersConsecutiveAndUnique": true,
+    "visualSpotCheck": "PDF page 87: transition from entry 300 (HSK1) to 301 (HSK2)",
+    "limitation": "Headword-only candidate matching; not a complete linguistic review or a migration-ready import."
+  },
+  "notTested": [
+    "Physical iPhone microphone and installation",
+    "All Vietnamese meanings reviewed by a qualified human",
+    "All official PDF cells checked visually",
+    "Full offline restart of all speech runtime resources",
+    "An actual vocabulary migration or production deployment"
+  ]
+}

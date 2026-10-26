@@ -14,7 +14,7 @@ Since 2026-10-24 this app runs on the same UI core as the English app (H·ªçc T·ª
 
 ## How the core is made
 
-`tools/make-core.py` applies about 60 exact string replacements to English `app.js`. It asserts that each one matches exactly once, so a changed upstream file fails loudly instead of drifting. Each replacement only adds a check such as `LANG.x ? LANG.x(...) : <original code>`. When `window.LANG` is not set, every branch runs the original v17 code.
+`tools/make-core.py` applies exact string replacements to English `app.js`. It asserts match counts so a changed upstream file fails loudly instead of drifting. Most replacements add language hooks. The 2026-10-26 update also adds shared fixes for honest offline download counts and list pagination. Generation was checked against English commit `8953b394657555ee07dd5bb32f30823829330032`; its result matches `core/app-core.js` exactly after newline normalization.
 
 Regenerate it with:
 

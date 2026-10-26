@@ -142,7 +142,7 @@ document.addEventListener('click',e=>{const cp=e.target.closest('[data-copy]');i
  const nb=e.target.closest('[data-note]');if(nb){e.stopPropagation();openNote(nb.dataset.note);return}
  const s=e.target.closest('[data-star]');if(s){e.stopPropagation();const id=s.dataset.star;S.star[id]=!S.star[id];if(!S.star[id])delete S.star[id];save();$$(`[data-star="${id}"]`).forEach(b=>{b.classList.toggle('on',!!S.star[id]);b.setAttribute('aria-pressed',!!S.star[id])});buzz(10);toast(S.star[id]?'Đã gắn sao':'Đã bỏ sao','star')}},true);
 /* a click that ends a swipe must not also press the button under the finger */
-addEventListener('click',e=>{if(performance.now()-(window._swipeT||0)<450){e.stopPropagation();e.preventDefault()}},true);
+addEventListener('click',e=>{if(window._swipeT!=null&&performance.now()-window._swipeT<450){e.stopPropagation();e.preventDefault()}},true);
 
 /* ---------- confetti ---------- */
 function confetti(){if(reduce)return;const c=$('#confetti'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const cs=getComputedStyle(document.body);
@@ -173,7 +173,7 @@ function openSettings(){const cur=k=>k=='goal'?((S.user&&S.user.goal)||'all'):St
  <div class="opt-row"><span>Tốc độ mặc định</span>${seg('slow',[['false','Bình thường'],['true','Chậm']])}</div>
  <label class="opt-row"><span>Tự phát âm khi hiện thẻ</span><input class="sw" type="checkbox" data-sw="autoplay" ${S.set.autoplay?'checked':''}></label>
  <label class="opt-row"><span>Kéo thẻ bằng chuột<br><small class="muted">Máy tính: kéo nhanh sang ngang để chuyển thẻ; giữ chuột rồi kéo để bôi đen chữ</small></span><input class="sw" type="checkbox" data-sw="mdrag" ${S.set.mdrag!==false?'checked':''}></label>
- <div class="opt-row"><span>Tải âm thanh để học offline<br><small class="muted" id="dlst">Âm thanh được lưu dần khi bạn nghe</small></span><button class="btn sm sec" id="dl">${I('download','s')}Tải</button></div></div>
+ <div class="opt-row"><span>Tải âm thanh để học offline<br><small class="muted" id="dlst">${LANG.audioUrls?LANG.audioUrls().length.toLocaleString('vi-VN')+' từ trong bộ đang chọn, giọng '+(S.set.voice=='m'?'nam':'nữ')+'. Chọn cấp ở trang chủ để tải từng phần.':'Âm thanh được lưu dần khi bạn nghe'}</small></span><button class="btn sm sec" id="dl">${I('download','s')}Tải</button></div></div>
  <div class="eyebrow">Lịch ôn (kiểu Anki)</div><div class="group">
  <div class="opt-row"><span>Mục tiêu mỗi ngày<br><small class="muted">Số câu trả lời ở mọi chế độ</small></span>${seg('goalAns',[['10','10'],['20','20'],['50','50'],['100','100']])}</div>
  <div class="opt-row"><span>Từ mới mỗi ngày</span>${seg('goal',[['all','Tất cả'],['10','10'],['25','25'],['50','50']])}</div>
@@ -200,22 +200,25 @@ function openSettings(){const cur=k=>k=='goal'?((S.user&&S.user.goal)||'all'):St
  else if($('#mst2',sh)){$('#mst2',sh).textContent='Trình duyệt này không hỗ trợ';$('#mdl',sh).disabled=true}
  $$('[data-sw]',sh).forEach(x=>x.onchange=()=>{S.set[x.dataset.sw]=x.checked;save();applyTheme()});
  $('#redo').onclick=()=>{close();onboarding(0)};$('#exp').onclick=exportProgress;$('#imp').onclick=()=>$('#impf').click();$('#impf').onchange=e=>{const f=e.target.files[0];if(f)importProgress(f,close);e.target.value=''};$('#rst').onclick=()=>{if(confirm('Xoá toàn bộ tiến độ trên thiết bị này?')){Object.assign(S,{srs:{},known:{},learn:{},speak:{},pron:{},log:{},best:{},notes:{},miss:{},ev:{},streak:{freeze:0,frozen:[],earned:''}});save();FC=null;toast('Đã xoá tiến độ','rotate-ccw');close()}};
- $('#dl').onclick=async()=>{if(!('caches'in window)){toast('Trình duyệt không hỗ trợ lưu offline','info');return}const b=$('#dl');b.disabled=true;const c=await caches.open(AUDIO_CACHE);const urls=LANG.audioUrls?LANG.audioUrls():words.flatMap(w=>[aurl(w,'w'),aurl(w,'ex')]);let n=0;
-  for(let i=0;i<urls.length;i+=8){await Promise.all(urls.slice(i,i+8).map(u=>c.match(u).then(m=>m||fetch(u).then(r=>r.ok&&c.put(u,r))).catch(()=>{})));n=Math.min(urls.length,i+8);const st=$('#dlst');if(st)st.textContent=`Đang tải ${n}/${urls.length}…`}
-  const st=$('#dlst');if(st)st.textContent=`Đã lưu ${urls.length} tệp âm thanh`;b.disabled=false;toast('Đã tải xong âm thanh','download')}}
+ $('#dl').onclick=async()=>{if(!('caches'in window)){toast('Trình duyệt không hỗ trợ lưu offline','info');return}const b=$('#dl');b.disabled=true;const urls=LANG.audioUrls?LANG.audioUrls():words.flatMap(w=>[aurl(w,'w'),aurl(w,'ex')]);let saved=0,failed=0;
+  try{const c=await caches.open(AUDIO_CACHE);
+   for(let i=0;i<urls.length;i+=4){await Promise.all(urls.slice(i,i+4).map(async u=>{const abort=new AbortController(),timer=setTimeout(()=>abort.abort(),30000);try{if(!(await c.match(u))){const r=await fetch(u,{signal:abort.signal});if(!r.ok)throw new Error('HTTP '+r.status);await c.put(u,r)}saved++}catch(e){failed++}finally{clearTimeout(timer)}}));const st=$('#dlst');if(st)st.textContent=`Đã lưu ${saved}/${urls.length}${failed?' · lỗi '+failed:''}…`}
+   const st=$('#dlst');if(st)st.textContent=failed?`Đã lưu ${saved}/${urls.length} tệp. ${failed} tệp chưa tải được; bấm Tải để thử lại.`:`Đã lưu ${saved} tệp âm thanh`;
+   toast(failed?'Còn tệp chưa tải được. Kiểm tra mạng hoặc dung lượng máy.':'Đã tải xong âm thanh',failed?'wifi-off':'download')
+  }catch(e){toast('Không mở được bộ nhớ offline. Kiểm tra dung lượng máy.','info')}finally{b.disabled=false}}}
 
 /* ---------- onboarding ---------- */
 function onboarding(step=0,draft={...(S.user||{})}){const N=4,seg=`<div class="seg" role="progressbar" aria-label="Bước thiết lập" aria-valuemin="1" aria-valuemax="${N}" aria-valuenow="${step+1}">${[...Array(N)].map((_,i)=>`<i class="${i<=step?'on':''}"></i>`).join('')}</div>`;
- const goals=[['10','10 từ mỗi ngày','Nhẹ nhàng, 5 phút','leaf'],['25','25 từ mỗi ngày','Vừa sức, khoảng 15 phút','target'],['50','50 từ mỗi ngày','Chăm chỉ, khoảng 30 phút','flame'],['all','Học hết toàn bộ','Không giới hạn mỗi ngày','repeat']];
- const styles=[['cards','Thẻ ghi nhớ','Lật thẻ, vuốt trái hoặc phải','layers'],['learn','Học từng vòng','Trắc nghiệm rồi gõ từ','brain'],['speak','Luyện nói','Nghe giọng chuẩn, nói theo, chấm điểm','mic'],['mix','Kết hợp','Mỗi ngày một kiểu','shuffle']];
+ const goals=[['10','Tối đa 10 từ mới mỗi ngày','Có thể đổi bất cứ lúc nào','leaf'],['25','Tối đa 25 từ mới mỗi ngày','Có thể đổi bất cứ lúc nào','target'],['50','Tối đa 50 từ mới mỗi ngày','Có thể đổi bất cứ lúc nào','layers'],['all','Tự chọn số từ','Không giới hạn từ mới mỗi ngày','repeat']];
+ const styles=[['cards','Thẻ ghi nhớ','Lật thẻ, vuốt trái hoặc phải','layers'],['learn','Học từng vòng','Trắc nghiệm rồi gõ từ','brain'],['speak','Luyện nói','Nghe, nói lại và xem phản hồi tham khảo','mic'],['mix','Kết hợp','Mỗi ngày một kiểu','shuffle']];
  let html;const radio=(k,arr)=>`<div class="choice" role="radiogroup">${arr.map(([v,l,d,ic])=>`<button class="radio ${(draft[k]||arr[k=='goal'?3:0][0])==v?'on':''}" role="radio" aria-checked="${(draft[k]||arr[k=='goal'?3:0][0])==v}" data-${k}="${v}"><span class="ic">${I(ic=='leaf'?'sparkles':ic)}</span><span><b>${l}</b><small>${d}</small></span></button>`).join('')}</div>`;
  if(step==0)html=`${mascot('wave','Chào bạn, mình là Neko.<br>Bạn tên là gì?')}<label class="sr" for="nm">Tên của bạn</label><input class="bigin" id="nm" placeholder="Tên của bạn" maxlength="24" autocomplete="given-name" value="${esc(draft.name||'')}"><div class="grow"></div>
   <button class="btn" id="nx">Tiếp tục</button><button class="btn sec" id="sk" style="margin-top:10px">Để sau</button>`;
- if(step==1)html=`${mascot('think',`Mỗi ngày ${esc(draft.name||'bạn')} muốn học bao nhiêu từ mới?`)}${radio('goal',goals)}<p class="muted center">Bạn vẫn có thể học hết toàn bộ bất cứ lúc nào.</p><div class="grow"></div><button class="btn" id="nx">Tiếp tục</button>`;
+ if(step==1)html=`${mascot('think',`Mỗi ngày ${esc(draft.name||'bạn')} muốn học bao nhiêu từ mới?`)}${radio('goal',goals)}<p class="muted center">Đây là giới hạn từ mới trong lịch ôn. Bạn vẫn có thể tự chọn từ và kiểu luyện bất cứ lúc nào.</p><div class="grow"></div><button class="btn" id="nx">Tiếp tục</button>`;
  if(step==2)html=`${mascot('idle','Bạn thích học theo kiểu nào?')}${radio('style',styles)}<div class="grow"></div><button class="btn" id="nx">Tiếp tục</button>`;
  if(step==3){const g=goals.find(x=>x[0]==(draft.goal||'all')),st=styles.find(x=>x[0]==(draft.style||'cards'));
-  html=`${mascot('celebrate',`Kế hoạch của ${esc(draft.name||'bạn')} đã sẵn sàng`)}<div class="card plan" style="padding:4px 18px">
-  <div class="li"><span class="ic">${I('target')}</span><div><b>${g[1]}</b><small>Học đều mỗi ngày, có ngày nghỉ được bảo vệ</small></div></div>
+  html=`${mascot('celebrate',`Thiết lập của ${esc(draft.name||'bạn')} đã sẵn sàng`)}<div class="card plan" style="padding:4px 18px">
+  <div class="li"><span class="ic">${I('target')}</span><div><b>${g[1]}</b><small>Tự điều chỉnh theo thời gian và nhu cầu của bạn</small></div></div>
   <div class="li"><span class="ic">${I(st[3])}</span><div><b>${st[1]}</b><small>${st[2]}</small></div></div>
   <div class="li"><span class="ic">${I('headphones')}</span><div><b>${LANG.planTitle?LANG.planTitle(words.length):words.length+' từ Oxford 3000 · IELTS'}</b><small>${LANG.planSub||'Giọng Anh và Mỹ, phát âm chậm, câu ví dụ'}</small></div></div></div>
   <p class="muted center">Tiến độ chỉ lưu trên thiết bị này.</p><div class="grow"></div><button class="btn pri" id="nx">Bắt đầu</button>`}
@@ -227,7 +230,7 @@ function onboarding(step=0,draft={...(S.user||{})}){const N=4,seg=`<div class="s
 
 /* ---------- home ---------- */
 const MODES={cards:['layers','Thẻ ghi nhớ','Xem nhanh cả bộ, không ảnh hưởng lịch ôn'],learn:['brain','Học','4 bước: chọn, nhớ lại, điền câu, nghe'],hard:['target','Từ khó',''],
- speak:['mic','Luyện nói','Nói theo giọng chuẩn, chấm điểm'],listen:['headphones','Nghe – chép','Nghe từ rồi gõ lại'],review:['calendar-clock','Ôn theo lịch',''],cram:['repeat','Ôn toàn bộ','Lướt cả bộ từ, không làm lệch lịch ôn'],
+ speak:['mic','Luyện nói','Nghe, nói lại; phản hồi tham khảo'],listen:['headphones','Nghe – chép','Nghe từ rồi gõ lại'],review:['calendar-clock','Ôn theo lịch',''],cram:['repeat','Ôn toàn bộ','Lướt cả bộ từ, không làm lệch lịch ôn'],
  match:['zap','Ghép thẻ',''],test:['clipboard-check','Kiểm tra','20 câu hỗn hợp, chấm điểm'],...(LANG.modes||{}),list:['list-checks','Danh sách từ',''],stats:['chart-column','Thống kê','Tiến độ theo cấp độ']};
 /* v14: earliest upcoming due time among scheduled cards (for the 'nothing due' state) */
 function nextDueAt(cards,now=Date.now()){let m=Infinity;for(const x of cards){const c=S.srs[x.cid];if(!c||c.susp||c.state=='new')continue;if(c.due>now&&c.due<m)m=c.due}return m==Infinity?null:m}
@@ -235,15 +238,15 @@ function whenText(t,now=Date.now()){const ms=t-now,h=Math.round(ms/36e5),d=new D
  if(ms<36e5)return `sau ${Math.max(1,Math.round(ms/6e4))} phút`;if(ymd(d)==today())return `hôm nay lúc ${hm} (sau ${h} giờ)`;if(ymd(d)==addDays(today(),1))return `ngày mai lúc ${hm}`;
  return `${d.toLocaleDateString('vi-VN',{weekday:'long',day:'numeric',month:'numeric'})}`}
 function dueLine(d,now=Date.now()){const cs=allCards(d),q=counts(cs,now),due=q.r+q.l;
- if(due)return {due,n:q.n,txt:`Hôm nay cần ôn ${due} thẻ${q.n?` · ${q.n} thẻ mới`:''}`};
- const nx=nextDueAt(cs,now);if(q.n)return {due,n:q.n,txt:`Không có thẻ đến hạn · ${q.n} thẻ mới hôm nay`};
+ if(due)return {due,n:q.n,txt:`Có ${due} thẻ đến hạn${q.n?` · ${q.n} thẻ mới`:''}`};
+ const nx=nextDueAt(cs,now);if(q.n)return {due,n:q.n,txt:newPerDay()>=1e9?'Không có thẻ đến hạn · Tự chọn từ mới':`Không có thẻ đến hạn · Tối đa ${q.n} thẻ mới theo thiết lập`};
  return {due,n:0,txt:nx?`Không có thẻ đến hạn · lần ôn tiếp theo ${whenText(nx,now)}`:'Chưa có thẻ nào trong lịch ôn. Học vài từ mới trước nhé.'}}
 function home(){if(LANG.onHome)LANG.onHome();const d=deck(),now=Date.now(),learned=d.filter(w=>isLearned(w.id)).length,cq=counts(allCards(d),now),due=cq.r+cq.l;
  const fz=applyFreezes();if(fz)setTimeout(()=>toast(`Đã dùng ${fz} ngày nghỉ để giữ chuỗi`,'shield',3500),300);const streak=streakNow(),frz=S.streak.freeze;
  const tl=S.log[today()]||{rev:0,new:0},g=newPerDay(),ga=goalAns(),gp=Math.min(100,tl.rev/ga*100);
  const hr=new Date().getHours(),hi=hr<11?'Chào buổi sáng':hr<18?'Chào buổi chiều':'Chào buổi tối';
- let st='wave',msg=`${hi}, ${esc(uname())}.<br>Hôm nay mình học ${g>=1e9?'hết toàn bộ':g+' từ'} nhé?`;
- if(!tl.rev&&streak>0){st='encouraging';msg=`${hi}, ${esc(uname())}.<br>Chuỗi ${streak} ngày đang chờ bạn, vài câu là đủ.`}
+ let st='wave',msg=`${hi}, ${esc(uname())}.<br>${g>=1e9?'Hôm nay bạn muốn học gì?':'Tối đa '+g+' từ mới theo thiết lập của bạn.'}`;
+ if(!tl.rev&&streak>0){st='encouraging';msg=`${hi}, ${esc(uname())}.<br>Bạn có thể ôn lại, học tiếp hoặc nghỉ theo nhu cầu.`}
  else if(tl.rev>=ga){st='happy';msg=`Xong mục tiêu hôm nay. Giỏi lắm, ${esc(uname())}!`}
  if(!d.length){st='meditate';msg='Bộ từ đang trống. Hãy đổi bộ lọc nhé.'}
  const main='review';
@@ -265,7 +268,7 @@ function makeCard(stage,w,dir,onSwipe){const el=document.createElement('div');el
  el.innerHTML=`<div class="inner"><div class="face f">${frontFace(w,dir)}</div><div class="face b">${backFace(w)}</div></div><span class="lbl L">${I('x','s')}Đang học</span><span class="lbl K">${I('check','s')}Đã biết</span>`;
  stage.appendChild(el);const L=$('.lbl.L',el),K=$('.lbl.K',el),FF=$('.face.f',el),FB=$('.face.b',el);const faces=()=>{const f=el.classList.contains('flip');FF.inert=f;FB.inert=!f;FF.setAttribute('aria-hidden',f);FB.setAttribute('aria-hidden',!f)};faces();new MutationObserver(faces).observe(el,{attributes:true,attributeFilter:['class']});
  /* Gesture state machine: idle -> pending -> (tap | swipe | scroll). Only a clean tap flips. */
- const TAP_SLOP=10,TAP_MS=450,FLIP_LOCK=reduce?60:540;let st='idle',pid=null,sx=0,sy=0,dx=0,t0=0,lastFlip=0,lastSwipeEnd=0,busy=false;
+ const TAP_SLOP=10,TAP_MS=450,FLIP_LOCK=reduce?60:540;let st='idle',pid=null,sx=0,sy=0,dx=0,t0=0,lastFlip=-Infinity,lastSwipeEnd=-Infinity,busy=false;
  const INTERACTIVE='button,a,input,textarea,select,label,[data-au],[data-star],[data-copy],[data-noflip]';
  /* v12 desktop: text is selectable; a mouse never drag-swipes from text (and never at all unless the "drag with mouse" setting is on).
     A mouse click flips only when the mouse did not move and nothing got selected; a click on text waits out the double-click window. */
@@ -321,7 +324,7 @@ function cards(){const d=deck();if(!FC){const o=sess('cards');if(o&&o.sig==JSON.
   <div class="ctrl"><button class="ib" id="undo" aria-label="Hoàn tác" title="Hoàn tác (phím Z)" ${FC.hist.length?'':'disabled'}>${I('undo-2')}</button><button class="ib ${FC.shuffled?'on':''}" id="shuf" title="Trộn thẻ" aria-label="Trộn thẻ" aria-pressed="${FC.shuffled}">${I('shuffle')}</button>
   <button class="ib" id="flipb" aria-label="Lật thẻ" title="Lật thẻ (phím cách)">${I('refresh-cw')}</button><button class="ib ${S.set.dir=='vi'?'on':''}" id="dirb" aria-label="Đổi chiều Anh – Việt" title="Đổi chiều Anh – Việt">${I('languages')}</button><button class="ib ${S.set.autoplay?'on':''}" id="autob" title="Tự phát âm" aria-label="Tự phát âm" aria-pressed="${S.set.autoplay}">${I(S.set.autoplay?'volume-2':'volume-x')}</button></div>
   <p class="xnote">${I('info','s')}Xem cả bộ, không thay đổi lịch ôn. Muốn ghi nhớ lâu dài: <a href="#/review">Ôn theo lịch</a></p><p class="hint">${FC.i+1} / ${total} · <span class="t-touch">Chạm để lật, vuốt để chọn</span><span class="t-desk">Nhấp để lật · kéo nhanh hoặc phím ← → để chọn · giữ chuột rồi kéo để bôi đen chữ</span></p>`);
-  if(!S.set.mhint&&matchMedia('(hover:hover) and (pointer:fine)').matches&&S.set.mdrag!==false){S.set.mhint=1;save();setTimeout(()=>toast('Mẹo: kéo nhanh thẻ sang ngang để chuyển thẻ; giữ chuột một chút rồi kéo để bôi đen chữ','info',5000),900)}
+  if(!S.set.mhint&&matchMedia('(hover:hover) and (pointer:fine)').matches&&S.set.mdrag!==false){S.set.mhint=1;save();setTimeout(()=>{if(location.hash==='#/cards')toast('Mẹo: kéo nhanh thẻ sang ngang để chuyển thẻ; giữ chuột một chút rồi kéo để bôi đen chữ','info',5000)},900)}
   if(FC.mood){const m=$('.mascot');setTimeout(()=>moodTo(m,'idle'),1300);FC.mood=null}
   const c=makeCard($('#stage'),w,S.set.dir,right=>{FC.tip=right?['Tuyệt, đã biết!','Nhớ tốt lắm!','Giỏi quá!'][Math.random()*3|0]:'Không sao, mình sẽ gặp lại từ này.';FC.mood=right?'happy':'sad';FC.hist.push({id:w.id,right});right?FC.know++:FC.learn++;practice(w,right);if(!right)FC.queue.push(w.id);FC.i++;FC.flipped=false;render()});
   c.el._onflip=()=>{FC.flipped=c.el.classList.contains('flip');sess('cards',FC)};if(FC.flipped)c.el.classList.add('flip');
@@ -646,7 +649,7 @@ function list(){const d=deck(),wideQ=matchMedia('not all')/* v15: always the sim
  view('Danh sách từ',`<div class="ltools"><div class="search">${I('search')}<input type="search" id="sq" placeholder="${LANG.searchPrompt||'Tìm từ hoặc nghĩa'}" aria-label="Tìm kiếm"></div>
  <label class="lsort"><span>Sắp xếp</span><select id="ssort" aria-label="Sắp xếp danh sách">${[['az','A → Z'],['lv','Cấp độ'],['due','Đến hạn sớm'],['state','Trạng thái'],['star','Gắn sao trước']].map(([v,l])=>`<option value="${v}" ${v==sortK?'selected':''}>${l}</option>`).join('')}</select></label></div>
  <div class="chips lf" role="radiogroup" aria-label="Lọc theo trạng thái">${[['','Tất cả'],['new','Mới'],['learning','Đang học'],['review','Đang ôn'],['mastered','Thành thạo'],['leech','Hay quên'],['susp','Tạm ngưng / ẩn']].map(([k,l])=>`<button class="chip" role="radio" data-lf="${k}">${l} <span class="n" data-lfn="${k}"></span></button>`).join('')}</div>
- <p class="muted" id="lc" aria-live="polite"></p><div class="list" id="ls"></div>`);
+ <p class="muted" id="lc" aria-live="polite"></p><div class="list" id="ls"></div><nav class="row" id="lp" aria-label="Trang danh sách từ"></nav>`);
  let lf=S.set.lf||'';const LG={learning:['learn','relearn'],susp:['susp','buried']},inLf=(w,f=lf)=>!f||(LG[f]||[f]).includes(life(w));
  const paintLf=()=>$$('[data-lf]').forEach(b=>{const on=b.dataset.lf==lf;b.classList.toggle('on',on);b.setAttribute('aria-checked',on);$('[data-lfn]',b).textContent=d.filter(w=>inLf(w,b.dataset.lf)).length});
  $$('[data-lf]').forEach(b=>b.onclick=()=>{lf=b.dataset.lf;S.set.lf=lf;save();paintLf();r()});
@@ -656,11 +659,18 @@ function list(){const d=deck(),wideQ=matchMedia('not all')/* v15: always the sim
  const cmp={az:(a,b)=>a.w.localeCompare(b.w),lv:(a,b)=>(LV[a.lv]||LV[a.lv.slice(0,2)]||9)-(LV[b.lv]||LV[b.lv.slice(0,2)]||9)||a.w.localeCompare(b.w),due:(a,b)=>dueOf(a)-dueOf(b)||a.w.localeCompare(b.w),state:(a,b)=>stOf(a)[0]-stOf(b)[0]||a.w.localeCompare(b.w),star:(a,b)=>(!!S.star[b.id]-!!S.star[a.id])||a.w.localeCompare(b.w)};
  const acts=w=>`${susp(w)?`<button class="ib" data-unsus="${w.id}" aria-label="Mở lại thẻ ${esc(w.w)}">${I('rotate-ccw')}</button>`:''}<button class="ib" data-au="${w.id}" aria-label="Nghe ${esc(w.w)}">${I('volume-2')}</button>${starBtn(w)}`;
  const TH=[['az','Từ'],[null,'Phiên âm'],[null,'Nghĩa'],['lv','Cấp'],['state','Trạng thái'],['due','Ôn tiếp']];
- const r=()=>{const q=norm($('#sq').value);const xs=d.filter(w=>inLf(w)&&(!q||norm(w.w).includes(q)||norm(w.vi).includes(q)||(LANG.search&&LANG.search(w,$('#sq').value)))).sort((a,b)=>cmp[sortK](a,b)*dirS);$('#lc').textContent=xs.length+' từ';
+ let page=0,lastQuery='',lastFilter=lf,lastSort=sortK;const pageSize=100;
+ const r=()=>{const q=norm($('#sq').value);let xs=d.filter(w=>inLf(w)&&(!q||norm(w.w).includes(q)||norm(w.vi).includes(q)||(LANG.search&&LANG.search(w,$('#sq').value)))).sort((a,b)=>cmp[sortK](a,b)*dirS);
+  if(q!==lastQuery||lf!==lastFilter||sortK!==lastSort)page=0;lastQuery=q;lastFilter=lf;lastSort=sortK;
+  const total=xs.length,pages=Math.ceil(total/pageSize);page=Math.max(0,Math.min(page,pages-1));
+  $('#lc').textContent=total+' từ'+(total?' · '+(page*pageSize+1)+'–'+Math.min(total,(page+1)*pageSize):'');
+  $('#lp').innerHTML=pages>1?`<button class="btn sec" data-page="-1" ${page===0?'disabled':''}>Trang trước</button><span>Trang ${page+1}/${pages}</span><button class="btn sec" data-page="1" ${page===pages-1?'disabled':''}>Trang sau</button>`:'';
+  xs=xs.slice(page*pageSize,(page+1)*pageSize);
   if(!xs.length){$('#ls').innerHTML=mascot('meditate','Không tìm thấy từ nào.');return}
   if(wideQ.matches){$('#ls').innerHTML=`<table class="wtab"><caption class="sr">Danh sách từ, ${xs.length} từ</caption><thead><tr>${TH.map(([k,l])=>k?`<th scope="col" aria-sort="${k==sortK?(dirS>0?'ascending':'descending'):'none'}"><button class="thb" data-sk="${k}">${l}${k==sortK?`<span class="sarr" aria-hidden="true">${dirS>0?'↑':'↓'}</span>`:''}</button></th>`:`<th scope="col">${l}</th>`).join('')}<th scope="col"><span class="sr">Thao tác</span></th></tr></thead>
    <tbody>${xs.map(w=>{const st=stOf(w);return `<tr><th scope="row"><b>${esc(w.w)}</b></th><td class="ipa-c">${esc(ipaOf(w))}</td><td>${esc(w.vi)}</td><td><span class="tag lv">${esc(w.lv)}</span></td><td><span class="stt s${st[0]}">${st[1]}</span></td><td class="muted">${dueTxt(w)}</td><td class="acts">${acts(w)}</td></tr>`}).join('')}</tbody></table>`;return}
   $('#ls').innerHTML=xs.map(w=>`<div class="it"><button class="wopen" data-w="${w.id}" aria-label="Chi tiết và lịch sử của ${esc(w.w)}"><b>${esc(w.w)}</b> <span class="muted">${esc(ipaOf(w))}</span> <span class="tag lv">${esc(w.lv)}</span> ${lifeTag(life(w))}<br><span class="muted">${esc(w.vi)}</span></button>${acts(w)}</div>`).join('')};
+ $('#lp').onclick=e=>{const b=e.target.closest('[data-page]');if(!b)return;page+=Number(b.dataset.page);r();$('#sq').focus()};
  let t;$('#sq').oninput=()=>{clearTimeout(t);t=setTimeout(r,120)};$('#ssort').onchange=e=>{sortK=e.target.value;dirS=1;S.set.lsort=sortK;save();r()};
  $('#ls').onclick=e=>{const h=e.target.closest('[data-sk]');if(h){if(h.dataset.sk==sortK)dirS=-dirS;else{sortK=h.dataset.sk;dirS=1}$('#ssort').value=sortK;r();$(`[data-sk="${sortK}"]`)?.focus();return}
   const wo=e.target.closest('[data-w]');if(wo){openWord(wo.dataset.w,()=>{paintLf();r()});return}
@@ -700,9 +710,9 @@ function stats(){const d=deck(),now=Date.now(),cards=allCards(d);let nw=0,lr=0,y
  const days=[...Array(84)].map((_,i)=>ymd(new Date(now-(83-i)*DAY))),mx=Math.max(1,...days.map(x=>(S.log[x]||{}).rev||0));
  const last30=days.slice(-30).map(x=>S.log[x]||{}),rv=last30.reduce((a,l)=>a+(l.rv||0),0),ps=last30.reduce((a,l)=>a+(l.pass||0),0);
  const Rs=cards.map(x=>S.srs[x.cid]).filter(c=>c&&c.state=='review'&&!c.susp).map(c=>SRS.retrievability(c,now)),avgR=Rs.length?Rs.reduce((a,b)=>a+b,0)/Rs.length:null;
- const sp=d.filter(w=>S.speak[w.id]!=null),spa=sp.length?Math.round(sp.reduce((a,w)=>a+S.speak[w.id],0)/sp.length):0,fm=Math.max(1,...fc),tot=cards.length;
+ const sp=d.filter(w=>(S.pron[w.id]||[]).length),fm=Math.max(1,...fc),tot=cards.length;
  const seg=[['Mới',nw,'var(--primary)'],['Đang học',lr,'var(--danger)'],['Đang ôn',yg,'color-mix(in srgb,var(--success) 45%,var(--surface-2))'],['Thành thạo (độ bền ≥21 ngày)',mt,'var(--success)'],['Tạm ngưng',su,'var(--text-3)']];
- view('Thống kê',`<div class="stat"><div><b>${rv?Math.round(ps/rv*100)+'%':'–'}</b><span class="muted">tỉ lệ nhớ đúng khi ôn (30 ngày, ${rv} lượt)</span></div><div><b>${avgR==null?'–':Math.round(avgR*100)+'%'}</b><span class="muted">khả năng nhớ trung bình hiện tại</span></div><div><b>${fc[0]}</b><span class="muted">thẻ đến hạn hôm nay</span></div><div><b>${sp.length?spa:'–'}</b><span class="muted">điểm nói TB (${sp.length} từ)</span></div></div>
+ view('Thống kê',`<div class="stat"><div><b>${rv?Math.round(ps/rv*100)+'%':'–'}</b><span class="muted">tỉ lệ nhớ đúng khi ôn (30 ngày, ${rv} lượt)</span></div><div><b>${avgR==null?'–':Math.round(avgR*100)+'%'}</b><span class="muted">khả năng nhớ trung bình hiện tại</span></div><div><b>${fc[0]}</b><span class="muted">thẻ đến hạn hôm nay</span></div><div><b>${sp.length}</b><span class="muted">từ đã luyện nói</span></div></div>
  <div class="sgrid"><section class="sb"><h2 class="eyebrow">Trạng thái thẻ (${tot} thẻ${S.set.rev?', hai chiều':''})</h2><div class="card"><div class="stack" role="img" aria-label="${seg.map(x=>x[0]+' '+x[1]).join(', ')}">${seg.map(x=>x[1]?`<i style="flex:${x[1]};background:${x[2]}"></i>`:'').join('')}</div>
  <div class="legend">${seg.map(x=>`<span><i style="background:${x[2]}"></i>${x[0]} <b>${x[1]}</b></span>`).join('')}</div></div></section>
  <section class="sb"><h2 class="eyebrow">Dự báo 30 ngày tới</h2><div class="card"><div class="fcast" role="img" aria-label="Số thẻ đến hạn mỗi ngày trong 30 ngày tới">${fc.map((v,i)=>`<i style="height:${Math.max(2,v/fm*80)}px" title="${i==0?'Hôm nay':'+'+i+' ngày'}: ${v}"></i>`).join('')}</div><div class="fx"><span>Hôm nay</span><span>+15</span><span>+29</span></div></div></section>
