@@ -22,7 +22,11 @@ def run(kind):
       pg.wait_for_function("document.querySelector('.view')&&getComputedStyle(document.querySelector('.view')).opacity==='1'")
       E("Promise.all(document.getAnimations().filter(a=>a.effect?.getComputedTiming().iterations!==Infinity).map(a=>a.finished.catch(()=>{})))")
     # 1. migration from the old v2 app
-    pg.goto(BASE);E("k=>{localStorage.clear();localStorage.setItem('htt',k)}",json.dumps(V2));pg.reload();pg.wait_for_selector('.v-home');Wt(800)
+    pg.goto(BASE)
+    # Finish bootstrap before deliberately reloading the migration fixture.
+    # WebKit can report aborted background fetches as access-control errors.
+    pg.wait_for_function('typeof words!=="undefined"&&words.length===12387');pg.wait_for_load_state('networkidle')
+    E("k=>{localStorage.clear();localStorage.setItem('htt',k)}",json.dumps(V2));pg.reload();pg.wait_for_selector('.v-home');Wt(800)
     old=E("localStorage.getItem('htt')");assert json.loads(old)==V2;ok('old v2 record untouched')
     d=json.loads(E("localStorage.getItem('htt-core')"));assert d['srs']['爱|ai4']['int']==30 and d['srs']['爱|ai4']['reps']==4;ok('srs migrated exactly')
     assert d['zhUnl'].get('2') and d['user']['done'] and d['ev']['爱|ai4'][0][1]=='w';ok('unlocks, onboarding state and evidence migrated')

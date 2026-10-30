@@ -52,6 +52,7 @@ with sync_playwright() as p:
   route('list');page.wait_for_selector('#ls .it')
   assert page.evaluate("""async()=>{const input=Array.from({length:4000},(_,id)=>({id,k:(id*17)%19})),cmp=(a,b)=>a.k-b.k;
    const actual=await sortInChunks(input,cmp,()=>true);return JSON.stringify(actual)===JSON.stringify(input.toSorted(cmp))&&await sortInChunks(input,cmp,()=>false)===null}""")
+  assert page.evaluate("""async()=>{let active=true;const input=Array.from({length:100000},(_,i)=>100000-i),pending=sortInChunks(input,(a,b)=>a-b,()=>active);active=false;return await pending===null}""")
   assert page.evaluate("Array.from(document.querySelectorAll('#ls [data-w]')).map(b=>b.dataset.w).join()===deck().sort((a,b)=>a.w.localeCompare(b.w)).slice(0,50).map(w=>w.id).join()")
   first_star=page.locator('#ls [data-star]').nth(10).get_attribute('data-star');page.locator('#ls [data-star]').nth(10).click()
   page.select_option('#ssort','star');page.wait_for_function("id=>document.querySelector('#ls [data-w]').dataset.w===id",arg=first_star)
@@ -62,6 +63,8 @@ with sync_playwright() as p:
   assert page.locator('#zh-text').count()==1
   # Count and filter snapshots refresh when word state changes in the details sheet.
   route('list');page.locator('[data-w]').first.click();page.wait_for_selector('#sheet:not(.hidden)')
+  page.click('[data-wa="sus"]');page.wait_for_function("document.querySelector('[data-lfn=\"susp\"]').textContent==='1'")
+  page.click('[data-wa="unsus"]');page.wait_for_function("document.querySelector('[data-lfn=\"susp\"]').textContent==='0'")
   page.keyboard.press('Escape');page.wait_for_timeout(100)
   # Scheduler day rollover must still expire burial; never cache the day across runs.
   assert page.evaluate("""()=>{const now=Date.now,day=new Date(2026,9,30,3,59).getTime();
