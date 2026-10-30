@@ -1,4 +1,4 @@
-const V='htt-v5.0.0',DATA='htt-data-v5',AUDIO='htt-audio-v1';
+const V='htt-v5.0.1',DATA='htt-data-v5',AUDIO='htt-audio-v1';
 const SHELL=['./','index.html','core/style.css','lang-zh.css','core/app-core.js','core/mascot.js','core/speech.js','lang-zh.js','zh-asr-worker.js','vendor/ort/ort.wasm.min.js','srs.js','tones.js','vendor/ts-fsrs.min.js','vendor/hanzi-writer.min.js','manifest.webmanifest','version.json','data/meta.json',...[1,2,3,4,5,6,7].map(l=>`data/hsk${l}.json`),'icons/icon.svg','icons/icon-192.png','icons/apple-touch-icon.png'];
 SHELL.push('data/hsk-extra.json','data/curricula.json','core/mic-worklet.js','core/mic-meter.js','zh-pronunciation.js','zh-engine.js','icons/icon-512.png','icons/maskable-192.png','icons/maskable-512.png');
 const SHELL_URLS=new Set(SHELL.map(p=>new URL(p,self.registration.scope).href));

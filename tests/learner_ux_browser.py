@@ -60,7 +60,9 @@ with sync_playwright() as p:
                 missing=page.evaluate("Array.from(document.querySelectorAll('#app use')).map(x=>x.getAttribute('href')).filter(h=>h?.startsWith('#')&&!document.querySelector(h))")
                 assert not missing,missing
                 assert page.locator('[data-go="guide"] use').get_attribute('href')=='#i-lightbulb'
-                route('cards');page.wait_for_selector('.pyc')
+                route('cards');page.wait_for_selector('.fc');assert page.locator('.face.f .pyc').count()==0
+                if not page.locator('.fc.flip').count():page.click('#flipb')
+                page.wait_for_selector('.face.b .pyc')
                 assert page.locator('.pyc').first.evaluate("e=>{const s=getComputedStyle(e);return s.borderWidth==='0px'&&s.backgroundColor==='rgba(0, 0, 0, 0)'&&s.boxShadow==='none'&&e.clientHeight>=24}")
                 route('reader');page.wait_for_selector('#zh-text');assert page.locator('#zh-reading').is_hidden()
                 page.fill('#zh-text','你好，得。<img src=x onerror="window.executed=true">😀');page.click('#zh-read')

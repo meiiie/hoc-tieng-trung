@@ -115,4 +115,149 @@ R('Chuỗi ${streak} ngày đang chờ bạn, vài câu là đủ.','Bạn có t
 R("const sp=d.filter(w=>S.speak[w.id]!=null),spa=sp.length?Math.round(sp.reduce((a,w)=>a+S.speak[w.id],0)/sp.length):0,fm=", "const sp=d.filter(w=>(S.pron[w.id]||[]).length),fm=")
 R("${sp.length?spa:'–'}</b><span class=\"muted\">điểm nói TB (${sp.length} từ)", "${sp.length}</b><span class=\"muted\">từ đã luyện nói")
 R("setTimeout(()=>toast('Mẹo: kéo nhanh thẻ sang ngang để chuyển thẻ; giữ chuột một chút rồi kéo để bôi đen chữ','info',5000),900)", "setTimeout(()=>{if(location.hash==='#/cards')toast('Mẹo: kéo nhanh thẻ sang ngang để chuyển thẻ; giữ chuột một chút rồi kéo để bôi đen chữ','info',5000)},900)")
+# Measured responsiveness and explicit UI resource lifetimes.
+R('const buried=(x)=>{const b=bury().w[x.w.id];',
+  'const buried=(x,hidden=bury().w)=>{const b=hidden[x.w.id];')
+R('const end=SRS.dayAt(now,1);for(const x of cards)',
+  'const end=SRS.dayAt(now,1),hidden=bury().w;for(const x of cards)')
+R('const Lq=[],Rq=[],Nq=[];for(const x of cards)',
+  'const Lq=[],Rq=[],Nq=[],hidden=bury().w;for(const x of cards)')
+R('!buried(x)',
+  '!buried(x,hidden)', 4)
+R('function life(w){',
+  'function life(w,hidden=bury().w){')
+R("if(bury().w[w.id]=='*')",
+  "if(hidden[w.id]=='*')")
+R("let lf=S.set.lf||'';const LG=",
+  "let lf=S.set.lf||'';const states=new Map();const LG=")
+R('.includes(life(w));',
+  '.includes(states.get(w.id));')
+R("const paintLf=()=>$$('[data-lf]').forEach(b=>{const on=b.dataset.lf==lf;b.classList.toggle('on',on);b.setAttribute('aria-checked',on);$('[data-lfn]',b).textContent=d.filter(w=>inLf(w,b.dataset.lf)).length});",
+  "const paintLf=()=>{const hidden=bury().w,totals={};for(const w of d){const state=life(w,hidden);states.set(w.id,state);totals[state]=(totals[state]||0)+1}\n  $$('[data-lf]').forEach(b=>{const f=b.dataset.lf,on=f==lf;b.classList.toggle('on',on);b.setAttribute('aria-checked',on);$('[data-lfn]',b).textContent=f?(LG[f]||[f]).reduce((n,k)=>n+(totals[k]||0),0):d.length})};")
+R('stOf=w=>{const k=life(w);',
+  'stOf=w=>{const k=states.get(w.id);')
+R("const r=()=>{const q=norm($('#sq').value);let xs=d.filter(w=>inLf(w)&&(!q||norm(w.w).includes(q)||norm(w.vi).includes(q)||(LANG.search&&LANG.search(w,$('#sq').value)))).sort((a,b)=>cmp[sortK](a,b)*dirS);",
+  "const r=()=>{paintLf();const raw=$('#sq').value,q=norm(raw),matches=LANG.searchMatcher?LANG.searchMatcher(raw):w=>norm(w.w).includes(q)||norm(w.vi).includes(q)||(LANG.search&&LANG.search(w,raw));let xs=d.filter(w=>inLf(w)&&(!q||matches(w))).sort((a,b)=>cmp[sortK](a,b)*dirS);")
+R('save();paintLf();r()',
+  'save();r()')
+R('()=>{paintLf();r()}',
+  '()=>r()')
+R("const mq=()=>r();wideQ.addEventListener('change',mq);paintLf();r();return ()=>wideQ.removeEventListener('change',mq)",
+  "const mq=()=>r();wideQ.addEventListener('change',mq);r();return ()=>{clearTimeout(t);wideQ.removeEventListener('change',mq)}")
+R('function view(title,html,back=true){',
+  "function view(title,html,back=true){$$('.fc',app).forEach(el=>el._dispose?.());")
+R("faces();new MutationObserver(faces).observe(el,{attributes:true,attributeFilter:['class']});",
+  "faces();const faceObserver=new MutationObserver(faces);faceObserver.observe(el,{attributes:true,attributeFilter:['class']});")
+R("const TEXT='.w,.ipa,.vi,.sec,.muted,.tag,p';let mode='',flipT=0;",
+  "const TEXT='.w,.ipa,.vi,.sec,.muted,.tag,p';let mode='',flipT=0,flingT=0,disposed=false;")
+R("const onSel=()=>{if(!el.isConnected){document.removeEventListener('selectionchange',onSel);return}",
+  'const onSel=()=>{if(!el.isConnected){destroy();return}')
+R("function fling(right){if(busy)return;busy=true;buzz(12);el.classList.remove('dragging');if(reduce){el.remove();onSwipe(right);return}",
+  "function destroy(){if(disposed)return;disposed=true;busy=true;clearTimeout(flipT);clearTimeout(flingT);faceObserver.disconnect();document.removeEventListener('selectionchange',onSel)}\n el._dispose=destroy;\n function fling(right){if(busy)return;busy=true;buzz(12);el.classList.remove('dragging');if(reduce){destroy();el.remove();onSwipe(right);return}")
+R("el.style.transition='transform 300ms var(--ease),opacity 300ms';",
+  "el.style.transition='transform 240ms var(--ease),opacity 240ms';")
+R('setTimeout(()=>{el.remove();onSwipe(right)},240)',
+  'flingT=setTimeout(()=>{destroy();el.remove();onSwipe(right)},240)')
+R('return {el,flip,fling}}',
+  'return {el,flip,fling,destroy}}')
+R('shuffled:false,flipped:false};render();\n function render(){',
+  'shuffled:false,flipped:false};let mounted=false,currentCard=null,moodTimer=0,hintTimer=0;render();return ()=>{currentCard?.destroy();clearTimeout(moodTimer);clearTimeout(hintTimer)};\n function render(persist=true){')
+R("if(FC.i>=total)return done();sess('cards',FC);const w=byId(FC.queue[FC.i]);",
+  "if(FC.i>=total)return done();if(persist)sess('cards',FC);const w=byId(FC.queue[FC.i]),focusCard=currentCard?.el.contains(document.activeElement);currentCard?.destroy();currentCard?.el.remove();clearTimeout(moodTimer);")
+R("  view('Thẻ ghi nhớ',`${mascot(FC.mood",
+  "  if(!mounted){view('Thẻ ghi nhớ',`${mascot(FC.mood")
+R('giữ chuột rồi kéo để bôi đen chữ</span></p>`);',
+  r"""giữ chuột rồi kéo để bôi đen chữ</span></p>`);mounted=true}
+  else{const progress=$('.prog .bar');progress.setAttribute('aria-valuenow',FC.i);progress.setAttribute('aria-valuemax',total);$('i',progress).style.width=FC.i/total*100+'%';
+   for(const [k,label,n] of [['l','Đang học',FC.learn],['k','Đã biết',FC.know]]){const count=$('.prog .count.'+k);count.textContent=n;count.setAttribute('aria-label',label+' '+n)}
+   $('#undo').disabled=!FC.hist.length;$('#shuf').classList.toggle('on',FC.shuffled);$('#shuf').setAttribute('aria-pressed',FC.shuffled);$('#dirb').classList.toggle('on',S.set.dir=='vi');$('#autob').classList.toggle('on',S.set.autoplay);$('#autob').setAttribute('aria-pressed',S.set.autoplay);$('#autob').innerHTML=I(S.set.autoplay?'volume-2':'volume-x');
+   $('.v-cards > .hint').firstChild.textContent=(FC.i+1)+' / '+total+' · ';moodTo($('.mascot'),FC.mood||'idle',FC.tip)}""")
+R("S.set.mhint=1;save();setTimeout(()=>{if(location.hash==='#/cards')",
+  "S.set.mhint=1;save();hintTimer=setTimeout(()=>{if(location.hash==='#/cards')")
+R("const m=$('.mascot');setTimeout(()=>moodTo(m,'idle'),1300)",
+  "const m=$('.mascot');moodTimer=setTimeout(()=>moodTo(m,'idle'),1300)")
+R('right?FC.know++:FC.learn++;practice(w,right);if(!right)FC.queue.push(w.id);FC.i++;FC.flipped=false;render()',
+  "right?FC.know++:FC.learn++;if(!right)FC.queue.push(w.id);FC.i++;FC.flipped=false;practice(w,right,'cards');render(false)")
+R('  c.el._onflip=()=>{FC.flipped',
+  '  currentCard=c;if(focusCard)c.el.focus({preventScroll:true});c.el._onflip=()=>{FC.flipped')
+R("function done(){sess('cards',null);confetti();",
+  "function done(){keys=null;currentCard?.destroy();clearTimeout(moodTimer);sess('cards',null);confetti();")
+R("FC=null;sess('cards',null);cards()",
+  "FC=null;sess('cards',null);route()")
+R('function list(){const d=deck(),wideQ=',
+  'function list(){const collator=new Intl.Collator(),d=deck(),wideQ=')
+R('a.w.localeCompare(b.w)',
+  'collator.compare(a.w,b.w)', 5)
+R("let lf=S.set.lf||'';const states=",
+  "let lf=S.set.lf||'',stateDay=null;const states=")
+R('const paintLf=()=>{const hidden=bury().w,totals={};',
+  'const paintLf=()=>{const hidden=bury().w,totals={};stateDay=bury().day;')
+R('lf=b.dataset.lf;S.set.lf=lf;save();r()',
+  'lf=b.dataset.lf;S.set.lf=lf;save();paintLf();r()')
+R('const r=()=>{paintLf();const raw=',
+  'const r=(refresh=false)=>{if(refresh||stateDay!==bury().day)paintLf();const raw=')
+R('lifeTag(life(w))',
+  'lifeTag(states.get(w.id))')
+R('openWord(wo.dataset.w,()=>r())',
+  'openWord(wo.dataset.w,()=>r(true))')
+R("toast('Đã mở lại thẻ','rotate-ccw');r()",
+  "toast('Đã mở lại thẻ','rotate-ccw');r(true)")
+R('function dueLine(d,now=Date.now()){const cs=allCards(d),q=counts(cs,now),due=q.r+q.l;',
+  'function dueLine(d,now=Date.now(),cs=allCards(d),q=counts(cs,now)){const due=q.r+q.l;')
+R('learned=d.filter(w=>isLearned(w.id)).length,cq=counts(allCards(d),now)',
+  'learned=d.filter(w=>isLearned(w.id)).length,cs=allCards(d),cq=counts(cs,now)')
+R('const dl=dueLine(d,now);',
+  'const dl=dueLine(d,now,cs,cq);')
+R('function hardWords(){',
+  'function hardWords(d=deck()){')
+R('return deck().map(w=>[w,sc(w)])',
+  'return d.map(w=>[w,sc(w)])')
+R('{const h=hardWords().length;',
+  '{const h=hardWords(d).length;')
+R('destroy();el.remove();onSwipe(right)',
+  'el._restoreFocus=el.contains(document.activeElement);destroy();el.remove();onSwipe(right)', 2)
+R('focusCard=currentCard?.el.contains(document.activeElement)',
+  'focusCard=currentCard?.el._restoreFocus||currentCard?.el.contains(document.activeElement)')
+R("keys=e=>{if(e.target.tagName=='INPUT'||e.ctrlKey||e.metaKey||e.altKey)return;if((e.key=='z'",
+  "keys=e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.isContentEditable||e.ctrlKey||e.metaKey||e.altKey||!$('#sheet').classList.contains('hidden'))return;if((e.key==' '||e.key=='Enter')&&e.target.closest('button,a'))return;if((e.key=='z'")
+R('function list(){const collator=',
+  r"""async function sortInChunks(items,compare,active){
+ if(!active())return null;
+ let source=items.slice(),target=new Array(source.length),deadline=performance.now()+8;
+ for(let width=1;width<source.length;width*=2){
+  for(let left=0;left<source.length;left+=width*2){
+   const mid=Math.min(left+width,source.length),end=Math.min(left+width*2,source.length);let a=left,b=mid;
+   for(let out=left;out<end;out++){
+    target[out]=a<mid&&(b>=end||compare(source[a],source[b])<=0)?source[a++]:source[b++];
+    if((out&255)===0&&performance.now()>=deadline){
+     if(globalThis.scheduler?.yield)await scheduler.yield();else await new Promise(resolve=>setTimeout(resolve,0));
+     if(!active())return null;deadline=performance.now()+8;
+    }
+   }
+  }
+  [source,target]=[target,source];
+ }
+ return source;
+}
+function list(){const collator=""")
+R("let page=0,lastQuery='',lastFilter=lf,lastSort=sortK;const pageSize=100;",
+  "let page=0,lastQuery='',lastFilter=lf,lastSort=sortK,active=true,renderJob=0,sortJob=0,sorted=null,sortedKey='';const pageSize=50;")
+R("const r=(refresh=false)=>{if(refresh||stateDay!==bury().day)paintLf();const raw=$('#sq').value,q=norm(raw),matches=LANG.searchMatcher?LANG.searchMatcher(raw):w=>norm(w.w).includes(q)||norm(w.vi).includes(q)||(LANG.search&&LANG.search(w,raw));let xs=d.filter(w=>inLf(w)&&(!q||matches(w))).sort((a,b)=>cmp[sortK](a,b)*dirS);",
+  r"""const r=async(refresh=false)=>{const request=++renderJob;if(refresh||stateDay!==bury().day){paintLf();sorted=null}
+  const raw=$('#sq').value,q=norm(raw),matches=LANG.searchMatcher?LANG.searchMatcher(raw):w=>norm(w.w).includes(q)||norm(w.vi).includes(q)||(LANG.search&&LANG.search(w,raw)),order=sortK+':'+dirS;
+  if(!sorted||sortedKey!==order){const job=++sortJob,compare=cmp[sortK],direction=dirS;sortedKey=order;sorted=sortInChunks(d,(a,b)=>compare(a,b)*direction,()=>active&&job===sortJob)}
+  const ordered=await sorted;if(!active||request!==renderJob||!ordered)return;let xs=ordered.filter(w=>inLf(w)&&(!q||matches(w)));
+""")
+R("return ()=>{clearTimeout(t);wideQ.removeEventListener('change',mq)}",
+  "return ()=>{active=false;clearTimeout(t);wideQ.removeEventListener('change',mq)}")
+R('const starBtn=w=>',
+  'let starRevision=0;\nconst starBtn=w=>')
+R('if(!S.star[id])delete S.star[id];save();',
+  'if(!S.star[id])delete S.star[id];starRevision++;save();')
+R("order=sortK+':'+dirS;",
+  "order=sortK+':'+dirS+(sortK==='star'?':'+starRevision:'');")
+R('const r=async(refresh=false)=>{const request=',
+  'const r=async(refresh=false)=>{if(!active)return;const request=')
+R('const job=++sortJob,compare=cmp[sortK],direction=dirS;',
+  "const job=++sortJob,stars=sortK==='star'?new Set(Object.keys(S.star)):null,compare=stars?((a,b)=>stars.has(b.id)-stars.has(a.id)||collator.compare(a.w,b.w)):cmp[sortK],direction=dirS;")
 sys.stdout.write(s)

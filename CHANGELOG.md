@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.0.1 — 2026-10-30
+
+- Hide pinyin on flashcard question faces; retain it on answers according to the learner's pinyin setting. Preserve keyboard focus and the surrounding screen while advancing cards; fix the blank half of the flip animation.
+- Index Chinese, pinyin and Vietnamese search text once, yield while preparing the index, and stop reader lookup after 30 results. Count word states in one pass, reuse sorted lists, and split sorting into cancellable tasks with 50 visible rows per page.
+- Save each free-card answer and session position together once. Dispose card observers, listeners and pending gestures on navigation; keep the existing learning schedule rules.
+- Reduce mascot geometry work and unnecessary SVG mutations; pause offscreen animation. Reuse one handwriting widget, abort stale stroke requests and stop drawing when leaving the page.
+- Add Chromium/WebKit lifecycle, keyboard, search and sorting regressions plus a reproducible CPU profiling script. See [the performance audit](docs/PERFORMANCE-2026-10-30.md) for measurements and limits.
+
 ## 5.0.0 — 2026-10-27
 
 - Offer both HSK 2021 and the CTI 2025/2026 syllabus without level locks: 12,387 distinct cards, Vietnamese meanings and 24,774 female/male word recordings. Preserve existing word IDs, progress and schedules.

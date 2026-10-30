@@ -23,6 +23,10 @@ function fromV2(o){if(!o||typeof o!='object')return null;const set=o.set||{};
  for(const id in o.ev||{})d.ev[id]=(o.ev[id]||[]).map(e=>[e[2],EVC[e[0]]||'p',e[1]?1:0]);
  if(Array.isArray(d.zhUnl)){const x={};for(const l of d.zhUnl)x[l]=true;d.zhUnl=x}return d}
 const zhNorm=s=>String(s).toLowerCase().normalize('NFC').replace(/[’'.,!?;:"，。！？、\s]/g,'').trim();
+const searchIndex=new WeakMap();
+function searchRecord(w){let entry=searchIndex.get(w);if(!entry){entry={p:strip(w.p).replace(/\s/g,''),hv:w.hv||'',vi:zhNorm(w.vi||''),s:zhNorm(w.s),t:zhNorm(w.t)};searchIndex.set(w,entry)}return entry}
+function searchMatcher(query,meaning=true){const raw=query.trim(),q=zhNorm(query),p=zhNorm(strip(query)),hv=raw.toLowerCase();
+ return w=>{const entry=searchRecord(w);return !!p&&(w.s.includes(raw)||w.t.includes(raw)||entry.p.includes(p)||entry.hv.includes(hv))||meaning&&!!q&&(entry.s.includes(q)||entry.t.includes(q)||entry.vi.includes(q))}}
 function accepts(w){const sy=w.n.toLowerCase().split(/\s+/);const a=[w.s,w.t,w.p.replace(/\s+/g,''),strip(w.p).replace(/\s+/g,''),strip(w.p).replace(/v/g,'u').replace(/\s+/g,''),sy.join('').replace(/u:/g,'v')];return [...new Set(a.map(zhNorm))]}
 function pyHTML(w,res,force){if(S.set.py=='off'&&!force)return '';const ss=sylls(w),tn=tonesOf(w);
  return `<div class="pyrow" lang="zh-Latn">${ss.map((s,k)=>{const r=res&&res[k];const c=r?(r.cls!=null?r.cls:(r.match===null?'':r.match?'g':'r')):'';return `<button class="pyc t${tn[k]} ${c}" data-tone="${tn[k]}" data-k="${k}" aria-label="${esc(s)}, thanh ${tn[k]==5?'nhẹ':tn[k]}. Xem cách đọc">${esc(s)}</button>`}).join('')}</div>`}
@@ -48,7 +52,7 @@ function hvLine(w){return w.hv?`<span class="tag" title="${w.hvq?'Âm Hán Việ
 function extra(w){const cs=[...w.s];return `<div class="zx">${w.vd?`<p class="muted" style="margin:4px 0">${esc(w.vd)}</p>`:''}<div class="tags" style="justify-content:flex-start">${hvLine(w)}${w.t!=w.s?`<span class="tag">${isTrad()?'Giản':'Phồn'}: ${esc(isTrad()?w.s:w.t)}</span>`:''}</div>
  <div class="chars">${cs.map(c=>{const x=CH[c]||{};return `<a class="chr" href="#/write?w=${encodeURIComponent(w.id)}&c=${encodeURIComponent(c)}"><b lang="zh">${esc(c)}</b><small>${x.r?'Bộ '+esc(x.r)+(x.rv?' · '+esc(x.rv):''):''}</small></a>`}).join('')}</div></div>`}
 const hzW=w=>`<div class="w hz" lang="zh">${esc(w.w)}</div>`;
-function front(w,dir){return `<div class="corner l">${starBtn(w)}</div>`+(dir=='en'?`<div class="corner r"><button class="ib" data-au="${w.id}" data-k="w" aria-label="Nghe phát âm">${I('volume-2')}</button></div><div data-wid="${w.id}">${hzW(w)}${pyHTML(w)}</div><div class="tags"><span class="tag">${esc(w.pos||'')}</span></div>`
+function front(w,dir){return `<div class="corner l">${starBtn(w)}</div>`+(dir=='en'?`<div class="corner r"><button class="ib" data-au="${w.id}" data-k="w" aria-label="Nghe phát âm">${I('volume-2')}</button></div><div data-wid="${w.id}">${hzW(w)}</div><div class="tags"><span class="tag">${esc(w.pos||'')}</span></div>`
  :`<div class="vi">${esc(w.vi)}</div><div class="tags"><span class="tag">${esc(w.pos||'')}</span></div><p class="muted">Từ tiếng Trung là gì?</p>`)}
 function back(w){return `<div class="corner l">${starBtn(w)}</div><div class="corner r">${auBtns(w,false)}</div>
  <div data-wid="${w.id}"><div class="w hz" lang="zh">${esc(w.w)}<button class="ib sm cp" data-copy="${esc(w.w)}" aria-label="Sao chép từ" title="Sao chép từ">${I('copy','s')}</button></div>${pyHTML(w)}</div>
@@ -188,10 +192,15 @@ async function micCheck(root){const out=$('#mcd',root),bar=$('#mcl',root),btn=$(
  catch(e){out.innerHTML=`<b>Không mở được micro: ${esc(e&&e.name||'lỗi')}</b><br>Quyền micro: ${esc(perm)}. ${e&&e.name=='NotAllowedError'?'Trên iPhone: Cài đặt > Safari > Micrô, hoặc “aA” > Cài đặt trang web > Micrô > Cho phép.':''}`}
  btn.disabled=false;bar.style.width='0';observer.disconnect();removeEventListener('hashchange',cancel);removeEventListener('pagehide',cancel);document.removeEventListener('visibilitychange',hidden)}
 /* ---------- writing: Hanzi Writer stroke order (watch) and quiz (practice; evidence only, never the schedule) ---------- */
-function zhWrite(){const P=new URLSearchParams(location.hash.split('?')[1]||'');let d=deck().slice();let i=0,ci=0,mode='anim',hw=null,dead=false;
+// Hanzi Writer registers document pointer-end listeners without a destroy API.
+// Reuse one widget; setCharacter cancels its previous animation and quiz.
+let handwriting=null;
+function zhWrite(){const P=new URLSearchParams(location.hash.split('?')[1]||'');let d=deck().slice();let i=0,ci=0,mode='anim',hw=null,dead=false,generation=0,request=null;
+ const stop=()=>{generation++;request?.abort();request=null;if(hw){hw.cancelQuiz();hw.pauseAnimation().catch(()=>{});hw=null}};
+ const visibility=()=>{if(hw&&mode==='anim')(document.hidden?hw.pauseAnimation():hw.resumeAnimation()).catch(()=>{})};
  const pw=P.get('w');if(pw){const k=d.findIndex(w=>w.id==pw);if(k>=0)i=k;else{const w=byId(pw);if(w){d=[w,...d];i=0}}}else d=shuffle(d);
  if(!d.length){view('Viết chữ',`${mascot('idle','Chưa có từ nào trong bộ này.')}`);return}
- const draw=()=>{const w=d[(i%d.length+d.length)%d.length],cs=[...w.w];if(P.get('c')&&pw===w.id){const k=cs.indexOf(P.get('c'));if(k>=0)ci=k;P.delete('c')}ci=Math.min(ci,cs.length-1);const ch=cs[ci],x=CH[ch]||CH[[...w.s][ci]]||{};
+  const draw=()=>{stop();const current=generation,w=d[(i%d.length+d.length)%d.length],cs=[...w.w];if(P.get('c')&&pw===w.id){const k=cs.indexOf(P.get('c'));if(k>=0)ci=k;P.delete('c')}ci=Math.min(ci,cs.length-1);const ch=cs[ci],x=CH[ch]||CH[[...w.s][ci]]||{};
   view('Viết chữ',`<div class="card q center write" data-wid="${w.id}"><div class="kind">${esc(w.lv)} · ${esc(w.vi)}</div>
    <div class="chs">${cs.map((c,k)=>`<button class="chb ${k==ci?'on':''}" data-ci="${k}" aria-pressed="${k==ci}" lang="zh">${esc(c)}</button>`).join('')}</div>${pyHTML(w)}
    <div id="hw" class="hwbox" role="img" aria-label="Thứ tự nét chữ ${esc(ch)}"></div>
@@ -204,12 +213,19 @@ function zhWrite(){const P=new URLSearchParams(location.hash.split('?')[1]||'');
   $('#prev').onclick=()=>{i--;ci=0;draw()};$('#next').onclick=()=>{i++;ci=0;draw()};$$('[data-ci]').forEach(b=>b.onclick=()=>{ci=+b.dataset.ci;draw()});$$('[data-m]').forEach(b=>b.onclick=()=>{mode=b.dataset.m;draw()});
   const box=$('#hw'),sz=Math.min(280,(box.parentElement.clientWidth||300)-32),css=getComputedStyle(document.body),col=n=>css.getPropertyValue(n).trim();
   if(typeof HanziWriter=='undefined'){$('#qs').textContent='Không tải được công cụ thứ tự nét.';return}
-  hw=HanziWriter.create('hw',ch,{width:sz,height:sz,padding:10,showOutline:true,strokeColor:col('--text')||'#222',outlineColor:col('--line')||'#ddd',drawingColor:col('--primary')||'#2e6db4',highlightColor:col('--primary')||'#2e6db4',radicalColor:col('--danger')||'#b0413e',strokeAnimationSpeed:1.2,delayBetweenStrokes:180,
-   charDataLoader:(c,ok,no)=>fetch('data/strokes/'+encodeURIComponent(c)+'.json').then(r=>{if(!r.ok)throw 0;return r.json()}).then(ok).catch(()=>{const q=$('#qs');if(q)q.textContent='Chưa có dữ liệu nét cho chữ này.';no&&no()})});
-  if(mode=='anim')hw.loopCharacterAnimation();else{$('#qs').textContent='Viết từng nét theo đúng thứ tự. Sai 3 lần sẽ có gợi ý.';
-   hw.quiz({showHintAfterMisses:3,onComplete:s=>{if(dead)return;const ok=s.totalMistakes<=2;$('#qs').textContent=`Xong chữ ${ch}: ${s.totalMistakes} lần sai nét.`;evidence(w,ok,'write');logIt(false);save();buzz(ok?[10,30,10]:20);
-    if(ok)moodTo&&moodTo($('.mascot'),'correct')}})}};
- draw();keys=e=>{if(e.key=='ArrowRight')$('#next').click();else if(e.key=='ArrowLeft')$('#prev').click()};return ()=>{dead=true}}
+  request=new AbortController();$('#qs').textContent='Đang tải nét…';
+  fetch('data/strokes/'+encodeURIComponent(ch)+'.json',{signal:request.signal}).then(r=>{if(!r.ok)throw new Error('strokes');return r.json()}).then(async data=>{
+   if(dead||current!==generation)return;
+   const colors={strokeColor:col('--text')||'#222',outlineColor:col('--line')||'#ddd',drawingColor:col('--primary')||'#2e6db4',highlightColor:col('--primary')||'#2e6db4',radicalColor:col('--danger')||'#b0413e'};
+   if(!handwriting){const host=document.createElement('div');handwriting={host,data};handwriting.writer=new HanziWriter(host,{width:sz,height:sz,padding:10,showOutline:true,...colors,strokeAnimationSpeed:1.2,delayBetweenStrokes:180,charDataLoader:(c,ok)=>ok(handwriting.data)})}
+   handwriting.data=data;box.append(handwriting.host);hw=handwriting.writer;hw.updateDimensions({width:sz,height:sz});await hw.setCharacter(ch);
+   if(dead||current!==generation)return;await Promise.all(Object.entries(colors).map(([key,color])=>hw.updateColor(key,color,{duration:0})));
+   if(dead||current!==generation)return;$('#qs').textContent='';
+   if(mode==='anim'){hw.loopCharacterAnimation().catch(()=>{});visibility()}else{$('#qs').textContent='Viết từng nét theo đúng thứ tự. Sai 3 lần sẽ có gợi ý.';
+    await hw.quiz({showHintAfterMisses:3,onComplete:s=>{if(dead||current!==generation)return;const ok=s.totalMistakes<=2;$('#qs').textContent=`Xong chữ ${ch}: ${s.totalMistakes} lần sai nét.`;evidence(w,ok,'write');logIt(false);save();buzz(ok?[10,30,10]:20);
+     if(ok)moodTo&&moodTo($('.mascot'),'correct')}})}
+  }).catch(error=>{if(dead||current!==generation||error.name==='AbortError')return;$('#qs').textContent='Chưa tải được nét chữ. Bạn có thể chọn lại chữ để thử.'})};
+ document.addEventListener('visibilitychange',visibility);draw();keys=e=>{if(e.key=='ArrowRight')$('#next').click();else if(e.key=='ArrowLeft')$('#prev').click()};return ()=>{dead=true;stop();document.removeEventListener('visibilitychange',visibility)}}
 const getJ=async u=>{const r=await fetch(u);if(!r.ok)throw new Error(u);return r.json()};
 function readingTokens(text,inventory){const trie=new Map();for(const w of inventory)for(const form of new Set([w.s,w.t])){let node=trie;for(const c of form){if(!node.has(c))node.set(c,new Map());node=node.get(c)}if(!node.has(''))node.set('',new Set());node.get('').add(w.id)}
  const chars=Array.from(text),out=[];let i=0;while(i<chars.length){let node=trie,best=null,j=i;while(j<chars.length&&node.has(chars[j])){node=node.get(chars[j++]);if(node.has(''))best={end:j,ids:[...node.get('')]}}
@@ -230,7 +246,7 @@ function zhRead(){
  const render=()=>{update();tokens=readingTokens(readingText,inventory);result.innerHTML=tokens.map((t,i)=>t.ids?`<button class="zh-token" data-token="${i}" aria-label="Tra ${esc(t.text)}">${esc(t.text)}</button>`:esc(t.text)).join('');result.hidden=!readingText.trim()};
  $('#zh-reader-form').onsubmit=e=>{e.preventDefault();render()};input.oninput=()=>{update();result.hidden=true};
  result.onclick=e=>{const b=e.target.closest('[data-token]');if(b)showReadingWords(tokens[+b.dataset.token].ids)};
- $('#zh-lookup').oninput=e=>{const query=e.target.value.trim();const found=query?inventory.filter(w=>w.s.includes(query)||w.t.includes(query)||LANG.search(w,query)||norm(w.vi).includes(norm(query))).slice(0,30):[];
+ $('#zh-lookup').oninput=e=>{const query=e.target.value.trim(),found=[];if(query){const matches=searchMatcher(query);for(const w of inventory){if(matches(w))found.push(w);if(found.length===30)break}}
   $('#zh-found-status').textContent=query?(found.length?`${found.length===30?'Hiện 30':found.length} kết quả`:'Chưa tìm thấy trong danh mục đang chọn.'):'';
   $('#zh-found').innerHTML=found.map((w,i)=>`<button class="it zh-lookup-word" data-found="${i}"><span lang="zh">${esc(w.w)}</span><span>${esc(w.p)} · ${esc(w.vi)}</span></button>`).join('');
   $('#zh-found').onclick=ev=>{const b=ev.target.closest('[data-found]');if(b)showReadingWords([found[+b.dataset.found].id])};
@@ -244,11 +260,13 @@ window.LANG={key:'htt-core',app:'hoc-tieng-trung',audioCache:'htt-audio-v1',titl
  setDefaults:{voice:'f',script:'s',py:'on',dir:'en',zhEngine:'model',curriculum:'hsk2021'},legacy:get=>{const r=get(OLD_KEY);if(!r)return null;try{return fromV2(JSON.parse(r))}catch(e){return null}},importAny:j=>j&&j.data&&j.data.srs&&j.data.revlog&&j.data.unlocked?fromV2(j.data):j&&j.srs&&j.unlocked?fromV2(j):j,
  async loadData(){const [ls,supplement,index]=await Promise.all([Promise.all(LV.map(L=>getJ(`data/hsk${L}.json`))),getJ('data/hsk-extra.json'),getJ('data/curricula.json')]);CURRICULA=index;
   fetch('data/chars.json').then(r=>r.ok?r.json():{}).then(c=>{CH=c}).catch(()=>{});
-  const ws=[];ls.forEach((a,k)=>ws.push(...mk(a,LV[k])));ws.push(...supplement.flatMap(x=>mk([x],index.editions.hsk2025.members[x.id])));return {pages:LV.map(L=>({id:'hsk'+L,title:LVN(L),short:LVN(L)})),words:ws}},
+  const ws=[];ls.forEach((a,k)=>ws.push(...mk(a,LV[k])));ws.push(...supplement.flatMap(x=>mk([x],index.editions.hsk2025.members[x.id])));
+  for(let i=0;i<ws.length;i+=256){for(const w of ws.slice(i,i+256))searchRecord(w);if(globalThis.scheduler?.yield)await scheduler.yield();else await new Promise(resolve=>setTimeout(resolve,0))}
+  return {pages:LV.map(L=>({id:'hsk'+L,title:LVN(L),short:LVN(L)})),words:ws}},
  boot(){remap()},levels:LV.map(LVN),levelName:'Cấp độ HSK',lvOrder:Object.fromEntries(LV.map(L=>[LVN(L),L])),
  inDeck:w=>!!curriculumLevel(CURRICULA,editionKey(),w.id),
  aurl:(w,kind,v)=>'audio/'+w.a.replace('{voice}',v=='m'?'m':'f'),play:zhPlay,audioUrls:()=>deck().filter(hasRec).map(w=>aurl(w,'w')),
- answerText:w=>w.w,norm:zhNorm,accepts,cloze:()=>null,ipaOf:w=>S.set.py=='off'?'':w.p,search:(w,q)=>{const n=zhNorm(strip(q));return !!n&&(w.s.includes(q.trim())||w.t.includes(q.trim())||strip(w.p).replace(/\s/g,'').includes(n)||(w.hv||'').includes(q.trim().toLowerCase()))},
+ answerText:w=>w.w,norm:zhNorm,accepts,cloze:()=>null,ipaOf:w=>S.set.py=='off'?'':w.p,search:(w,q)=>searchMatcher(q,false)(w),searchMatcher,
  frontFace:front,backFace:back,wordExtra:extra,voices:[['f','Nữ'],['m','Nam']],
  settingsTop:seg=>`<div class="opt-row"><span>Chữ</span>${seg('script',[['s','Giản thể'],['t','Phồn thể']])}</div><div class="opt-row"><span>Pinyin</span>${seg('py',[['on','Hiện'],['off','Ẩn']])}</div>`,
  settingsPron:seg=>`<div class="eyebrow">Luyện nói</div><div class="group"><div class="opt-row"><span>Phản hồi</span>${seg('zhEngine',[['model','Gợi ý từ máy'],['f0','Tự nghe lại']])}</div>
@@ -275,6 +293,6 @@ window.LANG={key:'htt-core',app:'hoc-tieng-trung',audioCache:'htt-audio-v1',titl
  modes:{write:['pen-line','Viết chữ','Thứ tự nét, tự viết từng nét'],reader:['book-open','Đọc đoạn tự chọn','Tra từ trong nội dung bạn muốn đọc'],guide:['lightbulb','Chọn cách học','Gợi ý có căn cứ, tùy nhu cầu của bạn']},routes:{write:zhWrite,reader:zhRead,guide:zhGuide},speak:zhSpeak,keys:{speak:[['Phím cách','Ghi âm / dừng ghi'],['→','Từ tiếp']],write:[['→','Từ tiếp'],['←','Từ trước']]},
  typePrompt:'Gõ chữ Hán hoặc pinyin',listenPrompt:'Gõ chữ Hán hoặc pinyin (không dấu cũng được)',matchWhat:'từ tiếng Trung',reversePrompt:'Từ tiếng Trung là gì?',searchPrompt:'Tìm chữ Hán, pinyin, Hán Việt hoặc nghĩa',
  planTitle:()=>Object.keys(edition().members).length.toLocaleString('vi-VN')+' thẻ · '+edition().title,planSub:'Nghĩa Việt, audio nam/nữ, pinyin, thứ tự nét; tự chọn mọi cấp và đổi danh mục ở trang chủ',
- credits:'Phiên bản 5.0.0 · Lõi Neko từ Học Từ Vựng v17 · Danh sách HSK 2021: complete-hsk-vocabulary (MIT); đề cương HSK 2025/2026: Chinese Testing International (chỉ mục từ thực tế, không sao chép giáo trình) · Nghĩa Việt: CVDICT và bản biên soạn bổ sung (CC BY-SA 4.0), chưa được giáo viên song ngữ duyệt toàn bộ · Hán Việt, bộ thủ: Kai Hanzi (CC BY 4.0), Unihan · Nét chữ: Hanzi Writer Data / Make Me a Hanzi (Arphic PL; dữ liệu từ điển LGPL) · Audio tổng hợp: Microsoft Neural và Kokoro v1.1-zh (Apache-2.0), chưa nghe duyệt từng tệp · Biểu tượng Lucide (ISC)',
+ credits:'Phiên bản 5.0.1 · Lõi Neko từ Học Từ Vựng v17 · Danh sách HSK 2021: complete-hsk-vocabulary (MIT); đề cương HSK 2025/2026: Chinese Testing International (chỉ mục từ thực tế, không sao chép giáo trình) · Nghĩa Việt: CVDICT và bản biên soạn bổ sung (CC BY-SA 4.0), chưa được giáo viên song ngữ duyệt toàn bộ · Hán Việt, bộ thủ: Kai Hanzi (CC BY 4.0), Unihan · Nét chữ: Hanzi Writer Data / Make Me a Hanzi (Arphic PL; dữ liệu từ điển LGPL) · Audio tổng hợp: Microsoft Neural và Kokoro v1.1-zh (Apache-2.0), chưa nghe duyệt từng tệp · Biểu tượng Lucide (ISC)',
  _fromV2:fromV2,_accepts:accepts,_spoken:spoken,_readingTokens:readingTokens,_curriculumLevel:curriculumLevel};
 })();

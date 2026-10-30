@@ -46,7 +46,7 @@ with sync_playwright() as p:
         assert page.evaluate('JSON.stringify([S.srs,S.ev,S.notes,S.star,S.set.retention])') == saved
         page.goto(BASE+'#/list')
         page.wait_for_selector('#ls .it')
-        assert page.locator('#ls .it').count() == 100
+        assert page.locator('#ls .it').count() == 50
         first = page.locator('#ls [data-w]').first.get_attribute('data-w')
         page.click('[data-page="1"]')
         assert page.locator('#ls [data-w]').first.get_attribute('data-w') != first

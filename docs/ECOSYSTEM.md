@@ -7,20 +7,20 @@ Since 2026-10-24 this app runs on the same UI core as the English app (Há»c Tá»
 | File | Role |
 |---|---|
 | `core/app-core.js` | Generated from English `app.js` v17 by `tools/make-core.py`. Router, views, card gestures, scheduler calls, sessions, lifecycle, stats, backups, service-worker update prompt. |
-| `core/style.css`, `core/mascot.js`, `core/speech.js` | Copied byte for byte from English v17: design tokens, Neko mascot, mic capture (record/trim/resample/WAV/pitch/envelope). |
+| `core/style.css`, `core/mascot.js`, `core/speech.js` | Derived from English v17: design tokens, Neko mascot, mic capture. Local changes are tracked in Git; the mascot now avoids redundant work and pauses offscreen. |
 | `srs.js`, `vendor/ts-fsrs.min.js` | The same FSRS-6 scheduler as English. |
-| `lang-zh.js`, `lang-zh.css` | Chinese adapter: HSK data, unlocking, pinyin, hanzi answers, simplified/traditional, tone-based speaking, stroke-order writing, migration from the old v2 app. |
+| `lang-zh.js`, `lang-zh.css` | Chinese adapter: open HSK catalogs, pinyin, hanzi answers, simplified/traditional, speaking practice, stroke-order writing, migration from the old v2 app. |
 | `tones.js` | On-device F0 tone model (see PRONUNCIATION-ZH.md). |
 
 ## How the core is made
 
-`tools/make-core.py` applies exact string replacements to English `app.js`. It asserts match counts so a changed upstream file fails loudly instead of drifting. Most replacements add language hooks. The 2026-10-26 update also adds shared fixes for honest offline download counts and list pagination. Generation was checked against English commit `8953b394657555ee07dd5bb32f30823829330032`; its result matches `core/app-core.js` exactly after newline normalization.
+`tools/make-core.py` applies exact string replacements to English `app.js`. It asserts match counts so a changed upstream file fails loudly instead of drifting. Most replacements add language hooks. Shared fixes include honest offline download counts, list pagination, cancellable sorting, card resource cleanup and incremental flashcard updates. Generation is checked against English commit `8953b394657555ee07dd5bb32f30823829330032`; its result must match `core/app-core.js` exactly after newline normalization.
 
 Regenerate it with:
 
     python3 tools/make-core.py ../hoc-tu-vung/app.js > core/app-core.js
 
-### Proof of equivalence
+### Original adapter equivalence check (2026-10-24)
 
 1. A copy of the English repo was made with `app.js` replaced by `core/app-core.js`, and no `LANG` set.
 2. The English accessibility and route test (`tests/axe7.py`) was run against it. The test covers 14 routes and sheets in light and dark themes.
@@ -36,11 +36,12 @@ Regenerate it with:
 
 **Data**
 - `loadData()`: returns `{pages, words}`.
-- `inDeck(w)`: decides which words are in the deck. Chinese uses it for level locking.
+- `inDeck(w)`: decides which words belong to the chosen catalog. All HSK levels are available.
 - `levels`, `levelName`, `lvOrder`: the level labels and their order.
 
 **Answers**
 - `answerText`, `norm`, `accepts`, `cloze`, `search`: how typed answers and searches are matched.
+- `searchMatcher(query)`: optional prepared predicate for searching a whole catalog without repeatedly normalizing each word and query. Falls back to the original core search when omitted.
 
 **Audio**
 - `aurl(w, kind, voice)`: the audio file URL.
