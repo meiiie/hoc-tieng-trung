@@ -3,7 +3,7 @@ reference (numpy front end + onnxruntime CPU) on fixture audio. Run: python3 tes
 import sys,json,os
 from playwright.sync_api import sync_playwright
 B=sys.argv[1] if len(sys.argv)>1 else 'http://localhost:8931/';K=sys.argv[2] if len(sys.argv)>2 else 'all'
-EX=json.load(open('tests/fixtures/stl-expected.json'));V=json.load(open('models/stl-v6-vocab.json'))['syllables']
+EX=json.load(open('tests/fixtures/stl-expected.json',encoding='utf-8'));V=json.load(open('models/stl-v6-vocab.json',encoding='utf-8'))['syllables']
 JS="""async fx=>{const w=new Worker('zh-asr-worker.js');const call=m=>new Promise((ok,no)=>{w.onmessage=e=>{if(e.data.type=='prog'||e.data.type=='phase')return;e.data.type=='err'?no(e.data.msg):ok(e.data)};w.postMessage(m)});
  const t0=performance.now();await call({type:'load'});const tl=performance.now()-t0;const out=[];
  for(const f of fx){const b=await (await fetch('tests/fixtures/'+f.file)).arrayBuffer();const pcm=new Float32Array(b);const r=await call({type:'run',id:1,pcm,n:f.n,targets:Array(f.n).fill('ma')});

@@ -60,6 +60,8 @@ These are local lab measurements, not real-user percentile data or proof of smoo
 - Existing browser suites cover learning modes, content, curricula, accessibility, speaking capture and model behavior. Cache upgrade and PWA checks cover the new shell version while preserving installed identity and saved progress.
 - Timing thresholds are not hard-coded into shared CI; correctness/lifetime invariants are. Measurements are reproducible separately so shared-runner noise cannot turn a valid change into a flaky release gate.
 
+The local Windows run passed the unit/content checks, generator parity, cache/PWA checks, 40 end-to-end checks, offline/curriculum/learner UX suites, both responsiveness suites and three model-parity fixtures on each browser. The 200 sampled mascot poses produced identical SVG paths before/after the geometry optimization. [Local learner UX results](audits/learner-ux-windows-2026-10-30.json) distinguish tested behavior from unavailable capture: this Windows WebKit build did not expose usable microphone capture, so it exercised the unsupported path; simulated capture was tested on Chromium. Physical microphones and real iPhones were not tested.
+
 ## Primary references and decisions
 
 - [Google/web.dev: Optimize INP](https://web.dev/articles/optimize-inp), updated 2025-09-02. Measure interaction work and rendering together; lab profiling does not establish the real-user 75th-percentile INP.
