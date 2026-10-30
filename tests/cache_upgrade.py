@@ -7,6 +7,7 @@ import threading
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
+SHELL = 'htt-v'+json.loads((ROOT/'version.json').read_text())['version']
 OLD_SW = subprocess.check_output(['git', 'show', 'c9336d6ca1cc17fde1f7d9e6eee728847f87ffa5:sw.js'], cwd=ROOT)
 STATE = {'old': True, 'fail': False}
 
@@ -78,7 +79,7 @@ try:
           });
           r.waiting.postMessage('skip');
         }""")
-        page.wait_for_function("caches.keys().then(k=>!k.includes('htt-data-v3')&&k.includes('htt-v5.0.0'))")
+        page.wait_for_function("shell=>caches.keys().then(k=>!k.includes('htt-data-v3')&&k.includes(shell))",arg=SHELL)
         page.reload()
         page.wait_for_selector('.v-home')
         assert page.evaluate('words.length') == 12387

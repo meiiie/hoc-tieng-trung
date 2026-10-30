@@ -2,7 +2,7 @@
 
 Live: https://meiiie.github.io/hoc-tieng-trung/
 
-Application version: **5.0.0** · [Release notes](CHANGELOG.md) · content release: 2026-10-26.
+Application version: **5.0.1** · [Release notes](CHANGELOG.md) · content release: 2026-10-26.
 
 A Vietnamese-language PWA for Chinese vocabulary, running on the same Neko core and UI as the English app Học Từ Vựng v17.
 

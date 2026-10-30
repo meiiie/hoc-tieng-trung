@@ -38,4 +38,5 @@ jobs:
           python tests/offline_browser.py
           python tests/curricula_browser.py http://127.0.0.1:8931/
           python tests/learner_ux_browser.py http://127.0.0.1:8931/ all
+          python tests/responsiveness_browser.py http://127.0.0.1:8931/ all
           python tests/model_parity.py http://127.0.0.1:8931/ all

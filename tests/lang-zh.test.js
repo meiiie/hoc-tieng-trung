@@ -21,4 +21,13 @@ t('practice never changes schedules (bringForward off)',()=>assert.strictEqual(L
 t('audio follows an explicit asset key, regardless of level or list position',()=>{const w={L:7,num:'8888',a:'hsk1/{voice}/w/0000.mp3'};assert.equal(L.aurl(w,'w','m'),'audio/hsk1/m/w/0000.mp3');assert.equal(L.aurl({...w,L:2,num:'0001'},'w','f'),'audio/hsk1/f/w/0000.mp3')});
 t('erhua is attached to the previous spoken syllable',()=>assert.deepStrictEqual(L._spoken({p:'yǒu jìn r',n:'you3 jin4 r5'}),[{p:'yǒu',n:'you3'},{p:'jìnr',n:'jin4'}]));
 t('er in daughter remains a separate syllable',()=>assert.deepStrictEqual(L._spoken({p:'nǚ ér',n:'nu:3 er2'}),[{p:'nǚ',n:'nu:3'},{p:'ér',n:'er2'}]));
+t('indexed search preserves Chinese, pinyin, Hán Việt and Vietnamese matches',()=>{
+ const fs=require('fs');const words=[...Array.from({length:7},(_,i)=>JSON.parse(fs.readFileSync(`data/hsk${i+1}.json`))),JSON.parse(fs.readFileSync('data/hsk-extra.json'))].flat().map(w=>({...w,vi:w.v||(w.m||[]).join('; ')}));
+ const strip=s=>String(s).replace(/[ǖǘǚǜüÜ]/g,'v').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ü/g,'v').toLowerCase();
+ for(const query of ['中国','中國','bàn tiān','ban tian','zhongguo','lv','lǜ','nu:','trung','nửa ngày','yêu','nữ','xxyyz','ĐƯỜNG']){
+  const matches=L.searchMatcher(query),q=L.norm(query),p=L.norm(strip(query));
+  const previous=w=>L.norm(w.s).includes(q)||L.norm(w.vi).includes(q)||!!p&&(w.s.includes(query.trim())||w.t.includes(query.trim())||strip(w.p).replace(/\s/g,'').includes(p)||(w.hv||'').includes(query.trim().toLowerCase()));
+  assert.deepStrictEqual(words.filter(matches).map(w=>w.id),words.filter(previous).map(w=>w.id),query);
+ }
+});
 console.log(n,'adapter tests passed');

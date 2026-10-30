@@ -1,0 +1,36 @@
+[
+  {
+    "browser": "chromium",
+    "responsiveThemes": 8,
+    "readerSafe": true,
+    "iconsComplete": true,
+    "flatPinyin": true,
+    "repeatedRecordings": 3,
+    "latePermissionCleanup": true,
+    "cancelCleanup": true,
+    "navigationCleanup": true,
+    "overlayCleanup": true,
+    "silenceAndDenial": true,
+    "fallbackCapture": {
+      "speech": true,
+      "backend": "script",
+      "duration": 2.816
+    },
+    "workerFailure": true,
+    "modelRemoveReload": true,
+    "playbackCancellation": true,
+    "noFakeGrades": true,
+    "progressPreserved": true,
+    "axeViolations": 0
+  },
+  {
+    "browser": "webkit",
+    "responsiveThemes": 8,
+    "readerSafe": true,
+    "iconsComplete": true,
+    "flatPinyin": true,
+    "capture": "Unavailable in this browser build; actual capture not tested",
+    "unsupportedMessage": true,
+    "axeViolations": 0
+  }
+]

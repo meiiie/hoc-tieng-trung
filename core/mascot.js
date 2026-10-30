@@ -69,11 +69,12 @@ const NK=(()=>{
   let lid=0,face=null;for(const [ft,v] of c.f||[]){if(v=='blink'){const u=(t-ft)/.26;if(u>=0&&u<=1)lid=Math.max(lid,u<.45?u/.45:1-(u-.45)/.55)}else if(t>=ft)face=v}
   o.lid=Math.max(o.lid,lid);o.face=face;return o}
  /* ---- body: radial outline with two ears, sampled on 120 rays -> closed Catmull-Rom path ---- */
- function outline(eL,eR,sx,sy,m){const N=120,R=40*(1-.5*m),pts=[];
-  for(let i=0;i<N;i++){const a=i/N*2*Math.PI-Math.PI/2;let r=R*(1-0.05*Math.pow(Math.max(0,Math.sin(a)),6)+0.025*Math.cos(2*a)*(1-m));
-   for(const s of [-1,1]){const e=s<0?eL:eR,c=s*(0.66+0.13*Math.max(0,-e)-0.03*Math.max(0,e)),w=0.36,d=Math.atan2(Math.sin(a+Math.PI/2-c),Math.cos(a+Math.PI/2-c)),h=(17+5.5*e)*(1-.62*m);
-    r+=Math.max(0,h)*Math.pow(Math.max(0,1-Math.abs(d)/w),1.5)}
-   pts.push([Math.cos(a)*r*sx*1.06,Math.sin(a)*r*sy+(1-sy)*10])}
+ const rays=Array.from({length:120},(_,i)=>{const theta=i/120*2*Math.PI,a=theta-Math.PI/2;return {theta,x:Math.cos(a),y:Math.sin(a),base:1-.05*Math.pow(Math.max(0,Math.sin(a)),6),round:.025*Math.cos(2*a)}});
+ function outline(eL,eR,sx,sy,m){const R=40*(1-.5*m),pts=[],ears=[eL,eR].map((e,i)=>({c:(i?1:-1)*(.66+.13*Math.max(0,-e)-.03*Math.max(0,e)),h:Math.max(0,(17+5.5*e)*(1-.62*m))}));
+  for(const ray of rays){let r=R*(ray.base+ray.round*(1-m));
+   for(const ear of ears){let d=ray.theta-ear.c;d-=2*Math.PI*Math.floor((d+Math.PI)/(2*Math.PI));
+    r+=ear.h*Math.pow(Math.max(0,1-Math.abs(d)/.36),1.5)}
+   pts.push([ray.x*r*sx*1.06,ray.y*r*sy+(1-sy)*10])}
   return cr(pts)}
  const f1=v=>Math.round(v*10)/10;
  function cr(p){const N=p.length;let s=`M${f1(p[0][0])} ${f1(p[0][1])}`;for(let i=0;i<N;i++){const p0=p[(i-1+N)%N],p1=p[i],p2=p[(i+1)%N],p3=p[(i+2)%N];
@@ -90,7 +91,7 @@ const NK=(()=>{
  class Bot{
   constructor(el){this.el=el;this.id='nk'+(++uid);this.rnd=rng(uid*7919+13);this.lv=0;this.m=0;this.mv=0;this.pk=0;this.frozen=el.dataset.frozen!=null?+el.dataset.frozen:null;
    this.pos={...BASE};this.vel={};for(const k of TR)this.vel[k]=0;const f=FACE[(ST[el.dataset.state]||ST.idle).f];this.eye=[this.ft(f,-1),this.ft(f,1)];this.efrom=null;
-   this.svgInit();this.set(el.dataset.state||'idle',true);live.add(this);el._nk=this;
+   this.visible=true;this.svgInit();this.set(el.dataset.state||'idle',true);live.add(this);el._nk=this;visibility?.observe(el);
    el.addEventListener('pointerdown',()=>this.poke());loop()}
   ft(f,side){const s=side<0&&f.l?f.l:f.r;return {p:s[0].map(q=>q.slice()),w:s[1]}}
   svgInit(){const i=this.id;this.el.innerHTML=`<svg class="nk2" viewBox="-66 -74 132 132" aria-hidden="true" focusable="false"><defs>
@@ -134,15 +135,18 @@ const NK=(()=>{
     node.setAttribute('d','M'+pts.map(([x,y])=>`${f1(ex*p.sx+x)} ${f1(ey*p.sy+2+y)}`).join('L'));node.setAttribute('stroke-width',f1((e.w+(CLOSED[1]-e.w)*lid)*(.6+.4*z)));
     node.setAttribute('opacity',(1-Math.min(1,Math.max(0,(m-.35)/.25))).toFixed(2))});
    let dots='';if(m>.01){for(const sd of [-1,1]){const ph=frozen?0:Math.max(0,Math.sin((((now/1400)+(sd<0?.12:-.12))%1)*2*Math.PI));dots+=`<circle class="nk-dot" cx="${f1(sd*34*Math.min(1,m))}" cy="${f1(-9*m*ph*.9-my+2)}" r="${f1(13*Math.min(1,m))}"/>`}}
-   this.$o.innerHTML=dots;
+    if(dots!==this.dots){this.$o.innerHTML=dots;this.dots=dots}
    const breath=.42+.16*Math.sin(tt*2*Math.PI/5.4);this.$h.setAttribute('opacity',((S.halo||.1)*(frozen?.58:breath)*1.1).toFixed(3));
-   const dc=S.decor;this.$d.innerHTML=frozen?decor(dc,dc=='spark'?.5:.35,.5):decor(dc,tt,this.lv);this.lv*=.96}}
+    const dc=S.decor,decoration=frozen?decor(dc,dc=='spark'?.5:.35,.5):decor(dc,tt,this.lv);if(decoration!==this.decoration){this.$d.innerHTML=decoration;this.decoration=decoration}this.lv*=.96}}
  let raf=0;function loop(){if(raf||RM.matches)return;raf=requestAnimationFrame(tick)}
- function tick(now){raf=0;if(document.hidden)return;let any=0;for(const b of live){if(!b.el.isConnected){live.delete(b);continue}if(b.frozen!=null)continue;b.frame(now);any=1}if(any)loop()}
+  function retire(b){live.delete(b);visibility?.unobserve(b.el);clearTimeout(b.el.closest('.mascot')?._t)}
+  function tick(now){raf=0;if(document.hidden)return;let any=0;for(const b of live){if(!b.el.isConnected){retire(b);continue}if(b.frozen!=null||!b.visible)continue;b.frame(now);any=1}if(any)loop()}
+  const visibility=typeof IntersectionObserver==='undefined'?null:new IntersectionObserver(entries=>{for(const entry of entries){const b=entry.target._nk;if(b){b.visible=entry.isIntersecting;if(b.visible){b.last=performance.now();loop()}}}});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)loop()});
  RM.addEventListener&&RM.addEventListener('change',()=>{for(const b of live)b.set(b.st,true);loop()});
- function mountAll(root=document){root.querySelectorAll('.mwrap[data-state]').forEach(el=>{if(!el._nk)new Bot(el)})}
- new MutationObserver(()=>mountAll()).observe(document.documentElement,{childList:true,subtree:true});
+  function mountAll(root=document){if(root.matches?.('.mwrap[data-state]')&&!root._nk)new Bot(root);root.querySelectorAll('.mwrap[data-state]').forEach(el=>{if(!el._nk)new Bot(el)})}
+  new MutationObserver(records=>{let removed=false;for(const record of records){if(record.target.namespaceURI==='http://www.w3.org/2000/svg')continue;removed||=record.removedNodes.length>0;for(const node of record.addedNodes)if(node.nodeType===1&&node.namespaceURI!=='http://www.w3.org/2000/svg'&&node.isConnected)mountAll(node)}if(removed)for(const b of live)if(!b.el.isConnected)retire(b)}).observe(document.documentElement,{childList:true,subtree:true});
+  mountAll();
  return {mountAll,Bot,states:Object.keys(ST),faces:Object.keys(FACE),clips:Object.keys(CL)}})();
 function mascot(state,text,opts={}){const clean=text?String(text).replace(/<[^>]+>/g,' ').replace(/"/g,'').replace(/\s+/g,' ').trim():'';
  return `<div class="mascot ${opts.small?'small':''} ${opts.row?'row':''}" role="img" aria-label="${MASCOT_NAME}${clean?': '+clean:''}"><div class="mwrap" data-state="${NK_STATES.includes(state)?state:'idle'}"></div>${text?`<div class="bubble">${text}</div>`:''}</div>`}

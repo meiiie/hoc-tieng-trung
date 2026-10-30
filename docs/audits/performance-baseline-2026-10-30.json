@@ -1,0 +1,1200 @@
+{
+  "label": "baseline",
+  "ref": "0744f1ee10ca2a5d4f01394d31f0d47a721995f1",
+  "browser": "151.0.7922.34",
+  "cpuSlowdown": 4,
+  "viewport": [
+    390,
+    844
+  ],
+  "words": 12387,
+  "loadLongTasks": [
+    {
+      "start": 163.69999999925494,
+      "ms": 204
+    },
+    {
+      "start": 649.6999999992549,
+      "ms": 122
+    },
+    {
+      "start": 806.5999999977648,
+      "ms": 86
+    },
+    {
+      "start": 898.5999999977648,
+      "ms": 211
+    },
+    {
+      "start": 1142.5,
+      "ms": 56
+    },
+    {
+      "start": 1709,
+      "ms": 734
+    },
+    {
+      "start": 2443,
+      "ms": 190
+    }
+  ],
+  "routes": [
+    {
+      "route": "",
+      "samples": [
+        {
+          "syncMs": 522.8000000007451,
+          "settledMs": 557.6000000014901
+        },
+        {
+          "syncMs": 685.6999999992549,
+          "settledMs": 730.8999999985099
+        },
+        {
+          "syncMs": 615.3999999985099,
+          "settledMs": 660.1000000014901
+        },
+        {
+          "syncMs": 694.7999999970198,
+          "settledMs": 743.1999999992549
+        },
+        {
+          "syncMs": 757.3999999985099,
+          "settledMs": 831.3999999985099
+        }
+      ]
+    },
+    {
+      "route": "cards",
+      "samples": [
+        {
+          "syncMs": 33.5,
+          "settledMs": 60.400000002235174
+        },
+        {
+          "syncMs": 28.399999998509884,
+          "settledMs": 183.59999999776483
+        },
+        {
+          "syncMs": 79.69999999925494,
+          "settledMs": 110.10000000149012
+        },
+        {
+          "syncMs": 41,
+          "settledMs": 104.09999999776483
+        },
+        {
+          "syncMs": 26.800000000745058,
+          "settledMs": 96.90000000223517
+        }
+      ]
+    },
+    {
+      "route": "list",
+      "samples": [
+        {
+          "syncMs": 1990.800000000745,
+          "settledMs": 2308.5
+        },
+        {
+          "syncMs": 1996.5,
+          "settledMs": 2258.900000002235
+        },
+        {
+          "syncMs": 2223.39999999851,
+          "settledMs": 2669.199999999255
+        },
+        {
+          "syncMs": 2741.199999999255,
+          "settledMs": 3226.5
+        },
+        {
+          "syncMs": 2579.89999999851,
+          "settledMs": 2933.5
+        }
+      ]
+    },
+    {
+      "route": "reader",
+      "samples": [
+        {
+          "syncMs": 24.300000000745058,
+          "settledMs": 43.600000001490116
+        },
+        {
+          "syncMs": 16.5,
+          "settledMs": 53.20000000298023
+        },
+        {
+          "syncMs": 34.399999998509884,
+          "settledMs": 67.89999999850988
+        },
+        {
+          "syncMs": 43.600000001490116,
+          "settledMs": 90.30000000074506
+        },
+        {
+          "syncMs": 44.19999999925494,
+          "settledMs": 75.89999999850988
+        }
+      ]
+    },
+    {
+      "route": "stats",
+      "samples": [
+        {
+          "syncMs": 154.19999999925494,
+          "settledMs": 209.69999999925494
+        },
+        {
+          "syncMs": 232.5,
+          "settledMs": 264.30000000074506
+        },
+        {
+          "syncMs": 158.19999999925494,
+          "settledMs": 200.10000000149012
+        },
+        {
+          "syncMs": 143.19999999925494,
+          "settledMs": 183.30000000074506
+        },
+        {
+          "syncMs": 153.89999999850988,
+          "settledMs": 199.69999999925494
+        }
+      ]
+    },
+    {
+      "route": "review",
+      "samples": [
+        {
+          "syncMs": 385.9000000022352,
+          "settledMs": 424.30000000074506
+        },
+        {
+          "syncMs": 477.8999999985099,
+          "settledMs": 526.8999999985099
+        },
+        {
+          "syncMs": 335.6000000014901,
+          "settledMs": 368.70000000298023
+        },
+        {
+          "syncMs": 504.3999999985099,
+          "settledMs": 550
+        },
+        {
+          "syncMs": 398.19999999925494,
+          "settledMs": 449.3999999985099
+        }
+      ]
+    }
+  ],
+  "idleCards": [
+    {
+      "fn": "(program)",
+      "file": "",
+      "line": 0,
+      "ms": 1691.0
+    },
+    {
+      "fn": "(idle)",
+      "file": "",
+      "line": 0,
+      "ms": 1475.1
+    },
+    {
+      "fn": "outline",
+      "file": "mascot.js",
+      "line": 72,
+      "ms": 172.8
+    },
+    {
+      "fn": "frame",
+      "file": "mascot.js",
+      "line": 112,
+      "ms": 53.8
+    },
+    {
+      "fn": "setAttribute",
+      "file": "",
+      "line": 0,
+      "ms": 36.2
+    },
+    {
+      "fn": "",
+      "file": "mascot.js",
+      "line": 132,
+      "ms": 11.5
+    },
+    {
+      "fn": "requestAnimationFrame",
+      "file": "",
+      "line": 0,
+      "ms": 10.2
+    },
+    {
+      "fn": "loop",
+      "file": "mascot.js",
+      "line": 140,
+      "ms": 6.3
+    },
+    {
+      "fn": "tick",
+      "file": "mascot.js",
+      "line": 141,
+      "ms": 4.2
+    },
+    {
+      "fn": "(garbage collector)",
+      "file": "",
+      "line": 0,
+      "ms": 3.2
+    },
+    {
+      "fn": "sample",
+      "file": "mascot.js",
+      "line": 67,
+      "ms": 3.0
+    },
+    {
+      "fn": "",
+      "file": "mascot.js",
+      "line": 133,
+      "ms": 1.6
+    },
+    {
+      "fn": "",
+      "file": "mascot.js",
+      "line": 109,
+      "ms": 1.6
+    },
+    {
+      "fn": "",
+      "file": "mascot.js",
+      "line": 127,
+      "ms": 1.6
+    }
+  ],
+  "advance": {
+    "writes": 16,
+    "listeners": 21,
+    "sameView": false,
+    "sameMascot": false
+  },
+  "listSearch": [
+    {
+      "fn": "(program)",
+      "file": "",
+      "line": 0,
+      "ms": 2108.9
+    },
+    {
+      "fn": "(idle)",
+      "file": "",
+      "line": 0,
+      "ms": 1242.8
+    },
+    {
+      "fn": "zhNorm",
+      "file": "lang-zh.js",
+      "line": 25,
+      "ms": 924.5
+    },
+    {
+      "fn": "strip",
+      "file": "lang-zh.js",
+      "line": 6,
+      "ms": 774.7
+    },
+    {
+      "fn": "r",
+      "file": "app-core.js",
+      "line": 663,
+      "ms": 319.7
+    },
+    {
+      "fn": "",
+      "file": "app-core.js",
+      "line": 663,
+      "ms": 228.4
+    },
+    {
+      "fn": "search",
+      "file": "lang-zh.js",
+      "line": 251,
+      "ms": 224.6
+    },
+    {
+      "fn": "RegExp: [’'.,!?;:\"，。！？、\\s]",
+      "file": "",
+      "line": 0,
+      "ms": 109.6
+    },
+    {
+      "fn": "querySelector",
+      "file": "",
+      "line": 0,
+      "ms": 83.4
+    },
+    {
+      "fn": "az",
+      "file": "app-core.js",
+      "line": 659,
+      "ms": 76.7
+    },
+    {
+      "fn": "RegExp: [\\u0300-\\u036f]",
+      "file": "",
+      "line": 0,
+      "ms": 57.1
+    },
+    {
+      "fn": "$",
+      "file": "app-core.js",
+      "line": 4,
+      "ms": 32.9
+    },
+    {
+      "fn": "(garbage collector)",
+      "file": "",
+      "line": 0,
+      "ms": 31.0
+    },
+    {
+      "fn": "RegExp: [ǖǘǚǜüÜ]",
+      "file": "",
+      "line": 0,
+      "ms": 20.3
+    },
+    {
+      "fn": "RegExp: \\s",
+      "file": "",
+      "line": 0,
+      "ms": 19.3
+    }
+  ],
+  "listTypingEvents": [
+    {
+      "name": "keydown",
+      "ms": 32
+    },
+    {
+      "name": "keypress",
+      "ms": 32
+    },
+    {
+      "name": "keyup",
+      "ms": 816
+    },
+    {
+      "name": "keydown",
+      "ms": 72
+    },
+    {
+      "name": "keypress",
+      "ms": 72
+    },
+    {
+      "name": "keyup",
+      "ms": 536
+    },
+    {
+      "name": "keydown",
+      "ms": 104
+    },
+    {
+      "name": "keypress",
+      "ms": 104
+    },
+    {
+      "name": "keyup",
+      "ms": 744
+    },
+    {
+      "name": "keydown",
+      "ms": 96
+    },
+    {
+      "name": "keypress",
+      "ms": 96
+    },
+    {
+      "name": "keyup",
+      "ms": 296
+    },
+    {
+      "name": "keydown",
+      "ms": 56
+    },
+    {
+      "name": "keypress",
+      "ms": 56
+    },
+    {
+      "name": "keyup",
+      "ms": 600
+    },
+    {
+      "name": "keydown",
+      "ms": 104
+    },
+    {
+      "name": "keypress",
+      "ms": 104
+    },
+    {
+      "name": "keyup",
+      "ms": 168
+    },
+    {
+      "name": "keydown",
+      "ms": 16
+    },
+    {
+      "name": "keypress",
+      "ms": 16
+    },
+    {
+      "name": "keyup",
+      "ms": 328
+    },
+    {
+      "name": "keydown",
+      "ms": 16
+    },
+    {
+      "name": "keypress",
+      "ms": 16
+    },
+    {
+      "name": "keyup",
+      "ms": 288
+    }
+  ],
+  "readerSearch": [
+    {
+      "fn": "(idle)",
+      "file": "",
+      "line": 0,
+      "ms": 1011.6
+    },
+    {
+      "fn": "zhNorm",
+      "file": "lang-zh.js",
+      "line": 25,
+      "ms": 889.7
+    },
+    {
+      "fn": "(program)",
+      "file": "",
+      "line": 0,
+      "ms": 886.4
+    },
+    {
+      "fn": "strip",
+      "file": "lang-zh.js",
+      "line": 6,
+      "ms": 694.1
+    },
+    {
+      "fn": "search",
+      "file": "lang-zh.js",
+      "line": 251,
+      "ms": 218.5
+    },
+    {
+      "fn": "",
+      "file": "lang-zh.js",
+      "line": 233,
+      "ms": 160.6
+    },
+    {
+      "fn": "$.oninput",
+      "file": "lang-zh.js",
+      "line": 233,
+      "ms": 78.4
+    },
+    {
+      "fn": "(garbage collector)",
+      "file": "",
+      "line": 0,
+      "ms": 6.0
+    },
+    {
+      "fn": "",
+      "file": "lang-zh.js",
+      "line": 235,
+      "ms": 3.2
+    },
+    {
+      "fn": "$",
+      "file": "app-core.js",
+      "line": 4,
+      "ms": 1.6
+    },
+    {
+      "fn": "",
+      "file": "app-core.js",
+      "line": 157,
+      "ms": 1.6
+    },
+    {
+      "fn": "esc",
+      "file": "app-core.js",
+      "line": 6,
+      "ms": 1.6
+    },
+    {
+      "fn": "",
+      "file": "",
+      "line": 0,
+      "ms": 1.6
+    },
+    {
+      "fn": "focus",
+      "file": "",
+      "line": 0,
+      "ms": 1.1
+    }
+  ],
+  "readerTypingEvents": [
+    {
+      "name": "keydown",
+      "ms": 320
+    },
+    {
+      "name": "keypress",
+      "ms": 320
+    },
+    {
+      "name": "keydown",
+      "ms": 328
+    },
+    {
+      "name": "keypress",
+      "ms": 328
+    },
+    {
+      "name": "keydown",
+      "ms": 248
+    },
+    {
+      "name": "keypress",
+      "ms": 248
+    },
+    {
+      "name": "keydown",
+      "ms": 328
+    },
+    {
+      "name": "keypress",
+      "ms": 328
+    },
+    {
+      "name": "keydown",
+      "ms": 336
+    },
+    {
+      "name": "keypress",
+      "ms": 336
+    },
+    {
+      "name": "keydown",
+      "ms": 312
+    },
+    {
+      "name": "keypress",
+      "ms": 312
+    },
+    {
+      "name": "keydown",
+      "ms": 240
+    },
+    {
+      "name": "keypress",
+      "ms": 240
+    },
+    {
+      "name": "keydown",
+      "ms": 240
+    },
+    {
+      "name": "keypress",
+      "ms": 240
+    }
+  ],
+  "readerSubmitMs": 180.10000000149012,
+  "longTasks": [
+    {
+      "start": 163.69999999925494,
+      "ms": 204
+    },
+    {
+      "start": 649.6999999992549,
+      "ms": 122
+    },
+    {
+      "start": 806.5999999977648,
+      "ms": 86
+    },
+    {
+      "start": 898.5999999977648,
+      "ms": 211
+    },
+    {
+      "start": 1142.5,
+      "ms": 56
+    },
+    {
+      "start": 1709,
+      "ms": 734
+    },
+    {
+      "start": 2443,
+      "ms": 190
+    },
+    {
+      "start": 2662.599999997765,
+      "ms": 535
+    },
+    {
+      "start": 3262.699999999255,
+      "ms": 526
+    },
+    {
+      "start": 3819.699999999255,
+      "ms": 722
+    },
+    {
+      "start": 4551.300000000745,
+      "ms": 645
+    },
+    {
+      "start": 5210.199999999255,
+      "ms": 729
+    },
+    {
+      "start": 5953.5,
+      "ms": 821
+    },
+    {
+      "start": 6802.300000000745,
+      "ms": 56
+    },
+    {
+      "start": 6859.099999997765,
+      "ms": 360
+    },
+    {
+      "start": 7474.5,
+      "ms": 167
+    },
+    {
+      "start": 7658.300000000745,
+      "ms": 97
+    },
+    {
+      "start": 7770.699999999255,
+      "ms": 82
+    },
+    {
+      "start": 7873.099999997765,
+      "ms": 67
+    },
+    {
+      "start": 8018.300000000745,
+      "ms": 2206
+    },
+    {
+      "start": 10225.300000000745,
+      "ms": 676
+    },
+    {
+      "start": 10903.199999999255,
+      "ms": 1999
+    },
+    {
+      "start": 12902.89999999851,
+      "ms": 305
+    },
+    {
+      "start": 13212.199999999255,
+      "ms": 2242
+    },
+    {
+      "start": 15467.300000000745,
+      "ms": 2660
+    },
+    {
+      "start": 18140.5,
+      "ms": 3224
+    },
+    {
+      "start": 21367.099999997765,
+      "ms": 2922
+    },
+    {
+      "start": 25016.699999999255,
+      "ms": 55
+    },
+    {
+      "start": 25085.099999997765,
+      "ms": 70
+    },
+    {
+      "start": 25170.800000000745,
+      "ms": 71
+    },
+    {
+      "start": 25265.5,
+      "ms": 238
+    },
+    {
+      "start": 25875.699999999255,
+      "ms": 155
+    },
+    {
+      "start": 26031,
+      "ms": 55
+    },
+    {
+      "start": 26086.099999997765,
+      "ms": 261
+    },
+    {
+      "start": 26350,
+      "ms": 190
+    },
+    {
+      "start": 26550,
+      "ms": 166
+    },
+    {
+      "start": 26733.300000000745,
+      "ms": 185
+    },
+    {
+      "start": 26944.300000000745,
+      "ms": 1339
+    },
+    {
+      "start": 28315.199999999255,
+      "ms": 387
+    },
+    {
+      "start": 28739.699999999255,
+      "ms": 509
+    },
+    {
+      "start": 29266.699999999255,
+      "ms": 364
+    },
+    {
+      "start": 29635.300000000745,
+      "ms": 533
+    },
+    {
+      "start": 30185,
+      "ms": 434
+    },
+    {
+      "start": 30653.199999999255,
+      "ms": 59
+    },
+    {
+      "start": 30712.800000000745,
+      "ms": 55
+    },
+    {
+      "start": 35536.599999997765,
+      "ms": 55
+    },
+    {
+      "start": 36247.300000000745,
+      "ms": 52
+    },
+    {
+      "start": 37145,
+      "ms": 50
+    },
+    {
+      "start": 37195.89999999851,
+      "ms": 89
+    },
+    {
+      "start": 37910.89999999851,
+      "ms": 50
+    },
+    {
+      "start": 38656.599999997765,
+      "ms": 88
+    },
+    {
+      "start": 39975.300000000745,
+      "ms": 77
+    },
+    {
+      "start": 40053.699999999255,
+      "ms": 86
+    },
+    {
+      "start": 40753.89999999851,
+      "ms": 59
+    },
+    {
+      "start": 41022.099999997765,
+      "ms": 2350
+    },
+    {
+      "start": 43372.199999999255,
+      "ms": 291
+    },
+    {
+      "start": 44374.099999997765,
+      "ms": 501
+    },
+    {
+      "start": 44875.89999999851,
+      "ms": 307
+    },
+    {
+      "start": 45358.800000000745,
+      "ms": 316
+    },
+    {
+      "start": 45675.099999997765,
+      "ms": 246
+    },
+    {
+      "start": 46107.89999999851,
+      "ms": 439
+    },
+    {
+      "start": 46547.699999999255,
+      "ms": 286
+    },
+    {
+      "start": 47019.5,
+      "ms": 265
+    },
+    {
+      "start": 47284.599999997765,
+      "ms": 68
+    },
+    {
+      "start": 47521.39999999851,
+      "ms": 441
+    },
+    {
+      "start": 47963,
+      "ms": 172
+    },
+    {
+      "start": 48373.199999999255,
+      "ms": 275
+    },
+    {
+      "start": 48788.300000000745,
+      "ms": 359
+    },
+    {
+      "start": 49284.199999999255,
+      "ms": 312
+    },
+    {
+      "start": 50853.099999997765,
+      "ms": 298
+    },
+    {
+      "start": 51244.89999999851,
+      "ms": 319
+    },
+    {
+      "start": 51656.199999999255,
+      "ms": 237
+    },
+    {
+      "start": 51990,
+      "ms": 317
+    },
+    {
+      "start": 52402.699999999255,
+      "ms": 322
+    },
+    {
+      "start": 52811.39999999851,
+      "ms": 304
+    },
+    {
+      "start": 53242.699999999255,
+      "ms": 229
+    },
+    {
+      "start": 53564.300000000745,
+      "ms": 236
+    },
+    {
+      "start": 54206.300000000745,
+      "ms": 182
+    }
+  ],
+  "interactions": [
+    {
+      "name": "pointerdown",
+      "ms": 32
+    },
+    {
+      "name": "pointerup",
+      "ms": 32
+    },
+    {
+      "name": "click",
+      "ms": 32
+    },
+    {
+      "name": "pointerdown",
+      "ms": 40
+    },
+    {
+      "name": "pointerup",
+      "ms": 40
+    },
+    {
+      "name": "click",
+      "ms": 40
+    },
+    {
+      "name": "pointerdown",
+      "ms": 32
+    },
+    {
+      "name": "pointerup",
+      "ms": 32
+    },
+    {
+      "name": "click",
+      "ms": 32
+    },
+    {
+      "name": "pointerdown",
+      "ms": 24
+    },
+    {
+      "name": "pointerup",
+      "ms": 24
+    },
+    {
+      "name": "click",
+      "ms": 24
+    },
+    {
+      "name": "pointerdown",
+      "ms": 32
+    },
+    {
+      "name": "pointerup",
+      "ms": 32
+    },
+    {
+      "name": "click",
+      "ms": 32
+    },
+    {
+      "name": "pointerdown",
+      "ms": 40
+    },
+    {
+      "name": "pointerup",
+      "ms": 40
+    },
+    {
+      "name": "click",
+      "ms": 40
+    },
+    {
+      "name": "pointerdown",
+      "ms": 48
+    },
+    {
+      "name": "pointerup",
+      "ms": 48
+    },
+    {
+      "name": "click",
+      "ms": 48
+    },
+    {
+      "name": "pointerdown",
+      "ms": 40
+    },
+    {
+      "name": "pointerup",
+      "ms": 40
+    },
+    {
+      "name": "click",
+      "ms": 40
+    },
+    {
+      "name": "keydown",
+      "ms": 32
+    },
+    {
+      "name": "keypress",
+      "ms": 32
+    },
+    {
+      "name": "keyup",
+      "ms": 816
+    },
+    {
+      "name": "keydown",
+      "ms": 72
+    },
+    {
+      "name": "keypress",
+      "ms": 72
+    },
+    {
+      "name": "keyup",
+      "ms": 536
+    },
+    {
+      "name": "keydown",
+      "ms": 104
+    },
+    {
+      "name": "keypress",
+      "ms": 104
+    },
+    {
+      "name": "keyup",
+      "ms": 744
+    },
+    {
+      "name": "keydown",
+      "ms": 96
+    },
+    {
+      "name": "keypress",
+      "ms": 96
+    },
+    {
+      "name": "keyup",
+      "ms": 296
+    },
+    {
+      "name": "keydown",
+      "ms": 56
+    },
+    {
+      "name": "keypress",
+      "ms": 56
+    },
+    {
+      "name": "keyup",
+      "ms": 600
+    },
+    {
+      "name": "keydown",
+      "ms": 104
+    },
+    {
+      "name": "keypress",
+      "ms": 104
+    },
+    {
+      "name": "keyup",
+      "ms": 168
+    },
+    {
+      "name": "keydown",
+      "ms": 16
+    },
+    {
+      "name": "keypress",
+      "ms": 16
+    },
+    {
+      "name": "keyup",
+      "ms": 328
+    },
+    {
+      "name": "keydown",
+      "ms": 16
+    },
+    {
+      "name": "keypress",
+      "ms": 16
+    },
+    {
+      "name": "keyup",
+      "ms": 288
+    },
+    {
+      "name": "keydown",
+      "ms": 320
+    },
+    {
+      "name": "keypress",
+      "ms": 320
+    },
+    {
+      "name": "keydown",
+      "ms": 328
+    },
+    {
+      "name": "keypress",
+      "ms": 328
+    },
+    {
+      "name": "keydown",
+      "ms": 248
+    },
+    {
+      "name": "keypress",
+      "ms": 248
+    },
+    {
+      "name": "keydown",
+      "ms": 328
+    },
+    {
+      "name": "keypress",
+      "ms": 328
+    },
+    {
+      "name": "keydown",
+      "ms": 336
+    },
+    {
+      "name": "keypress",
+      "ms": 336
+    },
+    {
+      "name": "keydown",
+      "ms": 312
+    },
+    {
+      "name": "keypress",
+      "ms": 312
+    },
+    {
+      "name": "keydown",
+      "ms": 240
+    },
+    {
+      "name": "keypress",
+      "ms": 240
+    },
+    {
+      "name": "keydown",
+      "ms": 240
+    },
+    {
+      "name": "keypress",
+      "ms": 240
+    }
+  ]
+}
