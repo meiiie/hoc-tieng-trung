@@ -79,9 +79,16 @@ with sync_playwright() as playwright:
             page.fill('#zh-text', '你好')
             page.click('#zh-read')
             assert page.text_content('#zh-reading') == '你好'
+            page.evaluate("location.hash='#/market'")
+            page.wait_for_selector('.market-item')
+            assert page.locator('.market-item').count() == 4
+            page.evaluate("document.querySelector('[data-item=\"'+ZH_MARKET.items.find(x=>byId(x.id).w===document.querySelector('.market-word').textContent).id+'\"]').click()")
+            page.wait_for_selector('.market[data-phase="correct"]')
+            assert page.locator('.market-slot').count() == 1
+            assert page.evaluate('JSON.stringify([S.srs,S.star,S.ev])') == saved
             print(json.dumps({'browser':kind, 'originStoppedReload':True, 'responseFromWorker':True,
                               'negativeControlFailed':True, 'catalogAndAudioFromCache':True,
-                              'progressUnchanged':True, 'readerAvailable':True}), flush=True)
+                              'progressUnchanged':True, 'readerAvailable':True, 'marketPlayable':True}), flush=True)
         finally:
             browser.close()
             server.shutdown()

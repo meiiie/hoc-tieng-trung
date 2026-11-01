@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.1.0 — 2026-11-01
+
+- Add the optional “Đi chợ cùng Neko” game: six distinct food/drink targets per visit from eight illustrated catalog entries, with reading and listening choices, hints, immediate feedback and replay at the end.
+- Support dragging, tapping and native keyboard buttons equally. Keep pinyin behind hints/answers, respect traditional script and reduced motion, and preserve all study progress and schedules.
+- Apply Rossark Motion Skill to original SVG props: short curved journeys into the basket, quiet reused Neko, fixed layout, and cleanup/pause when leaving the scene. Add both game assets to the PWA shell.
+- Verify Chromium/WebKit interactions, accessible responsive themes, media failure, interrupted gestures and offline play. See [game decisions and validation](docs/MARKET-GAME-2026-11-01.md).
+
 ## 5.0.1 — 2026-10-30
 
 - Hide pinyin on flashcard question faces; retain it on answers according to the learner's pinyin setting. Preserve keyboard focus and the surrounding screen while advancing cards; fix the blank half of the flip animation.

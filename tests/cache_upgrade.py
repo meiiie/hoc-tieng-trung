@@ -91,7 +91,7 @@ try:
         page.wait_for_selector('.v-home')
         assert page.evaluate('words.length') == 12387
         offline_assets = page.evaluate("""async()=>{
-          const files=['core/mic-worklet.js','core/mic-meter.js','zh-pronunciation.js','zh-engine.js','icons/icon-512.png','icons/maskable-192.png','icons/maskable-512.png'];
+          const files=['games/market.js','games/market.css','core/mic-worklet.js','core/mic-meter.js','zh-pronunciation.js','zh-engine.js','icons/icon-512.png','icons/maskable-192.png','icons/maskable-512.png'];
           return Promise.all(files.map(async file=>{const r=await fetch(file);return r.ok&&(await r.arrayBuffer()).byteLength>0}));
         }""")
         assert all(offline_assets)
