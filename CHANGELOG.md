@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.1.1 — 2026-11-01
+
+- Keep collected food illustrations visible above the basket rim, with larger fixed slots that preserve the prop's size and position at the end of its flight.
+
 ## 5.1.0 — 2026-11-01
 
 - Add the optional “Đi chợ cùng Neko” game: six distinct food/drink targets per visit from eight illustrated catalog entries, with reading and listening choices, hints, immediate feedback and replay at the end.

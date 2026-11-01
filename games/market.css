@@ -32,8 +32,8 @@
 .market-basket.market-over{outline-color:var(--success);background:var(--success-soft)}
 .market-basket-art{display:block;width:100%;height:100%;position:relative;z-index:2;pointer-events:none}
 .market-handle{transform-origin:120px 74px}
-.market-collected{position:absolute;display:flex;justify-content:center;align-items:flex-end;left:12%;right:12%;top:12%;height:48%;pointer-events:none}
-.market-place{display:block;flex:1;min-width:0}.market-place svg{display:block;width:100%;height:auto}
+.market-collected{position:absolute;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));justify-items:center;align-items:end;left:12%;right:12%;top:0;height:52%;pointer-events:none}
+.market-place{display:block;width:clamp(32px,10vw,40px)}.market-place svg{display:block;width:100%;height:auto}
 .market-basket-count{position:absolute;bottom:17px;left:50%;transform:translateX(-50%);z-index:3;font-size:12px;font-weight:650;color:#463726;pointer-events:none}
 .market-instruction{text-align:center;color:var(--text-2);font-size:var(--fs-s);min-height:20px;margin:14px 0 8px}
 .market-feedback{text-align:center;min-height:48px;line-height:1.65;font-size:var(--fs-m);padding:0 4px}
