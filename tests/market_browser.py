@@ -124,14 +124,18 @@ with sync_playwright() as p:
   assert page.evaluate('document.activeElement===marketFocusBeforeReduce');page.keyboard.press('Escape')
   # Offscreen and hidden scenes pause; opening help cancels direct manipulation.
   page.locator('.market-next').click();page.emulate_media(reduced_motion='no-preference')
-  button(target()).evaluate("el=>{el.click();for(const a of document.querySelector('.market-ghost').getAnimations())a.updatePlaybackRate(.1)}")
+  page.wait_for_function("!matchMedia('(prefers-reduced-motion: reduce)').matches")
+  # Freeze time, not playState: the visibility handlers must be what pauses the flight.
+  button(target()).evaluate("el=>{el.click();for(const a of document.querySelector('.market-ghost').getAnimations())a.playbackRate=0}")
+  phase('moving')
   page.keyboard.press('?');page.wait_for_function("document.querySelector('.market-ghost').getAnimations().every(a=>a.playState==='paused')")
-  page.keyboard.press('Escape');phase('correct');page.locator('.market-next').click()
+  page.keyboard.press('Escape');page.evaluate("for(const a of document.querySelector('.market-ghost').getAnimations())a.playbackRate=1");phase('correct');page.locator('.market-next').click()
   # Real intersection changes suspend a flight without losing the pending answer.
-  button(target()).evaluate("el=>{el.click();for(const a of document.querySelector('.market-ghost').getAnimations())a.updatePlaybackRate(.1)}")
+  button(target()).evaluate("el=>{el.click();for(const a of document.querySelector('.market-ghost').getAnimations())a.playbackRate=0}")
+  phase('moving')
   page.evaluate("const spacer=document.createElement('div');spacer.id='test-market-spacer';spacer.style.height='2000px';document.body.append(spacer);scrollTo(0,document.body.scrollHeight)")
   page.wait_for_function("document.querySelector('.market-ghost').getAnimations().every(a=>a.playState==='paused')")
-  page.evaluate("document.querySelector('#test-market-spacer').remove();scrollTo(0,0)");phase('correct')
+  page.evaluate("document.querySelector('#test-market-spacer').remove();scrollTo(0,0);for(const a of document.querySelector('.market-ghost').getAnimations())a.playbackRate=1");phase('correct')
   # Navigation during capture or flight must remove all transient nodes and callbacks.
   for moving in [False,True]:
    route();correct=target()
