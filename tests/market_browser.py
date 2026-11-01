@@ -23,6 +23,10 @@ with sync_playwright() as p:
   def route():
    page.evaluate("location.hash='#/market';route()")
    page.wait_for_selector('.market-item');page.wait_for_timeout(80)
+  def motion(value):
+   page.emulate_media(reduced_motion=value)
+   page.wait_for_function("v=>matchMedia('(prefers-reduced-motion: reduce)').matches===v",arg=value=='reduce')
+   page.evaluate('()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))')
   def target():
    return page.evaluate("ZH_MARKET.items.find(x=>byId(x.id).w===document.querySelector('.market-word').textContent).id")
   def button(word_id):return page.locator(f'[data-item="{word_id}"]')
@@ -108,23 +112,24 @@ with sync_playwright() as p:
   page.evaluate("audio.src=new URL('tests/fixtures/market-unavailable.mp3',location.href);audio.play().catch(()=>{})")
   page.wait_for_function('document.querySelector(".market-feedback").textContent.includes("Chưa phát")',timeout=10000)
   page.evaluate("S.set.script='s';S.set.py='on';LANG.boot()");route()
-  page.emulate_media(reduced_motion='no-preference')
+  motion('no-preference')
   # Inspect the exact initial and midpoint frames of the one-shot (without waiting on real time).
-  correct=target();button(correct).evaluate("el=>{el.click();for(const a of document.querySelector('.market-ghost').getAnimations()){a.pause();a.currentTime=0}}")
+  correct=target();button(correct).evaluate("el=>{el.click();for(const a of document.querySelector('.market-ghost').getAnimations()){a.playbackRate=0;a.currentTime=0}}")
+  phase('moving')
   start=page.locator('.market-ghost').bounding_box();page.screenshot(path=str(OUT/f'{kind}-flight-start.png'),full_page=True)
   page.evaluate("for(const a of document.querySelector('.market-ghost').getAnimations())a.currentTime=140")
   middle=page.locator('.market-ghost').bounding_box();assert middle!=start
   page.screenshot(path=str(OUT/f'{kind}-flight-mid.png'),full_page=True)
-  page.evaluate("for(const a of document.querySelector('.market-ghost').getAnimations())a.play()");phase('correct')
+  page.evaluate("for(const a of document.querySelector('.market-ghost').getAnimations()){a.playbackRate=1;a.play()}");phase('correct')
   # Toggling reduced motion during travel completes it, retaining the same semantic result.
   page.locator('.market-next').click();correct=target()
-  button(correct).evaluate("el=>{el.click();for(const a of document.querySelector('.market-ghost').getAnimations()){a.pause();a.currentTime=60}}")
-  page.keyboard.press('?');page.evaluate('window.marketFocusBeforeReduce=document.activeElement')
-  page.emulate_media(reduced_motion='reduce');phase('correct');assert page.locator('.market-ghost').count()==0
+  button(correct).evaluate("el=>{el.click();for(const a of document.querySelector('.market-ghost').getAnimations()){a.playbackRate=0;a.currentTime=60}}")
+  page.keyboard.press('?');page.wait_for_function("document.querySelector('.market-ghost').getAnimations().every(a=>a.playState==='paused')")
+  page.evaluate("window.marketFocusBeforeReduce=document.activeElement;for(const a of document.querySelector('.market-ghost').getAnimations())a.playbackRate=1")
+  motion('reduce');phase('correct');assert page.locator('.market-ghost').count()==0
   assert page.evaluate('document.activeElement===marketFocusBeforeReduce');page.keyboard.press('Escape')
   # Offscreen and hidden scenes pause; opening help cancels direct manipulation.
-  page.locator('.market-next').click();page.emulate_media(reduced_motion='no-preference')
-  page.wait_for_function("!matchMedia('(prefers-reduced-motion: reduce)').matches")
+  page.locator('.market-next').click();motion('no-preference')
   # Freeze time, not playState: the visibility handlers must be what pauses the flight.
   button(target()).evaluate("el=>{el.click();for(const a of document.querySelector('.market-ghost').getAnimations())a.playbackRate=0}")
   phase('moving')
@@ -139,7 +144,7 @@ with sync_playwright() as p:
   # Navigation during capture or flight must remove all transient nodes and callbacks.
   for moving in [False,True]:
    route();correct=target()
-   if moving:button(correct).evaluate("el=>{el.click();for(const a of document.querySelector('.market-ghost').getAnimations())a.pause()}")
+   if moving:button(correct).evaluate("el=>{el.click();for(const a of document.querySelector('.market-ghost').getAnimations())a.playbackRate=0}")
    else:start_drag(button(correct))
    page.evaluate("location.hash='#/reader'");page.wait_for_selector('#zh-text');page.mouse.up();page.wait_for_timeout(350)
    assert page.locator('.market-ghost').count()==0;assert page.evaluate('audio.paused')
