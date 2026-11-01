@@ -1,0 +1,34 @@
+[
+  {
+    "browser": "chromium",
+    "roundsComplete": 6,
+    "tapKeyboardDrag": true,
+    "nativeTouchDrag": true,
+    "cancelAndNavigate": true,
+    "listenAndAudioFailure": true,
+    "reducedMotion": true,
+    "offscreenAndModalPause": true,
+    "smallViewportFocus": true,
+    "animationFramesInspected": true,
+    "responsiveThemes": 8,
+    "axeViolations": 0,
+    "progressUnchanged": true,
+    "pageErrors": []
+  },
+  {
+    "browser": "webkit",
+    "roundsComplete": 6,
+    "tapKeyboardDrag": true,
+    "nativeTouchDrag": false,
+    "cancelAndNavigate": true,
+    "listenAndAudioFailure": true,
+    "reducedMotion": true,
+    "offscreenAndModalPause": true,
+    "smallViewportFocus": true,
+    "animationFramesInspected": true,
+    "responsiveThemes": 8,
+    "axeViolations": 0,
+    "progressUnchanged": true,
+    "pageErrors": []
+  }
+]

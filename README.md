@@ -2,13 +2,13 @@
 
 Live: https://meiiie.github.io/hoc-tieng-trung/
 
-Application version: **5.0.1** · [Release notes](CHANGELOG.md) · content release: 2026-10-26.
+Application version: **5.1.0** · [Release notes](CHANGELOG.md) · content release: 2026-10-26.
 
 A Vietnamese-language PWA for Chinese vocabulary, running on the same Neko core and UI as the English app Học Từ Vựng v17.
 
 ## Modes and data
 
-- **Modes:** Ôn theo lịch (FSRS, the only mode that changes schedules), Thẻ ghi nhớ, Học, Ghép thẻ, Nghe – chép, Kiểm tra, Luyện nói (record/replay, optional conservative recognition), Viết chữ, Danh sách từ, Đọc đoạn tự chọn, Chọn cách học, Thống kê, Cài đặt.
+- **Modes:** Ôn theo lịch (FSRS, the only mode that changes schedules), Thẻ ghi nhớ, Học, Ghép thẻ, Nghe – chép, Kiểm tra, Luyện nói (record/replay, optional conservative recognition), Viết chữ, Đi chợ cùng Neko (optional picture/word and listening game), Danh sách từ, Đọc đoạn tự chọn, Chọn cách học, Thống kê, Cài đặt.
 - **Curricula:** choose the 2021 list (10,969 cards) or the 2025/2026 examination syllabus (all 11,000 source rows mapped to 10,960 distinct cards). Their union contains 12,387 cards. Every level is open; 7–9 remains one band. Switching editions preserves progress and notes.
 - **Coverage:** Vietnamese glosses and female/male word audio for every card; metadata and stroke data for all 4,304 used characters. Complete fields do not certify every sense or pronunciation; independent bilingual/native review and full bilingual example coverage remain outstanding.
 - **Chinese options:** simplified or traditional (header chip), pinyin on or off, Hán Việt, radicals.
@@ -19,6 +19,7 @@ Plain interactive pinyin, a simpler private reader, the shared Neko logo and PWA
 
 ## Docs
 
+- `docs/MARKET-GAME-2026-11-01.md`: optional market game, Rossark motion adaptation, interaction checks and educational limits.
 - `docs/EDUCATION-RESEARCH-2026-10-26.md`: university/textbook research, empirical evidence, limits and decisions supporting learner choice.
 - `docs/EDUCATION-DELIVERY-2026-10-26.md`: final dual-curriculum delivery, checks and remaining limits.
 - `docs/CONTENT-DELIVERY-RESULT-2026-10-26.md`: kết quả bổ sung, kiểm thử và giới hạn còn lại.

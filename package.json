@@ -2,11 +2,11 @@
   "name": "hoc-tieng-trung",
   "private": true,
   "scripts": {
-    "test": "node tests/srs.test.js && node tests/lang-zh.test.js && node tests/data.test.js && node tests/tones.test.js && node tests/curricula.test.js && node tests/pronunciation.test.js"
+    "test": "node tests/srs.test.js && node tests/lang-zh.test.js && node tests/data.test.js && node tests/tones.test.js && node tests/curricula.test.js && node tests/pronunciation.test.js && node tests/market.test.js"
   },
   "devDependencies": {
     "axe-core": "4.10.3",
     "ts-fsrs": "5.4.2"
   },
-  "version": "5.0.1"
+  "version": "5.1.0"
 }

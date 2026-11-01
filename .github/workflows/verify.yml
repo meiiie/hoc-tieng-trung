@@ -33,6 +33,7 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
           for attempt in $(seq 1 30); do curl --fail --silent http://127.0.0.1:8931/ > /dev/null && break; sleep 1; done
+          python tests/market_browser.py http://127.0.0.1:8931/ all
           python tests/e2e.py http://127.0.0.1:8931/ all
           python tests/content_browser.py http://127.0.0.1:8931/
           python tests/offline_browser.py
